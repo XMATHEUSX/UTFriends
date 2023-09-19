@@ -13,3 +13,12 @@ button{
 
     cursor:pointer;
 }
+
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('caminho-para-a-fonte/RobotoMono-Regular.woff2') format('woff2'),
+       url('caminho-para-a-fonte/RobotoMono-Regular.woff') format('woff');
+  /* Adicione outros formatos de fonte, se necessário */
+  font-weight: normal;
+  font-style: normal;
+}

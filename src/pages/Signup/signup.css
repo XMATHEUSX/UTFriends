@@ -73,7 +73,7 @@
 
     font-size: 60px;
     color: #FFA5CB;
-    font-family: 'Roboto Mono';
+    font-family: 'Roboto Mono', monospace;
     font-weight: 400;
     margin-bottom: 10px;
     transition: transform 2s;
@@ -87,13 +87,13 @@
 .titleBox span {
 
     font-size: 18px;
-    font-family: 'Roboto Mono';
+    font-family: 'Roboto Mono', monospace;
 }
 
 .text {
 
     font-size: 16px;
-    font-family: 'Roboto Mono';
+    font-family: 'Roboto Mono', monospace;
     color: rgb(116, 116, 116);
     margin-bottom: 5px;
 }
@@ -169,7 +169,7 @@
 
 .name input::placeholder{
 
-    font-family:'Roboto Mono';
+    font-family:'Roboto Mono', monospace;
     font-size: 14px;
     align-content: center;
     justify-content: center;
@@ -229,7 +229,7 @@
 
 .email input::placeholder {
 
-    font-family: 'Roboto Mono';
+    font-family: 'Roboto Mono', monospace;
     font-size: 14px;
     align-content: center;
     justify-content: center;
@@ -381,7 +381,7 @@
 
 .nickname input::placeholder {
 
-    font-family: 'Roboto Mono';
+    font-family: 'Roboto Mono', monospace;
     font-size: 14px;
     align-content: center;
     justify-content: center;
@@ -424,7 +424,7 @@
 .button button p {
 
     background-color: transparent;
-    font-family:'Roboto Mono';
+    font-family:'Roboto Mono', monospace;
     font-size: 20px;
     color: #FFF;
     font-weight:bold;
@@ -435,7 +435,7 @@
     font-size: 18px;
     color: #FFA5CB;
     margin: 25px;
-    font-family: 'Roboto Mono';
+    font-family: 'Roboto Mono', monospace;
     font-weight: 400;
     text-decoration: none;
     transition: transform 0.2s;
