@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.5.94-alpha">
+  <PropertyGroup>
+    <StartupCommand>npm run dev</StartupCommand>
+    <JavaScriptTestRoot>src\</JavaScriptTestRoot>
+    <JavaScriptTestFramework>Jest</JavaScriptTestFramework>
+    <!-- Allows the build (or compile) script located on package.json to run on Build -->
+    <ShouldRunBuildScript>false</ShouldRunBuildScript>
+    <!-- Command to create an optimized build of the project that's ready for publishing -->
+    <ProductionBuildCommand>npm run build</ProductionBuildCommand>
+    <!-- Folder where production build objects will be placed -->
+    <BuildOutputFolder>$(MSBuildProjectDirectory)\dist</BuildOutputFolder>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="public\vite.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="public\vite.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptConfiguration Remove="src\assets\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\assets\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\assets\react.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="src\StyleSheet.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\services\" />
+  </ItemGroup>
+</Project>

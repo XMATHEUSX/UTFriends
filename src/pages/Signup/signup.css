@@ -1,0 +1,491 @@
+.conteiner {
+
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    background-color: #FC80B5;
+}
+
+.logoBox {
+
+    width: 60%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: transparent;
+}
+
+.box {
+
+    width: 40%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF;
+    border-right: solid;
+    border-right-color: #000;
+    border-right-width: 3px;
+    box-shadow: rgba(0, 0, 0, 0.2) 10px 10px 20px 0px;
+}
+
+.titleBox {
+
+    width: 100%;
+    height: 25%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border-bottom: solid;
+    border-bottom-color: #000;
+    border-bottom-width: 3px;
+}
+
+.fieldBox {
+
+    width: 100%;
+    height: 65%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 5px inset;
+}
+
+.lastBox {
+
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.titleBox h1 {
+
+    font-size: 60px;
+    color: #FFA5CB;
+    font-family: 'Roboto Mono';
+    font-weight: 400;
+    margin-bottom: 10px;
+    transition: transform 2s;
+}
+
+.titleBox h1:hover {
+
+    transform: scale(1.25);
+}
+
+.titleBox span {
+
+    font-size: 18px;
+    font-family: 'Roboto Mono';
+}
+
+.text {
+
+    font-size: 16px;
+    font-family: 'Roboto Mono';
+    color: rgb(116, 116, 116);
+    margin-bottom: 5px;
+}
+
+.contentBox {
+
+    display: flex;
+    width: 100%;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 25px;
+}
+
+.contentBox:last-child {
+
+    display: flex;
+    width: 100%;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
+.nameBox {
+
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 60px;
+}
+
+.name {
+
+    display: flex;
+    width: 80%;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+    border-color: rgb(225, 225, 225);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.2) 10px 10px 10px 0px;
+    transition: transform 0.5s;
+}
+
+.name:hover {
+
+    transform: scale(1.025);
+}
+
+.name input {
+
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    align-items: center;
+    border: none;
+    outline: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    color: rgb(116, 116, 116);
+    overflow: hidden;
+}
+
+.name input::placeholder{
+
+    font-family:'Roboto Mono';
+    font-size: 14px;
+    align-content: center;
+    justify-content: center;
+    color: rgb(116, 116, 116);
+}
+
+.name input::target-text{
+
+    color: rgb(116, 116, 116);
+}
+
+.emailBox {
+
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 60px;
+}
+
+.email {
+
+    display: flex;
+    width: 91%;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+    border-color: rgb(225, 225, 225);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.2) 10px 10px 10px 0px;
+    transition: transform 0.5s;
+}
+
+.email:hover {
+
+    transform: scale(1.01);
+}
+
+.email input {
+
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    align-items: center;
+    border: none;
+    outline: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    color: rgb(116, 116, 116);
+    overflow: hidden;
+}
+
+.email input::placeholder {
+
+    font-family: 'Roboto Mono';
+    font-size: 14px;
+    align-content: center;
+    justify-content: center;
+    color: rgb(116, 116, 116);
+}
+
+.email input::target-text {
+
+    color: rgb(116, 116, 116);
+}
+
+.passwordBox {
+
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 60px;
+}
+
+.password {
+
+    display: flex;
+    width: 80%;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+    border-color: rgb(225, 225, 225);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.2) 10px 10px 10px 0px;
+    transition: transform 0.5s;
+}
+
+.password:hover {
+
+    transform: scale(1.025);
+}
+
+.password input {
+
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    align-items: center;
+    border: none;
+    outline: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    color: rgb(116, 116, 116);
+    overflow: hidden;
+}
+
+.dateBox {
+
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 60px;
+}
+
+.date {
+
+    display: flex;
+    width: 35.5%;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+    border-color: rgb(225, 225, 225);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.2) 10px 10px 10px 0px;
+    transition: transform 0.5s;
+}
+
+.date:hover {
+
+    transform: scale(1.025);
+}
+
+.date input {
+
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    align-items: center;
+    border: none;
+    outline: none;
+    margin-left: 10%;
+    margin-right: 10px;
+    font-size: 16px;
+    color: rgb(116, 116, 116);
+    overflow: hidden;
+}
+
+.nicknameBox {
+
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 60px;
+}
+
+.nickname {
+
+    display: flex;
+    width: 35.5%;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+    border-color: rgb(225, 225, 225);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.2) 10px 10px 10px 0px;
+    transition: transform 0.5s;
+}
+
+.nickname:hover {
+
+    transform: scale(1.025);
+}
+
+.nickname input {
+
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    align-items: center;
+    border: none;
+    outline: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    color: rgb(116, 116, 116);
+    overflow: hidden;
+}
+
+.nickname input::placeholder {
+
+    font-family: 'Roboto Mono';
+    font-size: 14px;
+    align-content: center;
+    justify-content: center;
+    color: rgb(116, 116, 116);
+}
+
+.nickname input::target-text {
+
+    color: rgb(116, 116, 116);
+}
+
+.button {
+
+    height: 80%;
+    width: 50%;
+    display:flex;
+    align-items:center;
+    background-color: transparent;
+    justify-content:center;
+    
+}
+
+.button button {
+
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    background-color: #BA8CF1;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.2) 10px 10px 10px 0px;
+    transition: transform 0.5s;
+}
+
+.button button:hover {
+
+    transform: scale(1.05);
+}
+
+.button button p {
+
+    background-color: transparent;
+    font-family:'Roboto Mono';
+    font-size: 20px;
+    color: #FFF;
+    font-weight:bold;
+}
+
+.lastBox h2 {
+
+    font-size: 18px;
+    color: #FFA5CB;
+    margin: 25px;
+    font-family: 'Roboto Mono';
+    font-weight: 400;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.lastBox h2:hover {
+
+    transform: scale(1.1);
+}
+
+.link {
+
+    text-decoration: none;
+}
+
+@media (max-width:1400px){
+
+    .logoBox {
+
+        width: 40%;
+    }
+
+    .box{
+
+        width: 60%;
+    }
+}
+
+@media (max-width:950px) {
+
+    .logoBox {
+
+        width: 20%;
+    }
+
+    .box {
+
+        width: 80%;
+    }
+}
+
+@media (max-width:700px) {
+
+    .logoBox {
+
+        width: 0%;
+    }
+
+    .box {
+
+        width: 100%;
+    }
+}
