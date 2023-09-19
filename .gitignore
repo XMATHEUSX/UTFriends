@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 *.ini
+*.vsidx
 
 # Editor directories and files
 .vscode/*
