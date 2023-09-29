@@ -1,86 +1,77 @@
-import { useState } from 'react'
 import UTFriends from '/src/assets/images/UTFriends.png'
+import { FiPower } from "react-icons/fi"
+import { BiArrowToTop } from "react-icons/bi"
+import { RxReset } from "react-icons/rx"
+
 import './home.css'
 
 import { Link } from 'react-router-dom'
 
 export default function Home() {
 
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-
   return (
-    <div className="conteinerHome">
+    <div className="conteinerH">
        
-      <div className="logoBoxHome">
+      <div className="contentH">
 
-        <img className="logoHome" src={UTFriends} alt="Descricao da Imagem"></img>
+        <div className="monitorH">
 
-      </div>
+          <div className="screenH">
 
-      <div className="boxHome">
+            <img src={UTFriends} alt="Img" className="imageH"/>
 
-        <div className ="titleBoxHome">
+            <div className="screenContentH">
 
-          <h1 className="titleHome"> Bem-Vindo </h1>
+              <Link to={"/signin"} className="fonteH">
 
-          <span className="subtitleHome"> Realize seu login para continuar </span>
+              <button> Fazer Login </button>
 
-        </div>
+              </Link>
 
-        <div className="signinBoxHome">
-          
-          <span className="textHome"> Insira seu e-mail institucional </span>
+            </div>
 
-          <div className="contentBoxHome">
-          
-            <input
-              title="Email"
-              name="Email"
-              type="email"
-              autoComplete="off"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <div className="screenContentH">
+
+              <Link to={"/signup"} className="fonteH">
+
+              <button className="accountH"> Criar Conta </button>
+
+              </Link>
+              
+            </div>
 
           </div>
-
-          <span className="textHome"> Insira sua senha </span>
-
-          <div className="contentBoxHome">
-            
-            <input
-              title="Senha"
-              name="Senha"
-              type="password"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-            />
-
-          </div>
-
-          <button type="button">
-
-            <p className="signinHome"> ENTRAR </p>
-
-          </button>
-          
         </div>
 
-        <div className="lastBoxHome">
-          
-{/*          <Link to "">*/}
+        <div className="necleH"/>
 
-            <h3 className="lastHome"> Esqueceu sua senha? </h3>
+        <div className="cabinetH">
 
-{/*          </Link>*/}
+          <div className="firsthContentH">
 
-          <Link className="linkHome" to="/signup">
+            <div className="bigDotH">
 
-            <h3 className="lastHome">Criar conta </h3>
-           
-          </Link>
+              <FiPower size={30}/>
 
+            </div>
+
+            <div className="smallDotH">
+
+              <RxReset size={20}/>
+
+            </div>
+          </div>
+
+          <div className="secondContentH">
+
+            <div className="squareH"/>
+
+            <div className="inputH">
+
+              <BiArrowToTop size={25} className="inputIconH"/>
+
+            </div>
+          </div>
         </div>
       </div>
     </div>

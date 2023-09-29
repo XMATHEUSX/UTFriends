@@ -1,423 +1,434 @@
-.conteinerSignin {
+const link
+
+html {
+
+    font-size: 62.5%;
+
+}
+
+.conteinerSI {
 
     height: 100%;
     width: 100%;
+
     position: absolute;
-    justify-content: center;
-    align-items: center;
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column-reverse;
+
     background: linear-gradient(to bottom, #7F39FB, #FC80B5);
 }
 
-.titleBoxSignin {
+.titleBoxSI {
 
     width: 22.5%;
-    height: 22.5%;
-    position: absolute;
-    left: 27.5%;
-    top: 22.5%;
-    background-color: #FFF;
+    height: 20%;
+
+    position: relative;
+    right: 10%;
+    top: 3.5%;
+
     border: solid;
     border-width:2px;
+
     box-shadow: rgba(0,0,0, 0.2) -10px 10px 10px;
+    background-color: #FFF;
 }
 
-.titleBarSignin {
+.titleBarSI {
 
     width: 100%;
-    height: 12.5%;
-    background-color: #FFF;
+    height: 15%;
+
+    align-items:center;
     display: flex;
+    justify-content: space-between;
+
     border-width:3px;
     border-bottom:solid;
-    padding-left: 5px;
+
     box-shadow: rgba(0,0,0,0.2) 0px 5px 10px;
-    align-items:center;
-    
+    background-color: #FFF;
 }
 
-.titleBarSignin p {
+.titleBarSI p {
 
-    width:95%;
-    font-size: 20px;
-    font-family:''Roboto Mono', monospace;';
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+
+    font-family:'Roboto Mono';
     font-weight: bold;
+
+    padding-left: 5px;
 }
 
-.closeIconSignin {
+.closeIconSI {
+
+    display: flex;
+    align-items: center;
+
+    border:none;
+    margin-right: 2px;
+
+    color:black;
 
     transition: transform 0.5s;
-    border:none;
-    color:black;
-    padding-top:10%;
 }
 
-.closeIconSignin:hover {
+.closeIconSI:hover {
 
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
 
-.titleContentSignin { 
+.titleContentSI { 
 
     width:100%;
-    height: 87%;
-    background-color: transparent;
+    height: 85%;
+
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    flex-wrap:unset;
-    position:relative;
 }
 
-.titleContentSignin h1 {
+.titleContentSI h1 {
 
-    font-size: 30px;
-    font-family: ''Roboto Mono', monospace;';
+    font-size: 2.8rem;
+    line-height: 2.8rem;
+
+    font-family: 'Roboto Mono';
     font-weight: bold;
+    color: black;
+
+    margin-bottom: 2%;
+
 }
 
-.titleProgressBarSignin {
+.titleProgressBarSI {
 
     height: 15%;
     width: 75%;
-    margin-top: 10px;
+
     border:solid;
     border-radius: 20px;
     border-width: 2px;
+
+    overflow: hidden;
+
     transition: transform 1.5s;
 }
 
-.titleProgressBarSignin:hover {
+.titleProgressBarSI:hover{
 
     transform: scale(1.05);
 }
 
-.progressBarSignin {
+.titleProgressBarSI:hover .progressBarSI{
 
-    height: 100%;
-    width: 80%;
-    background: linear-gradient(to right, #7F39FB, #FC80B5 ,rgba(252,128,181, 0.0));
-    border-bottom-left-radius: 20px;
-    border-top-left-radius: 20px;
+    transform:translateX(100%)
 }
 
-.signinBoxSignin {
+.progressBarSI {
 
-    width: 27.5%;
+    height: 100%;
+    width: 100%;
+
+    position: relative;
+    right: 100%;
+
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+
+    background: linear-gradient(to right, #7F39FB, #FC80B5 ,#FFF);
+    transition: transform 5s;
+}
+
+.signinBoxSI {
+
+    width: 30%;
     height: 30%;
-    position: absolute;
-    left: 37.5%;
-    top: 40%;
-    background-color: #FFF;
+
+    position: relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+
     border: dashed;
     border-width: 2px;
     border-radius: 5px;
+
     box-shadow: rgba(0,0,0, 0.2) -5px 5px 10px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center
+    background-color: #FFF;
 }
 
-.signinContentSignin {
+.signinContentSI {
 
     width: 100%;
-    height: 75%;
+    height: 80%;
+
     display: flex;
     align-items:center;
     flex-direction: column;
     justify-content: center;
-    padding-top: 5%;
 }
 
-.contentSignin {
+.contentSI {
 
     height: 35%;
     width: 100%;
+
     display:flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    background-color: transparent;
 }
 
-.contentSignin:first-child {
+.contentSI:first-child {
 
     margin-bottom: 2.5%;
 }
 
-.contentSignin p {
+.contentSI p {
 
-    font-size: 18px;
-    font-family: ''Roboto Mono', monospace;';
+    font-size: 1.6rem;
+    font-family: 'Roboto Mono';
     font-weight: 500;
+
     padding-left: 10%;
+    padding-bottom: 1.5%;
+
     background-color: transparent;
-    color: rgb(156, 156, 156);
-    margin-bottom: 1%;
+    color: #000;
 }
 
-.emailBoxSignin {
+.emailBoxSI {
 
     width: 100%;
     height: 50%;
+
+    display: flex;
     align-items:center;
     justify-content: center;
-    display: flex;
-    background-color: transparent;
 }
 
-.emailBoxSignin input {
+.emailBoxSI input {
 
     width: 80%;
+
     border: solid;
     border-width: 2px;
-    padding: 10px;
     border-radius: 5px;
-    font-size: 16px;
-    font-family: ''Roboto Mono', monospace;';
-    transition: transform 1s;
-    box-shadow: rgba(0,0,0,0.2) -10px 10px 10px;
-    border-color: rgb(156, 156, 156);
+    padding: 10px;
+    
+    font-size: 1.4rem;
+    font-family: 'Roboto Mono';
+
     outline: none;
+    border-color: #a0a0a0;
+    box-shadow: rgba(0,0,0,0.2) -10px 10px 10px;
+
+    transition: transform 1s;
 }
 
-.emailBoxSignin input:hover {
+.emailBoxSI input:hover {
 
     transform: scale(1.05);
 }
 
-.passwordBoxSignin {
+.passwordBoxSI {
 
     width: 100%;
     height: 50%;
+
     align-items: center;
     justify-content: center;
-    display: flex
+    display: flex;
 }
 
-.passwordBoxSignin input {
+.passwordBoxSI input {
 
     width: 80%;
+
     border: solid;
     border-width: 2px;
     padding: 10px;
     border-radius: 5px;
+
     font-size: 16px;
-    font-family: ''Roboto Mono', monospace;';
-    transition: transform 1s;
-    box-shadow: rgba(0,0,0,0.2) -10px 10px 10px;
-    border-color: rgb(156, 156, 156);
+    font-family: 'Roboto Mono';
+
     outline: none;
+    border-color: #a0a0a0;
+    box-shadow: rgba(0,0,0,0.2) -10px 10px 10px;
+    
+    transition: transform 1s;
 }
 
-.passwordBoxSignin input:hover {
+.passwordBoxSI input:hover {
 
     transform: scale(1.05);
 }
 
-.bottomContentSignin {
+.bottomContentSI {
 
     width: 100%;
-    height: 10%;
+    height: 15%;
+
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: flex-end;
+
     padding-right:5%;
+    padding-bottom: 3%;
+
     background-color: transparent;
 }
 
-.arrowIconSignin {
+.arrowIconSI {
 
     transition: transform 1s;
+
     color:#000;
     background-color: transparent;
 }
 
-.arrowIconSignin:hover {
+.arrowIconSI:hover {
 
     transform: scale(1.25);
 }
 
-@media (max-width: 1700px) {
+/* Responsividade para diminuição da interface - Eixo x*/
 
-    .signinBoxSignin {
+@media (min-width:1441px) {
+    
+    html {
+
+        font-size: 70%;
+    }
+}
+
+@media (max-width:1250px) {
+    
+    html {
+
+        font-size: 55%;
+    }
+}
+
+@media (max-width:1024px) {
+    
+    .signinBoxSI {
+
+        width: 40%;
+    }
+
+    .titleBoxSI {
 
         width: 32.5%;
-        left: 35%;
-    }
-
-    .titleBoxSignin {
-
-        width: 27.5%;
-        left: 25%;
     }
 }
 
-@media (max-width: 1450px) {
+@media (max-width:768px) {
+    
+    .signinBoxSI {
 
-    .signinBoxSignin {
-
-        width: 37.5%;
-        left: 32.5%;
+        width: 50%;
     }
 
-    .titleBoxSignin {
+    .titleBoxSI {
 
-        width: 32.5%;
-        left: 22.5%;
+        width: 45%;
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width:650px) {
+    
+    html {
 
-    .signinBoxSignin {
-
-        width: 42.5%;
-        left: 30%;
-    }
-
-    .titleBoxSignin {
-
-        width: 37.5%;
-        left: 20%;
+        font-size: 45%;
     }
 }
 
-@media (max-width: 1000px){
+@media (max-width:550px) {
+    
+    .signinBoxSI {
 
-    .signinBoxSignin {
+        width: 65%;
+    }
 
-        width: 52.5%;
-        left: 25%;
+    .titleBoxSI {
+
+        width: 60%;
+    }
+}
+
+@media (max-width:425px) {
+    
+    .signinBoxSI {
+
+        width: 90%;
         height: 25%;
-        top: 42.5%;
     }
 
-    .titleBoxSignin {
+    .titleBoxSI {
 
-        width: 47.5%;
-        left: 15%;
-        height: 17.5%;
-        top: 30%;
-    }
-
-    .contentSignin p {
-
-        font-size: 16px;
-    }
-
-    .emailBoxSignin input{
-
-        height: 90%;
-    }
-
-    .passwordBoxSignin input {
-
-        height: 90%;
-    }
-
-    .titleBarSignin {
-
+        width: 90%;
+        right: 0;
         height: 15%;
+        top: 2.5%;
     }
 
-    .titleBarSignin p {
+    .closeIconSI {
 
-        font-size: 16px;
+        height: 15px;
+        width: 15px;
     }
 
-    .closeIconSignin {
-
-        width: 25px;
-        height: 25px;
-    }
-
-    .titleContentSignin{
-
-        padding-bottom: 10px;
-    }
-
-    .titleContentSignin h1 {
-
-        font-size: 24px;
-    }
-}
-
-@media (max-width: 750px) {
-
-    .signinBoxSignin {
-
-        width: 62.5%;
-        left: 20%;
-        height: 20%;
-        top: 45%;
-    }
-
-    .titleBoxSignin {
-
-        width: 57.5%;
-        left: 10%;
-        height: 12.5%;
-        top: 36.5%;
-    }
-
-    .titleBarSignin {
-
-        height: 20%;
-    }
-
-    .contentSignin p {
-
-        font-size: 14px;
-    }
-
-    .titleBarSignin p {
-
-        font-size: 14px;
-    }
-
-    .closeIconSignin {
-
-        width: 22.5px;
-        height: 22.5px;
-    }
-
-    .arrowIconSignin {
+    .arrowIconSI {
 
         width: 30px;
         height: 30px;
     }
+}
 
-    .titleContentSignin {
+/* Responsividade para diminuição da interface - Eixo y */
 
-        padding-bottom: 20px;
+@media (max-height: 900px) {
+
+    .signinBoxSI {
+
+        height: 40%;
+    }
+
+    .titleBoxSI {
+
+        height: 30%;
+    }
+
+    .arrowIconSI {
+
+        height: 40px;
+        width: 40px;
+    }
+
+    .bottomContentSI {
+
+        padding-bottom: 2%;
+        padding-right: 2.5%;
     }
 }
 
-@media (max-width: 550px) {
+@media (max-height: 550px) {
 
-    .signinBoxSignin {
-        width: 82.5%;
-        left: 12.5%;
+    .signinBoxSI {
+
+        height: 50%;
     }
 
-    .titleBoxSignin {
-        width: 77.5%;
-        left: 5%;
+    .titleBoxSI {
+
+        height: 35%;
     }
 }
-
-@media (max-width: 400px) {
-
-    .signinBoxSignin {
-        width: 100%;
-        left:0%;
-    }
-
-    .titleBoxSignin {
-        width: 100%;
-        left: 0%;
-    }
-} 

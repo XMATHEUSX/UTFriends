@@ -1,83 +1,89 @@
 ﻿import { AiFillCloseSquare } from 'react-icons/ai'
 import { FiArrowRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 import './signin.css'
 
 export default function Signin() {
 
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+
   return (
-    <div className="conteinerSignin">
+    <div className="conteinerSI">
 
-      <div className="signinBoxSignin">
+      <div className="signinBoxSI">
 
-        <div className="signinContentSignin">
+        <div className="signinContentSI">
       
-          <div className="contentSignin">
+          <div className="contentSI">
           
             <p> Insira seu email institucional </p>
 
-            <div className="emailBoxSignin">
+            <div className="emailBoxSI">
 
               <input
-                title="Email"
-                name="Email"
+                title="E-mail"
+                name="E-mail"
                 type="email"
                 autoComplete="off"
+                onChange={e => setEmail(e.target.value)}
               />
-               
+              
             </div>
           </div>
 
-          <div className="contentSignin">
+          <div className="contentSI">
           
-            <p> Informe a sua senha </p>
+            <p> Informe sua senha </p>
 
-            <div className="passwordBoxSignin">
+            <div className="passwordBoxSI">
 
               <input
-                title="Email"
-                name="Email"
+                title="Senha"
+                name="Senha"
                 type="password"
                 autoComplete="off"
+                onChange={e => setSenha(e.target.value)}
               />
 
             </div>
           </div>
         </div>
 
-        <div className="bottomContentSignin">
+        <div className="bottomContentSI">
           
           <Link onClick to="/feed">
 
-            <FiArrowRight title="arrow" className="arrowIconSignin" size={45} />
+            <FiArrowRight title="arrow" className="arrowIconSI" size={45} />
 
           </Link>
         
         </div>
       </div>
 
-      <div className="titleBoxSignin">
+      <div className="titleBoxSI">
 
-        <div className="titleBarSignin">
+        <div className="titleBarSI" id="signin">
           
           <p> Welcome_User </p>
 
           <Link to="/">
 
-            <AiFillCloseSquare title="close" className="closeIconSignin" size={30} />
+            <AiFillCloseSquare title="close" className="closeIconSI" size={24} />
 
           </Link>
             
         </div>
 
-        <div className="titleContentSignin">
+        <div className="titleContentSI">
           
           <h1> Loading... </h1>
 
-          <div className="titleProgressBarSignin">
+          <div className="titleProgressBarSI">
           
-            <div className="progressBarSignin"/>
+            <div className="progressBarSI"/>
 
           </div>
         </div>
