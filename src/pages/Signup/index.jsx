@@ -13,6 +13,31 @@ export default function SignUp() {
   const [nascimento, setNascimento] = useState('')
   const [apelido, setApelido] = useState('')
 
+  const handleRegister = () => {
+    const userData = {
+      name: nome,
+      surname: sobrenome,
+      email: email,
+      password: senha,
+      nickname: apelido,
+
+    };
+    fetch('http://localhost:3000/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+      });
+      alert(userData.nickname);
+  };
   return (
 
     <div className="conteiner">
@@ -172,7 +197,7 @@ export default function SignUp() {
 
             <div className="button">
           
-              <button type="button">
+            <button type="button" onClick={handleRegister}>
               
                 <p> REGISTRAR-SE </p>
 
