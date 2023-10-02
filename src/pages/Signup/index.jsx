@@ -47,8 +47,6 @@ export default function SignUp() {
 
     <div className="conteinerSU">
 
-      <GoogleFonts family="Roboto Mono" variant="regular"/>
-
       <div className="infoSU">
 
         <p> No informations </p>
