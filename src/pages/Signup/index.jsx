@@ -1,61 +1,70 @@
+import { AiFillCloseSquare } from 'react-icons/ai'
+import { FiArrowRight } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import './signup.css'
-
-import { Link } from 'react-router-dom'
 
 export default function SignUp() {
 
   const [nome, setNome] = useState('')
   const [sobrenome, setSobrenome] = useState('')
   const [email, setEmail] = useState('')
+  const [repemail, setRepemail] = useState('')
   const [senha, setSenha] = useState('')
   const [repsenha, setRepsenha] = useState('')
+  const [curso, setCurso] = useState('')
   const [nascimento, setNascimento] = useState('')
+  const [telefone, setTelefone] = useState('')
   const [apelido, setApelido] = useState('')
 
   return (
 
-    <div className="conteiner">
+    <div className="conteinerSU">
+
+      <div className="infoSU">
+
+        <p> No informations </p>
+
+      </div>
     
-      <div className="box">
+      <div className="boxSU">
       
-        <div className="titleBox">
+        <div className="titleBoxSU">
         
-          <h1> Criar Conta </h1>
-          <span> Preencha os campos para criar sua conta UTFriends </span>
+          <p> New_Account </p>
+
+          <Link to="/">
+
+            <AiFillCloseSquare title="close" className="closeIconSU" size={28} />
+
+          </Link>
 
         </div>
 
-        <div className="fieldBox">
+        <div className="contentBoxSU">
         
-          <div className="contentBox">
+          <div className="splittedContentSU">
 
-            <div className="nameBox">
-            
-              <p className="text"> Primeiro nome </p>
+            <div className="firstContentSU">
 
-              <div className="name">
+              <p> Nome </p>
 
-                <input
+              <input
                   title="Nome"
                   name="Nome"
                   type="text"
                   value={nome}
-                  placeholder="Ex: Joao"
+                  placeholder="Ex: João"
                   onChange={(e) => setNome(e.target.value)}
                 />
 
-              </div>
-
             </div>
 
-            <div className="nameBox">
-          
-              <p className="text"> Sobrenome </p>
+            <div className="secondContentSU">
 
-              <div className="name">
+              <p> Sobrenome </p>
 
-                <input
+              <input
                   title="Sobrenome"
                   name="Sobrenome"
                   type="text"
@@ -64,19 +73,14 @@ export default function SignUp() {
                   onChange={(e) => setSobrenome(e.target.value)}
                 />
 
-              </div>
             </div>
           </div>
-          
-          <div className="contentBox">
 
-            <div className="emailBox">
-          
-              <p className="text"> Informe seu e-mail institucional </p>
-            
-              <div className="email">
+          <div className="uniqueContentSU">
 
-                <input
+            <p> Informe seu e-mail institucional </p>
+
+            <input
                   title="Email"
                   name="Email"
                   type="text"
@@ -86,19 +90,31 @@ export default function SignUp() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
 
-              </div>
-            </div>
           </div>
 
-          <div className="contentBox">
+          <div className="uniqueContentSU">
 
-            <div className="passwordBox">
-          
-              <p className="text"> Insira sua senha </p>
-            
-              <div className="password">
+            <p> Repita seu e-mail institucional </p>
 
-                <input
+            <input
+                  title="RepitirEmail"
+                  name="RepetirEmail"
+                  type="text"
+                  value={repemail}
+                  autoComplete="off"
+                  placeholder="@alunos.utfpr.edu.br"
+                  onChange={(e) => setRepemail(e.target.value)}
+                />
+
+          </div>
+
+          <div className="splittedContentSU">
+
+            <div className="firstContentSU">
+
+              <p> Informe sua senha </p>
+
+              <input
                   title="Senha"
                   name="Senha"
                   type="password"
@@ -106,36 +122,44 @@ export default function SignUp() {
                   onChange={(e) => setSenha(e.target.value)}
                 />
 
-              </div>
             </div>
 
-            <div className="passwordBox">
-              
-              <p className="text"> Repita sua senha </p>
+            <div className="secondContentSU">
 
-              <div className="password">
+              <p> Repita sua senha </p>
 
-                <input
-                  title="SenhaAgain"
-                  name="SenhaAgain"
+              <input
+                  title="RepetirSenha"
+                  name="RepetirSenha"
                   type="password"
                   value={repsenha}
                   onChange={(e) => setRepsenha(e.target.value)}
                 />
-
-              </div>
+              
             </div>
           </div>
 
-          <div className="contentBox">
+          <div className="uniqueContentSU">
 
-            <div className="dateBox">
-          
-              <p className="text"> Data de nascimento </p>
-              
-              <div className="date">
+            <p> Selecione seu curso </p>
+            <input
+                  title="Curso"
+                  name="Curso"
+                  type="text"
+                  value={curso}
+                  placeholder="Ex: Engenharia de Computação"
+                  onChange={(e) => setCurso(e.target.value)}
+                />
 
-                <input
+          </div>
+
+          <div className="splittedContentSU">
+
+            <div className="firstContentSU">
+
+              <p> Data de nascimento </p>
+
+              <input
                   title="Data"
                   name="Data"
                   type="date"
@@ -143,19 +167,31 @@ export default function SignUp() {
                   onChange={(e) => setNascimento(e.target.value)}
                 />
 
-              </div>
+            </div>
+
+            <div className="secondContentSU">
+
+              <p> Informe seu telefone </p>
+
+              <input
+                  title="Telefone"
+                  name="Telefone"
+                  type="tel"
+                  value={telefone}
+                  placeholder='(+55)'
+                  onChange={(e) => setTelefone(e.target.value)}
+                />
+              
             </div>
           </div>
 
-          <div className="contentBox">
+          <div className="splittedContentSU">
 
-            <div className="nicknameBox">
-          
-              <p className="text"> Crie seu apelido </p>
+            <div className="firstContentSU">
 
-              <div className="nickname">
+              <p> Crie seu apelido </p>
 
-                <input
+              <input
                   title="Apelido"
                   name="Apelido"
                   type="text"
@@ -164,41 +200,20 @@ export default function SignUp() {
                   onChange={(e) => setApelido(e.target.value)}
                 />
 
-              </div>
             </div>
           </div>
 
-          <div className="contentBox">
+          <div className="bottomBoxSU">
 
-            <div className="button">
-          
-              <button type="button">
-              
-                <p> REGISTRAR-SE </p>
+            <Link onClick to="/feed">
 
-              </button>
-          
-            </div>
+              <FiArrowRight title="arrow" className="arrowIconSU" size={45} />
+
+            </Link>
+
           </div>
         </div>
-
-        <div className="lastBox">
-          
-          <Link className="link" to="/">
-
-            <h2 className="lastText"> Ja possui conta? Faca seu login </h2>
-
-          </Link>
-
-        </div>
       </div>
-
-      <div className="logoBox">
-
-
-
-      </div>
-
     </div>
   );
 }

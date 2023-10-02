@@ -1,491 +1,332 @@
-.conteiner {
+html {
+
+    font-size: 62.5%;
+
+}
+
+.conteinerSU {
 
     height: 100%;
     width: 100%;
+
     position: absolute;
     justify-content: center;
     align-items: center;
     display: flex;
-    flex-direction: row;
-    background-color: #FC80B5;
+    flex-direction: column;
+
+    background: linear-gradient(to bottom, #7F39FB, #FC80B5);
 }
 
-.logoBox {
+.infoSU {
 
-    width: 60%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
+    height: 20%;
+    width: 20%;
+
     display: flex;
-    background-color: transparent;
+    align-items: start;
+    justify-content: center;
+    position: relative;
+
+    border: dashed;
+    border-width: 3px;
+    border-radius: 5px;
+
+    padding-top: 1%;
+
+    left: 15%;
+    top: 10%;
+
+    background-color: #FFF;
+    box-shadow: rgba(0, 0, 0, 0.2) -10px 10px 10px 0px;
 }
 
-.box {
+.infoSU p {
 
-    width: 40%;
-    height: 100%;
+    font-size: 2em;
+    font-family: 'Roboto Mono';
+    font-weight: bold;
+}
+
+.boxSU {
+
+    width: 30%;
+    height: 70%;
+
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     display: flex;
     flex-direction: column;
+    position: relative;
+
+    right: 5%;
+
+    border: solid;
+    border-color: #000;
+    border-width: 3px;
+
     background-color: #FFF;
-    border-right: solid;
-    border-right-color: #000;
-    border-right-width: 3px;
-    box-shadow: rgba(0, 0, 0, 0.2) 10px 10px 20px 0px;
+    box-shadow: rgba(0, 0, 0, 0.2) -10px 10px 10px 0px;
+
+    z-index: 1;
 }
 
-.titleBox {
+.titleBoxSU {
 
     width: 100%;
-    height: 25%;
-    justify-content: center;
+    height: 5%;
+
     align-items: center;
+    justify-content: space-between;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+
     border-bottom: solid;
     border-bottom-color: #000;
     border-bottom-width: 3px;
-}
 
-.fieldBox {
+    padding-right: 0.5%;
 
-    width: 100%;
-    height: 65%;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 5px inset;
-}
-
-.lastBox {
-
-    width: 100%;
-    height: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-}
-
-.titleBox h1 {
-
-    font-size: 60px;
-    color: #FFA5CB;
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 400;
-    margin-bottom: 10px;
-    transition: transform 2s;
-}
-
-.titleBox h1:hover {
-
-    transform: scale(1.25);
-}
-
-.titleBox span {
-
-    font-size: 18px;
-    font-family: 'Roboto Mono', monospace;
-}
-
-.text {
-
-    font-size: 16px;
-    font-family: 'Roboto Mono', monospace;
-    color: rgb(116, 116, 116);
-    margin-bottom: 5px;
-}
-
-.contentBox {
-
-    display: flex;
-    width: 100%;
-    height: 10%;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    margin-bottom: 25px;
-}
-
-.contentBox:last-child {
-
-    display: flex;
-    width: 100%;
-    height: 10%;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    margin-top: 30px;
-    margin-bottom: 0px;
-}
-
-.nameBox {
-
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-left: 60px;
-}
-
-.name {
-
-    display: flex;
-    width: 80%;
-    height: 40px;
-    justify-content: center;
-    align-items: center;
-    border: solid;
-    border-color: rgb(225, 225, 225);
-    border-radius: 10px;
     overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.2) 10px 10px 10px 0px;
-    transition: transform 0.5s;
+
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px 0px;
+    background-color: #FFF;
 }
 
-.name:hover {
+.titleBoxSU p {
 
-    transform: scale(1.025);
+    font-size: 2em;
+    font-family: 'Roboto Mono';
+    font-weight: bold;
+
+    margin-left: 1%;
 }
 
-.name input {
-
-    height: 100%;
-    width: 100%;
-    background-color: transparent;
-    align-items: center;
-    border: none;
-    outline: none;
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 16px;
-    color: rgb(116, 116, 116);
-    overflow: hidden;
-}
-
-.name input::placeholder{
-
-    font-family:'Roboto Mono', monospace;
-    font-size: 14px;
-    align-content: center;
-    justify-content: center;
-    color: rgb(116, 116, 116);
-}
-
-.name input::target-text{
-
-    color: rgb(116, 116, 116);
-}
-
-.emailBox {
+.closeIconSU {
 
     display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-left: 60px;
-}
-
-.email {
-
-    display: flex;
-    width: 91%;
-    height: 40px;
-    justify-content: center;
     align-items: center;
-    border: solid;
-    border-color: rgb(225, 225, 225);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.2) 10px 10px 10px 0px;
-    transition: transform 0.5s;
+
+    margin-right: 1%;
+
+    color: #000;
+
+    transition: transform 1s;
 }
 
-.email:hover {
-
-    transform: scale(1.01);
-}
-
-.email input {
-
-    height: 100%;
-    width: 100%;
-    background-color: transparent;
-    align-items: center;
-    border: none;
-    outline: none;
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 16px;
-    color: rgb(116, 116, 116);
-    overflow: hidden;
-}
-
-.email input::placeholder {
-
-    font-family: 'Roboto Mono', monospace;
-    font-size: 14px;
-    align-content: center;
-    justify-content: center;
-    color: rgb(116, 116, 116);
-}
-
-.email input::target-text {
-
-    color: rgb(116, 116, 116);
-}
-
-.passwordBox {
-
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-left: 60px;
-}
-
-.password {
-
-    display: flex;
-    width: 80%;
-    height: 40px;
-    justify-content: center;
-    align-items: center;
-    border: solid;
-    border-color: rgb(225, 225, 225);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.2) 10px 10px 10px 0px;
-    transition: transform 0.5s;
-}
-
-.password:hover {
-
-    transform: scale(1.025);
-}
-
-.password input {
-
-    height: 100%;
-    width: 100%;
-    background-color: transparent;
-    align-items: center;
-    border: none;
-    outline: none;
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 16px;
-    color: rgb(116, 116, 116);
-    overflow: hidden;
-}
-
-.dateBox {
-
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-left: 60px;
-}
-
-.date {
-
-    display: flex;
-    width: 35.5%;
-    height: 40px;
-    justify-content: center;
-    align-items: center;
-    border: solid;
-    border-color: rgb(225, 225, 225);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.2) 10px 10px 10px 0px;
-    transition: transform 0.5s;
-}
-
-.date:hover {
-
-    transform: scale(1.025);
-}
-
-.date input {
-
-    height: 100%;
-    width: 100%;
-    background-color: transparent;
-    align-items: center;
-    border: none;
-    outline: none;
-    margin-left: 10%;
-    margin-right: 10px;
-    font-size: 16px;
-    color: rgb(116, 116, 116);
-    overflow: hidden;
-}
-
-.nicknameBox {
-
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-left: 60px;
-}
-
-.nickname {
-
-    display: flex;
-    width: 35.5%;
-    height: 40px;
-    justify-content: center;
-    align-items: center;
-    border: solid;
-    border-color: rgb(225, 225, 225);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: rgba(0, 0, 0, 0.2) 10px 10px 10px 0px;
-    transition: transform 0.5s;
-}
-
-.nickname:hover {
-
-    transform: scale(1.025);
-}
-
-.nickname input {
-
-    height: 100%;
-    width: 100%;
-    background-color: transparent;
-    align-items: center;
-    border: none;
-    outline: none;
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 16px;
-    color: rgb(116, 116, 116);
-    overflow: hidden;
-}
-
-.nickname input::placeholder {
-
-    font-family: 'Roboto Mono', monospace;
-    font-size: 14px;
-    align-content: center;
-    justify-content: center;
-    color: rgb(116, 116, 116);
-}
-
-.nickname input::target-text {
-
-    color: rgb(116, 116, 116);
-}
-
-.button {
-
-    height: 80%;
-    width: 50%;
-    display:flex;
-    align-items:center;
-    background-color: transparent;
-    justify-content:center;
-    
-}
-
-.button button {
-
-    height: 100%;
-    width: 100%;
-    cursor: pointer;
-    border: none;
-    background-color: #BA8CF1;
-    border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.2) 10px 10px 10px 0px;
-    transition: transform 0.5s;
-}
-
-.button button:hover {
-
-    transform: scale(1.05);
-}
-
-.button button p {
-
-    background-color: transparent;
-    font-family:'Roboto Mono', monospace;
-    font-size: 20px;
-    color: #FFF;
-    font-weight:bold;
-}
-
-.lastBox h2 {
-
-    font-size: 18px;
-    color: #FFA5CB;
-    margin: 25px;
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 400;
-    text-decoration: none;
-    transition: transform 0.2s;
-}
-
-.lastBox h2:hover {
+.closeIconSU:hover {
 
     transform: scale(1.1);
 }
 
-.link {
+.contentBoxSU {
 
-    text-decoration: none;
+    width: 100%;
+    height: 95%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
 }
 
-@media (max-width:1400px){
+.splittedContentSU {
 
-    .logoBox {
+    width: 100%;
 
-        width: 40%;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
 
-    .box{
+    padding-left: 5%;
+}
 
-        width: 60%;
+.splittedContentSU p {
+
+    font-size: 1.2em;
+    font-family: 'Roboto Mono';
+    font-weight: 400;
+}
+
+.splittedContentSU input {
+
+    width: 90%;
+
+    margin-top: 0.5%;
+
+    padding: 5px;
+
+    border: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: #a0a0a0;
+
+    font-family: 'Roboto Mono';
+    font-size: 1.4;
+
+    outline: none;
+
+    box-shadow: rgba(0,0,0,0.2) -5px 5px 10px;
+
+    transition: transform 1.5s;
+}
+
+.splittedContentSU input:hover {
+
+    transform: scale(1.05);
+}
+
+.firstContentSU {
+
+    width: 50%;
+}
+
+.secondContentSU {
+
+    width: 50%;
+}
+
+.uniqueContentSU {
+
+    width: 100%;
+
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+
+    padding-left: 5%;
+}
+
+.uniqueContentSU p {
+
+    font-size: 1.2em;
+    font-family: 'Roboto Mono';
+    font-weight: 400;
+}
+
+.uniqueContentSU input {
+
+    width: 90%;
+
+    margin-top: 0.5%;
+
+    padding: 5px;
+
+    border: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: #a0a0a0;
+
+    font-family: 'Roboto Mono';
+    font-size: 1.4;
+
+    outline: none;
+
+    box-shadow: rgba(0,0,0,0.2) -5px 5px 10px;
+
+    transition: transform 1.5s;
+}
+
+.uniqueContentSU input:hover {
+
+    transform: scale(1.025);
+}
+
+.bottomBoxSU {
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+
+    padding-right: 5%;
+}
+
+.arrowIconSU {
+
+    color: #000;
+
+    transition: transform 1s;
+}
+
+.arrowIconSU:hover {
+
+    transform: scale(1.2);
+}
+
+/* Responsividade para o eixo x */
+
+@media (max-width: 1440px) {
+
+    .boxSU {
+
+        width: 50%;
     }
 }
 
-@media (max-width:950px) {
+@media (max-width: 1024px) {
 
-    .logoBox {
+    .boxSU {
 
-        width: 20%;
-    }
-
-    .box {
-
-        width: 80%;
+        width: 65%;
     }
 }
 
-@media (max-width:700px) {
+@media (max-width: 768px) {
 
-    .logoBox {
+    .boxSU {
 
-        width: 0%;
+        width: 75%;
+        height: 60%;
+    }
+}
+
+@media (max-width: 425px) {
+
+    .boxSU {
+
+        width: 90%;
+        height: 45%;
+
+        right: 0%;
+        top: 0%
     }
 
-    .box {
+    .closeIconSU {
 
-        width: 100%;
+        height: 20px;
+        width: 20px;
+    }
+}
+
+/* Responsividade para o eixo y */
+
+@media (max-height: 925px) {
+
+    .boxSU {
+
+        height: 75%;
+    }
+}
+
+@media (max-height: 800px) {
+
+    .boxSU {
+
+        height: 85%;
+
+        top: 0%
+    }
+}
+
+@media (max-height: 600px) {
+
+    .boxSU {
+
+        height: 95%;
     }
 }
