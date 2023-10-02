@@ -26,5 +26,9 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "vite": "^4.4.5"
-  }
+  },
+  "description": "<p align=\"center\">\r   <a href=\"\" rel=\"noopener\">\r  <img width=200px height=200px src=\"https://i.imgur.com/6wj0hh6.jpg\" alt=\"Project logo\"></a>\r </p>",
+  "main": "vite.config.js",
+  "author": "",
+  "license": "ISC"
 }

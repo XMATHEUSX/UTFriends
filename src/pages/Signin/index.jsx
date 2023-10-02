@@ -10,6 +10,28 @@ export default function Signin() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
+  const handleLogin = () => {
+    const userData = {
+      username: email,
+      password: senha,
+    };
+    fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+      });
+      alert(userData.username);
+  };
+  
   return (
     <div className="conteinerSI">
 
@@ -53,13 +75,10 @@ export default function Signin() {
         </div>
 
         <div className="bottomContentSI">
-          
-          <Link onClick to="/feed">
-
+        <button type="button" onClick={handleLogin}>
             <FiArrowRight title="arrow" className="arrowIconSI" size={45} />
 
-          </Link>
-        
+        </button>
         </div>
       </div>
 
