@@ -54,6 +54,7 @@ export default function Signin() {
                 type="email"
                 autoComplete="off"
                 onChange={e => setEmail(e.target.value)}
+                required pattern="^[A-Za-z]+@alunos.utfpr.edu.br$"
               />
               
             </div>

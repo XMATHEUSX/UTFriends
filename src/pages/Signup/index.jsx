@@ -82,6 +82,7 @@ export default function SignUp() {
                   value={nome}
                   placeholder="Ex: João"
                   onChange={(e) => setNome(e.target.value)}
+                  required pattern="^[A-Za-z]+&"
                 />
 
             </div>
@@ -97,6 +98,7 @@ export default function SignUp() {
                   value={sobrenome}
                   placeholder="Ex: Kaszuba"
                   onChange={(e) => setSobrenome(e.target.value)}
+                  required pattern="^[A-Za-z]+&"
                 />
 
             </div>
@@ -114,6 +116,7 @@ export default function SignUp() {
                   autoComplete="off"
                   placeholder="@alunos.utfpr.edu.br"
                   onChange={(e) => setEmail(e.target.value)}
+                  required pattern="^[A-Za-z]+@alunos.utfpr.edu.br$"
                 />
 
           </div>
@@ -130,6 +133,7 @@ export default function SignUp() {
                   autoComplete="off"
                   placeholder="@alunos.utfpr.edu.br"
                   onChange={(e) => setRepemail(e.target.value)}
+                  required pattern="^[A-Za-z]+@alunos.utfpr.edu.br$"
                 />
 
           </div>
@@ -175,6 +179,7 @@ export default function SignUp() {
                   value={curso}
                   placeholder="Ex: Engenharia de Computação"
                   onChange={(e) => setCurso(e.target.value)}
+                  required pattern="^[A-Za-z]+&"
                 />
 
           </div>
@@ -191,6 +196,7 @@ export default function SignUp() {
                   type="date"
                   value={nascimento}
                   onChange={(e) => setNascimento(e.target.value)}
+                  required pattern="^\d{2}/\d{2}/\d{4}$"
                 />
 
             </div>
@@ -206,6 +212,7 @@ export default function SignUp() {
                   value={telefone}
                   placeholder='(+55)'
                   onChange={(e) => setTelefone(e.target.value)}
+                  required pattern="^$"
                 />
               
             </div>
