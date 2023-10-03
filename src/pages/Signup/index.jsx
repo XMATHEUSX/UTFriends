@@ -126,7 +126,7 @@ export default function SignUp() {
             <p> Repita seu e-mail institucional </p>
 
             <input
-                  title="RepitirEmail"
+                  title="RepetirEmail"
                   name="RepetirEmail"
                   type="text"
                   value={repemail}

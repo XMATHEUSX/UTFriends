@@ -26,6 +26,12 @@ export default function Signin() {
       .then(response => response.json())
       .then(data => {
         console.log(data);
+        if(data.success){
+          document.getElementById('incrrectPasswordSI').style.display = "none";
+          alert(data.message)
+        } else {
+          document.getElementById('incrrectPasswordSI').style.display = "block";
+        }
       })
       .catch(error => {
         console.error('Erro:', error);
@@ -79,7 +85,7 @@ export default function Signin() {
         </div>
         <div className="bottomContentSI">
 
-          <p className="incrrectPasswordSI">Email ou Senha incorreta!</p>
+          <p id="incrrectPasswordSI">Email ou Senha incorreta!</p>
 
           <FiArrowRight title="arrow" className="arrowIconSI" size={45} onClick={handleLogin}/>
 
