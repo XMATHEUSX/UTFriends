@@ -1,4 +1,5 @@
 import UTFriends from '/src/assets/images/UTFriends.png'
+import GoogleFonts from 'react-google-fonts'
 import { FiPower } from "react-icons/fi"
 import { BiArrowToTop } from "react-icons/bi"
 import { RxReset } from "react-icons/rx"
@@ -11,6 +12,8 @@ export default function Home() {
 
   return (
     <div className="conteinerH">
+
+      <GoogleFonts family="Roboto Mono" variant="regular"/>
        
       <div className="contentH">
 

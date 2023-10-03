@@ -1,4 +1,5 @@
 ﻿import { AiFillCloseSquare } from 'react-icons/ai'
+import GoogleFonts from 'react-google-fonts'
 import { FiArrowRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
@@ -34,6 +35,8 @@ export default function Signin() {
   
   return (
     <div className="conteinerSI">
+
+      <GoogleFonts family="Roboto Mono" variant="regular"/>
 
       <div className="signinBoxSI">
 
@@ -75,10 +78,9 @@ export default function Signin() {
         </div>
 
         <div className="bottomContentSI">
-        <button type="button" onClick={handleLogin}>
-            <FiArrowRight title="arrow" className="arrowIconSI" size={45} />
 
-        </button>
+          <FiArrowRight title="arrow" className="arrowIconSI" size={45} onClick={handleLogin}/>
+
         </div>
       </div>
 

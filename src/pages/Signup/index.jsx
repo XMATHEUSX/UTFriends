@@ -1,4 +1,5 @@
 import { AiFillCloseSquare } from 'react-icons/ai'
+import GoogleFonts from 'react-google-fonts'
 import { FiArrowRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
@@ -230,28 +231,11 @@ export default function SignUp() {
 
           <div className="bottomBoxSU">
 
-            <div className="button">
-          
-            <button type="button" onClick={handleRegister}>
-              
-                <p> REGISTRAR-SE </p>
-
-              </button>
-          
-            </div>
-          </div>
-        </div>
-
-        <div className="lastBox">
-          
-          <Link className="link" to="/">
-
-            <h2 className="lastText"> Ja possui conta? Faca seu login </h2>
-
-            </Link>
+            <FiArrowRight title="arrow" className="arrowIconSU" size={45} onClick={handleRegister}/>
 
           </div>
         </div>
       </div>
+    </div>
   );
 }
