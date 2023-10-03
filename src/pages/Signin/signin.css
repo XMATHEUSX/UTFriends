@@ -299,6 +299,15 @@ html {
     transform: scale(1.25);
 }
 
+.incrrectPasswordSI{
+    
+    color: red;
+    font-weight: bold;
+    position: relative;
+    left: -165px;
+    top: -20px;
+}
+
 /* Responsividade para diminuição da interface - Eixo x*/
 
 @media (min-width:1441px) {
