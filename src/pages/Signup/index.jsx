@@ -46,12 +46,6 @@ export default function SignUp() {
   return (
 
     <div className="conteinerSU">
-
-      <div className="infoSU">
-
-        <p> No informations </p>
-
-      </div>
     
       <div className="boxSU">
       
