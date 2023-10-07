@@ -1,0 +1,17 @@
+.conteinerFB {
+
+    width: 40%;
+    height: 100%;
+
+    position: absolute;
+    bottom: 0%;
+    left: 30%;
+
+    border-right: solid;
+    border-right-width: 3px;
+    border-left: solid;
+    border-left-width: 3px;
+
+    background-color: #FFF;
+    box-shadow: rgba(0,0,0,0.2) 0px 0px 10px 10px;
+}

@@ -1,2 +1,14 @@
-body {
+.conteinerF {
+
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column-reverse;
+
+    background: linear-gradient(to bottom, #7F39FB, #FC80B5);
 }
