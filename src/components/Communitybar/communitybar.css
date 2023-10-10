@@ -1,0 +1,25 @@
+
+.conteinerCB {
+
+    width: 5%;
+    height: 60%;
+
+    position: absolute;
+    right: 0;
+    top: 22.5%;
+
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: column;
+
+    border-left: solid;
+    border-left-width: 3px;
+    border-top: solid;
+    border-top-width: 3px;
+    border-bottom: solid;
+    border-bottom-width: 3px;
+
+    background-color: #FFF;
+    box-shadow: rgba(0,0,0,0.2) 0px 0px 10px 10px;
+}

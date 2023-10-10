@@ -46,12 +46,6 @@ export default function SignUp() {
   return (
 
     <div className="conteinerSU">
-
-      <div className="infoSU">
-
-        <p> No informations </p>
-
-      </div>
     
       <div className="boxSU">
       
@@ -126,7 +120,7 @@ export default function SignUp() {
             <p> Repita seu e-mail institucional </p>
 
             <input
-                  title="RepitirEmail"
+                  title="RepetirEmail"
                   name="RepetirEmail"
                   type="text"
                   value={repemail}

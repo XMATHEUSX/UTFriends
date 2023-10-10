@@ -27,7 +27,7 @@ export default function Home() {
 
               <Link to={"/signin"} className="fonteH">
 
-              <button> Fazer Login </button>
+                <button> Fazer Login </button>
 
               </Link>
 
@@ -37,7 +37,7 @@ export default function Home() {
 
               <Link to={"/signup"} className="fonteH">
 
-              <button className="accountH"> Criar Conta </button>
+                <button className="accountH"> Criar Conta </button>
 
               </Link>
               
@@ -54,13 +54,13 @@ export default function Home() {
 
             <div className="bigDotH">
 
-              <FiPower size={30}/>
+              <FiPower size={30} className="powerIconH"/>
 
             </div>
 
             <div className="smallDotH">
 
-              <RxReset size={20}/>
+              <RxReset size={20} className="resetIconH"/>
 
             </div>
           </div>
