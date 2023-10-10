@@ -16,7 +16,7 @@ export default function Signin() {
       username: email,
       password: senha,
     };
-    fetch('http://localhost:3000/login', {
+    fetch('http://172.20.10.8:3000/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,6 +31,12 @@ export default function Signin() {
         console.error('Erro:', error);
       });
       alert(userData.username);
+      
+      if(userData.sucess){
+        document.getElementById('incrrectPasswordSI').style.display = "none";
+      }else{
+        document.getElementById('incrrectPasswordSI').style.display = "block";
+      }
   };
   
   return (
