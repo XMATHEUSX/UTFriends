@@ -29,20 +29,16 @@ export default function Signin() {
         if(data.success){
           document.getElementById('incrrectPasswordSI').style.display = "none";
           alert(data.message)
-        } else {
+        } else if(!data.success){
           document.getElementById('incrrectPasswordSI').style.display = "block";
+          document.getElementById("Email").value = "";
+          document.getElementById("Senha").value = "";
         }
       })
       .catch(error => {
         console.error('Erro:', error);
       });
       alert(userData.username);
-      
-      if(userData.sucess){
-        document.getElementById('incrrectPasswordSI').style.display = "none";
-      }else{
-        document.getElementById('incrrectPasswordSI').style.display = "block";
-      }
   };
   
   return (
@@ -61,6 +57,7 @@ export default function Signin() {
             <div className="emailBoxSI">
 
               <input
+                id="Email"
                 title="E-mail"
                 name="E-mail"
                 type="email"
@@ -79,6 +76,7 @@ export default function Signin() {
             <div className="passwordBoxSI">
 
               <input
+                id="Senha"
                 title="Senha"
                 name="Senha"
                 type="password"
