@@ -299,13 +299,14 @@ html {
     transform: scale(1.25);
 }
 
-.incrrectPasswordSI{
+#incrrectPasswordSI{
     
     color: red;
     font-weight: bold;
     position: relative;
     left: -165px;
     top: -20px;
+    display: none;
 }
 
 /* Responsividade para diminuição da interface - Eixo x*/
