@@ -48,6 +48,11 @@ html {
     font-weight: bold;
 }*/
 
+.errorMsgSU{
+    color: red;
+    display: none;
+}
+
 .boxSU {
 
     width: 30%;

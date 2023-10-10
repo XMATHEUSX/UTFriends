@@ -3,6 +3,8 @@ import GoogleFonts from 'react-google-fonts'
 import { FiArrowRight } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+
+import verify_nome from './verify.js'
 import './signup.css'
 
 export default function SignUp() {
@@ -27,21 +29,25 @@ export default function SignUp() {
       nickname: apelido,
 
     };
-    fetch('http://localhost:3000/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData),
-    })
+
+    if(verify_nome(nome)){
+      alert("deu certo");
+      fetch('http://localhost:3000/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+      console.log(data);
       })
       .catch(error => {
-        console.error('Erro:', error);
-      });
-      alert(userData.nickname);
+      console.error('Erro:', error);
+    });
+    }
+    document.getElementById("errorNome").style.display = "block";
   };
   return (
 
@@ -76,8 +82,9 @@ export default function SignUp() {
                   value={nome}
                   placeholder="Ex: João"
                   onChange={(e) => setNome(e.target.value)}
-                  required pattern="^[A-Za-z]+&"
                 />
+
+                <p className="errorMsgSU" id="errorNome">Nome inválido</p>
 
             </div>
 
@@ -86,15 +93,16 @@ export default function SignUp() {
               <p> Sobrenome </p>
 
               <input
+                  id="sobrenome"
                   title="Sobrenome"
                   name="Sobrenome"
                   type="text"
                   value={sobrenome}
                   placeholder="Ex: Kaszuba"
                   onChange={(e) => setSobrenome(e.target.value)}
-                  required pattern="^[A-Za-z]+&"
+                  required
                 />
-
+              <p className="errorMsgSU" id="erroSobrenome">Sobrenome inválido</p>
             </div>
           </div>
 
@@ -111,8 +119,9 @@ export default function SignUp() {
                   placeholder="@alunos.utfpr.edu.br"
                   onChange={(e) => setEmail(e.target.value)}
                   required pattern="^[A-Za-z]+@alunos.utfpr.edu.br$"
-                />
+            />
 
+            <p className="errorMsgSU">Email inválido</p>
           </div>
 
           <div className="uniqueContentSU">
@@ -129,7 +138,7 @@ export default function SignUp() {
                   onChange={(e) => setRepemail(e.target.value)}
                   required pattern="^[A-Za-z]+@alunos.utfpr.edu.br$"
                 />
-
+            <p id="errorMsgSU">Email divergente</p>
           </div>
 
           <div className="splittedContentSU">
@@ -159,7 +168,7 @@ export default function SignUp() {
                   value={repsenha}
                   onChange={(e) => setRepsenha(e.target.value)}
                 />
-              
+              <p className="errorMsgSU">Senha divergente</p>
             </div>
           </div>
 
@@ -173,9 +182,7 @@ export default function SignUp() {
                   value={curso}
                   placeholder="Ex: Engenharia de Computação"
                   onChange={(e) => setCurso(e.target.value)}
-                  required pattern="^[A-Za-z]+&"
                 />
-
           </div>
 
           <div className="splittedContentSU">
@@ -192,7 +199,7 @@ export default function SignUp() {
                   onChange={(e) => setNascimento(e.target.value)}
                   required pattern="^\d{2}/\d{2}/\d{4}$"
                 />
-
+              <p className="errorMsgSU">data inválida</p>
             </div>
 
             <div className="secondContentSU">
@@ -206,9 +213,9 @@ export default function SignUp() {
                   value={telefone}
                   placeholder='(+55)'
                   onChange={(e) => setTelefone(e.target.value)}
-                  required pattern="^$"
+                  required pattern="^[0-9]{11}$"
                 />
-              
+              <p className="errorMsgSU">Número inválido</p>
             </div>
           </div>
 
