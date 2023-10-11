@@ -3,6 +3,11 @@
     width: 40%;
     height: 100%;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
     position: absolute;
     bottom: 0%;
     left: 30%;
@@ -14,4 +19,17 @@
 
     background-color: #FFF;
     box-shadow: rgba(0,0,0,0.2) 0px 0px 10px 10px;
+}
+
+.conteinerFB h1 {
+
+    width: 20%;
+    height: 10%;
+
+}
+
+.conteinerFB button {
+
+    width: 30%;
+    height: 10%;
 }
