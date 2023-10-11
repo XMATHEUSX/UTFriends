@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+ <img width=400px height=200px src="imgs/logos/logo_main.png" alt="Project logo"></a>
 </p>
 
 <h3 align="center">UTFriends</h3>
@@ -31,63 +31,70 @@ O presente projeto envolve o desenvolvimento de uma rede social denominada <b>UT
 - [Authors](#authors)
 
 ## 🧐 About <a name = "about"></a>
+
 <p align="justify">
  A plataforma tem como objetivo proporcionar um ambiente virtual onde os usuários da UTFPR-PB possam se conectar, interagir e compartilhar experiências acadêmicas e sociais. A <b>UTFriends</b> visa promover a troca de conhecimentos, a formação de grupos de estudos, a divulgação de eventos acadêmicos e a criação de um espaço digital inclusivo e colaborativo para a comunidade universitária. Ao utilizar práticas modernas de desenvolvimento de software, metodologias ágeis e garantindo a segurança e privacidade dos usuários, o projeto busca oferecer uma experiência aprimorada de interação social entre os estudantes e a instituição.
 </p>
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
-...
-
 ### Prerequisites
 
-...
+Antes de prosseguir, certifique-se de ter o [Node.js](https://nodejs.org/) e o [npm](https://www.npmjs.com/) instalados. Você pode verificar se o Node.js e o npm estão instalados em seu sistema executando os seguintes comandos no terminal:
 
 ```
-Give examples
+node -v
+npm -v
 ```
+
+Se você não tiver o Node.js e o npm instalados, faça o download e instale a versão mais recente do Node.js.
 
 ### Installing
 
-...
+Instale as dependências do projeto usando o npm. No diretório raiz do projeto, execute o seguinte comando:
 
-```
-Give the example
+```sh
+npm install
 ```
 
+Isso instalará todas as dependências listadas no arquivo package.json no diretório node_modules.<br>
+Após a conclusão da instalação, certifique-se de inicializar o [servidor](https://github.com/XMATHEUSX/Server-UTFriends) para conseguir realizar os testes.<br>
 
 ## 🔧 Running the tests <a name = "tests"></a>
 
 Explain how to run the automated tests for this system.
 
-
 ```
+
 Example
+
 ```
-
-
 
 ## 🎈 Usage <a name="usage"></a>
 
-...
+Para conseguir o acesso local ao UTFriends utilize o seguinte comando
+
+```sh
+npm run dev
+```
+
+Este comando inicializará o serviço em [http://localhost:5173/](http://localhost:5173/)
 
 ## 🚀 Deployment <a name = "deployment"></a>
 
 ...
+
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [MySQL](https://www.mysql.com/) - Database
-- [VueJs](https://vuejs.org/) - Web Framework
-- [ReactJs](https://react.dev/) - Web Framework
-- [ReactNative](https://reactnative.dev/) - Mobile Framewrok
-- [Kotlin](https://kotlinlang.org/) - Mobile Language
 - [NodeJs](https://nodejs.org/en/) - Server Environment
+- [ReactJs](https://react.dev/) - Web UI Framework
+- [PostgreSQL](https://www.mysql.com/) - Database
+- [Heroku](https://www.heroku.com/) - Cloud Plataform
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@XMATHEUSX](https://github.com/XMATHEUSX) 
+- [@XMATHEUSX](https://github.com/XMATHEUSX)
 - [@MateusSilva00](https://github.com/MateusSilva00)
 - [@Isaacfvi](https://github.com/Isaacfvi)
 - [@JVKaszuba](https://github.com/JVKaszuba)
 - [@ThassiAmorim](https://github.com/ThassiAmorim)
-
