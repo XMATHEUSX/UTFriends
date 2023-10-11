@@ -1,20 +1,13 @@
-import React from "react";
+import React, { useState }from "react";
 import  "./perfilbar.css"
 
-export default function Perfilbar(props) {
-
-    const dragStart = (e) => {
-
-        e.dataTransfer.setData('text/plain', 'Arrastando esse componente')
-    }
+export default function Perfilbar({expanded}) {
 
     return(
 
-        <div 
-            className="conteinerPB"
-            draggable={true}
-            onDragStart={dragStart}
-            onDrag={props.onDragPerfilbar}>
+        <div className={`${expanded ? 'expandedPB' : 'conteinerPB'}`}>
+
+            {expanded ? "Recolher" : "Expandir"}
 
         </div>
     )

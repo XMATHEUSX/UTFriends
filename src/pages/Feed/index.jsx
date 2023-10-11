@@ -2,18 +2,34 @@ import Navbar from '../../components/Navbar'
 import Feedbox from '../../components/Feedbox'
 import Perfilbar from '../../components/Perfilbar';
 import Communitybar from '../../components/Communitybar';
+import React, { useState } from 'react';
 import './feed.css'
 
 export default function Feed() {
 
+  const [expandedPerfil, setExpandedPerfil] = useState(false);
+  const [feedConfig, setFeedConfig] = useState('default')
+
   function clickPerfil() {
 
-    alert("Você clicou no perfil")
+    setExpandedPerfil(!expandedPerfil);
+  }
+
+  function clickClose() {
+
+    setFeedConfig('default')
+    alert(feedConfig)
   }
 
   function clickConfig() {
 
-    alert("Você clicou nas configurações")
+    setFeedConfig('config')
+  }
+
+  function clickCommunity() {
+
+    alert("Você clicou na comunidade")
+    setFeedConfig('community')
   }
 
   return (
@@ -22,9 +38,9 @@ export default function Feed() {
     
       <Navbar onClickPerfil={clickPerfil} onClickConfig={clickConfig}/>
 
-      <Perfilbar onDragPerfilbox/>
+      <Perfilbar expanded={ expandedPerfil }/>
 
-      <Feedbox/>
+      <Feedbox config={ feedConfig } onClickClose={clickClose} />
 
       <Communitybar/>
 
