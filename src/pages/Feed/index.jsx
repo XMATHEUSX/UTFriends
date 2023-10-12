@@ -12,13 +12,15 @@ export default function Feed() {
 
   function clickPerfil() {
 
-    setExpandedPerfil(!expandedPerfil);
+    if(feedConfig != 'perfil') {
+
+      setExpandedPerfil(!expandedPerfil);
+    }
   }
 
   function clickClose() {
 
     setFeedConfig('default')
-    alert(feedConfig)
   }
 
   function clickConfig() {
@@ -28,19 +30,23 @@ export default function Feed() {
 
   function clickCommunity() {
 
-    alert("Você clicou na comunidade")
     setFeedConfig('community')
+  }
+
+  function ClickPerfilConfig() {
+
+    setFeedConfig('perfil')
   }
 
   return (
 
     <div className="conteinerF">
     
-      <Navbar onClickPerfil={clickPerfil} onClickConfig={clickConfig}/>
+      <Navbar onClickPerfil={clickPerfil} onClickConfig={clickConfig} expanded={expandedPerfil}/>
 
-      <Perfilbar expanded={ expandedPerfil }/>
+      <Perfilbar expanded={expandedPerfil} onClickPerfilbar={clickPerfil} onClickPerfilConfig={ClickPerfilConfig}/>
 
-      <Feedbox config={ feedConfig } onClickClose={clickClose} />
+      <Feedbox config={feedConfig} onClickClose={clickClose} />
 
       <Communitybar/>
 

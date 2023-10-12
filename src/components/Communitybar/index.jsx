@@ -16,8 +16,6 @@ export default function Communitybar() {
             className={`${isExpanded ? 'expandedCB' : 'conteinerCB'}`}
             onClick={toggleExpand}>
 
-                {isExpanded ? 'Recolher' : 'Expandir'}
-
         </div>
     )
 }

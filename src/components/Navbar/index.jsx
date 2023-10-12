@@ -10,7 +10,7 @@ export default function Navbar(props) {
 
         <div className="conteinerNB">
 
-            <div className="firstContentNB">
+            <div className={`${props.expanded ? 'expandedNB' : 'firstContentNB'}`}>
 
                 <BsPersonCircle id="perfil" size={34} onClick={props.onClickPerfil} cursor="pointer"/>
 

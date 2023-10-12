@@ -29,7 +29,7 @@
     top: 5%;
 
     display: flex;
-    align-items: stretch;
+    align-items: center;
     justify-content: center;
     flex-direction: column;
 
@@ -38,4 +38,15 @@
 
     background-color: #FFF;
     box-shadow: rgba(0,0,0,0.2) 10px 0px 10px;
+}
+
+.perfilContentPB {
+
+    width: 90%;
+    height: 95%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }

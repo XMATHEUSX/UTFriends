@@ -1,13 +1,24 @@
-import React, { useState }from "react";
+import React from "react";
 import  "./perfilbar.css"
 
-export default function Perfilbar({expanded}) {
+export default function Perfilbar(props) {
+
+    function perfilExpanded() {
+
+        return  <div className="perfilContentPB">
+
+                    <p> PUTA </p>
+
+                    <button onClick={props.onClickPerfilConfig} > Configurar Perfil </button>
+
+                </div>;
+    }
 
     return(
 
-        <div className={`${expanded ? 'expandedPB' : 'conteinerPB'}`}>
+        <div className={`${props.expanded ? 'expandedPB' : 'conteinerPB'}`} onClick={props.onClickPerfilbar}>
 
-            {expanded ? "Recolher" : "Expandir"}
+            {props.expanded ? perfilExpanded() : ""}
 
         </div>
     )
