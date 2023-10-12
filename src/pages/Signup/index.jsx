@@ -1,9 +1,9 @@
 import { AiFillCloseSquare } from "react-icons/ai";
-import GoogleFonts from "react-google-fonts";
 import { FiArrowRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
+import SelectClass from '../../components/SelectClass/index'
 import verify_nome from "./verify.js";
 import "./signup.css";
 
@@ -14,7 +14,6 @@ export default function SignUp() {
   const [repemail, setRepemail] = useState("");
   const [senha, setSenha] = useState("");
   const [repsenha, setRepsenha] = useState("");
-  const [curso, setCurso] = useState("");
   const [nascimento, setNascimento] = useState("");
   const [telefone, setTelefone] = useState("");
   const [apelido, setApelido] = useState("");
@@ -164,14 +163,7 @@ export default function SignUp() {
 
           <div className="uniqueContentSU">
             <p> Selecione seu curso </p>
-            <input
-              title="Curso"
-              name="Curso"
-              type="text"
-              value={curso}
-              placeholder="Ex: Engenharia de Computação"
-              onChange={(e) => setCurso(e.target.value)}
-            />
+            <SelectClass/>
           </div>
 
           <div className="splittedContentSU">
