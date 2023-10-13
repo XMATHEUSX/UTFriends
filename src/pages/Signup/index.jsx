@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import SelectClass from '../../components/SelectClass/index'
-import verify_nome from "./verify.js";
+import { VerifyNome, VerifyEmail, VerifyNumero } from "./verify.js";
 import "./signup.css";
 
 export default function SignUp() {
+
   const [nome, setNome] = useState("");
   const [sobrenome, setSobrenome] = useState("");
   const [email, setEmail] = useState("");
@@ -19,7 +20,20 @@ export default function SignUp() {
   const [apelido, setApelido] = useState("");
 
   const handleRegister = () => {
+
+    const userVal = {
+
+      name: false,
+      surname: false,
+      email: false,
+      password: false,
+      date: false,
+      telphone: false,
+      nickname: false,
+    }
+
     const userData = {
+
       name: nome,
       surname: sobrenome,
       email: email,
@@ -27,29 +41,91 @@ export default function SignUp() {
       nickname: apelido,
     };
 
-    if (verify_nome(nome)) {
+    if (nome != '') {
+
+      if (VerifyNome(nome)) {
+
+        userVal.name = true;
+  
+      } else {document.getElementById("errorNome").style.display = "block";}
+
+    } else {document.getElementById("noNome").style.display = "block";}
+
+    if (sobrenome != '') {
+
+      if (VerifyNome(sobrenome)) {
+
+        userVal.surname = true;
+  
+      } else {document.getElementById("errorSobrenome").style.display = "block";}
+
+    } else {document.getElementById("noSobrenome").style.display = "block";}
+
+    if (email != '') {
+
+      if (VerifyEmail(email)) {
+
+        if (email == repemail) {
+  
+          userVal.email = true;
+  
+        } else {document.getElementById("errorRepEmail").style.display = "block";}
+  
+      } else {document.getElementById("errorEmail").style.display = "block";}
+
+    } else {document.getElementById("noEmail").style.display = "block";}
+
+    if (senha != '') {
+
+      if (repsenha == senha) {
+
+        userVal.password = true;
+
+      } else {document.getElementById("errorRepSenha").style.display = "block";}
+
+    } else {document.getElementById("noSenha").style.display = "block";}
+
+    if (telefone != '') {
+
+      if (VerifyNumero(telefone)) {
+
+        userVal.telphone = true;
+
+      } else {document.getElementById("errorNumero").style.display = "block";}
+
+    } else {document.getElementById("noNumero").style.display = "block";}
+
+    if (apelido != '') {
+
+      userVal.nickname = true;
+
+    } else {document.getElementById("noApelido").style.display = "block";}
+
+    const validacao = Object.values(userVal).every(value => value === true);
+
+    if (validacao) {
+
       alert("deu certo");
+
       fetch("http://localhost:3000/api/v1/profile/register", {
+
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json",},
         body: JSON.stringify(userData),
+
       })
+
         .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((error) => {
-          console.error("Erro:", error);
-        });
+        .then((data) => {console.log(data);})
+        .catch((error) => {console.error("Erro:", error);});
     }
-    document.getElementById("errorNome").style.display = "block";
-  };
+  }
+
   return (
     <div className="conteinerSU">
       <div className="boxSU">
         <div className="titleBoxSU">
+
           <p> New_Account </p>
 
           <Link to="/">
@@ -64,6 +140,7 @@ export default function SignUp() {
         <div className="contentBoxSU">
           <div className="splittedContentSU">
             <div className="firstContentSU">
+
               <p> Nome </p>
 
               <input
@@ -75,12 +152,14 @@ export default function SignUp() {
                 onChange={(e) => setNome(e.target.value)}
               />
 
-              <p className="errorMsgSU" id="errorNome">
-                Nome inválido
-              </p>
+              <p className="errorMsgSU" id="errorNome"> Nome inválido </p>
+
+              <p className="errorMsgSU" id="noNome"> Campo obrigatório </p>
+
             </div>
 
             <div className="secondContentSU">
+
               <p> Sobrenome </p>
 
               <input
@@ -93,13 +172,16 @@ export default function SignUp() {
                 onChange={(e) => setSobrenome(e.target.value)}
                 required
               />
-              <p className="errorMsgSU" id="erroSobrenome">
-                Sobrenome inválido
-              </p>
+
+              <p className="errorMsgSU" id="errorSobrenome"> Sobrenome inválido </p>
+
+              <p className="errorMsgSU" id="noSobrenome"> Campo obrigatório </p>
+
             </div>
           </div>
 
           <div className="uniqueContentSU">
+
             <p> Informe seu e-mail institucional </p>
 
             <input
@@ -114,10 +196,14 @@ export default function SignUp() {
               pattern="^[A-Za-z]+@alunos.utfpr.edu.br$"
             />
 
-            <p className="errorMsgSU">Email inválido</p>
+            <p className="errorMsgSU" id="errorEmail"> Email inválido </p>
+
+            <p className="errorMsgSU" id="noEmail"> Campo obrigatório </p>
+
           </div>
 
           <div className="uniqueContentSU">
+
             <p> Repita seu e-mail institucional </p>
 
             <input
@@ -131,11 +217,14 @@ export default function SignUp() {
               required
               pattern="^[A-Za-z]+@alunos.utfpr.edu.br$"
             />
-            <p id="errorMsgSU">Email divergente</p>
+
+            <p className="errorMsgSU" id="errorRepEmail"> Email divergente </p>
+
           </div>
 
           <div className="splittedContentSU">
             <div className="firstContentSU">
+
               <p> Informe sua senha </p>
 
               <input
@@ -145,9 +234,13 @@ export default function SignUp() {
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
               />
+
+              <p className="errorMsgSU" id="noSenha"> Campo obrigatório </p>
+
             </div>
 
             <div className="secondContentSU">
+
               <p> Repita sua senha </p>
 
               <input
@@ -157,17 +250,23 @@ export default function SignUp() {
                 value={repsenha}
                 onChange={(e) => setRepsenha(e.target.value)}
               />
-              <p className="errorMsgSU">Senha divergente</p>
+
+              <p className="errorMsgSU" id="errorRepSenha"> Senha divergente </p>
+
             </div>
           </div>
 
           <div className="uniqueContentSU">
+
             <p> Selecione seu curso </p>
+
             <SelectClass/>
+
           </div>
 
           <div className="splittedContentSU">
             <div className="firstContentSU">
+
               <p> Data de nascimento </p>
 
               <input
@@ -179,10 +278,13 @@ export default function SignUp() {
                 required
                 pattern="^\d{2}/\d{2}/\d{4}$"
               />
-              <p className="errorMsgSU">data inválida</p>
+
+              <p className="errorMsgSU" id="errorData"> Data inválida </p>
+
             </div>
 
             <div className="secondContentSU">
+
               <p> Informe seu telefone </p>
 
               <input
@@ -190,17 +292,22 @@ export default function SignUp() {
                 name="Telefone"
                 type="tel"
                 value={telefone}
-                placeholder="(+55)"
+                placeholder="(xx) xxxxx-xxxx"
                 onChange={(e) => setTelefone(e.target.value)}
                 required
                 pattern="^[0-9]{11}$"
               />
-              <p className="errorMsgSU">Número inválido</p>
+
+              <p className="errorMsgSU" id="errorNumero"> Número inválido </p>
+
+              <p className="errorMsgSU" id="noNumero"> Campo obrigatório </p>
+
             </div>
           </div>
 
           <div className="splittedContentSU">
             <div className="firstContentSU">
+
               <p> Crie seu apelido </p>
 
               <input
@@ -211,6 +318,9 @@ export default function SignUp() {
                 placeholder="@"
                 onChange={(e) => setApelido(e.target.value)}
               />
+
+              <p className="errorMsgSU" id="noApelido"> Campo obrigatório </p>
+
             </div>
           </div>
 

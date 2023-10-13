@@ -49,6 +49,9 @@ html {
 }*/
 
 .errorMsgSU{
+
+    height: 0;
+
     color: red;
     display: none;
 }
