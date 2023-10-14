@@ -1,6 +1,6 @@
 ﻿import { AiFillCloseSquare } from "react-icons/ai";
 import { FiArrowRight } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import "./signin.css";
@@ -9,6 +9,10 @@ export default function Signin() {
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+
+  const navigate = useNavigate();
+
+  function Login() { navigate('/feed') }
 
   const handleLogin = () => {
 
@@ -32,7 +36,7 @@ export default function Signin() {
         if (data.success) {
 
           document.getElementById("incrrectPasswordSI").style.display = "none";
-          alert(data.message);
+          Login();
 
         } else if (!data.success) {
 
@@ -60,7 +64,6 @@ export default function Signin() {
                 autoComplete="off"
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                pattern="^[A-Za-z]+@alunos.utfpr.edu.br$"
               />
             </div>
           </div>
@@ -78,10 +81,12 @@ export default function Signin() {
                 onChange={(e) => setSenha(e.target.value)}
               />
             </div>
+
+            <p className="incorrectSI" id="incorrectPasswordSI"> Email ou Senha incorreta! </p>
+
           </div>
         </div>
         <div className="bottomContentSI">
-          <p id="incrrectPasswordSI">Email ou Senha incorreta!</p>
 
           <FiArrowRight
             title="arrow"
