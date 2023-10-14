@@ -6,36 +6,42 @@ import { useState } from "react";
 import "./signin.css";
 
 export default function Signin() {
+
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
   const handleLogin = () => {
+
     const userData = {
       username: email,
       password: senha,
     };
+
     fetch("http://localhost:3000/api/v1/profile/login", {
+
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: {"Content-Type": "application/json",},
       body: JSON.stringify(userData),
+
     })
       .then((response) => response.json())
       .then((data) => {
+
         console.log(data);
+
         if (data.success) {
+
           document.getElementById("incrrectPasswordSI").style.display = "none";
           alert(data.message);
+
         } else if (!data.success) {
+
           document.getElementById("incrrectPasswordSI").style.display = "block";
           document.getElementById("Email").value = "";
           document.getElementById("Senha").value = "";
         }
       })
-      .catch((error) => {
-        console.error("Erro:", error);
-      });
+      .catch((error) => {console.error("Erro:", error);});
   };
 
   return (

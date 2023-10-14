@@ -1,8 +1,9 @@
 import { AiFillCloseSquare } from "react-icons/ai";
 import { FiArrowRight } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+import Registration from "../../components/Registration";
 import SelectClass from '../../components/SelectClass/index'
 import { VerifyNome, VerifyEmail, VerifyNumero } from "./verify.js";
 import "./signup.css";
@@ -19,6 +20,13 @@ export default function SignUp() {
   const [telefone, setTelefone] = useState("");
   const [apelido, setApelido] = useState("");
 
+  const [sucesso, setSucesso] = useState(null);
+  const [display, setDisplay] = useState(null);
+
+  const [entrada, setEntrada] = useState(false);
+
+  const navigate = useNavigate();
+
   const handleRegister = () => {
 
     const userVal = {
@@ -27,7 +35,6 @@ export default function SignUp() {
       surname: false,
       email: false,
       password: false,
-      date: false,
       telphone: false,
       nickname: false,
     }
@@ -105,8 +112,6 @@ export default function SignUp() {
 
     if (validacao) {
 
-      alert("deu certo");
-
       fetch("http://localhost:3000/api/v1/profile/register", {
 
         method: "POST",
@@ -116,10 +121,33 @@ export default function SignUp() {
       })
 
         .then((response) => response.json())
-        .then((data) => {console.log(data);})
+        .then((data) => {
+          
+          console.log(data);
+        
+          if (data.success) {
+            
+            setSucesso(true);
+            setDisplay(true);
+
+          } else if (!data.success) {
+            
+            setSucesso(false);
+            setDisplay(true);
+          }
+
+        })
         .catch((error) => {console.error("Erro:", error);});
     }
   }
+
+  function CloseIcon() { setDisplay(false) }
+
+  function OpenLogin() { navigate('/signin') }
+
+  function RegisterSuccess() { return( <Registration display={display} success={sucesso} onClickClose={CloseIcon} onClickButton={OpenLogin}/> ) }
+
+  function RegisterFailure() { return( <Registration display={display} success={sucesso} onClickClose={CloseIcon} onClickButton={CloseIcon}/> ) }
 
   return (
     <div className="conteinerSU">
@@ -334,6 +362,9 @@ export default function SignUp() {
           </div>
         </div>
       </div>
+
+      {sucesso ? RegisterSuccess() : RegisterFailure()}
+
     </div>
   );
 }
