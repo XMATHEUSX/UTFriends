@@ -5,13 +5,43 @@ export default function Perfilbar(props) {
 
     function perfilExpanded() {
 
-        return  <div className="perfilContentPB">
+        return(  
+        
+            <div className="perfilContentPB">
 
-                    <p> PUTA </p>
+                <div className="topContentPB">
 
-                    <button onClick={props.onClickPerfilConfig} > Configurar Perfil </button>
+                    <div className="perfilImagePB">
 
-                </div>;
+                        {props.img}
+
+                    </div>
+
+                    <p className="nicknamePB"> {"@" + props.nickname} </p>
+
+                    <div className="followsPB">
+
+                        <p> {"Segidores: " + props.followers} </p>
+
+                        <p> {"Seguindo: " + props.following} </p>
+
+                    </div>
+
+                </div>
+
+                <div className="midleContent">
+
+                    <p> Description </p>
+
+                </div>
+                
+                <div className="bottomContentPB">
+
+                    <button onClick={props.onClickPerfilConfig}> Configurar Perfil </button>
+
+                </div>
+            </div>
+        )
     }
 
     return(

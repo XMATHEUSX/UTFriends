@@ -47,6 +47,119 @@
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
+}
+
+.topContentPB {
+
+    width: 100%;
+    height: 40%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    border-bottom: solid;
+    border-bottom-width: 2px;
+    border-color: #a0a0a0;
+}
+
+.perfilImagePB {
+
+    height: 45%;
+    width: 65%;
+
+    border:solid;
+    border-width: 3px;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    margin-bottom: 5%;
+}
+
+.nicknamePB {
+
+    width: 100%;
+    height: 20%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.followsPB {
+
+    width: 100%;
+    height: 10%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+    margin-top: 5%;
+}
+
+.followsPB p{
+    
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.midleContentPB {
+
+    width: 100%;
+    height: 50%;
+}
+
+.midleContentPB p {
+
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bottomContentPB {
+
+    width: 100%;
+    height: 10%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-top: solid;
+    border-top-width: 2px;
+    border-color: #a0a0a0;
+}
+
+.bottomContentPB button{
+
+    width: 75%;
+    height: 45%;
+
+    border: dashed;
+    border-width: 2px;
+
+    background-color: transparent;
+    box-shadow: rgba(0,0,0,0.2) -5px 5px 10px;
+
+    font-size: 14px;
+    font-family: 'Roboto Mono';
+
+    transition: transform 1.5s;
+}
+
+.bottomContentPB button:hover {
+
+    transform: scale(1.1);
 }

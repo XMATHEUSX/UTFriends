@@ -44,7 +44,14 @@ export default function Feed() {
     
       <Navbar onClickPerfil={clickPerfil} onClickConfig={clickConfig} expanded={expandedPerfil}/>
 
-      <Perfilbar expanded={expandedPerfil} onClickPerfilbar={clickPerfil} onClickPerfilConfig={ClickPerfilConfig}/>
+      <Perfilbar 
+        expanded={expandedPerfil} 
+        onClickPerfilbar={clickPerfil} 
+        onClickPerfilConfig={ClickPerfilConfig} 
+        nickname={"Kaszuba"} 
+        followers={"1000"}
+        following={"50"}
+      />
 
       <Feedbox config={feedConfig} onClickClose={clickClose} />
 
