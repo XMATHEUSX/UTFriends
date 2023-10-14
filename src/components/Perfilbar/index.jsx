@@ -29,9 +29,9 @@ export default function Perfilbar(props) {
 
                 </div>
 
-                <div className="midleContent">
+                <div className="midleContentPB">
 
-                    <p> Description </p>
+                    <p>Eu sou joão vitor e estou fazendo um teste para verificar o componente midleContent da página feed</p>
 
                 </div>
                 

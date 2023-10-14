@@ -43,3 +43,58 @@
     align-items: center;
     flex-direction: column;
 }
+
+.headerPerfilConfigFB {
+
+    width: 90%;
+    height: 5%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    border-bottom: solid;
+    border-width: 2px;
+    border-color: #a0a0a0;
+
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.headerPerfilConfigFB p {
+
+    width: 80%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    font-size: 22px;
+    font-weight: bold;
+
+}
+
+.closeIconFB {
+
+    width: 35px;
+    height: 35px;
+
+    transition: transform 1.5s;
+}
+
+.closeIconFB:hover {
+
+    transform: scale(1.25)
+}
+
+.bodyPerfilConfig {
+
+    height: 95%;
+    width: 90%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}

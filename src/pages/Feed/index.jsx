@@ -12,7 +12,7 @@ export default function Feed() {
 
   function clickPerfil() {
 
-    if(feedConfig != 'perfil') {
+    if(feedConfig != 'perfilConfig') {
 
       setExpandedPerfil(!expandedPerfil);
     }
@@ -35,7 +35,7 @@ export default function Feed() {
 
   function ClickPerfilConfig() {
 
-    setFeedConfig('perfil')
+    setFeedConfig('perfilConfig')
   }
 
   return (

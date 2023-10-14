@@ -1,3 +1,4 @@
+import { AiFillCloseSquare } from "react-icons/ai";
 import React from "react";
 import './feedbox.css'
 
@@ -38,15 +39,38 @@ export default function Feedbox(props) {
             </div>
         )
 
-    }else if ( props.config == 'perfil' ) {
+    }else if ( props.config == 'perfilConfig' ) {
+
+        return(
+
+            <div className="conteinerFB">
+                <div className="headerPerfilConfigFB">
+    
+                    <p> Configurações do Perfil </p>
+
+                    <AiFillCloseSquare 
+                        onClick={props.onClickClose} 
+                        className="closeIconFB"
+                        cursor={"pointer"}
+                    />
+
+                </div>
+
+                <div className="bodyPerfilConfigFB">
+
+                    <p> Configurações </p>
+
+                </div>
+            </div>
+        )
+
+    }else if( props.config == 'perfil' ) {
 
         return(
 
             <div className="conteinerFB">
     
                 <h1> Perfil </h1>
-
-                <button onClick={props.onClickClose}> Fechar </button>
     
             </div>
         )
