@@ -23,9 +23,12 @@ export default function SignUp() {
   const [sucesso, setSucesso] = useState(null);
   const [display, setDisplay] = useState(null);
 
-  const [entrada, setEntrada] = useState(false);
-
   const navigate = useNavigate();
+  const inputDate = new Date(nascimento);
+  const currentDate = new Date();
+  const oneYearAgo = new Date(currentDate);
+
+  oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 16);
 
   const handleRegister = () => {
 
@@ -35,6 +38,7 @@ export default function SignUp() {
       surname: false,
       email: false,
       password: false,
+      date: false,
       telphone: false,
       nickname: false,
     }
@@ -50,9 +54,12 @@ export default function SignUp() {
 
     if (nome != '') {
 
+      document.getElementById("noNome").style.display = "none";
+
       if (VerifyNome(nome)) {
 
         userVal.name = true;
+        document.getElementById("errorNome").style.display = "none";
   
       } else {document.getElementById("errorNome").style.display = "block";}
 
@@ -60,9 +67,12 @@ export default function SignUp() {
 
     if (sobrenome != '') {
 
+      document.getElementById("noSobrenome").style.display = "none";
+
       if (VerifyNome(sobrenome)) {
 
         userVal.surname = true;
+        document.getElementById("errorSobrenome").style.display = "none";
   
       } else {document.getElementById("errorSobrenome").style.display = "block";}
 
@@ -70,11 +80,16 @@ export default function SignUp() {
 
     if (email != '') {
 
+      document.getElementById("noEmail").style.display = "none";
+
       if (VerifyEmail(email)) {
+
+        document.getElementById("errorEmail").style.display = "none";
 
         if (email == repemail) {
   
           userVal.email = true;
+          document.getElementById("errorRepEmail").style.display = "none";
   
         } else {document.getElementById("errorRepEmail").style.display = "block";}
   
@@ -84,19 +99,38 @@ export default function SignUp() {
 
     if (senha != '') {
 
+      document.getElementById("noSenha").style.display = "none";
+
       if (repsenha == senha) {
 
         userVal.password = true;
+        document.getElementById("errorRepSenha").style.display = "none";
 
       } else {document.getElementById("errorRepSenha").style.display = "block";}
 
     } else {document.getElementById("noSenha").style.display = "block";}
 
+    if (inputDate != 'Invalid Date') {
+
+      document.getElementById("noData").style.display = "none";
+
+      if (inputDate <= oneYearAgo) {
+        
+        userVal.date = true;
+        document.getElementById("errorData").style.display = "none";
+
+      } else { document.getElementById("errorData").style.display = "block"; }
+
+    } else {document.getElementById("noData").style.display = "block";}
+
     if (telefone != '') {
+
+      document.getElementById("noNumero").style.display = "none";
 
       if (VerifyNumero(telefone)) {
 
         userVal.telphone = true;
+        document.getElementById("errorNumero").style.display = "none";
 
       } else {document.getElementById("errorNumero").style.display = "block";}
 
@@ -105,6 +139,7 @@ export default function SignUp() {
     if (apelido != '') {
 
       userVal.nickname = true;
+      document.getElementById("noApelido").style.display = "none";
 
     } else {document.getElementById("noApelido").style.display = "block";}
 
@@ -308,6 +343,8 @@ export default function SignUp() {
               />
 
               <p className="errorMsgSU" id="errorData"> Data inválida </p>
+
+              <p className="errorMsgSU" id="noData"> Campo obrigatório </p>
 
             </div>
 
