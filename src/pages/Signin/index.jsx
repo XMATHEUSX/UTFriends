@@ -35,12 +35,12 @@ export default function Signin() {
 
         if (data.success) {
 
-          document.getElementById("incrrectPasswordSI").style.display = "none";
+          document.getElementById("incorrectPasswordSI").style.display = "none";
           Login();
 
         } else if (!data.success) {
 
-          document.getElementById("incrrectPasswordSI").style.display = "block";
+          document.getElementById("incorrectPasswordSI").style.display = "block";
           document.getElementById("Email").value = "";
           document.getElementById("Senha").value = "";
         }
