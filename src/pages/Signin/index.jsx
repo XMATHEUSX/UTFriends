@@ -17,7 +17,7 @@ export default function Signin() {
   const handleLogin = () => {
 
     const userData = {
-      username: email,
+      email: email,
       password: senha,
     };
 
@@ -36,6 +36,7 @@ export default function Signin() {
         if (data.success) {
 
           document.getElementById("incorrectPasswordSI").style.display = "none";
+          localStorage.setItem('token', data.token);
           Login();
 
         } else if (!data.success) {
@@ -47,6 +48,7 @@ export default function Signin() {
       })
       .catch((error) => {console.error("Erro:", error);});
   };
+
 
   return (
     <div className="conteinerSI">

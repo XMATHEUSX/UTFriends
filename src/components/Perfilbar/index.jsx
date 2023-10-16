@@ -31,7 +31,7 @@ export default function Perfilbar(props) {
 
                 <div className="midleContentPB">
 
-                    <p>Eu sou joão vitor e estou fazendo um teste para verificar o componente midleContent da página feed</p>
+                    <p>{props.bio}</p>
 
                 </div>
                 
