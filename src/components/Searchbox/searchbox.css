@@ -1,7 +1,7 @@
 .conteinerSB {
 
-    width: 33%;
-    height: 100%;
+    width: 25%;
+    height: 65%;
 
     display: flex;
     align-items: center;
@@ -10,8 +10,8 @@
 
 .conteinerSB input{
     
-    width: 70%;
-    height: 65%;
+    width: 95%;
+    height: 100%;
 
     border: solid;
     border-width: 2px;

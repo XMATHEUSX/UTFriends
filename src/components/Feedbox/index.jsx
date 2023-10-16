@@ -4,7 +4,7 @@ import './feedbox.css'
 
 export default function Feedbox(props) {
 
-    if ( props.config == 'default' ) {
+    if ( props.config == 'home' ) {
 
         return(
 
@@ -70,8 +70,50 @@ export default function Feedbox(props) {
 
             <div className="conteinerFB">
     
-                <h1> Perfil </h1>
-    
+                <div className="perfilContentFB">
+
+                    <div className="imagemCapaFB">
+
+                        <div className="imagemPerfilFB">
+
+
+                        </div>
+                    </div>
+
+                    <div className="topContentFB">
+
+                        <div className="infoBasicaFB">
+
+                            <p className="nicknameFB">{"@" + props.nickname}</p>
+
+                            <div className="followsFB">
+
+                            <p>{"Segidores: " + props.followers}</p>
+
+                            <p>{"Seguindo: " + props.following}</p>
+
+                            </div>
+                        </div>
+
+                        <button onClick={props.onClickPerfilConfig}>Alterar Perfil</button>
+
+                    </div>
+
+                    <div className="midleContentFB">
+
+                        <div className="descricaoFB">
+
+                            <p>{"\"" + props.bio + "\""}</p>
+
+                        </div>
+                    </div>
+
+                    <div className="feedPessoalFB">
+
+                        <p>MINHAS PUBLICAÇÕES</p>
+
+                    </div>
+                </div>
             </div>
         )
     }

@@ -1,6 +1,6 @@
 .conteinerPB {
 
-    width: 5%;
+    width: 4%;
     height: 95%;
 
     position: absolute;
@@ -8,12 +8,14 @@
     top: 5%;
 
     display: flex;
-    align-items: stretch;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
     flex-direction: column;
 
     border-right: solid;
     border-right-width: 3px;
+
+    padding-top: 1%;
 
     background-color: #FFF;
     box-shadow: rgba(0,0,0,0.2) 10px 0px 10px;
@@ -21,7 +23,7 @@
 
 .expandedPB {
 
-    width: 15%;
+    width: 12%;
     height: 95%;
 
     position: absolute;
@@ -36,11 +38,61 @@
     border-right: solid;
     border-right-width: 3px;
 
+    padding-top: 1%;
+
     background-color: #FFF;
     box-shadow: rgba(0,0,0,0.2) 10px 0px 10px;
 }
 
-.perfilContentPB {
+.iconContentPB {
+
+    width: 100%;
+    height: 90%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.contentPB {
+
+    height: 10%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.iconExpandedPB {
+
+    height: 10%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+
+    padding-left: 8.5%;
+}
+
+.iconExpandedPB p {
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+
+    padding-left: 5%;
+
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/*.perfilContentPB {
 
     width: 90%;
     height: 95%;
@@ -54,12 +106,14 @@
 .topContentPB {
 
     width: 100%;
-    height: 40%;
+    height: 35%;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
+
+    overflow: hidden;
 
     border-bottom: solid;
     border-bottom-width: 2px;
@@ -68,46 +122,42 @@
 
 .perfilImagePB {
 
-    height: 45%;
+    height: 50%;
     width: 65%;
 
     border:solid;
     border-width: 3px;
     border-top-left-radius: 30px;
     border-bottom-right-radius: 30px;
-
-    margin-bottom: 5%;
 }
 
 .nicknamePB {
 
     width: 100%;
-    height: 20%;
+    height: 10%;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
 }
 
 .followsPB {
 
     width: 100%;
-    height: 10%;
+    height: 15%;
 
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
-
-    margin-top: 5%;
 }
 
 .followsPB p{
     
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
 }
 
@@ -171,4 +221,4 @@
 .bottomContentPB button:hover {
 
     transform: scale(1.1);
-}
+}*/

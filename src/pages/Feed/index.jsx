@@ -6,20 +6,17 @@ import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
 import './feed.css'
 
-
-
 export default function Feed() {
 
   const navigate = useNavigate();
 
-function exit() { navigate('/signin') }
+  function exit() { navigate('/signin') }
 
   const [bio, setBio] = useState("");
   const [nickname, setNickname] = useState("");
   const [followers, setFollowers] = useState("");
   const [following, setFollowing] = useState("");
-  const [expandedPerfil, setExpandedPerfil] = useState(false);
-  const [feedConfig, setFeedConfig] = useState('default')
+  const [feedConfig, setFeedConfig] = useState('home')
   var token = localStorage.getItem('token');
   
   if (token) {
@@ -52,22 +49,20 @@ function exit() { navigate('/signin') }
         }
       })
 
-
-  function clickPerfil() {
-    if(feedConfig != 'perfilConfig') {
-      setExpandedPerfil(!expandedPerfil);
-    }
-  }
-
   function clickClose() {
 
-    setFeedConfig('default')
+    setFeedConfig('home')
   }
 
   function clickConfig() {
 
     setFeedConfig('config')
 
+  }
+
+  function clickPerfil() {
+
+    setFeedConfig('perfil')
   }
 
   function clickCommunity() {
@@ -83,19 +78,24 @@ function exit() { navigate('/signin') }
   return (
     <div className="conteinerF">
     
-      <Navbar onClickPerfil={clickPerfil} onClickConfig={clickConfig} expanded={expandedPerfil}/>
+      <Navbar/>
 
       <Perfilbar 
-        expanded={expandedPerfil} 
-        onClickPerfilbar={clickPerfil} 
-        onClickPerfilConfig={ClickPerfilConfig} 
-        nickname ={nickname}
-        followers={followers}
-        following={following}
-        bio = {bio}
+        onClickHome={clickClose} 
+        onClickPerfil={clickPerfil} 
+        onClickConfig={clickConfig} 
+        onClickCommunity={clickCommunity}
       />
 
-      <Feedbox config={feedConfig} onClickClose={clickClose} />
+      <Feedbox 
+        config={feedConfig} 
+        nickname={nickname} 
+        followers={followers} 
+        following={following}
+        bio={bio} 
+        onClickClose={clickPerfil} 
+        onClickPerfilConfig={ClickPerfilConfig}
+      />
 
       <Communitybar/>
 

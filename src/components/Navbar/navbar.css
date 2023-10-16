@@ -6,7 +6,7 @@
 
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex-direction: row;
 
     position: absolute;
@@ -22,7 +22,39 @@
     box-shadow: rgba(0,0,0,0.2) 0px 10px 10px;
 }
 
-.firstContentNB {
+.midleContentNB {
+
+    height: 100%;
+    width: 90%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchIconNB {
+
+    width: 2.5%;
+    height: 65%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:solid;
+    border-radius: 50px;
+
+    background-color: black;
+
+    transition: transform 1.5s;
+}
+
+.searchIconNB:hover {
+
+    transform: scale(1.1);
+}
+
+/*.firstContentNB {
 
     width: 33%;
     height: 100%;
@@ -80,4 +112,4 @@
     justify-content: flex-start;
 
     padding-left: 6%;
-}
+}*/

@@ -1,7 +1,12 @@
+html {
+
+    font-size: 62.5%;
+}
+
 .conteinerFB {
 
     width: 40%;
-    height: 100%;
+    height: 95%;
 
     display: flex;
     justify-content: center;
@@ -9,7 +14,7 @@
     flex-direction: column;
 
     position: absolute;
-    bottom: 0%;
+    top: 5%;
     left: 30%;
 
     border-right: solid;
@@ -97,4 +102,173 @@
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
+}
+
+/* Configurações de Design do Perfil */
+
+.perfilContentFB {
+
+    height: 100%;
+    width: 90%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column; 
+}
+
+.imagemCapaFB {
+
+    width: 100%;
+    height: 25%;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    
+    border-bottom: solid;
+    border-bottom-width: 3px;
+
+    margin-top: 5%;
+
+    /*box-shadow: rgba(0,0,0,0.2) 0px 5px 10px;*/
+}
+
+.imagemPerfilFB {
+
+    height: 125px;
+    width: 125px;
+
+    border: solid;
+    border-width: 3px;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    margin-bottom: 2%;
+    margin-left: 2%;
+}
+
+.topContentFB {
+
+    width: 95%;
+    height: 10%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: row;
+
+    margin-top: 2%;
+}
+
+.topContentFB button {
+
+    height: 35%;
+    width: 20%;
+
+    border: dashed;
+    border-width: 2px;
+
+    font-size: 1.2em;
+    font-family: 'Roboto Mono';
+    font-weight: bold;
+
+    background-color: #FFF;
+    box-shadow: rgba(0,0,0,0.2) -5px 5px 10px;
+
+    transition: transform 1.5s;
+}
+
+.topContentFB button:hover {
+
+    transform: scale(1.1);
+}
+
+
+.infoBasicaFB {
+
+    height: 100%;
+    width: 80%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.infoBasicaFB p {
+
+    font-size: 2.6em;
+    font-weight: bold;
+}
+
+.followsFB {
+
+    width: 100%;
+    height: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.followsFB p {
+
+    font-size: 1.4em;
+    font-weight: 300;
+}
+
+.midleContentFB {
+
+    height: 25%;
+    width: 90%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 2%;
+}
+
+.descricaoFB {
+
+    height: 55%;
+    width: 75%;
+
+    border:solid;
+    border-width: 3px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 2%;
+}
+
+.descricaoFB p {
+
+    text-align: justify;
+    text-justify: inter-word;
+    white-space: pre-wrap;
+    text-indent: 0;
+
+    font-size: 1.4em;
+}
+
+.feedPessoalFB {
+
+    height: 40%;
+    width: 100%;
+
+    border: solid;
+    border-bottom: none;
+    border-width: 3px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }

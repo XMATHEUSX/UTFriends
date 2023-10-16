@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { AiFillHome, AiOutlineMenuUnfold, AiOutlineMenuFold } from 'react-icons/ai'
+import { BsPersonCircle } from 'react-icons/bs'
+import { FaGear } from 'react-icons/fa6'
+import { HiUserGroup } from 'react-icons/hi2'
+
 import  "./perfilbar.css"
 
 export default function Perfilbar(props) {
 
-    function perfilExpanded() {
+    /*function perfilExpanded(valor) {
 
         return(  
         
@@ -42,14 +47,86 @@ export default function Perfilbar(props) {
                 </div>
             </div>
         )
+
+    }*/
+
+    const [menu, setMenu] = useState(false)
+
+    function ClickMenu() {
+
+        setMenu(!menu)
     }
 
     return(
 
-        <div className={`${props.expanded ? 'expandedPB' : 'conteinerPB'}`} onClick={props.onClickPerfilbar}>
+        <div className={`${menu ? 'expandedPB' : 'conteinerPB'}`}>
 
-            {props.expanded ? perfilExpanded() : ""}
+            <div className="iconContentPB">
 
+                <div className={`${menu ? 'iconExpandedPB' : 'contentPB'}`}>
+
+                    <AiFillHome 
+                        onClick={props.onClickHome}
+                        cursor={"pointer"}
+                        size={35}
+                    />
+
+                    {menu ? <p>Feed</p> : ""}
+
+                </div>
+
+                <div className={`${menu ? 'iconExpandedPB' : 'contentPB'}`}>
+
+                    <BsPersonCircle
+                        onClick={props.onClickPerfil}
+                        cursor={"pointer"}
+                        size={35}
+                    />
+
+                    {menu ? <p>Perfil</p> : ""}
+
+                </div>
+
+                <div className={`${menu ? 'iconExpandedPB' : 'contentPB'}`}>
+
+                    <HiUserGroup
+                        onClick={props.onClickCommunity}
+                        cursor={"pointer"}
+                        size={35}
+                    />
+
+                    {menu ? <p>Comunidades</p> : ""}
+
+                </div>
+
+                <div className={`${menu ? 'iconExpandedPB' : 'contentPB'}`}>
+
+                    <FaGear
+                        onClick={props.onClickConfig}
+                        cursor={"pointer"}
+                        size={35}
+                    />
+
+                    {menu ? <p>Configurações</p> : ""}
+
+                </div>
+            </div>
+
+            <div className="contentPB">
+
+                {menu ? <AiOutlineMenuFold
+                            onClick={ClickMenu}
+                            cursor={"pointer"}
+                            size={35}
+                        />
+
+                      : <AiOutlineMenuUnfold
+                            onClick={ClickMenu}
+                            cursor={"pointer"}
+                            size={35}
+                        />}
+
+            </div>
         </div>
     )
 }
