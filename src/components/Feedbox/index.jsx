@@ -1,4 +1,5 @@
 import { FiArrowLeft } from 'react-icons/fi'
+import { FaEdit } from 'react-icons/fa'
 import React, { useState, useRef } from "react";
 import './feedbox.css'
 
@@ -103,7 +104,7 @@ export default function Feedbox(props) {
 
                 <div className="perfilConfigContentFB">
 
-                    <div className="headerPerfilConfigFB">
+                    <div className="headerFB">
         
                         <FiArrowLeft
                             onClick={props.onClickClose} 
@@ -119,11 +120,24 @@ export default function Feedbox(props) {
 
                         <div className="imagemPerfilFB">
 
-                            {imagemPerfil ? "" : <div className='uploadPerfilFB' onClick={PerfilUpload}>Editar Foto</div>}
+                            {imagemPerfil ? "" : 
+                                <div className='uploadPerfilFB' onClick={PerfilUpload}>Editar Foto</div>}
 
-                            {imagemPerfil && (<img className="imgFB" src={imagemPerfil} alt="Selected" style={{ maxWidth: '100%' }} onClick={PerfilUpload}/>)}
+                            {imagemPerfil && 
+                                (<img 
+                                    className="imgFB" 
+                                    src={imagemPerfil} 
+                                    alt="Selected" 
+                                    style={{ maxWidth: '100%' }} 
+                                    onClick={PerfilUpload}
+                                />)}
 
-                            <input type='file' ref={perfilRef} onChange={TrocaImagemPerfil} style={{display: 'none'}}/>
+                            <input 
+                                type='file' 
+                                ref={perfilRef} 
+                                onChange={TrocaImagemPerfil} 
+                                style={{display: 'none'}}
+                            />
 
                         </div>
 
@@ -132,6 +146,18 @@ export default function Feedbox(props) {
                         {imagemCapa && (<img className="imgFB" src={imagemCapa} alt="Selected" style={{ maxWidth: '100%' }} onClick={CapaUpload}/>)}
 
                         <input type='file' ref={capaRef} onChange={TrocaImagemCapa} style={{display: 'none'}}/>
+
+                    </div>
+                    
+                    <div className="changeNicknameFB">
+
+                        <p>Alterar Nickname</p>
+
+                        <input
+                            type='text'
+                            value={props.nickname}
+                            maxLength={12}
+                        />
 
                     </div>
                 </div>
@@ -150,8 +176,26 @@ export default function Feedbox(props) {
 
                         <div className="imagemPerfilFB">
 
+                            {imagemPerfil && 
+                                (<img 
+                                    className="imgFB" 
+                                    src={imagemPerfil} 
+                                    alt="Selected" 
+                                    style={{ maxWidth: '100%' }}
+                                    onClick={PerfilUpload}
+                                />)}
 
                         </div>
+
+                        {imagemCapa && 
+                            (<img 
+                                className="imgFB" 
+                                src={imagemCapa} 
+                                alt="Selected" 
+                                style={{ maxWidth: '100%' }} 
+                                onClick={CapaUpload}
+                            />)}
+
                     </div>
 
                     <div className="topContentFB">
@@ -160,16 +204,31 @@ export default function Feedbox(props) {
 
                             <p className="nicknameFB">{"@" + props.nickname}</p>
 
-                            <div className="followsFB">
+                            
+                                <div className="followsFB">
+                                
+                                    <p>{props.followers}</p>
+                                    <p>{"Segidores"}</p>
 
-                            <p>{"Segidores: " + props.followers}</p>
+                                </div>
 
-                            <p>{"Seguindo: " + props.following}</p>
+                                <div className='followsFB'>
 
-                            </div>
+                                    <p>{props.following}</p>
+                                    <p>{"Seguindo"}</p>
+
+                                </div>
+                            
                         </div>
 
-                        <button onClick={props.onClickPerfilConfig}>Alterar Perfil</button>
+                        <div className='editIconFB'>
+
+                            <FaEdit  
+                                onClick={props.onClickPerfilConfig} 
+                                size={30}
+                                cursor={'pointer'}
+                            />
+                        </div>
 
                     </div>
 
