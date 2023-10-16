@@ -1,8 +1,64 @@
-import { AiFillCloseSquare } from "react-icons/ai";
-import React from "react";
+import { FiArrowLeft } from 'react-icons/fi'
+import React, { useState, useRef } from "react";
 import './feedbox.css'
 
 export default function Feedbox(props) {
+
+    const [imagemCapa, setImageCapa] = useState(null)
+    const [imagemPerfil, setImagePerfil] = useState(null)
+
+    const TrocaImagemCapa = (e) => {
+
+        const file = e.target.files[0];
+
+        if (file) {
+
+          const reader = new FileReader();
+    
+          reader.onload = (e) => {
+
+            const imageDataUrl = e.target.result;
+            setImageCapa(imageDataUrl);
+
+          };
+    
+          reader.readAsDataURL(file);
+        }
+    };
+
+    const TrocaImagemPerfil = (e) => {
+
+        const file = e.target.files[0];
+
+        if (file) {
+
+          const reader = new FileReader();
+    
+          reader.onload = (e) => {
+
+            const imageDataUrl = e.target.result;
+            setImagePerfil(imageDataUrl);
+
+          };
+    
+          reader.readAsDataURL(file);
+        }
+    };
+
+    const capaRef = useRef(null)
+    const perfilRef = useRef(null)
+
+    const CapaUpload = () => {
+
+        capaRef.current.click();
+
+    };
+
+    const PerfilUpload = () => {
+
+        perfilRef.current.click();
+
+    };
 
     if ( props.config == 'home' ) {
 
@@ -44,22 +100,40 @@ export default function Feedbox(props) {
         return(
 
             <div className="conteinerFB">
-                <div className="headerPerfilConfigFB">
-    
-                    <p> Configurações do Perfil </p>
 
-                    <AiFillCloseSquare 
-                        onClick={props.onClickClose} 
-                        className="closeIconFB"
-                        cursor={"pointer"}
-                    />
+                <div className="perfilConfigContentFB">
 
-                </div>
+                    <div className="headerPerfilConfigFB">
+        
+                        <FiArrowLeft
+                            onClick={props.onClickClose} 
+                            className="closeIconFB"
+                            cursor={"pointer"}
+                        />
 
-                <div className="bodyPerfilConfigFB">
+                        <p> Configurações do Perfil </p>
 
-                    <p> Configurações </p>
+                    </div>
 
+                    <div className="imagemCapaFB">
+
+                        <div className="imagemPerfilFB">
+
+                            {imagemPerfil ? "" : <div className='uploadPerfilFB' onClick={PerfilUpload}>Editar Foto</div>}
+
+                            {imagemPerfil && (<img className="imgFB" src={imagemPerfil} alt="Selected" style={{ maxWidth: '100%' }} onClick={PerfilUpload}/>)}
+
+                            <input type='file' ref={perfilRef} onChange={TrocaImagemPerfil} style={{display: 'none'}}/>
+
+                        </div>
+
+                        {imagemCapa ? "" : <div className='uploadCapaFB' onClick={CapaUpload}>Editar Capa</div>}
+
+                        {imagemCapa && (<img className="imgFB" src={imagemCapa} alt="Selected" style={{ maxWidth: '100%' }} onClick={CapaUpload}/>)}
+
+                        <input type='file' ref={capaRef} onChange={TrocaImagemCapa} style={{display: 'none'}}/>
+
+                    </div>
                 </div>
             </div>
         )
