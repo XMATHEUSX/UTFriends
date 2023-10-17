@@ -51,7 +51,7 @@ export default function SignUp() {
       date: false,
       telphone: false,
       nickname: false,
-      curse: false,
+      curso: false,
     }
 
     const userData = {
@@ -61,6 +61,9 @@ export default function SignUp() {
       email: email,
       password: senha,
       nickname: apelido,
+      telphone: telefone,
+      birth: nascimento,
+      curso:cursoID,
     };
 
     if (nome != '') {
@@ -137,7 +140,7 @@ export default function SignUp() {
     if (curso != '') {
 
       document.getElementById("noCurso").style.display = "none";
-      userVal.curse = true;
+      userVal.curso = true;
 
     } else {document.getElementById("noCurso").style.display = "block";}
 
