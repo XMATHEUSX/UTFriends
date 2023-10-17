@@ -1,0 +1,123 @@
+html {
+
+    font-size: 62.5%;
+
+}
+
+.conteinerEC {
+
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    background: linear-gradient(to bottom, #7F39FB, #FC80B5);
+}
+
+.boxEC {
+
+    width: 35%;
+    height: 30%;
+
+    align-items: center;
+    justify-content: start;
+    display: flex;
+    flex-direction: column;
+
+    border: dashed;
+    border-color: #000;
+    border-width: 3px;
+
+    background-color: #FFF;
+    box-shadow: rgba(0, 0, 0, 0.2) -10px 10px 10px 0px;
+}
+
+.contentBoxEC {
+
+    width: 90%;
+    height: 70%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.contentBoxEC h1 {
+
+    width: 90%;
+
+    font-size: 2.8em;
+    font-weight:bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 2s;
+}
+
+.contentBoxEC h1:hover {
+
+    transform: scale(1.2);
+}
+
+.contentBoxEC p {
+
+    width: 80%;
+
+    border-top: solid;
+
+    font-size: 2em;
+    font-weight:lighter;
+
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding-top: 5%;
+}
+
+.bottomBoxEC {
+
+    width: 100%;
+    height: 25%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonLinkEC {
+
+    width: 25%;
+    height: 45%;
+}
+
+.buttonLinkEC button {
+
+    width: 100%;
+    height: 100%;
+
+    border: solid;
+    border-width: 2px;
+
+    font-size: 1.4em;
+    font-family: 'Roboto Mono';
+    
+    background-color: #FFf;
+    box-shadow: rgba(0, 0, 0, 0.2) -5px 5px 10px;
+
+    transition: transform 1.5s;
+}
+
+.buttonLinkEC button:hover {
+
+    transform: scale(1.1);
+}

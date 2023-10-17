@@ -6,6 +6,7 @@ import Signin from './pages/Signin'
 import Feed from './pages/Feed'
 import EmailValidation from './pages/EmailValidation';
 import NewPassword from './pages/NewPassword'
+import EmailConfirmed from './pages/EmailConfirmed';
 
 export default function RouterApp() {
   return (
@@ -18,6 +19,7 @@ export default function RouterApp() {
         <Route path="/feed" element={<Feed/>}/>
         <Route path="/emailvalidation" element={<EmailValidation/>}/>
         <Route path="/newpassword" element={<NewPassword/>}/>
+        <Route path="/emailconfirmed" element={<EmailConfirmed/>}/>
       </Routes>
     </BrowserRouter>
 
