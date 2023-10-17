@@ -4,7 +4,8 @@ import Home from './pages/Home';
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import Feed from './pages/Feed'
-import Useful from './pages/Useful';
+import EmailValidation from './pages/EmailValidation';
+import NewPassword from './pages/NewPassword'
 
 export default function RouterApp() {
   return (
@@ -15,7 +16,8 @@ export default function RouterApp() {
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/feed" element={<Feed/>}/>
-        <Route path="/useful" element={<Useful/>}/>
+        <Route path="/emailvalidation" element={<EmailValidation/>}/>
+        <Route path="/newpassword" element={<NewPassword/>}/>
       </Routes>
     </BrowserRouter>
 

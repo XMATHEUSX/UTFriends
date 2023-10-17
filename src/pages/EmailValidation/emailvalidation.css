@@ -1,0 +1,171 @@
+html {
+
+    font-size: 62.5%;
+
+}
+
+.conteinerEV {
+
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    background: linear-gradient(to bottom, #7F39FB, #FC80B5);
+}
+
+.boxEV {
+
+    width: 35%;
+    height: 30%;
+
+    align-items: center;
+    justify-content: start;
+    display: flex;
+    flex-direction: column;
+
+    border: solid;
+    border-color: #000;
+    border-width: 3px;
+
+    background-color: #FFF;
+    box-shadow: rgba(0, 0, 0, 0.2) -10px 10px 10px 0px;
+}
+
+.contentBoxEV {
+
+    width: 90%;
+    height: 70%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    padding-top: 5%;
+}
+
+.contentBoxEV p {
+
+    width: 75%;
+
+    font-size: 2em;
+    font-weight:lighter;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    margin-bottom: 1%;
+}
+
+.contentBoxEV input {
+
+    width: 75%;
+    height: 35%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: solid;
+    border-color: #a0a0a0;
+    border-width: 2px;
+    border-radius: 5px;
+
+    outline: none;
+
+    padding: 1%;
+
+    font-size: 1.8em;
+    font-family: 'Roboto Mono';
+
+    box-shadow: rgba(0, 0, 0, 0.2) -5px 5px 10px;
+
+    transition: transform 1.5s;
+}
+
+.contentBoxEV input:hover {
+
+    transform: scale(1.1);
+}
+
+.bottomBoxEV {
+
+    width: 90%;
+    height: 30%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottomBoxEV button {
+
+    width: 35%;
+    height: 45%;
+
+    border: dashed;
+    border-width: 2px;
+
+    font-size: 1.4em;
+    font-family: 'Roboto Mono';
+    
+    background-color: #FFf;
+
+    transition: transform 1.5s;
+}
+
+.bottomBoxEV button:hover {
+
+    transform: scale(1.1);
+}
+
+.topBoxEV {
+
+    width: 100%;
+    height: 15%;
+
+    align-items:center;
+    display: flex;
+    justify-content: space-between;
+
+    border-width:3px;
+    border-bottom:solid;
+
+    box-shadow: rgba(0,0,0,0.2) 0px 5px 10px;
+    background-color: #FFF;
+}
+
+.topBoxEV p {
+
+    font-size: 1.8rem;
+    line-height: 1.8rem;
+
+    font-family:'Roboto Mono';
+    font-weight: bold;
+
+    padding-left: 5px;
+}
+
+.closeIconEV {
+
+    display: flex;
+    align-items: center;
+
+    border:none;
+    margin-right: 2px;
+
+    color:black;
+
+    transition: transform 0.5s;
+}
+
+.closeIconEV:hover {
+
+    transform: scale(1.15);
+}

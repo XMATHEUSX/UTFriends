@@ -90,7 +90,7 @@ export default function Signin() {
         </div>
         <div className="bottomContentSI">
 
-          <Link to={'/useful'} className="buttonLinkSI">
+          <Link to={'/emailvalidation'} className="buttonLinkSI">
 
             <button className="buttonSI">Esqueci Minha Senha</button>
 
