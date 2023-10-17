@@ -1,10 +1,8 @@
-import React, {  useState } from "react";
+import React from "react";
 import Select from 'react-select'
 import './selectclass.css'
 
 export default function SelectClass(props) {
-
-    const [selectedOption, setSelectedOption] = useState(0)
 
     const custonStyles = {
 

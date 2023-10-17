@@ -71,7 +71,7 @@ export default function Perfilbar(props) {
                         size={35}
                     />
 
-                    {menu ? <p>Feed</p> : ""}
+                    {menu ? <p onClick={props.onClickHome}>Feed</p> : ""}
 
                 </div>
 
@@ -83,7 +83,7 @@ export default function Perfilbar(props) {
                         size={35}
                     />
 
-                    {menu ? <p>Perfil</p> : ""}
+                    {menu ? <p onClick={props.onClickPerfil}>Perfil</p> : ""}
 
                 </div>
 
@@ -95,7 +95,7 @@ export default function Perfilbar(props) {
                         size={35}
                     />
 
-                    {menu ? <p>Comunidades</p> : ""}
+                    {menu ? <p onClick={props.onClickCommunity}>Comunidades</p> : ""}
 
                 </div>
 
@@ -107,7 +107,7 @@ export default function Perfilbar(props) {
                         size={35}
                     />
 
-                    {menu ? <p>Configurações</p> : ""}
+                    {menu ? <p onClick={props.onClickConfig}>Configurações</p> : ""}
 
                 </div>
             </div>

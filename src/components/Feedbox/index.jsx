@@ -1,6 +1,7 @@
 import { FiArrowLeft } from 'react-icons/fi'
 import { FaEdit } from 'react-icons/fa'
 import React, { useState, useRef } from "react";
+import SelectClass from '../SelectClass';
 import './feedbox.css'
 
 export default function Feedbox(props) {
@@ -52,17 +53,9 @@ export default function Feedbox(props) {
     const capaRef = useRef(null)
     const perfilRef = useRef(null)
 
-    const CapaUpload = () => {
+    const CapaUpload = () => { capaRef.current.click(); };
 
-        capaRef.current.click();
-
-    };
-
-    const PerfilUpload = () => {
-
-        perfilRef.current.click();
-
-    };
+    const PerfilUpload = () => { perfilRef.current.click(); };
 
     if ( props.config == 'home' ) {
 
@@ -167,27 +160,47 @@ export default function Feedbox(props) {
                     
                     <div className="changeNicknameFB">
 
-                        <p>Alterar Nickname</p>
+                        <div className='titleNicknameFB'>
 
-                        <input
-                            type='text'
-                            value={apelido}
-                            maxLength={12}
-                            onChange={(e) => setApelido(e.target.value)}
-                        />
+                            <p>Alterar Nickname</p>
 
+                        </div>
+
+                        <div className='contentNicknameFB'>                      
+
+                            <input
+                                type='code'
+                                value={apelido}
+                                maxLength={12}
+                                onChange={(e) => setApelido(e.target.value)}
+                            />
+
+                        </div> 
                     </div>
 
-                    <div className='changeBiographyFB'>
+                    <div className="changeBiographyFB">
 
-                        <p>Alterar Biografia</p>
+                        <div className='titleBiographyFB'>
 
-                        <input
-                            type='text'
-                            value={biografia}
-                            maxLength={256}
-                            onChange={(e) => setBiografia(e.target.value)}
-                        />
+                            <p>Alterar Biografia</p>
+
+                        </div>
+
+                        <div className='contentBiographyFB'>                      
+
+                            <input
+                                type='code'
+                                value={biografia}
+                                maxLength={256}
+                                onChange={(e) => setBiografia(e.target.value)}
+                            />
+
+                        </div> 
+                    </div>
+
+                    <div className='bottomContentFB'>
+
+                        <button className='saveButtonFB' onClick={props.onClickClose}> Salvar Alterações </button>
 
                     </div>
                 </div>
@@ -234,21 +247,30 @@ export default function Feedbox(props) {
 
                             <p className="nicknameFB">{"@" + props.nickname}</p>
 
+                        </div> 
+
+                        <div className='followInfoFB'>
+
+                            <div className="followsFB">
                             
-                                <div className="followsFB">
-                                
-                                    <p>{props.followers}</p>
-                                    <p>{"Segidores"}</p>
+                                <p>{props.followers}</p>
+                                <p>{"Segidores"}</p>
 
-                                </div>
+                            </div>
 
-                                <div className='followsFB'>
+                            <div className='followsFB'>
 
-                                    <p>{props.following}</p>
-                                    <p>{"Seguindo"}</p>
+                                <p>{props.following}</p>
+                                <p>{"Seguindo"}</p>
 
-                                </div>
-                            
+                            </div>
+
+                            <div className='followsFB'>
+
+                                <p>{0}</p>
+                                <p>{"Postagens"}</p>
+
+                            </div>
                         </div>
 
                         <div className='editIconFB'>
@@ -264,8 +286,16 @@ export default function Feedbox(props) {
 
                     <div className="midleContentFB">
 
-                        <div className="descricaoFB">
+                        <div className='infoExtraFB'>
 
+                            <p>Curso: Engenharia de Computação</p>
+                            
+                            <p>Tags: #Criador</p>
+
+                        </div>
+
+                        <div className="descricaoFB">
+                            
                             <p>{"\"" + props.bio + "\""}</p>
 
                         </div>
