@@ -205,6 +205,43 @@ html {
     font-size: 1.2em;
 }
 
+.changeBiographyFB {
+
+    width: 100%;
+    height: 8%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+    margin-top: 2%;
+    margin-left: 4%;
+}
+
+.changeBiographyFB input {
+
+    height: 50%;
+    width: 100%;
+
+    border:solid;
+    border-width: 2px;
+    border-color: #a0a0a0;
+    border-radius: 5px;
+
+    outline: none;
+
+    font-size: 1.4em;
+    font-weight: bold;
+
+    padding: 1%;
+}
+
+.changeBiographyFB p {
+
+    font-size: 1.2em;
+}
+
 /* Configurações de Design do Perfil */
 
 .perfilContentFB {
@@ -234,8 +271,6 @@ html {
     border-bottom-width: 3px;
 
     margin-top: 5%;
-
-    /*box-shadow: rgba(0,0,0,0.2) 0px 5px 10px;*/
 }
 
 .imagemPerfilFB {

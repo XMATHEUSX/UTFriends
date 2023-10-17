@@ -88,12 +88,12 @@ export default function Feed() {
       />
 
       <Feedbox 
-        config={feedConfig} 
-        nickname={nickname} 
-        followers={followers} 
+        config={feedConfig}
+        nickname={nickname}
+        followers={followers}
         following={following}
-        bio={bio} 
-        onClickClose={clickPerfil} 
+        bio={bio}
+        onClickClose={clickPerfil}
         onClickPerfilConfig={ClickPerfilConfig}
       />
 

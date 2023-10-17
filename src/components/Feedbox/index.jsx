@@ -8,6 +8,9 @@ export default function Feedbox(props) {
     const [imagemCapa, setImageCapa] = useState(null)
     const [imagemPerfil, setImagePerfil] = useState(null)
 
+    const [apelido, setApelido] = useState(props.nickname)
+    const [biografia, setBiografia] = useState(props.biografia)
+
     const TrocaImagemCapa = (e) => {
 
         const file = e.target.files[0];
@@ -120,8 +123,7 @@ export default function Feedbox(props) {
 
                         <div className="imagemPerfilFB">
 
-                            {imagemPerfil ? "" : 
-                                <div className='uploadPerfilFB' onClick={PerfilUpload}>Editar Foto</div>}
+                            {imagemPerfil ? "" : <div className='uploadPerfilFB' onClick={PerfilUpload}>Editar Foto</div>}
 
                             {imagemPerfil && 
                                 (<img 
@@ -130,7 +132,8 @@ export default function Feedbox(props) {
                                     alt="Selected" 
                                     style={{ maxWidth: '100%' }} 
                                     onClick={PerfilUpload}
-                                />)}
+                                />)
+                            }
 
                             <input 
                                 type='file' 
@@ -143,9 +146,22 @@ export default function Feedbox(props) {
 
                         {imagemCapa ? "" : <div className='uploadCapaFB' onClick={CapaUpload}>Editar Capa</div>}
 
-                        {imagemCapa && (<img className="imgFB" src={imagemCapa} alt="Selected" style={{ maxWidth: '100%' }} onClick={CapaUpload}/>)}
+                        {imagemCapa && 
+                            (<img 
+                                className="imgFB" 
+                                src={imagemCapa} 
+                                alt="Selected" 
+                                style={{ maxWidth: '100%' }} 
+                                onClick={CapaUpload}
+                            />)
+                        }
 
-                        <input type='file' ref={capaRef} onChange={TrocaImagemCapa} style={{display: 'none'}}/>
+                        <input 
+                            type='file' 
+                            ref={capaRef} 
+                            onChange={TrocaImagemCapa} 
+                            style={{display: 'none'}}
+                        />
 
                     </div>
                     
@@ -155,8 +171,22 @@ export default function Feedbox(props) {
 
                         <input
                             type='text'
-                            value={props.nickname}
+                            value={apelido}
                             maxLength={12}
+                            onChange={(e) => setApelido(e.target.value)}
+                        />
+
+                    </div>
+
+                    <div className='changeBiographyFB'>
+
+                        <p>Alterar Biografia</p>
+
+                        <input
+                            type='text'
+                            value={biografia}
+                            maxLength={256}
+                            onChange={(e) => setBiografia(e.target.value)}
                         />
 
                     </div>
