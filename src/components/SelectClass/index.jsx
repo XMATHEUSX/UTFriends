@@ -2,9 +2,9 @@ import React, {  useState } from "react";
 import Select from 'react-select'
 import './selectclass.css'
 
-export default function SelectClass() {
+export default function SelectClass(props) {
 
-    const [selectedOption, setSelectedOption] = useState(null)
+    const [selectedOption, setSelectedOption] = useState(0)
 
     const custonStyles = {
 
@@ -37,8 +37,8 @@ export default function SelectClass() {
             <Select
                 styles={custonStyles}
                 className="selectContentSC"
-                defaultValue={selectedOption}
-                onChange={setSelectedOption}
+                value={props.selectedValue}
+                onChange={props.onChange}
                 options={options}
                 placeholder={"Selecione uma opção"}
             />

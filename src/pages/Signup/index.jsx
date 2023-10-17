@@ -19,16 +19,26 @@ export default function SignUp() {
   const [nascimento, setNascimento] = useState("");
   const [telefone, setTelefone] = useState("");
   const [apelido, setApelido] = useState("");
+  const [cursoID, setCursoID] = useState("")
+
+  const [curso, setCurso] = useState("")
 
   const [sucesso, setSucesso] = useState(null);
   const [display, setDisplay] = useState(null);
 
   const navigate = useNavigate();
+
   const inputDate = new Date(nascimento);
   const currentDate = new Date();
   const oneYearAgo = new Date(currentDate);
 
   oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 16);
+
+  const selecionarCurso = (options) => {
+
+    setCurso(options)
+    setCursoID(options.value)
+  }
 
   const handleRegister = () => {
 
@@ -41,6 +51,7 @@ export default function SignUp() {
       date: false,
       telphone: false,
       nickname: false,
+      curse: false,
     }
 
     const userData = {
@@ -122,6 +133,13 @@ export default function SignUp() {
       } else { document.getElementById("errorData").style.display = "block"; }
 
     } else {document.getElementById("noData").style.display = "block";}
+
+    if (curso != '') {
+
+      document.getElementById("noCurso").style.display = "none";
+      userVal.curse = true;
+
+    } else {document.getElementById("noCurso").style.display = "block";}
 
     if (telefone != '') {
 
@@ -323,7 +341,9 @@ export default function SignUp() {
 
             <p> Selecione seu curso </p>
 
-            <SelectClass/>
+            <SelectClass onChange={selecionarCurso} selectedValue={curso}/>
+
+            <p className="errorMsgSU" id="noCurso"> Campo Obrigatório </p>
 
           </div>
 
