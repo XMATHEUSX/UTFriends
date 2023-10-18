@@ -4,9 +4,9 @@ import Home from './pages/Home';
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import Feed from './pages/Feed'
-import EmailValidation from './pages/EmailValidation';
-import NewPassword from './pages/NewPassword'
-import EmailConfirmed from './pages/EmailConfirmed';
+import EmailValidation from './pages/Useful/EmailValidation';
+import NewPassword from './pages/Useful/NewPassword'
+import EmailConfirmed from './pages/Useful/EmailConfirmed';
 
 export default function RouterApp() {
   return (

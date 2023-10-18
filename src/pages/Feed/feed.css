@@ -12,3 +12,84 @@
 
     background: linear-gradient(to bottom, #7F39FB, #FC80B5);
 }
+
+/* Design da Barra Superior */
+
+.topContentF {
+
+    height: 5%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+    z-index: 1;
+
+    border-bottom: solid;
+    border-bottom-width: 3px;
+
+    background-color: #FFF;
+    box-shadow: rgba(0,0,0,0.2) 0px 10px 10px;
+}
+
+.centerBarF {
+
+    height: 100%;
+    width: 90%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchIconF {
+
+    width: 2.5%;
+    height: 65%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:solid;
+    border-radius: 50px;
+
+    background-color: black;
+
+    transition: transform 1.5s;
+}
+
+.searchIconNB:hover {
+
+    transform: scale(1.1);
+}
+
+.searchBoxF {
+
+    width: 25%;
+    height: 65%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchBoxF input{
+    
+    width: 95%;
+    height: 100%;
+
+    border: solid;
+    border-width: 2px;
+    border-radius: 50px;
+
+    padding: 10px;
+
+    background-color: #FFF;
+}

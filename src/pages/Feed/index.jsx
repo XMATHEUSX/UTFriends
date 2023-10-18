@@ -1,8 +1,8 @@
-import Navbar from '../../components/Navbar'
 import Feedbox from '../../components/Feedbox'
 import Perfilbar from '../../components/Perfilbar';
 import Communitybar from '../../components/Communitybar';
 import { Link, useNavigate } from "react-router-dom";
+import { IoSearch } from 'react-icons/io5'
 import React, { useState } from 'react';
 import './feed.css'
 
@@ -18,6 +18,8 @@ export default function Feed() {
   const [following, setFollowing] = useState("");
   const [feedConfig, setFeedConfig] = useState('home')
   var token = localStorage.getItem('token');
+
+  const [busca, setBusca] = useState("");
   
   if (token) {
   }else{
@@ -78,7 +80,32 @@ export default function Feed() {
   return (
     <div className="conteinerF">
     
-      <Navbar/>
+      <div className="topContentF">
+          
+        <div className="centerBarF">
+
+          <div className="searchBoxF">
+
+            <input
+              title="SearchBox"
+              id="SearchBox"
+              type="text"
+              onChange={(e) => setBusca(e.target.value)}
+            />
+
+          </div>
+
+          <div className="searchIconF">
+
+            <IoSearch 
+                size={26}
+                cursor={"pointer"}
+                color={"white"}
+            />
+              
+          </div>
+        </div>
+      </div>
 
       <Perfilbar 
         onClickHome={clickClose} 
