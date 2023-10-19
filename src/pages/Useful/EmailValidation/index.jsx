@@ -15,7 +15,7 @@ export default function Useful(props) {
 
                 <div className="topBoxEV">
 
-                    <p>New_Validation</p>
+                    <p>Account_Validation</p>
 
                     <Link to={'/signin'}>
                         <AiFillCloseSquare

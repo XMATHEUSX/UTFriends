@@ -1,7 +1,7 @@
 import { FiArrowLeft } from 'react-icons/fi'
 import { FaEdit } from 'react-icons/fa'
-import React, { useState, useRef } from "react";
-import SelectClass from '../SelectClass';
+import React, { useState, useRef, useEffect } from "react";
+import Publication from '../Publication';
 import './feedbox.css'
 
 export default function Feedbox(props) {
@@ -61,10 +61,53 @@ export default function Feedbox(props) {
 
         return(
 
-            <div className="conteinerFB">
-    
-                <h1> Feed </h1>
-    
+            <div className="conteinerFB" style={{justifyContent: 'flex-start', overflowY: 'scroll', paddingTop: 25}}>
+
+                <Publication 
+                    type={1} 
+                    user={'Kaszuba'} 
+                    liked={false} 
+                    like={999999} 
+                    text={'Esse é um texte para verificar a disposição dos textos em uma publicação do tipo 1 (apenas texto)'}
+                />
+
+                <Publication 
+                    type={2} 
+                    user={'Kaszuba'} 
+                    liked={false} 
+                    like={999999} 
+                />
+
+                <Publication 
+                    type={3} 
+                    user={'Kaszuba'} 
+                    liked={false} 
+                    like={999999}
+                    text={'Esse é um texte para verificar a disposição dos textos em uma publicação do tipo 3 (texto e imagem)'} 
+                />
+
+                <Publication 
+                    type={1} 
+                    user={'Kaszuba'} 
+                    liked={false} 
+                    like={999999} 
+                    text={'Esse é um texte para verificar a disposição dos textos em uma publicação do tipo 1 (apenas texto)'}
+                />
+
+                <Publication 
+                    type={2} 
+                    user={'Kaszuba'} 
+                    liked={false} 
+                    like={999999} 
+                />
+
+                <Publication 
+                    type={3} 
+                    user={'Kaszuba'} 
+                    liked={false} 
+                    like={999999}
+                    text={'Esse é um texte para verificar a disposição dos textos em uma publicação do tipo 3 (texto e imagem)'} 
+                />
             </div>
         )
 

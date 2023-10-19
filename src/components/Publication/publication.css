@@ -1,0 +1,151 @@
+html {
+
+    font-size: 62.5%
+}
+
+/* Design das DIV's padrões */
+
+.conteinerP {
+
+    width: 90%;
+    height: fit-content;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    border: solid;
+    border-width: 2px;
+    border-radius: 10px;
+
+    box-shadow: rgba(0,0,0,0.2) -5px 5px 10px;
+
+    padding: 1%;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+
+.topContentP {
+
+    width: 100%;
+    height: fit-content;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.userInfoP {
+
+    width: 80%;
+    height: fit-content;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.userInfoP p {
+
+    font-size: 2em;
+    font-weight: bold;
+    font-family: 'Roboto Mono';
+}
+
+.publicationInfoP {
+
+    width: 20%;
+    height: fit-content;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.publicationInfoP p {
+
+    font-size: 1.6em;
+    font-weight: bold;
+    font-family: 'Roboto Mono';
+
+    padding-left: 5%;
+}
+
+.heartIconP {
+
+    transition: transform 0.25s;
+}
+
+.heartIconP:hover {
+
+    transform: scale(1.2);
+}
+
+/* Design das DIV's de texto */
+
+.textContentP {
+
+    width: 100%;
+    height: fit-content;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    border:solid;
+    border-width: 2px;
+    border-radius: 10px;
+
+    padding: 2%;
+}
+
+.textContentP p {
+
+    width: 100%;
+    height: fit-content;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: justify;
+
+    font-size: 1.4em;
+    font-family: 'Roboto Mono';
+    font-weight: lighter;
+}
+
+/* Design das DIV's de imagem */
+
+.imageContentP {
+
+    width: 100%;
+    height: fit-content;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    border:solid;
+    border-width: 2px;
+    border-radius: 10px;
+
+    padding: 2%;
+}
+
+.imageContentP img {
+
+    width: 100%;
+    height: 100%;
+}

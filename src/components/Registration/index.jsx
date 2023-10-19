@@ -23,7 +23,7 @@ export default function Registration(props) {
 
             <div className="contentR">
 
-                <h1> {props.success ? "Deu Certo" : "ERROR"} </h1>
+                <h1> {props.success ? "Success!" : "ERROR"} </h1>
 
                 <button onClick={props.onClickButton}> {props.success ? "Fazer Login" : "Tentar Novamente"} </button>
 
