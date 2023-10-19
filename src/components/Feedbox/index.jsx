@@ -1,5 +1,8 @@
 import { FiArrowLeft } from 'react-icons/fi'
 import { FaEdit } from 'react-icons/fa'
+import { TfiThought } from 'react-icons/tfi'
+import { IoImageOutline } from 'react-icons/io5'
+import { GoVideo } from 'react-icons/go'
 import React, { useState, useRef, useEffect } from "react";
 import Publication from '../Publication';
 import './feedbox.css'
@@ -11,6 +14,8 @@ export default function Feedbox(props) {
 
     const [apelido, setApelido] = useState(props.nickname)
     const [biografia, setBiografia] = useState(props.biografia)
+
+    const [newPublication, setNewPublication] = useState(true)
 
     const TrocaImagemCapa = (e) => {
 
@@ -57,57 +62,109 @@ export default function Feedbox(props) {
 
     const PerfilUpload = () => { perfilRef.current.click(); };
 
+    function ClickPublication() {
+
+        setNewPublication(!newPublication)
+    }
+
     if ( props.config == 'home' ) {
 
         return(
 
-            <div className="conteinerFB" style={{justifyContent: 'flex-start', overflowY: 'scroll', paddingTop: 25}}>
+            <div className="conteinerFB">
 
-                <Publication 
-                    type={1} 
-                    user={'Kaszuba'} 
-                    liked={false} 
-                    like={999999} 
-                    text={'Esse é um texte para verificar a disposição dos textos em uma publicação do tipo 1 (apenas texto)'}
-                />
+                <div className='feedConteinerFB'>
 
-                <Publication 
-                    type={2} 
-                    user={'Kaszuba'} 
-                    liked={false} 
-                    like={999999} 
-                />
+                    <Publication 
+                        type={1} 
+                        user={'Kaszuba'} 
+                        liked={false} 
+                        like={999999} 
+                        text={'Esse é um texte para verificar a disposição dos textos em uma publicação do tipo 1 (apenas texto)'}
+                    />
 
-                <Publication 
-                    type={3} 
-                    user={'Kaszuba'} 
-                    liked={false} 
-                    like={999999}
-                    text={'Esse é um texte para verificar a disposição dos textos em uma publicação do tipo 3 (texto e imagem)'} 
-                />
+                    <Publication 
+                        type={2} 
+                        user={'Kaszuba'} 
+                        liked={false} 
+                        like={999999} 
+                    />
 
-                <Publication 
-                    type={1} 
-                    user={'Kaszuba'} 
-                    liked={false} 
-                    like={999999} 
-                    text={'Esse é um texte para verificar a disposição dos textos em uma publicação do tipo 1 (apenas texto)'}
-                />
+                    <Publication 
+                        type={3} 
+                        user={'Kaszuba'} 
+                        liked={false} 
+                        like={999999}
+                        text={'Esse é um texte para verificar a disposição dos textos em uma publicação do tipo 3 (texto e imagem)'} 
+                    />
 
-                <Publication 
-                    type={2} 
-                    user={'Kaszuba'} 
-                    liked={false} 
-                    like={999999} 
-                />
+                    <Publication 
+                        type={1} 
+                        user={'Kaszuba'} 
+                        liked={false} 
+                        like={999999} 
+                        text={'Esse é um texte para verificar a disposição dos textos em uma publicação do tipo 1 (apenas texto)'}
+                    />
 
-                <Publication 
-                    type={3} 
-                    user={'Kaszuba'} 
-                    liked={false} 
-                    like={999999}
-                    text={'Esse é um texte para verificar a disposição dos textos em uma publicação do tipo 3 (texto e imagem)'} 
-                />
+                    <Publication 
+                        type={2} 
+                        user={'Kaszuba'} 
+                        liked={false} 
+                        like={999999} 
+                    />
+
+                    <Publication 
+                        type={3} 
+                        user={'Kaszuba'} 
+                        liked={false} 
+                        like={999999}
+                        text={'Esse é um texte para verificar a disposição dos textos em uma publicação do tipo 3 (texto e imagem)'} 
+                    />
+
+                </div>
+
+                {newPublication ?
+
+                    <div className='feedBottomFB'>
+
+                        <div className='iconConteinerFB'>
+                            
+                            <IoImageOutline
+                                size={32}
+                                onClick={ClickPublication}
+                                cursor={'pointer'}
+                            />
+                        
+                        </div>
+
+                        <div className='iconConteinerFB'>
+
+                            <TfiThought
+                                size={28}
+                                onClick={ClickPublication}
+                                cursor={'pointer'}
+                            />
+                        </div>
+
+                        <div className='iconConteinerFB'>
+                            
+                            <GoVideo
+                                size={28}
+                                onClick={ClickPublication}
+                                cursor={'pointer'}
+                            />
+                        </div>
+                    </div>
+                    
+                    : 
+                    
+                    <div className='feedBottomFB'>
+                        
+                        <div className='newPublicationFB'>
+
+                        </div>
+                    </div>
+                }
             </div>
         )
 
