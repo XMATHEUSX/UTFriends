@@ -650,12 +650,12 @@ html {
 
 .newPublicationFB {
 
-    width: 90%;
+    width: 96%;
     height: fit-content;
 
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     flex-direction: column;
 
     border: solid;
@@ -663,4 +663,31 @@ html {
     border-radius: 10px;
 
     padding: 1%;
+}
+
+.newPublicationTextFB {
+
+    width: 100%;
+
+    resize: none;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+
+    outline: none;
+    border:none;
+}
+
+.textLimitFB {
+
+    width: 100%;
+    height: fit-content;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    margin-top: 1%;
 }

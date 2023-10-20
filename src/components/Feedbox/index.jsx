@@ -3,6 +3,9 @@ import { FaEdit } from 'react-icons/fa'
 import { TfiThought } from 'react-icons/tfi'
 import { IoImageOutline } from 'react-icons/io5'
 import { GoVideo } from 'react-icons/go'
+
+import TextareaAutosize from 'react-textarea-autosize'
+
 import React, { useState, useRef, useEffect } from "react";
 import Publication from '../Publication';
 import './feedbox.css'
@@ -15,7 +18,7 @@ export default function Feedbox(props) {
     const [apelido, setApelido] = useState(props.nickname)
     const [biografia, setBiografia] = useState(props.biografia)
 
-    const [newPublication, setNewPublication] = useState(true)
+    const [newPublicationText, setNewPublicationText] = useState('')
 
     const TrocaImagemCapa = (e) => {
 
@@ -61,11 +64,6 @@ export default function Feedbox(props) {
     const CapaUpload = () => { capaRef.current.click(); };
 
     const PerfilUpload = () => { perfilRef.current.click(); };
-
-    function ClickPublication() {
-
-        setNewPublication(!newPublication)
-    }
 
     if ( props.config == 'home' ) {
 
@@ -122,49 +120,27 @@ export default function Feedbox(props) {
                     />
 
                 </div>
-
-                {newPublication ?
-
-                    <div className='feedBottomFB'>
-
-                        <div className='iconConteinerFB'>
-                            
-                            <IoImageOutline
-                                size={32}
-                                onClick={ClickPublication}
-                                cursor={'pointer'}
-                            />
-                        
-                        </div>
-
-                        <div className='iconConteinerFB'>
-
-                            <TfiThought
-                                size={28}
-                                onClick={ClickPublication}
-                                cursor={'pointer'}
-                            />
-                        </div>
-
-                        <div className='iconConteinerFB'>
-                            
-                            <GoVideo
-                                size={28}
-                                onClick={ClickPublication}
-                                cursor={'pointer'}
-                            />
-                        </div>
-                    </div>
                     
-                    : 
+                <div className='feedBottomFB'>
                     
-                    <div className='feedBottomFB'>
-                        
-                        <div className='newPublicationFB'>
+                    <div className='newPublicationFB'>
+
+                        <TextareaAutosize
+                            maxLength={256}
+                            className='newPublicationTextFB'
+                            minRows={2} 
+                            maxRows={5}
+                            placeholder='Exponha seus pensamentos aqui...'
+                            onChange={(e) => setNewPublicationText(e.target.value)}
+                        />
+
+                        <div className='textLimitFB'>
+
+                            <p>{newPublicationText.length + " / 256"}</p>
 
                         </div>
                     </div>
-                }
+                </div>
             </div>
         )
 
