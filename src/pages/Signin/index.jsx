@@ -14,6 +14,8 @@ export default function Signin() {
 
   function Login() { navigate('/feed') }
 
+  /* Clique para fazer o login */
+
   const handleLogin = () => {
 
     const userData = {
@@ -21,7 +23,49 @@ export default function Signin() {
       password: senha,
     };
 
-    if(userData.email && userData.senha){
+    const userVal = {
+
+      email: false,
+      password: false
+    }
+
+    /* Verificação das entradas de dados */
+
+    document.getElementById("noEmailSI").style.display = 'block'
+
+    if (email != '') {
+
+      document.getElementById("noEmailSI").style.display = 'none'
+      userVal.email = true
+
+    } else { 
+      
+      document.getElementById("noEmailSI").style.display = 'block' 
+      document.getElementById("incorrectPasswordSI").style.display = "none";
+    
+    }
+
+    if (senha != '') {
+
+      document.getElementById("noSenhaSI").style.display = 'none'
+      userVal.password = true
+
+    } else { 
+      
+      document.getElementById("noSenhaSI").style.display = 'block' 
+      document.getElementById("incorrectPasswordSI").style.display = "none";
+    
+    }
+
+    /* Envio dos dados validados para o banco de dados */
+
+    const validacao = Object.values(userVal).every(value => value === true);
+
+    if(validacao){
+
+      document.getElementById("noEmailSI").style.display = 'none'
+      document.getElementById("noSenhaSI").style.display = 'none'
+
       fetch("http://localhost:3000/api/v1/profile/login", {
 
       method: "POST",
@@ -43,17 +87,20 @@ export default function Signin() {
         } else if (!data.success) {
 
           document.getElementById("incorrectPasswordSI").style.display = "block";
+
           document.getElementById("Email").value = "";
           document.getElementById("Senha").value = "";
-
-          userData.email = null;
-          userData.senha = null;
+          setSenha("");
+          setEmail("")
         }
       })
       .catch((error) => {console.error("Erro:", error);});
     }
   };
 
+  const enterCapture = (e) => { if (e.key === 'Enter') { handleLogin() } }
+
+  /* Exibição da tela de SignIn */
 
   return (
     <div className="conteinerSI">
@@ -64,15 +111,16 @@ export default function Signin() {
 
             <div className="emailBoxSI">
               <input
-                id="Email"
                 title="E-mail"
                 name="E-mail"
                 type="email"
-                autoComplete="off"
                 onChange={(e) => setEmail(e.target.value)}
-                required
+                onKeyDown={enterCapture}
               />
             </div>
+
+            <p className="incorrectSI" id="noEmailSI" style={{fontSize: '12px'}}> Campo obrigatório </p>
+
           </div>
 
           <div className="contentSI">
@@ -80,16 +128,17 @@ export default function Signin() {
 
             <div className="passwordBoxSI">
               <input
-                id="Senha"
                 title="Senha"
                 name="Senha"
                 type="password"
-                autoComplete="off"
                 onChange={(e) => setSenha(e.target.value)}
+                onKeyDown={enterCapture}
               />
             </div>
 
-            <p className="incorrectSI" id="incorrectPasswordSI"> Email ou Senha incorreta! </p>
+            <p className="incorrectSI" id="incorrectPasswordSI" style={{fontSize: '12px'}}> Email ou Senha incorreta! </p>
+
+            <p className="incorrectSI" id="noSenhaSI" style={{fontSize: '12px'}}> Campo obrigatório </p>
 
           </div>
         </div>

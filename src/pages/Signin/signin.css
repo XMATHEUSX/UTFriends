@@ -22,8 +22,10 @@ html {
 .incorrectSI{
 
     height: 0px;
-    padding-top: 1%;
+
+    padding-top: 0.5%;
     
+    font-size: 2px;
     color: #ff0000;
 
     display: none;
