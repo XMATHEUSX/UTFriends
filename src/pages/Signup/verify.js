@@ -28,7 +28,7 @@ export function VerifySenha(senha){
 
 export function VerifyNickname(nick){
 
-    const nickRegex = /^.{1,12}$/;
+    const nickRegex = /^[a-z]+$/;
 
     return nickRegex.test(nick);
 }

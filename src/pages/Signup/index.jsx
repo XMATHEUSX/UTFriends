@@ -66,41 +66,53 @@ export default function SignUp() {
       curso:cursoID,
     };
 
-    if (nome != '') {
+    /* Verificação das entradas de dados */
+
+    if (nome != '') { // Verifica se o nome foi digitado
 
       document.getElementById("noNome").style.display = "none";
 
-      if (VerifyNome(nome)) {
+      if (VerifyNome(nome)) { // Verifica se o nome está de acordo com a expressão regular
 
         userVal.name = true;
         document.getElementById("errorNome").style.display = "none";
   
       } else {document.getElementById("errorNome").style.display = "block";}
 
-    } else {document.getElementById("noNome").style.display = "block";}
+    } else { 
 
-    if (sobrenome != '') {
+      document.getElementById("noNome").style.display = "block" 
+      document.getElementById("errorNome").style.display = "none"
+
+    }
+
+    if (sobrenome != '') { // Verifica se o sobrenome foi digitado
 
       document.getElementById("noSobrenome").style.display = "none";
 
-      if (VerifyNome(sobrenome)) {
+      if (VerifyNome(sobrenome)) { // Verifica se o sobrenome está de acordo com a expressão regular
 
         userVal.surname = true;
         document.getElementById("errorSobrenome").style.display = "none";
   
       } else {document.getElementById("errorSobrenome").style.display = "block";}
 
-    } else {document.getElementById("noSobrenome").style.display = "block";}
+    } else {
 
-    if (email != '') {
+      document.getElementById("noSobrenome").style.display = "block"
+      document.getElementById("errorSobrenome").style.display = "none"
+
+    }
+
+    if (email != '') { // Verifica se o e-mail foi digitado
 
       document.getElementById("noEmail").style.display = "none";
 
-      if (VerifyEmail(email)) {
+      if (VerifyEmail(email)) { // Verifica se o e-mail está de acordo com a expressão regular
 
         document.getElementById("errorEmail").style.display = "none";
 
-        if (email == repemail) {
+        if (email == repemail) { // Verifica se as entradas de e-mail são iguais
   
           userVal.email = true;
           document.getElementById("errorRepEmail").style.display = "none";
@@ -109,17 +121,22 @@ export default function SignUp() {
   
       } else {document.getElementById("errorEmail").style.display = "block";}
 
-    } else {document.getElementById("noEmail").style.display = "block";}
+    } else {
 
-    if (senha != '') {
+      document.getElementById("noEmail").style.display = "block"
+      document.getElementById("errorEmail").style.display = "none"
+
+    }
+
+    if (senha != '') { // Verifica se a senha foi digitada
 
       document.getElementById("noSenha").style.display = "none";
 
-      if(VerifySenha(senha)){
+      if(VerifySenha(senha)){ // Verifica se a senha está de acordo com a expressão regular
 
         document.getElementById("errorSenha").style.display = "none";
 
-        if (repsenha == senha) {
+        if (repsenha == senha) { // Verifica se as entradas de senha são iguais
 
           userVal.password = true;
           document.getElementById("errorRepSenha").style.display = "none";
@@ -128,54 +145,79 @@ export default function SignUp() {
 
       } else {document.getElementById("errorSenha").style.display = "block";}
 
-    } else {document.getElementById("noSenha").style.display = "block";}
+    } else {
+      
+      document.getElementById("noSenha").style.display = "block"
+      document.getElementById("errorSenha").style.display = "none"
+    
+    }
 
-    if (inputDate != 'Invalid Date') {
+    if (inputDate != 'Invalid Date') { // Verifica que a data foi digitada
 
       document.getElementById("noData").style.display = "none";
 
-      if (inputDate <= oneYearAgo) {
+      if (inputDate <= oneYearAgo) { // Verifica que a data digitada é válida
         
         userVal.date = true;
         document.getElementById("errorData").style.display = "none";
 
       } else { document.getElementById("errorData").style.display = "block"; }
 
-    } else {document.getElementById("noData").style.display = "block";}
+    } else {
+      
+      document.getElementById("noData").style.display = "block"
+      document.getElementById("errorData").style.display = "none";
+    
+    }
 
-    if (curso != '') {
+    if (curso != '') { // Verifica se algum curso foi escolhido
 
       document.getElementById("noCurso").style.display = "none";
       userVal.curso = true;
 
-    } else {document.getElementById("noCurso").style.display = "block";}
+    } else {
+      
+      document.getElementById("noCurso").style.display = "block"
+    
+    }
 
-    if (telefone != '') {
+    if (telefone != '') { // Verifica se o numero foi digitado
 
       document.getElementById("noNumero").style.display = "none";
 
-      if (VerifyNumero(telefone)) {
+      if (VerifyNumero(telefone)) { // Verifica se o telefone está de acordo com a expressão regular
 
         userVal.telphone = true;
         document.getElementById("errorNumero").style.display = "none";
 
       } else {document.getElementById("errorNumero").style.display = "block";}
 
-    } else {document.getElementById("noNumero").style.display = "block";}
+    } else {
+      
+      document.getElementById("noNumero").style.display = "block"
+      document.getElementById("errorNumero").style.display = "none";
+    
+    }
 
-    if (apelido != '') {
+    if (apelido != '') { // Verifica se o apelido foi digitado
 
-      if(VerifyNickname(apelido)){
+      document.getElementById("noApelido").style.display = "none";
+
+      if(VerifyNickname(apelido)){ // Verifica se o apelido está de acordo com a expressão regular
 
         userVal.nickname = true;
         document.getElementById("errorApelido").style.display = "none";
 
       }else {document.getElementById("errorApelido").style.display = "block";}
 
-      userVal.nickname = true;
-      document.getElementById("noApelido").style.display = "none";
+    } else {
+      
+      document.getElementById("noApelido").style.display = "block"
+      document.getElementById("errorApelido").style.display = "none";
+    
+    }
 
-    } else {document.getElementById("noApelido").style.display = "block";}
+    /* Envio dos dados validados para o registro no banco de dados */
 
     const validacao = Object.values(userVal).every(value => value === true);
 
@@ -260,14 +302,12 @@ export default function SignUp() {
               <p> Sobrenome </p>
 
               <input
-                id="sobrenome"
                 title="Sobrenome"
                 name="Sobrenome"
                 type="text"
                 value={sobrenome}
                 placeholder="Ex: Kaszuba"
                 onChange={(e) => setSobrenome(e.target.value)}
-                required
               />
 
               <p className="errorMsgSU" id="errorSobrenome"> Sobrenome inválido </p>
@@ -286,11 +326,8 @@ export default function SignUp() {
               name="Email"
               type="text"
               value={email}
-              autoComplete="off"
               placeholder="@alunos.utfpr.edu.br"
               onChange={(e) => setEmail(e.target.value)}
-              required
-              pattern="^[A-Za-z]+@alunos.utfpr.edu.br$"
             />
 
             <p className="errorMsgSU" id="errorEmail"> Email inválido </p>
@@ -308,11 +345,8 @@ export default function SignUp() {
               name="RepetirEmail"
               type="text"
               value={repemail}
-              autoComplete="off"
               placeholder="@alunos.utfpr.edu.br"
               onChange={(e) => setRepemail(e.target.value)}
-              required
-              pattern="^[A-Za-z]+@alunos.utfpr.edu.br$"
             />
 
             <p className="errorMsgSU" id="errorRepEmail"> Email divergente </p>
@@ -331,7 +365,9 @@ export default function SignUp() {
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
               />
+
               <p className="errorMsgSU" id="errorSenha"> Senha fraca </p>
+
               <p className="errorMsgSU" id="noSenha"> Campo obrigatório </p>
 
             </div>
@@ -374,8 +410,6 @@ export default function SignUp() {
                 type="date"
                 value={nascimento}
                 onChange={(e) => setNascimento(e.target.value)}
-                required
-                pattern="^\d{2}/\d{2}/\d{4}$"
               />
 
               <p className="errorMsgSU" id="errorData"> Data inválida </p>
@@ -395,8 +429,6 @@ export default function SignUp() {
                 value={telefone}
                 placeholder="(xx) xxxxx-xxxx"
                 onChange={(e) => setTelefone(e.target.value)}
-                required
-                pattern="^[0-9]{11}$"
               />
 
               <p className="errorMsgSU" id="errorNumero"> Número inválido </p>
@@ -418,8 +450,10 @@ export default function SignUp() {
                 value={apelido}
                 placeholder="@"
                 onChange={(e) => setApelido(e.target.value)}
+                maxLength={12}
               />
-              <p className="errorMsgSU" id="errorApelido"> Muito grande </p>
+              <p className="errorMsgSU" id="errorApelido"> Apenas letras minúsculas </p>
+
               <p className="errorMsgSU" id="noApelido"> Campo obrigatório </p>
 
             </div>
