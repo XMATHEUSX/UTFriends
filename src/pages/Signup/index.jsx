@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import Registration from "../../components/Registration";
 import SelectClass from '../../components/SelectClass/index'
-import { VerifyNome, VerifyEmail, VerifyNumero } from "./verify.js";
+import { VerifyNome, VerifyEmail, VerifyNumero , VerifySenha, VerifyNickname} from "./verify.js";
 import "./signup.css";
 
 export default function SignUp() {
@@ -115,12 +115,18 @@ export default function SignUp() {
 
       document.getElementById("noSenha").style.display = "none";
 
-      if (repsenha == senha) {
+      if(VerifySenha(senha)){
 
-        userVal.password = true;
-        document.getElementById("errorRepSenha").style.display = "none";
+        document.getElementById("errorSenha").style.display = "none";
 
-      } else {document.getElementById("errorRepSenha").style.display = "block";}
+        if (repsenha == senha) {
+
+          userVal.password = true;
+          document.getElementById("errorRepSenha").style.display = "none";
+  
+        } else {document.getElementById("errorRepSenha").style.display = "block";}
+
+      } else {document.getElementById("errorSenha").style.display = "block";}
 
     } else {document.getElementById("noSenha").style.display = "block";}
 
@@ -158,6 +164,13 @@ export default function SignUp() {
     } else {document.getElementById("noNumero").style.display = "block";}
 
     if (apelido != '') {
+
+      if(VerifyNickname(apelido)){
+
+        userVal.nickname = true;
+        document.getElementById("errorApelido").style.display = "none";
+
+      }else {document.getElementById("errorApelido").style.display = "block";}
 
       userVal.nickname = true;
       document.getElementById("noApelido").style.display = "none";
@@ -318,7 +331,7 @@ export default function SignUp() {
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
               />
-
+              <p className="errorMsgSU" id="errorSenha"> Senha fraca </p>
               <p className="errorMsgSU" id="noSenha"> Campo obrigatório </p>
 
             </div>
@@ -406,7 +419,7 @@ export default function SignUp() {
                 placeholder="@"
                 onChange={(e) => setApelido(e.target.value)}
               />
-
+              <p className="errorMsgSU" id="errorApelido"> Muito grande </p>
               <p className="errorMsgSU" id="noApelido"> Campo obrigatório </p>
 
             </div>

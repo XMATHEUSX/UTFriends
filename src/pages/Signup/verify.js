@@ -18,3 +18,17 @@ export function VerifyNumero(numero) {
 
     return numeroRegex.test(numero)
 }
+
+export function VerifySenha(senha){
+
+    const senhaRegex = /^.{8,}$/;
+
+    return senhaRegex.test(senha);
+}
+
+export function VerifyNickname(nick){
+
+    const nickRegex = /^.{1,12}$/;
+
+    return nickRegex.test(nick);
+}
