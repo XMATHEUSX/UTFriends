@@ -605,7 +605,7 @@ html {
     padding-bottom: 2%;
 }
 
-.iconConteinerFB {
+.feedIconFB {
 
     width: 40px;
     height: 40px;
@@ -621,36 +621,39 @@ html {
     margin-left: 0.5%;
     margin-right: 0.5%;
 
+    padding: 0.5%;
+
+    background-color: #000;
     box-shadow: rgba(0,0,0,0.2) -5px 5px 10px;
 
     transition: transform 1s;
 }
 
-.iconConteinerFB:hover {
+.feedIconFB:hover {
 
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .feedBottomFB {
 
-    width: 93%;
+    width: 95%;
     height: fit-content;
 
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
 
     border-top: solid;
     border-width: 2px;
 
     margin-right: 2%;
-    padding: 1%;
+    padding: 2%;
 }
 
 .newPublicationFB {
 
-    width: 96%;
+    width: 97%;
     height: fit-content;
 
     display: flex;
@@ -663,6 +666,8 @@ html {
     border-radius: 10px;
 
     padding: 1%;
+
+    box-shadow: rgba(0,0,0,0.2) -5px 5px 10px;
 }
 
 .newPublicationTextFB {
@@ -688,6 +693,68 @@ html {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
+    margin-top: 1%;
+}
+
+.feedPublicationFB {
+
+    width: 95%;
+    height: fit-content;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    margin-top: 1%;
+}
+
+.feedPublicationFB button {
+
+    width: 20%;
+    height: 75%;
+
+    border: solid;
+    border-width: 2px;
+    border-radius: 20px;
+
+    font-family: 'Roboto Mono';
+    font-size: 1.4em;
+    font-weight: bold;
+
+    transition: transform 0.5s;
+}
+
+.feedPublicationFB button:hover {
+
+    transform: scale(1.1);
+}
+
+.sendIconFB {
+
+    transition: transform 1.5s;
+}
+
+.sendIconFB:hover {
+
+    transform: scale(1.1);
+}
+
+.feedImageFB {
+
+    width: 97%;
+    height: fit-content;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border:solid;
+    border-width: 2px;
+    border-radius: 10px;
 
     margin-top: 1%;
 }

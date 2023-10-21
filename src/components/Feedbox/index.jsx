@@ -1,24 +1,24 @@
 import { FiArrowLeft } from 'react-icons/fi'
 import { FaEdit } from 'react-icons/fa'
-import { TfiThought } from 'react-icons/tfi'
-import { IoImageOutline } from 'react-icons/io5'
-import { GoVideo } from 'react-icons/go'
+import { FaImage } from 'react-icons/fa6'
+import { LuSendHorizonal } from 'react-icons/lu'
 
 import TextareaAutosize from 'react-textarea-autosize'
 
 import React, { useState, useRef, useEffect } from "react";
+
 import Publication from '../Publication';
+import UTFriends from '/src/assets/images/UTFriends.png'
 import './feedbox.css'
 
 export default function Feedbox(props) {
 
+    /* Declarações para a configuração 'PerfilConfig' do Feed  */
+
     const [imagemCapa, setImageCapa] = useState(null)
     const [imagemPerfil, setImagePerfil] = useState(null)
-
     const [apelido, setApelido] = useState(props.nickname)
     const [biografia, setBiografia] = useState(props.biografia)
-
-    const [newPublicationText, setNewPublicationText] = useState('')
 
     const TrocaImagemCapa = (e) => {
 
@@ -61,15 +61,55 @@ export default function Feedbox(props) {
     const capaRef = useRef(null)
     const perfilRef = useRef(null)
 
-    const CapaUpload = () => { capaRef.current.click(); };
+    const CapaUpload = () => { capaRef.current.click() }
+    const PerfilUpload = () => { perfilRef.current.click() }
 
-    const PerfilUpload = () => { perfilRef.current.click(); };
+    /* Declarações para a configuração 'Home' do Feed */
+
+    const [newPublicationText, setNewPublicationText] = useState('')
+    const [forFriends, setForFriends] = useState(false)
+    const [postImage, setPostImage] = useState(null)
+
+    function ChangeForFriends() { setForFriends(!forFriends) }
+
+    const sendNewPublication = () => {
+
+        alert('Nova Publicação')
+
+        document.getElementById('postText').value = ''
+        setNewPublicationText('')
+        setPostImage(null)
+    }
+
+    const newImagePost = (e) => {
+
+        const file = e.target.files[0];
+
+        if (file) {
+
+          const reader = new FileReader();
+    
+          reader.onload = (e) => {
+
+            const imageDataUrl = e.target.result;
+            setPostImage(imageDataUrl);
+
+          };
+    
+          reader.readAsDataURL(file);
+        }
+    };
+
+    const imageRef = useRef(null)
+    const imageUpload = () => { imageRef.current.click() }
+
+    /* Configurações de exibição do Feed */
 
     if ( props.config == 'home' ) {
 
         return(
 
-            <div className="conteinerFB">
+            <div className="conteinerFB" style={{justifyContent: 'space-between'}}>
 
                 <div className='feedConteinerFB'>
 
@@ -118,7 +158,6 @@ export default function Feedbox(props) {
                         like={999999}
                         text={'Esse é um texte para verificar a disposição dos textos em uma publicação do tipo 3 (texto e imagem)'} 
                     />
-
                 </div>
                     
                 <div className='feedBottomFB'>
@@ -126,6 +165,7 @@ export default function Feedbox(props) {
                     <div className='newPublicationFB'>
 
                         <TextareaAutosize
+                            id='postText'
                             maxLength={256}
                             className='newPublicationTextFB'
                             minRows={2} 
@@ -139,6 +179,64 @@ export default function Feedbox(props) {
                             <p>{newPublicationText.length + " / 256"}</p>
 
                         </div>
+                    </div>
+
+                    {postImage ? 
+                        <div className='feedImageFB'>
+
+                            <img 
+                                src={postImage}
+                                alt="Img" 
+                                style={{ maxWidth: '100%' }}
+                                onClick={imageUpload}
+                            />
+
+                        </div> 
+                        : 
+                        null
+                    }
+
+                    <div className='feedPublicationFB'>
+
+                        <div className='feedIconFB'>
+
+                            <FaImage
+                                size={28}
+                                color='white'
+                                cursor={'pointer'}
+                                onClick={imageUpload}
+                            />
+
+                            <input 
+                                type='file' 
+                                ref={imageRef}
+                                onChange={newImagePost}
+                                style={{display: 'none'}}
+                            />
+
+                        </div>
+
+                        {forFriends ? 
+                            <button 
+                                onClick={ChangeForFriends} 
+                                style={{backgroundColor: '#000', color: '#FFF', borderColor: '#000'}}>
+                                    For Friends
+                            </button>
+                            : 
+                            <button 
+                                onClick={ChangeForFriends}>
+                                    For Friends
+                            </button>
+                        }
+
+                        <LuSendHorizonal
+                            className='sendIconFB'
+                            size={34}
+                            color='black'
+                            onClick={sendNewPublication}
+                            cursor={'pointer'}
+                        />
+
                     </div>
                 </div>
             </div>
