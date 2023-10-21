@@ -21,7 +21,8 @@ export default function Signin() {
       password: senha,
     };
 
-    fetch("http://localhost:3000/api/v1/profile/login", {
+    if(userData.email && userData.senha){
+      fetch("http://localhost:3000/api/v1/profile/login", {
 
       method: "POST",
       headers: {"Content-Type": "application/json",},
@@ -44,9 +45,13 @@ export default function Signin() {
           document.getElementById("incorrectPasswordSI").style.display = "block";
           document.getElementById("Email").value = "";
           document.getElementById("Senha").value = "";
+
+          userData.email = null;
+          userData.senha = null;
         }
       })
       .catch((error) => {console.error("Erro:", error);});
+    }
   };
 
 
