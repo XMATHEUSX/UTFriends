@@ -59,17 +59,22 @@ export default function Feedbox(props) {
     };
 
     const updateProfile = () => {
-        updateData = {
+
+        const updateData = {
+
             capa: imagemCapa,
             imgP: imagemPerfil,
             nick: apelido,
             bio: biografia
         }
 
-        if(!/^[a-z]+$/.test(updateData.nick)){
+        if (!(/^[a-z]+$/.test(apelido))){
+
             document.getElementById("errorApelido").style.display = "block";
         }
         else {
+
+            document.getElementById("errorApelido").style.display = "none";
 
             fetch("http://localhost:3000/api/v1/profile/updateProfile", {
       
@@ -135,8 +140,26 @@ export default function Feedbox(props) {
           reader.onload = (e) => {
 
             const imageDataUrl = e.target.result;
-            setPostImage(imageDataUrl);
 
+            const img = new Image();
+            img.src = imageDataUrl;
+
+            img.onload = () => {
+
+                const newWidth = 720;
+                const newHeight = 720;
+
+                const canvas = document.createElement('canvas');
+                canvas.width = newWidth;
+                canvas.height = newHeight;
+
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, newWidth, newHeight)
+                
+                const resizedImage = canvas.toDataURL('image/jpeg');
+
+                setPostImage(resizedImage);
+            }
           };
     
           reader.readAsDataURL(file);
@@ -388,7 +411,8 @@ export default function Feedbox(props) {
 
                             <input
                                 type='code'
-                                value={props.nickname}
+                                value={apelido}
+                                placeholder={props.nickname}
                                 maxLength={12}
                                 onChange={(e) => setApelido(e.target.value)}
                             />
@@ -410,7 +434,8 @@ export default function Feedbox(props) {
 
                             <input
                                 type='code'
-                                value={props.biografia}
+                                value={biografia}
+                                placeholder={props.bio}
                                 maxLength={256}
                                 onChange={(e) => setBiografia(e.target.value)}
                             />
@@ -473,14 +498,14 @@ export default function Feedbox(props) {
 
                             <div className="followsFB">
                             
-                                <p>{props.followers}</p>
+                                <p>{props.followers ? props.followers : '0'}</p>
                                 <p>{"Segidores"}</p>
 
                             </div>
 
                             <div className='followsFB'>
 
-                                <p>{props.following}</p>
+                                <p>{props.following ? props.following : '0'}</p>
                                 <p>{"Seguindo"}</p>
 
                             </div>
