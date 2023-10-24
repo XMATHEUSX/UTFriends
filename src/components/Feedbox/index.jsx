@@ -68,11 +68,39 @@ export default function Feedbox(props) {
             bio: biografia
         }
 
-        if (!(/^[a-z]+$/.test(apelido))){
-
-            document.getElementById("errorApelido").style.display = "block";
+        const DataVal = {
+            nick: false,
+            bio: false
         }
-        else {
+
+        if (/^.+$/.test(updateData.nick)){
+
+            document.getElementById("noApelido").style.display = "none";
+
+            if(/^[a-z]+$/.test(updateData.nick)){
+                
+                document.getElementById("errorApelido").style.display = "none";
+
+                DataVal.nick = true;
+            }else{
+                document.getElementById("errorApelido").style.display = "block";
+            }
+            
+        }else {
+            document.getElementById("noApelido").style.display = "block";
+            document.getElementById("errorApelido").style.display = "none";
+        }
+
+        if(/^.+$/.test(updateData.bio)){
+            document.getElementById("noBio").style.display = "none";
+            DataVal.nick = true;
+        } else{
+            document.getElementById("noBio").style.display = "block";
+        }
+
+        const validacao = Object.values(DataVal).every(value => value === true)
+
+        if(validacao){
 
             document.getElementById("errorApelido").style.display = "none";
 
@@ -417,9 +445,10 @@ export default function Feedbox(props) {
                                 onChange={(e) => setApelido(e.target.value)}
                             />
                             
-                            <p className="errorMsgSU" id="errorApelido"> Apenas letras minúsculas </p>
-
                         </div> 
+
+                        <p className="errorMsgFeed" id="noApelido"> Apelido vazio </p>
+                        <p className="errorMsgFeed" id="errorApelido"> Apenas letras minúsculas </p>
                     </div>
 
                     <div className="changeBiographyFB">
@@ -441,6 +470,8 @@ export default function Feedbox(props) {
                             />
 
                         </div> 
+
+                        <p className="errorMsgFeed" id="noBio"> Biodrafia vazia </p>
                     </div>
 
                     <div className='bottomContentFB'>
