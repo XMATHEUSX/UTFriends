@@ -5,7 +5,7 @@ import { LuSendHorizonal } from 'react-icons/lu'
 
 import TextareaAutosize from 'react-textarea-autosize'
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 
 import Publication from '../Publication';
 import UTFriends from '/src/assets/images/UTFriends.png'
@@ -15,10 +15,16 @@ export default function Feedbox(props) {
 
     /* Declarações para a configuração 'PerfilConfig' do Feed  */
 
+    // Declaração das constantes básicas:
+
     const [imagemCapa, setImageCapa] = useState(null)
     const [imagemPerfil, setImagePerfil] = useState(null)
-    const [apelido, setApelido] = useState(props.nickname)
-    const [biografia, setBiografia] = useState(props.biografia)
+    const [apelido, setApelido] = useState('')
+    const [biografia, setBiografia] = useState('')
+
+    // Declaração das funções básicas:
+
+    // Declaração das constantes com funções:
 
     const TrocaImagemCapa = (e) => {
 
@@ -69,6 +75,7 @@ export default function Feedbox(props) {
         }
 
         const DataVal = {
+
             nick: false,
             bio: false
         }
@@ -77,30 +84,35 @@ export default function Feedbox(props) {
 
             document.getElementById("noApelido").style.display = "none";
 
-            if(/^[a-z]+$/.test(updateData.nick)){
+            if (/^[a-z0-9]+$/.test(updateData.nick)) {
                 
                 document.getElementById("errorApelido").style.display = "none";
-
                 DataVal.nick = true;
-            }else{
+
+            } else {
+
                 document.getElementById("errorApelido").style.display = "block";
             }
             
-        }else {
+        } else {
+
             document.getElementById("noApelido").style.display = "block";
             document.getElementById("errorApelido").style.display = "none";
         }
 
-        if(/^.+$/.test(updateData.bio)){
+        if (/^.+$/.test(updateData.bio)) {
+
             document.getElementById("noBio").style.display = "none";
             DataVal.nick = true;
-        } else{
+
+        } else {
+
             document.getElementById("noBio").style.display = "block";
         }
 
         const validacao = Object.values(DataVal).every(value => value === true)
 
-        if(validacao){
+        if (validacao) {
 
             document.getElementById("errorApelido").style.display = "none";
 
@@ -112,26 +124,25 @@ export default function Feedbox(props) {
       
             })
       
-              .then((response) => response.json())
-              .then((data) => {
+            .then((response) => response.json())
+            .then((data) => {
+            
+            console.log(data);
+            
+            if (data.success) {
                 
-                console.log(data);
-              
-                if (data.success) {
-                  
-                  setSucesso(true);
-                  setDisplay(true);
-      
-                } else if (!data.success) {
-                  
-                  setSucesso(false);
-                  setDisplay(true);
-                }
-      
-              })
-              .catch((error) => {console.error("Erro:", error);});
-          }
-          
+                setSucesso(true);
+                setDisplay(true);
+    
+            } else if (!data.success) {
+                
+                setSucesso(false);
+                setDisplay(true);
+            }
+    
+            })
+            .catch((error) => {console.error("Erro:", error);});
+        }  
     }
 
     const capaRef = useRef(null)
@@ -142,11 +153,17 @@ export default function Feedbox(props) {
 
     /* Declarações para a configuração 'Home' do Feed */
 
+    // Declarações das constantes basícas:
+
     const [newPublicationText, setNewPublicationText] = useState('')
     const [forFriends, setForFriends] = useState(false)
     const [postImage, setPostImage] = useState(null)
 
+    // Declarações das funções básicas:
+
     function ChangeForFriends() { setForFriends(!forFriends) }
+
+    // Declaração das constantes com funções:
 
     const sendNewPublication = () => {
 
@@ -174,8 +191,25 @@ export default function Feedbox(props) {
 
             img.onload = () => {
 
-                const newWidth = 720;
-                const newHeight = 720;
+                const maxWidth = 720;
+                const maxHeight = 720;
+
+                const originalWidth = img.width;
+                const originalHeight = img.height;
+
+                let newWidth, newHeight;
+
+                if (originalWidth > originalHeight) {
+
+                    newWidth = maxWidth;
+                    newHeight = (originalHeight / originalWidth) * maxWidth;
+
+                } else {
+
+                    newHeight = maxHeight;
+                    newWidth = (originalWidth / originalHeight) * maxHeight;
+                }
+                
 
                 const canvas = document.createElement('canvas');
                 canvas.width = newWidth;
@@ -184,7 +218,7 @@ export default function Feedbox(props) {
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(img, 0, 0, newWidth, newHeight)
                 
-                const resizedImage = canvas.toDataURL('image/jpeg');
+                const resizedImage = canvas.toDataURL('image/png');
 
                 setPostImage(resizedImage);
             }
@@ -197,7 +231,6 @@ export default function Feedbox(props) {
     const imageRef = useRef(null)
     const imageUpload = () => { imageRef.current.click() }
 
-    
     /* Configurações de exibição do Feed */
 
     if ( props.config == 'home' ) {
@@ -277,13 +310,13 @@ export default function Feedbox(props) {
                     </div>
 
                     {postImage ? 
-                        <div className='feedImageFB'>
+                        <div className='feedImageFB' style={{maxHeight: 380, maxWidth: '97%'}}>
 
                             <img 
                                 src={postImage}
                                 alt="Img" 
-                                style={{ maxWidth: '100%' }}
                                 onClick={imageUpload}
+                                style={{maxHeight: 420}}
                             />
 
                         </div> 
@@ -445,10 +478,15 @@ export default function Feedbox(props) {
                                 onChange={(e) => setApelido(e.target.value)}
                             />
                             
-                        </div> 
+                        </div>
 
-                        <p className="errorMsgFeed" id="noApelido"> Apelido vazio </p>
-                        <p className="errorMsgFeed" id="errorApelido"> Apenas letras minúsculas </p>
+                        <div className='erroFB'>
+
+                            <p className="errorMsgFeedFB" id="noApelido"> Apelido vazio </p>
+
+                            <p className="errorMsgFeedFB" id="errorApelido"> Apenas minúsculas e números </p>
+
+                        </div>
                     </div>
 
                     <div className="changeBiographyFB">
@@ -462,7 +500,7 @@ export default function Feedbox(props) {
                         <div className='contentBiographyFB'>                      
 
                             <input
-                                type='code'
+                                type='text'
                                 value={biografia}
                                 placeholder={props.bio}
                                 maxLength={256}
@@ -470,8 +508,12 @@ export default function Feedbox(props) {
                             />
 
                         </div> 
+                        
+                        <div className='erroFB'>
 
-                        <p className="errorMsgFeed" id="noBio"> Biodrafia vazia </p>
+                            <p className="errorMsgFeedFB" id="noBio"> Biodrafia vazia </p>
+
+                        </div>
                     </div>
 
                     <div className='bottomContentFB'>
