@@ -103,6 +103,49 @@ export default function Feedbox(props) {
     const imageRef = useRef(null)
     const imageUpload = () => { imageRef.current.click() }
 
+    const updateProfile = () => {
+        updateData = {
+            capa: imagemCapa,
+            imgP: imagemPerfil,
+            nick: apelido,
+            bio: biografia
+        }
+
+        if(!/^[a-z]+$/.test(updateData.nick)){
+            document.getElementById("errorApelido").style.display = "block";
+        }
+        else {
+
+            fetch("http://localhost:3000/api/v1/profile/updateProfile", {
+      
+              method: "POST",
+              headers: { "Content-Type": "application/json",},
+              body: JSON.stringify(updateData),
+      
+            })
+      
+              .then((response) => response.json())
+              .then((data) => {
+                
+                console.log(data);
+              
+                if (data.success) {
+                  
+                  setSucesso(true);
+                  setDisplay(true);
+      
+                } else if (!data.success) {
+                  
+                  setSucesso(false);
+                  setDisplay(true);
+                }
+      
+              })
+              .catch((error) => {console.error("Erro:", error);});
+          }
+
+    }
+
     /* Configurações de exibição do Feed */
 
     if ( props.config == 'home' ) {
@@ -348,6 +391,8 @@ export default function Feedbox(props) {
                                 maxLength={12}
                                 onChange={(e) => setApelido(e.target.value)}
                             />
+                            
+                            <p className="errorMsgSU" id="errorApelido"> Apenas letras minúsculas </p>
 
                         </div> 
                     </div>
@@ -374,7 +419,7 @@ export default function Feedbox(props) {
 
                     <div className='bottomContentFB'>
 
-                        <button className='saveButtonFB' onClick={props.onClickClose}> Salvar Alterações </button>
+                        <button className='saveButtonFB' onClick={updateProfile}> Salvar Alterações </button>
 
                     </div>
                 </div>

@@ -3,6 +3,14 @@ html {
     font-size: 62.5%;
 }
 
+.errorMsgSU{
+
+    height: 0;
+
+    color: red;
+    display: none;
+}
+
 .conteinerFB {
 
     width: 40%;
