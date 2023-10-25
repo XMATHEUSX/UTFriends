@@ -2,6 +2,7 @@ import { FiArrowLeft } from 'react-icons/fi'
 import { FaEdit } from 'react-icons/fa'
 import { FaImage } from 'react-icons/fa6'
 import { LuSendHorizonal } from 'react-icons/lu'
+import { BiSolidQuoteAltLeft, BiSolidQuoteAltRight } from 'react-icons/bi'
 
 import TextareaAutosize from 'react-textarea-autosize'
 
@@ -12,6 +13,23 @@ import UTFriends from '/src/assets/images/UTFriends.png'
 import './feedbox.css'
 
 export default function Feedbox(props) {
+
+    /* Declarações para a configuração 'Perfil' do Feed */
+
+    // Declaração das constantes básicas:
+
+    const [curso, setCurso] = useState(1)
+
+    const cursoOptions  = [
+
+        {value: '1', label: 'Engenharia de Computação' },
+        {value: '2', label: 'Engenharia Elétrica' },
+        {value: '3', label: 'Engenharia Cívil' },
+        {value: '4', label: 'Engenharia Mecânica' },
+        {value: '5', label: 'Engenharia Cartográfica e de Agrimensura' },
+        {value: '6', label: 'Análise e Desenvolvimento de Sistemas' },
+
+    ]
 
     /* Declarações para a configuração 'PerfilConfig' do Feed  */
 
@@ -606,15 +624,25 @@ export default function Feedbox(props) {
 
                         <div className='infoExtraFB'>
 
-                            <p>Curso: Engenharia de Computação</p>
+                            <p style={{fontWeight: 'bold'}}>Curso:</p>
                             
-                            <p>Tags: #Criador</p>
+                            <p>{cursoOptions[curso - 1].label}</p>
 
                         </div>
 
                         <div className="descricaoFB">
                             
-                            <p>{"\"" + props.bio + "\""}</p>
+                            <p> 
+                                <BiSolidQuoteAltLeft
+                                    size={15}
+                                />
+                                
+                                {' ' + props.bio + ' '}
+                                
+                                <BiSolidQuoteAltRight
+                                    size={15}
+                                />
+                            </p>
 
                         </div>
                     </div>
