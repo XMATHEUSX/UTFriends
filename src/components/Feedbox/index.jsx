@@ -10,6 +10,7 @@ import React, { useRef, useState } from "react";
 
 import Publication from "../Publication";
 import "./feedbox.css";
+import SelectClass from "../SelectClass";
 
 export default function Feedbox(props) {
   /* Declarações para a configuração 'Perfil' do Feed */
@@ -357,10 +358,13 @@ export default function Feedbox(props) {
       </div>
     );
   } else if (props.config == "perfilConfig") {
+
     return (
+
       <div className="conteinerFB">
         <div className="perfilConfigContentFB">
           <div className="headerFB">
+
             <FiArrowLeft
               onClick={props.onClickClose}
               className="closeIconFB"
@@ -368,10 +372,12 @@ export default function Feedbox(props) {
             />
 
             <p> Configurações do Perfil </p>
+
           </div>
 
           <div className="imagemCapaFB">
             <div className="imagemPerfilFB">
+
               {imagemPerfil ? (
                 ""
               ) : (
@@ -396,6 +402,7 @@ export default function Feedbox(props) {
                 onChange={TrocaImagemPerfil}
                 style={{ display: "none" }}
               />
+
             </div>
 
             {imagemCapa ? (
@@ -422,14 +429,18 @@ export default function Feedbox(props) {
               onChange={TrocaImagemCapa}
               style={{ display: "none" }}
             />
+
           </div>
 
           <div className="changeNicknameFB">
             <div className="titleNicknameFB">
+
               <p>Alterar Nickname</p>
+
             </div>
 
             <div className="contentNicknameFB">
+
               <input
                 type="code"
                 value={apelido}
@@ -437,27 +448,27 @@ export default function Feedbox(props) {
                 maxLength={12}
                 onChange={(e) => setApelido(e.target.value)}
               />
-            </div>
 
-            <div className="erroFB">
-              <p className="errorMsgFeedFB" id="noApelido">
-                {" "}
-                Apelido vazio{" "}
-              </p>
-
-              <p className="errorMsgFeedFB" id="errorApelido">
-                {" "}
-                Apenas minúsculas e números{" "}
-              </p>
             </div>
+          </div>
+
+          <div className="erroFB">
+
+            <p className="errorMsgFeedFB" id="noApelido"> Apelido vazio </p>
+
+            <p className="errorMsgFeedFB" id="errorApelido"> Apenas minúsculas e números </p>
+
           </div>
 
           <div className="changeBiographyFB">
             <div className="titleBiographyFB">
+
               <p>Alterar Biografia</p>
+
             </div>
 
             <div className="contentBiographyFB">
+
               <input
                 type="text"
                 value={biografia}
@@ -465,21 +476,22 @@ export default function Feedbox(props) {
                 maxLength={256}
                 onChange={(e) => setBiografia(e.target.value)}
               />
-            </div>
 
-            <div className="erroFB">
-              <p className="errorMsgFeedFB" id="noBio">
-                {" "}
-                Biodrafia vazia{" "}
-              </p>
             </div>
           </div>
 
+          <div className="erroFB">
+
+            <p className="errorMsgFeedFB" id="noBio"> Biodrafia vazia </p>
+
+          </div>
+
+          <SelectClass class={'selectSC-FB'}/>
+
           <div className="bottomContentFB">
-            <button className="saveButtonFB" onClick={updateProfile}>
-              {" "}
-              Salvar Alterações{" "}
-            </button>
+            
+            <button className="saveButtonFB" onClick={updateProfile}> Salvar Alterações </button>
+
           </div>
         </div>
       </div>

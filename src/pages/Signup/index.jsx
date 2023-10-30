@@ -21,7 +21,9 @@ export default function SignUp() {
   const [apelido, setApelido] = useState("");
   const [cursoID, setCursoID] = useState("")
 
-  const [curso, setCurso] = useState("")
+  const [curso, setCurso] = useState("");
+
+  const [click, setClick] = useState(true);
 
   const [sucesso, setSucesso] = useState(null);
   const [display, setDisplay] = useState(null);
@@ -221,7 +223,9 @@ export default function SignUp() {
 
     const validacao = Object.values(userVal).every(value => value === true);
 
-    if (validacao) {
+    if (validacao && click) {
+
+      setClick(false)
 
       fetch("http://localhost:3000/api/v1/profile/register", {
 
@@ -240,11 +244,13 @@ export default function SignUp() {
             
             setSucesso(true);
             setDisplay(true);
+            setClick(true);
 
           } else if (!data.success) {
             
             setSucesso(false);
             setDisplay(true);
+            setClick(true);
           }
 
         })
@@ -393,7 +399,7 @@ export default function SignUp() {
 
             <p> Selecione seu curso </p>
 
-            <SelectClass onChange={selecionarCurso} selectedValue={curso}/>
+            <SelectClass onChange={selecionarCurso} selectedValue={curso} class={'selectSC-SU'}/>
 
             <p className="errorMsgSU" id="noCurso"> Campo Obrigatório </p>
 

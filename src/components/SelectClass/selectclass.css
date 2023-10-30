@@ -1,4 +1,4 @@
-.selectSC {
+.selectSC-SU {
 
     width: 90%;
     height: 100%;
@@ -6,7 +6,21 @@
     outline: none;
 }
 
-.selectContentSC {
+.selectSC-FB {
+
+    width: 95%;
+    height: 5%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    margin-top: 5%;
+
+    outline: none;
+}
+
+.selectSC-SUContent {
 
     width: 100%;
     height: 50%;
@@ -16,7 +30,15 @@
     transition: transform 1.5s;
 }
 
-.selectContentSC:hover {
+.selectSC-FBContent {
+
+    width: 100%;
+    height: 50%;
+
+    outline: none;
+}
+
+.selectSC-SUContent:hover {
 
     transform: scale(1.025);
 }
