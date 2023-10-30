@@ -310,7 +310,7 @@ html {
 
 .buttonLinkSI {
 
-    width: 40%;
+    width: 30%;
     height: 110%;
 
     text-decoration: none;
@@ -332,14 +332,13 @@ html {
     border-width: 2px;
     
     background-color: #FFF;
-    box-shadow: rgba(0,0,0, 0.2) -5px 5px 10px;
 
     transition: transform 1s;
 }
 
 .buttonSI:hover {
 
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 /* Responsividade para diminuição da interface - Eixo x*/

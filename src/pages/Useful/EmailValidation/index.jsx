@@ -16,28 +16,61 @@ export default function Useful(props) {
         const userVal = {
           email: false,
         }
-    
-          fetch("http://localhost:3000/api/v1/profile/forgetpassword", {
-    
-          method: "POST",
-          headers: {"Content-Type": "application/json",},
-          body: JSON.stringify(userData),
-    
-        })
-          .then((response) => response.json())
-          .then((data) => {
-    
-            console.log(data);
-    
-            if (data.success) {
 
-    
-            } else if (!data.success) {
-    
+        if (userData.email != '') {
+
+            if (/^[a-zA-Z0-9._%+-]+@(alunos\.utfpr\.edu\.br|professores\.utfpr\.edu\.br|utfpr\.edu\.br)$/.test(userData.email)) {
+
+                userVal.email = true;
+                document.getElementById('noEmail').style.display = 'none'
+                document.getElementById('erroEmail').style.display = 'none'
+                document.getElementById('Email').style.display = 'none'
+                
+            } else {
+
+                document.getElementById('noEmail').style.display = 'none'
+                document.getElementById('erroEmail').style.display = 'block'
+                document.getElementById('Email').style.display = 'none'
             }
-          })
-          .catch((error) => {console.error("Erro:", error);});
-      };
+
+        } else {
+
+            document.getElementById('noEmail').style.display = 'block'
+            document.getElementById('erroEmail').style.display = 'none'
+            document.getElementById('Email').style.display = 'none'
+        }
+
+        if (userVal.email) {
+    
+            fetch("http://localhost:3000/api/v1/profile/forgetpassword", {
+        
+            method: "POST",
+            headers: {"Content-Type": "application/json",},
+            body: JSON.stringify(userData),
+    
+            })
+            .then((response) => response.json())
+            .then((data) => {
+        
+                console.log(data);
+        
+                if (data.success) {
+
+        
+                } else if (!data.success) {
+        
+                }
+            })
+            .catch((error) => {
+                
+                console.error("Erro:", error); 
+                document.getElementById('Email').style.display = 'block';
+                document.getElementById('noEmail').style.display = 'none'
+                document.getElementById('erroEmail').style.display = 'none'
+            
+            });
+        };
+    }
 
     return (
 
@@ -60,7 +93,7 @@ export default function Useful(props) {
 
                 <div className="contentBoxEV">
 
-                    <p>Informe seu email</p>
+                    <p className="textBoxEV" >Informe seu email</p>
 
                     <input
                         title="Email"
@@ -71,6 +104,12 @@ export default function Useful(props) {
                         placeholder="@alunos.utfpr.edu.br"
                         onChange={(e) => setEmail(e.target.value)}
                     />
+
+                    <p className="errorMsgEV" id="noEmail"> Campo obrigatório </p>
+
+                    <p className="errorMsgEV" id="erroEmail">  E-mail inválido </p>
+
+                    <p className="errorMsgEV" id="Email"> E-mail não registrado </p>
 
                 </div>
 

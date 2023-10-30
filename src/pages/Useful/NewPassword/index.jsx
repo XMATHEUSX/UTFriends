@@ -21,7 +21,47 @@ export default function Useful(props) {
           password: senha,
           token: code,
         };
-        alert("foi")
+
+        const userVal = {
+            password: false,
+            passwordRep: false,
+        }
+
+        if (senha != '') {
+
+            document.getElementById('noSenha').style.display = 'none'
+
+            if (senha.length >= 8) {
+
+                userVal.password = true;
+                document.getElementById('erroSenha').style.display = 'none'
+
+                if (senhaRep == senha) {
+
+                    userVal.passwordRep = true;
+                    document.getElementById('erroSenhaRep').style.display = 'none'
+
+                } else {
+
+                    document.getElementById('erroSenhaRep').style.display = 'block'
+                }
+
+            } else {
+
+                document.getElementById('erroSenha').style.display = 'block'
+            }
+
+        } else {
+
+            document.getElementById('noSenha').style.display = 'block'
+            document.getElementById('erroSenha').style.display = 'none'
+        }
+
+        const validacao = Object.values(userVal).every(value => value === true);
+
+        if(validacao) {
+
+            alert('AQUI')
           fetch("http://localhost:3000/api/v1/profile/updatepassword", {
           
           method: "POST",
@@ -42,6 +82,7 @@ export default function Useful(props) {
           })
           .catch((error) => {console.error("Erro:", error);});
       };
+    }
 
     return (
 
@@ -64,7 +105,7 @@ export default function Useful(props) {
 
                 <div className="contentBoxNP">
 
-                    <p>Informe sua nova senha</p>
+                    <p className="textBoxNP">Informe sua nova senha</p>
 
                     <input
                         title="Senha"
@@ -74,11 +115,15 @@ export default function Useful(props) {
                         onChange={(e) => setSenha(e.target.value)}
                     />
 
+                    <p className="errorMsgNP" id="noSenha"> Campo obrigatório </p>
+
+                    <p className="errorMsgNP" id="erroSenha"> Senha fraca </p>
+
                 </div>
 
                 <div className="contentBoxNP">
 
-                    <p>Repita sua nova senha</p>
+                    <p className="textBoxNP">Repita sua nova senha</p>
 
                     <input
                         title="Repetir Senha"
@@ -87,6 +132,8 @@ export default function Useful(props) {
                         value={senhaRep}
                         onChange={(e) => setSenhaRep(e.target.value)}
                     />
+
+                    <p className="errorMsgNP" id="erroSenhaRep" > Senha divergente </p>
 
                 </div>
 

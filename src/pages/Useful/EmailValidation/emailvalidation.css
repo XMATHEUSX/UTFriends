@@ -49,7 +49,7 @@ html {
     padding-top: 5%;
 }
 
-.contentBoxEV p {
+.textBoxEV {
 
     width: 75%;
 
@@ -61,6 +61,20 @@ html {
     justify-content: flex-start;
 
     margin-bottom: 1%;
+}
+
+.errorMsgEV{
+
+    height: 0;
+    width: 75%;
+
+    padding-left: 1%;
+
+    text-align: left;
+    font-size: 1.8em;
+
+    color: red;
+    display: none;
 }
 
 .contentBoxEV input {

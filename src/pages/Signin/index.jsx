@@ -146,7 +146,7 @@ export default function Signin() {
 
           <Link to={'/emailvalidation'} className="buttonLinkSI">
 
-            <button className="buttonSI">Esqueci Minha Senha</button>
+            <button className="buttonSI">Trocar Senha</button>
 
           </Link>
 
