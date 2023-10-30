@@ -520,7 +520,7 @@ export default function Feedbox(props) {
             <div className="followInfoFB">
               <div className="followsFB">
                 <p>{props.followers ? props.followers : "0"}</p>
-                <p>{"Segidores"}</p>
+                <p>{"Seguidores"}</p>
               </div>
 
               <div className="followsFB">
