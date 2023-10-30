@@ -7,6 +7,38 @@ export default function Useful(props) {
 
     const [email, setEmail] = useState('')
 
+    const forgetpassword = () => {
+
+        const userData = {
+          email: email,
+        };
+    
+        const userVal = {
+          email: false,
+        }
+    
+          fetch("http://localhost:3000/api/v1/profile/forgetpassword", {
+    
+          method: "POST",
+          headers: {"Content-Type": "application/json",},
+          body: JSON.stringify(userData),
+    
+        })
+          .then((response) => response.json())
+          .then((data) => {
+    
+            console.log(data);
+    
+            if (data.success) {
+
+    
+            } else if (!data.success) {
+    
+            }
+          })
+          .catch((error) => {console.error("Erro:", error);});
+      };
+
     return (
 
         <div className="conteinerEV">
@@ -44,7 +76,7 @@ export default function Useful(props) {
 
                 <div className="bottomBoxEV">
 
-                    <button>Enviar Confirmação</button>
+                    <button onClick={forgetpassword}>Enviar Confirmação</button>
 
                 </div>
             </div>

@@ -17,7 +17,7 @@ export default function Feedbox(props) {
     /* Declarações para a configuração 'Perfil' do Feed */
 
     // Declaração das constantes básicas:
-
+    var token = localStorage.getItem('token');
     const [curso, setCurso] = useState(1)
 
     const cursoOptions  = [
@@ -89,7 +89,8 @@ export default function Feedbox(props) {
             capa: imagemCapa,
             imgP: imagemPerfil,
             nick: apelido,
-            bio: biografia
+            bio: biografia,
+            token: token
         }
 
         const DataVal = {
@@ -98,68 +99,56 @@ export default function Feedbox(props) {
             bio: false
         }
 
-        if (/^.+$/.test(updateData.nick)){
+        document.getElementById("errorApelido").style.display = "none";
 
+
+        if (/^.+$/.test(updateData.nick)){
             document.getElementById("noApelido").style.display = "none";
 
             if (/^[a-z0-9]+$/.test(updateData.nick)) {
-                
                 document.getElementById("errorApelido").style.display = "none";
                 DataVal.nick = true;
-
+                
             } else {
-
                 document.getElementById("errorApelido").style.display = "block";
             }
             
         } else {
-
             document.getElementById("noApelido").style.display = "block";
             document.getElementById("errorApelido").style.display = "none";
         }
 
         if (/^.+$/.test(updateData.bio)) {
-
             document.getElementById("noBio").style.display = "none";
-            DataVal.nick = true;
-
+            DataVal.bio = true;
+            alert(updateData.nick)
         } else {
-
             document.getElementById("noBio").style.display = "block";
         }
 
         const validacao = Object.values(DataVal).every(value => value === true)
 
         if (validacao) {
-
-            document.getElementById("errorApelido").style.display = "none";
-
-            fetch("http://localhost:3000/api/v1/profile/updateProfile", {
+            fetch("http://localhost:3000/api/v1/profile/update", {
       
-              method: "POST",
-              headers: { "Content-Type": "application/json",},
-              body: JSON.stringify(updateData),
-      
-            })
-      
-            .then((response) => response.json())
-            .then((data) => {
-            
-            console.log(data);
-            
-            if (data.success) {
-                
-                setSucesso(true);
-                setDisplay(true);
+            method: "POST",
+            headers: { "Content-Type": "application/json",},
+            body: JSON.stringify(updateData),
     
-            } else if (!data.success) {
-                
-                setSucesso(false);
-                setDisplay(true);
-            }
-    
-            })
-            .catch((error) => {console.error("Erro:", error);});
+          })
+          .then((response) => response.json())
+          .then((data) => {
+          if (data.success) {
+              
+              //setSucesso(true);
+              //setDisplay(true);
+          } else if (!data.success) {
+              
+              //setSucesso(false);
+              //setDisplay(true);
+          }
+          })
+          .catch((error) => {console.error("Erro:", error);});
         }  
     }
 
