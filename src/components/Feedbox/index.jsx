@@ -49,7 +49,38 @@ export default function Feedbox(props) {
 
       reader.onload = (e) => {
         const imageDataUrl = e.target.result;
-        setImageCapa(imageDataUrl);
+
+        const img = new Image();
+        img.src = imageDataUrl;
+
+        img.onload = () => {
+          const maxWidth = 720;
+          const maxHeight = 720;
+
+          const  originalWidth = img.width;
+          const originalHeight = img.height;
+
+          let newWidth, newHeight;
+
+          if (originalWidth > originalHeight) {
+            newWidth = maxWidth;
+            newHeight = (originalHeight / originalWidth) * maxWidth;
+          } else {
+            newHeight = maxHeight;
+            newWidth = (originalWidth / originalHeight) * maxHeight;
+          }
+
+          const canvas = document.createElement('canvas');
+          canvas.width = newWidth;
+          canvas.height = newHeight;
+
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, maxWidth, maxHeight);
+
+          const resizedImage = canvas.toDataURL('image/png');
+
+          setImageCapa(imageDataUrl);
+        }
       };
 
       reader.readAsDataURL(file);
@@ -64,8 +95,26 @@ export default function Feedbox(props) {
 
       reader.onload = (e) => {
         const imageDataUrl = e.target.result;
-        setImagePerfil(imageDataUrl);
-      };
+
+        const img = new Image();
+        img.src = imageDataUrl;
+
+        img.onload = () => {
+          const maxWidth = 720;
+          const maxHeight = 720;
+
+          const canvas = document.createElement('canvas');
+          canvas.width = maxWidth;
+          canvas.height = maxHeight;
+
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, maxWidth, maxHeight);
+
+          const resizedImage = canvas.toDataURL('image/png');
+
+          setImagePerfil(imageDataUrl);
+        }
+      }
 
       reader.readAsDataURL(file);
     }
@@ -295,7 +344,7 @@ export default function Feedbox(props) {
                 src={postImage}
                 alt="Img"
                 onClick={imageUpload}
-                style={{ maxHeight: 420 }}
+                style={{ maxHeight: 400, maxWidth: '100%'}}
               />
             </div>
           ) : null}
