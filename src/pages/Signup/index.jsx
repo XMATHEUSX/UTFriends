@@ -3,7 +3,7 @@ import { FiArrowRight } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-import Registration from "../../components/Registration";
+import UsefulBox from "../../components/UsefulBox";
 import SelectClass from '../../components/SelectClass/index'
 import { VerifyNome, VerifyEmail, VerifyNumero , VerifySenha, VerifyNickname} from "./verify.js";
 import "./signup.css";
@@ -27,6 +27,7 @@ export default function SignUp() {
 
   const [sucesso, setSucesso] = useState(null);
   const [display, setDisplay] = useState(null);
+  const [erro, setErro] = useState(null);
 
   const navigate = useNavigate();
 
@@ -262,9 +263,37 @@ export default function SignUp() {
 
   function OpenLogin() { navigate('/signin') }
 
-  function RegisterSuccess() { return( <Registration display={display} success={sucesso} onClickClose={CloseIcon} onClickButton={OpenLogin}/> ) }
+  function RegisterSuccess() {
+    
+    return ( 
 
-  function RegisterFailure() { return( <Registration display={display} success={sucesso} onClickClose={CloseIcon} onClickButton={CloseIcon}/> ) }
+      <UsefulBox 
+        display={display}
+        name={'Registration_Successful'} 
+        title={'Congratulations'}
+        button={'Fazer Login'}
+        message={'Conta criada com sucesso, foi enviado um email para verificação desta'} 
+        onClickClose={CloseIcon} 
+        onClickButton={OpenLogin}
+      /> 
+    ) 
+  }
+
+  function RegisterFailure() {
+
+    return( 
+    
+      <UsefulBox 
+        display={display} 
+        name={'Registration_Failed'}
+        title={'ERROR'}
+        button={'Tentar Novamente'}
+        message={erro}
+        onClickClose={CloseIcon} 
+        onClickButton={CloseIcon}
+      /> 
+    ) 
+  }
 
   return (
     <div className="conteinerSU">

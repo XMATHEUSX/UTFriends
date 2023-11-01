@@ -11,6 +11,7 @@ import React, { useRef, useState } from "react";
 import Publication from "../Publication";
 import "./feedbox.css";
 import SelectClass from "../SelectClass";
+import UsefulBox from "../UsefulBox";
 
 export default function Feedbox(props) {
   /* Declarações para a configuração 'Perfil' do Feed */
@@ -37,7 +38,47 @@ export default function Feedbox(props) {
   const [apelido, setApelido] = useState("");
   const [biografia, setBiografia] = useState("");
 
+  const [sucesso, setSucesso] = useState(null);
+  const [display, setDisplay] = useState(null);
+
   // Declaração das funções básicas:
+
+  function displayOff() {
+
+    setDisplay(false);
+  }
+
+  function updateSuccess() {
+
+    return (
+
+      <UsefulBox
+        display={display}
+        name={'Update_Success'}
+        title={'Data Updated'}
+        message={'Seus dados foram atualizados com sucesso'}
+        button={'Voltar ao Perfil'}
+        onClickClose={displayOff}
+        onClickButton={props.onClickClose}
+      />
+    )
+  }
+
+  function updateFailed() {
+
+    return (
+
+      <UsefulBox
+        display={display}
+        name={'Update_Failed'}
+        title={'ERROR'}
+        message={'Houve um erro ao atualizar seus dados'}
+        button={'Tentar Novamente'}
+        onClickClose={displayOff}
+        onClickButton={props.onClickClose}
+      />
+    )
+  }
 
   // Declaração das constantes com funções:
 
@@ -54,7 +95,7 @@ export default function Feedbox(props) {
         img.src = imageDataUrl;
 
         img.onload = () => {
-          const maxWidth = 720;
+          const maxWidth = 1080;
           const maxHeight = 720;
 
           const  originalWidth = img.width;
@@ -79,7 +120,7 @@ export default function Feedbox(props) {
 
           const resizedImage = canvas.toDataURL('image/png');
 
-          setImageCapa(imageDataUrl);
+          setImageCapa(resizedImage);
         }
       };
 
@@ -112,7 +153,7 @@ export default function Feedbox(props) {
 
           const resizedImage = canvas.toDataURL('image/png');
 
-          setImagePerfil(imageDataUrl);
+          setImagePerfil(resizedImage);
         }
       }
 
@@ -134,51 +175,58 @@ export default function Feedbox(props) {
       bio: false,
     };
 
-    document.getElementById("errorApelido").style.display = "none";
-
-    if (/^.+$/.test(updateData.nick)) {
-      document.getElementById("noApelido").style.display = "none";
+    if (updateData.nick != '') {
 
       if (/^[a-z0-9]+$/.test(updateData.nick)) {
+
         document.getElementById("errorApelido").style.display = "none";
         DataVal.nick = true;
+
       } else {
+
         document.getElementById("errorApelido").style.display = "block";
       }
-    } else {
-      document.getElementById("noApelido").style.display = "block";
-      document.getElementById("errorApelido").style.display = "none";
     }
 
-    if (/^.+$/.test(updateData.bio)) {
-      document.getElementById("noBio").style.display = "none";
-      DataVal.bio = true;
-      alert(updateData.nick);
-    } else {
-      document.getElementById("noBio").style.display = "block";
+    if (updateData.bio != '') {
+
+      if (/^.{10,}$/.test(updateData.bio)) {
+
+        document.getElementById("errorBio").style.display = "none";
+        DataVal.bio = true;
+
+      } else {
+        
+        document.getElementById("errorBio").style.display = "block";
+      }
     }
 
     const validacao = Object.values(DataVal).every((value) => value === true);
 
     if (validacao) {
+
       fetch("http://localhost:3000/api/v1/profile/update", {
+
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updateData),
       })
+
         .then((response) => response.json())
         .then((data) => {
+
           if (data.success) {
-            //setSucesso(true);
-            //setDisplay(true);
+
+            setSucesso(true);
+            setDisplay(true);
+
           } else if (!data.success) {
-            //setSucesso(false);
-            //setDisplay(true);
+
+            setSucesso(false);
+            setDisplay(true);
           }
         })
-        .catch((error) => {
-          console.error("Erro:", error);
-        });
+        .catch((error) => {console.error("Erro:", error);});
     }
   };
 
@@ -411,6 +459,9 @@ export default function Feedbox(props) {
     return (
 
       <div className="conteinerFB">
+
+        {sucesso ? updateSuccess() : updateFailed() }
+
         <div className="perfilConfigContentFB">
           <div className="headerFB">
 
@@ -440,7 +491,7 @@ export default function Feedbox(props) {
                   className="imgFB"
                   src={imagemPerfil}
                   alt="Selected"
-                  style={{ maxWidth: "100%" }}
+                  style={{ maxWidth: "100%", maxHeight: '100%' }}
                   onClick={PerfilUpload}
                 />
               )}
@@ -503,8 +554,6 @@ export default function Feedbox(props) {
 
           <div className="erroFB">
 
-            <p className="errorMsgFeedFB" id="noApelido"> Apelido vazio </p>
-
             <p className="errorMsgFeedFB" id="errorApelido"> Apenas minúsculas e números </p>
 
           </div>
@@ -531,7 +580,7 @@ export default function Feedbox(props) {
 
           <div className="erroFB">
 
-            <p className="errorMsgFeedFB" id="noBio"> Biodrafia vazia </p>
+            <p className="errorMsgFeedFB" id="errorBio"> Mínimo de dez caracteres </p>
 
           </div>
 
@@ -591,7 +640,7 @@ export default function Feedbox(props) {
 
               <div className="followsFB">
                 <p>{props.pensamentos ? props.pensamentos : "0"}</p>
-                <p>{"Postagens"}</p>
+                <p>{"Pensamentos"}</p>
               </div>
             </div>
 
