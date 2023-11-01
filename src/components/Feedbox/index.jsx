@@ -18,15 +18,22 @@ export default function Feedbox(props) {
 
   // Declaração das constantes básicas:
   var token = localStorage.getItem("token");
-  const [curso, setCurso] = useState(1);
+  const [curso, setCurso] = useState(props.curso);
 
   const cursoOptions = [
-    { value: "1", label: "Engenharia de Computação" },
-    { value: "2", label: "Engenharia Elétrica" },
-    { value: "3", label: "Engenharia Cívil" },
-    { value: "4", label: "Engenharia Mecânica" },
-    { value: "5", label: "Engenharia Cartográfica e de Agrimensura" },
-    { value: "6", label: "Análise e Desenvolvimento de Sistemas" },
+
+    {value: '1', label: 'Administração' },
+    {value: '2', label: 'Agronomia' },
+    {value: '3', label: 'Ciências Contábeis' },
+    {value: '4', label: 'Engenharia Cartográfica e de Agrimensura' },
+    {value: '5', label: 'Engenharia Civil' },
+    {value: '6', label: 'Engenharia de Computação' },
+    {value: '7', label: 'Engenharia Mecânica' },
+    {value: '8', label: 'Licenciatura em Letras Português e Ingles' },
+    {value: '9', label: 'Licenciatura em Matemática' },
+    {value: '10', label: 'Química' },
+    {value: '11', label: 'Tecnologia em Análise e Desenvolvimento de Sistemas' },
+    {value: '12', label: 'Tecnologia em Manutenção Industrial' },
   ];
 
   /* Declarações para a configuração 'PerfilConfig' do Feed  */
@@ -37,6 +44,8 @@ export default function Feedbox(props) {
   const [imagemPerfil, setImagePerfil] = useState(null);
   const [apelido, setApelido] = useState("");
   const [biografia, setBiografia] = useState("");
+  const [cursoOb, setCursoOb] = useState(null);
+  const [cursoId, setCursoId] = useState(null);
 
   const [sucesso, setSucesso] = useState(null);
   const [display, setDisplay] = useState(null);
@@ -48,18 +57,47 @@ export default function Feedbox(props) {
     setDisplay(false);
   }
 
+  function displayClose() {
+
+    displayOff();
+
+    setApelido('');
+    setBiografia('');
+    setCursoId(null);
+    setCursoOb(null);
+  }
+
+  function clickClose() {
+
+    displayOff();
+    props.onClickClose();
+
+    setApelido('');
+    setBiografia('');
+    setCursoId(null);
+    setCursoOb(null);
+  }
+
+  const selecionarCurso = (options) => {
+
+    setCursoOb(options)
+    setCursoId(options.value)
+  }
+
   function updateSuccess() {
 
     return (
 
       <UsefulBox
         display={display}
+        width={'45%'}
+        height={'20%'}
         name={'Update_Success'}
         title={'Data Updated'}
         message={'Seus dados foram atualizados com sucesso'}
         button={'Voltar ao Perfil'}
         onClickClose={displayOff}
-        onClickButton={props.onClickClose}
+        onClickButton={clickClose}
       />
     )
   }
@@ -70,12 +108,14 @@ export default function Feedbox(props) {
 
       <UsefulBox
         display={display}
+        width={'45%'}
+        height={'20%'}
         name={'Update_Failed'}
         title={'ERROR'}
         message={'Houve um erro ao atualizar seus dados'}
         button={'Tentar Novamente'}
         onClickClose={displayOff}
-        onClickButton={props.onClickClose}
+        onClickButton={displayClose}
       />
     )
   }
@@ -466,7 +506,7 @@ export default function Feedbox(props) {
           <div className="headerFB">
 
             <FiArrowLeft
-              onClick={props.onClickClose}
+              onClick={clickClose}
               className="closeIconFB"
               cursor={"pointer"}
             />
@@ -584,7 +624,7 @@ export default function Feedbox(props) {
 
           </div>
 
-          <SelectClass class={'selectSC-FB'}/>
+          <SelectClass onChange={selecionarCurso} selectedValue={cursoOb} class={'selectSC-FB'}/>
 
           <div className="bottomContentFB">
             

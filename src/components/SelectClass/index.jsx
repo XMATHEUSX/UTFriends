@@ -18,7 +18,7 @@ export default function SelectClass(props) {
 
     const custonStyles1 = {
 
-        control: (provided, state) => ({
+        control: (provided, state, base) => ({
             ...provided,
             border: '2px solid ' + "#a0a0a0",
             borderRadius: '5px',
@@ -27,7 +27,7 @@ export default function SelectClass(props) {
             cursor: 'pointer',
             fontSize: '12px',
             fontFamily: 'Roboto Mono',
-            boxShadow: 'rgba(0,0,0,0.2) -5px 5px 10px'
+            boxShadow: 'rgba(0,0,0,0.2) -5px 5px 10px',
         }),
     }
 
@@ -36,6 +36,9 @@ export default function SelectClass(props) {
         control: (provided, state) => ({
             ...provided,
             border: '2px solid ' + "#000",
+            outline: '#000',
+            maxHeight: '100px',
+            overflowY: 'auto',
             borderRadius: '0px 10px',
             outline: 'none',
             backgroundColor: '#FFF',
@@ -48,12 +51,18 @@ export default function SelectClass(props) {
 
     const options = [
 
-        {value: '1', label: 'Engenharia de Computação' },
-        {value: '2', label: 'Engenharia Elétrica' },
-        {value: '3', label: 'Engenharia Cívil' },
-        {value: '4', label: 'Engenharia Mecânica' },
-        {value: '5', label: 'Engenharia Cartográfica e de Agrimensura' },
-        {value: '6', label: 'Análise e Desenvolvimento de Sistemas' },
+        {value: '1', label: 'Administração' },
+        {value: '2', label: 'Agronomia' },
+        {value: '3', label: 'Ciências Contábeis' },
+        {value: '4', label: 'Engenharia Cartográfica e de Agrimensura' },
+        {value: '5', label: 'Engenharia Civil' },
+        {value: '6', label: 'Engenharia de Computação' },
+        {value: '7', label: 'Engenharia Mecânica' },
+        {value: '8', label: 'Licenciatura em Letras Português e Ingles' },
+        {value: '9', label: 'Licenciatura em Matemática' },
+        {value: '10', label: 'Química' },
+        {value: '11', label: 'Tecnologia em Análise e Desenvolvimento de Sistemas' },
+        {value: '12', label: 'Tecnologia em Manutenção Industrial' },
     ]
 
     return(

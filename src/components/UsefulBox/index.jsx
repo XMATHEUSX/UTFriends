@@ -6,7 +6,7 @@ export default function UsefulBox(props) {
 
     return props.display ? (
 
-        <div className="conteinerUB" style={{zIndex: 5}}>
+        <div className="conteinerUB" style={{width: props.width, height: props.height}}>
 
             <div className="topContentUB">
 
@@ -26,7 +26,7 @@ export default function UsefulBox(props) {
 
                 <h1> {props.title} </h1>
 
-                <p> {props.anymessage ? props.message : ''} </p>
+                <p> {props.message} </p>
 
                 <button onClick={props.onClickButton}> {props.button} </button>
 

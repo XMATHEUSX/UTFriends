@@ -26,29 +26,6 @@ html {
     box-shadow: rgba(0,0,0,0.2) 0px 0px 10px 10px;
 }
 
-.conteinerFB h1 {
-
-    width: 20%;
-    height: 10%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-}
-
-.conteinerFB button {
-
-    width: 20%;
-    height: 5%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
 /* Configuração de Design de Perfil Config */
 
 .perfilConfigContentFB {

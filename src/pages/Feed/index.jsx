@@ -18,6 +18,8 @@ export default function Feed() {
   const [followers, setFollowers] = useState("");
   const [following, setFollowing] = useState("");
   const [pensamentos, setPensamentos] = useState("");
+  const [curso, setCurso] = useState(1);
+
   const [feedConfig, setFeedConfig] = useState("home");
   var token = localStorage.getItem("token");
 
@@ -48,6 +50,7 @@ export default function Feed() {
         setFollowers(data.dados.seguidores);
         setFollowing(data.dados.seguindo);
         setPensamentos(data.dados.pensamentos);
+        setCurso(data.dados.user_id);
       } else if (!data.success) {
         exit();
       }
@@ -108,6 +111,7 @@ export default function Feed() {
         bio={bio}
         onClickClose={clickPerfil}
         onClickPerfilConfig={ClickPerfilConfig}
+        curso={curso}
       />
 
       <Communitybar />
