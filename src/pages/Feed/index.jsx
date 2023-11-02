@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineMenuUnfold, AiOutlineMenuFold } from 'react-icons/ai'
+import { RiLogoutBoxLine } from 'react-icons/ri'
 import Communitybar from "../../components/Communitybar";
 import Feedbox from "../../components/Feedbox";
 import Perfilbar from "../../components/Perfilbar";
@@ -21,6 +23,7 @@ export default function Feed() {
   const [curso, setCurso] = useState(1);
 
   const [feedConfig, setFeedConfig] = useState("home");
+  const [menu, setMenu] = useState(false);
   var token = localStorage.getItem("token");
 
   const [busca, setBusca] = useState("");
@@ -76,9 +79,35 @@ export default function Feed() {
     setFeedConfig("perfilConfig");
   }
 
+  function ClickMenu() {
+    setMenu(!menu);
+  }
+
+  function Exit() {
+    exit()
+  }
+
   return (
     <div className="conteinerF">
       <div className="topContentF">
+        <div className={`${menu ? 'firstBarF-Expanded' : 'firstBarF'}`}>
+          
+          { menu ? 
+            <AiOutlineMenuFold
+              onClick={ClickMenu}
+              cursor={"pointer"}
+              size={35}
+            />
+          :
+            <AiOutlineMenuUnfold
+              onClick={ClickMenu}
+              cursor={"pointer"}
+              size={35}
+            />
+          }
+
+        </div>  
+
         <div className="centerBarF">
           <div className="searchBoxF">
             <input
@@ -93,6 +122,15 @@ export default function Feed() {
             <IoSearch size={26} cursor={"pointer"} color={"white"} />
           </div>
         </div>
+
+        <div className="lastBarF">
+
+          <RiLogoutBoxLine
+            size={35}
+            cursor={'pointer'}
+            onClick={Exit}
+          />
+        </div>
       </div>
 
       <Perfilbar
@@ -100,6 +138,7 @@ export default function Feed() {
         onClickPerfil={clickPerfil}
         onClickConfig={clickConfig}
         onClickCommunity={clickCommunity}
+        menu={menu}
       />
 
       <Feedbox

@@ -8,62 +8,13 @@ import  "./perfilbar.css"
 
 export default function Perfilbar(props) {
 
-    /*function perfilExpanded(valor) {
-
-        return(  
-        
-            <div className="perfilContentPB">
-
-                <div className="topContentPB">
-
-                    <div className="perfilImagePB">
-
-                        {props.img}
-
-                    </div>
-
-                    <p className="nicknamePB"> {"@" + props.nickname} </p>
-
-                    <div className="followsPB">
-
-                        <p> {"Segidores: " + props.followers} </p>
-
-                        <p> {"Seguindo: " + props.following} </p>
-
-                    </div>
-
-                </div>
-
-                <div className="midleContentPB">
-
-                    <p>{props.bio}</p>
-
-                </div>
-                
-                <div className="bottomContentPB">
-
-                    <button onClick={props.onClickPerfilConfig}> Configurar Perfil </button>
-
-                </div>
-            </div>
-        )
-
-    }*/
-
-    const [menu, setMenu] = useState(false)
-
-    function ClickMenu() {
-
-        setMenu(!menu)
-    }
-
     return(
 
-        <div className={`${menu ? 'expandedPB' : 'conteinerPB'}`}>
+        <div className={`${props.menu ? 'expandedPB' : 'conteinerPB'}`}>
 
             <div className="iconContentPB">
 
-                <div className={`${menu ? 'iconExpandedPB' : 'contentPB'}`}>
+                <div className={`${props.menu ? 'iconExpandedPB' : 'contentPB'}`}>
 
                     <AiFillHome 
                         onClick={props.onClickHome}
@@ -71,11 +22,11 @@ export default function Perfilbar(props) {
                         size={35}
                     />
 
-                    {menu ? <p onClick={props.onClickHome}>Feed</p> : ""}
+                    {props.menu ? <p onClick={props.onClickHome}>Feed</p> : ""}
 
                 </div>
 
-                <div className={`${menu ? 'iconExpandedPB' : 'contentPB'}`}>
+                <div className={`${props.menu ? 'iconExpandedPB' : 'contentPB'}`}>
 
                     <BsPersonCircle
                         onClick={props.onClickPerfil}
@@ -83,11 +34,11 @@ export default function Perfilbar(props) {
                         size={35}
                     />
 
-                    {menu ? <p onClick={props.onClickPerfil}>Perfil</p> : ""}
+                    {props.menu ? <p onClick={props.onClickPerfil}>Perfil</p> : ""}
 
                 </div>
 
-                <div className={`${menu ? 'iconExpandedPB' : 'contentPB'}`}>
+                <div className={`${props.menu ? 'iconExpandedPB' : 'contentPB'}`}>
 
                     <HiUserGroup
                         onClick={props.onClickCommunity}
@@ -95,11 +46,11 @@ export default function Perfilbar(props) {
                         size={35}
                     />
 
-                    {menu ? <p onClick={props.onClickCommunity}>Comunidades</p> : ""}
+                    {props.menu ? <p onClick={props.onClickCommunity}>Comunidades</p> : ""}
 
                 </div>
 
-                <div className={`${menu ? 'iconExpandedPB' : 'contentPB'}`}>
+                <div className={`${props.menu ? 'iconExpandedPB' : 'contentPB'}`}>
 
                     <FaGear
                         onClick={props.onClickConfig}
@@ -107,25 +58,9 @@ export default function Perfilbar(props) {
                         size={35}
                     />
 
-                    {menu ? <p onClick={props.onClickConfig}>Configurações</p> : ""}
+                    {props.menu ? <p onClick={props.onClickConfig}>Configurações</p> : ""}
 
                 </div>
-            </div>
-
-            <div className="contentPB">
-
-                {menu ? <AiOutlineMenuFold
-                            onClick={ClickMenu}
-                            cursor={"pointer"}
-                            size={35}
-                        />
-
-                      : <AiOutlineMenuUnfold
-                            onClick={ClickMenu}
-                            cursor={"pointer"}
-                            size={35}
-                        />}
-
             </div>
         </div>
     )
