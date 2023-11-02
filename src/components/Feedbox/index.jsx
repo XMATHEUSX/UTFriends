@@ -355,55 +355,39 @@ export default function Feedbox(props) {
     imageRef.current.click();
   };
 
+  const Publications = [
+
+    {type: 1, user: 'Kaszuba', friend: true, liked: false, like: 0, text: 'teste0'},
+    {type: 1, user: 'Kaszuba', friend: false, liked: false, like: 111, text: 'teste1'},
+    {type: 1, user: 'Kaszuba', friend: true, liked: false, like: 222, text: 'teste2'},
+    {type: 1, user: 'Kaszuba', friend: false, liked: false, like: 333, text: 'teste3'},
+    {type: 1, user: 'Kaszuba', friend: true, liked: false, like: 444, text: 'teste4'},
+    {type: 1, user: 'Kaszuba', friend: false, liked: false, like: 555, text: 'teste5'},
+    {type: 1, user: 'Kaszuba', friend: true, liked: false, like: 666, text: 'teste6'},
+    {type: 1, user: 'Kaszuba', friend: false, liked: false, like: 777, text: 'teste7'},
+    {type: 1, user: 'Kaszuba', friend: true, liked: false, like: 888, text: 'teste8'},
+    {type: 1, user: 'Kaszuba', friend: false, liked: false, like: 999, text: 'teste9'},
+
+  ]
+
   /* Configurações de exibição do Feed */
 
   if (props.config == "home") {
     return (
       <div className="conteinerFB" style={{ justifyContent: "space-between" }}>
         <div className="feedConteinerFB">
-          <Publication
-            type={1}
-            user={"Kaszuba"}
-            liked={false}
-            like={999999}
-            text={
-              "Esse é um texte para verificar a disposição dos textos em uma publicação do tipo 1 (apenas texto)"
-            }
-          />
+          {Object.keys(Publications).map((index) => (
 
-          <Publication type={2} user={"Kaszuba"} liked={false} like={999999} />
-
-          <Publication
-            type={3}
-            user={"Kaszuba"}
-            liked={false}
-            like={999999}
-            text={
-              "Esse é um texte para verificar a disposição dos textos em uma publicação do tipo 3 (texto e imagem)"
-            }
-          />
-
-          <Publication
-            type={1}
-            user={"Kaszuba"}
-            liked={false}
-            like={999999}
-            text={
-              "Esse é um texte para verificar a disposição dos textos em uma publicação do tipo 1 (apenas texto)"
-            }
-          />
-
-          <Publication type={2} user={"Kaszuba"} liked={false} like={999999} />
-
-          <Publication
-            type={3}
-            user={"Kaszuba"}
-            liked={false}
-            like={999999}
-            text={
-              "Esse é um texte para verificar a disposição dos textos em uma publicação do tipo 3 (texto e imagem)"
-            }
-          />
+            <Publication 
+              key={index}
+              type={Publications[index].type}
+              user={Publications[index].user}
+              friend={Publications[index].friend}
+              liked={Publications[index].liked}
+              like={Publications[index].like}
+              text={Publications[index].text}
+            />
+          ))}
         </div>
 
         <div className="feedBottomFB">
@@ -607,8 +591,10 @@ export default function Feedbox(props) {
 
             <div className="contentBiographyFB">
 
-              <input
-                type="text"
+              <TextareaAutosize
+                className="newPublicationTextFB"
+                minRows={1}
+                maxRows={5}
                 value={biografia}
                 placeholder={props.bio}
                 maxLength={256}

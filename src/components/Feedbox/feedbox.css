@@ -224,6 +224,7 @@ html {
 
     font-size: 1.4em;
     text-align: center;
+    font-family: 'Roboto Mono';
 }
 
 .changeBiographyFB {
@@ -288,7 +289,7 @@ html {
     font-size: 1.4em;
 }
 
-.contentBiographyFB input {
+.contentBiographyFB textarea {
 
     width: 90%;
     height: 80%;
@@ -297,11 +298,14 @@ html {
     align-items: center;
     justify-content: center;
 
+    resize: none;
+
     border:none;
     outline: none;
 
-    font-size: 1.4em;
+    font-size: 14px;
     text-align: center;
+    
 }
 
 .erroFB {

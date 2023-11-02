@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
+import { AiFillHeart, AiOutlineHeart} from 'react-icons/ai'
+import { GiDuckPalm } from 'react-icons/gi'
 import UTFriends from '/src/assets/images/UTFriends.png'
 import './publication.css'
 
@@ -23,6 +24,16 @@ export default function Publication(props) {
                     <div className="userInfoP">
 
                         <p>{"@" + props.user}</p>
+
+                        {props.friend ? 
+                        
+                            <GiDuckPalm
+                                size={20}
+                                className="starIconP"
+                            />
+                        :
+                            (null)
+                        }
 
                     </div>
 

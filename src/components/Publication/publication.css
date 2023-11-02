@@ -56,16 +56,25 @@ html {
     font-size: 2em;
     font-weight: bold;
     font-family: 'Roboto Mono';
+
+    margin-right: 5%;
 }
 
-.publicationInfoP {
-
-    width: 20%;
-    height: fit-content;
+.starIconP {
 
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.publicationInfoP {
+
+    width: 10%;
+    height: fit-content;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     flex-direction: row;
 }
 
