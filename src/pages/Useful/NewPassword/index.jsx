@@ -1,16 +1,25 @@
 import React, { useState } from "react";
 import { AiFillCloseSquare } from "react-icons/ai";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
+import UsefulBox from "../../../components/UsefulBox";
 import './newpassword.css'
 
 export default function Useful(props) {
 
     const [senha, setSenha] = useState('')
     const [senhaRep, setSenhaRep] = useState('')
-    // Obtener la URL actual del navegador
+
+    const [display, setDisplay] = useState(false);
+
+    const navigate = useNavigate();
+
+    // Obter a URL atual do navegador
+
         var urlActual = window.location.href;
 
-    // Crear un objeto URL
+    // Criar um objeto de URL
+
     var url = new URL(urlActual);
 
     var code = url.searchParams.get("code");
@@ -61,32 +70,57 @@ export default function Useful(props) {
 
         if(validacao) {
 
-            alert('AQUI')
-          fetch("http://localhost:3000/api/v1/profile/updatepassword", {
+            fetch("http://localhost:3000/api/v1/profile/updatepassword", {
           
-          method: "POST",
-          headers: {"Content-Type": "application/json",},
-          body: JSON.stringify(userData),
+            method: "POST",
+            headers: {"Content-Type": "application/json",},
+            body: JSON.stringify(userData),
     
         })
-          .then((response) => response.json())
-          .then((data) => {
-    
-            console.log(data);
-    
-            if (data.success) {
+            .then((response) => response.json())
+            .then((data) => {
+        
+                console.log(data);
+        
+                if (data.success) {
 
-            } else if (!data.success) {
-    
-            }
-          })
-          .catch((error) => {console.error("Erro:", error);});
+                    setDisplay(true);
+
+                } else if (!data.success) {
+        
+                }
+            })
+            .catch((error) => {console.error("Erro:", error);});
       };
+    }
+
+    function CloseIcon() { setDisplay(false); }
+
+    function OpenLogin() { navigate('/signin') }
+  
+    function Success() {
+      
+      return ( 
+  
+        <UsefulBox 
+          display={display}
+          name={'Password_Changed'} 
+          title={'Congratulations'}
+          button={'Fazer Login'}
+          message={'Sua senha foi alterada com sucesso, realize o login para acessar sua conta'}
+          width={'25%'}
+          height={'20%'} 
+          onClickClose={CloseIcon} 
+          onClickButton={OpenLogin}
+        /> 
+      ) 
     }
 
     return (
 
         <div className="conteinerNP">
+
+            {Success()}
 
             <div className="boxNP">
 

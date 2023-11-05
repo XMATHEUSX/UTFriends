@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { AiFillCloseSquare } from "react-icons/ai";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
+import UsefulBox from "../../../components/UsefulBox";
 import './emailvalidation.css'
 
 export default function Useful(props) {
 
     const [email, setEmail] = useState('')
+    const [display, setDisplay] = useState(false)
+
+    const navigate = useNavigate();
 
     const forgetpassword = () => {
 
@@ -56,25 +61,52 @@ export default function Useful(props) {
         
                 if (data.success) {
 
+                    setDisplay(true);
+
+                    document.getElementById('noEmail').style.display = 'none'
+                    document.getElementById('erroEmail').style.display = 'none'
+                    document.getElementById('Email').style.display = 'none'
+
         
                 } else if (!data.success) {
+
+                    document.getElementById('Email').style.display = 'block';
+                    document.getElementById('noEmail').style.display = 'none'
+                    document.getElementById('erroEmail').style.display = 'none'
         
                 }
             })
-            .catch((error) => {
-                
-                console.error("Erro:", error); 
-                document.getElementById('Email').style.display = 'block';
-                document.getElementById('noEmail').style.display = 'none'
-                document.getElementById('erroEmail').style.display = 'none'
-            
-            });
+            .catch((error) => {console.error("Erro:", error); });
         };
+    }
+
+    function CloseIcon() { setDisplay(false); }
+
+    function OpenLogin() { navigate('/signin') }
+  
+    function Success() {
+        
+        return ( 
+    
+            <UsefulBox 
+            display={display}
+            name={'Email_Sent'} 
+            title={'Congratulations'}
+            button={'Fazer Login'}
+            message={'Um link de verificação foi enviado para seu email'}
+            width={'25%'}
+            height={'20%'} 
+            onClickClose={CloseIcon} 
+            onClickButton={OpenLogin}
+            /> 
+        ) 
     }
 
     return (
 
         <div className="conteinerEV">
+
+            {Success()}
 
             <div className="boxEV">
 

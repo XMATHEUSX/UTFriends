@@ -3,12 +3,17 @@ import { FiArrowRight } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+import UsefulBox from "../../components/UsefulBox";
+
 import "./signin.css";
 
 export default function Signin() {
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+
+  const [displayNV, setDisplayNV] = useState(false);
+  const [displayNR, setDisplayNR] = useState(false);
 
   const navigate = useNavigate();
 
@@ -86,12 +91,15 @@ export default function Signin() {
 
         } else if (!data.success) {
 
-          document.getElementById("incorrectPasswordSI").style.display = "block";
+          alert(data.message);
+
+          if (data.message == 'Credenciais inválidas.') { setDisplayNR(true) }
+          else if (data.message == 'Email não verificado.') { setDisplayNV(true) }
 
           document.getElementById("Email").value = "";
           document.getElementById("Senha").value = "";
           setSenha("");
-          setEmail("")
+          setEmail("");
         }
       })
       .catch((error) => {console.error("Erro:", error);});
@@ -100,10 +108,55 @@ export default function Signin() {
 
   const enterCapture = (e) => { if (e.key === 'Enter') { handleLogin() } }
 
+  function CloseIcon() { setDisplayNV(false); setDisplayNR(false) }
+
+  function OpenCreateAccount() { navigate('/signup') }
+
+  function NotValidated() {
+    
+    return ( 
+
+      <UsefulBox 
+        display={displayNV}
+        name={'Validation_Failed'} 
+        title={'ERROR'}
+        button={'Tentar Novamente'}
+        message={'Seu email não está verificado, um novo link de verificação foi encaminhado para seu e-mail'}
+        width={'25%'}
+        height={'20%'} 
+        onClickClose={CloseIcon} 
+        onClickButton={CloseIcon}
+      /> 
+    ) 
+  }
+
+  function NotRegistered() {
+
+    return( 
+    
+      <UsefulBox 
+        display={displayNR} 
+        name={'Login_Failed'}
+        title={'ERROR'}
+        button={'Criar Conta'}
+        message={'Conta UTFriends inexiste, crie sua conta para continuar com o login'}
+        width={'25%'}
+        height={'20%'} 
+        onClickClose={CloseIcon} 
+        onClickButton={OpenCreateAccount}
+      /> 
+    ) 
+  }
+
   /* Exibição da tela de SignIn */
 
   return (
     <div className="conteinerSI">
+
+      {NotRegistered()}
+
+      {NotValidated()}
+
       <div className="signinBoxSI">
         <div className="signinContentSI">
           <div className="contentSI">
