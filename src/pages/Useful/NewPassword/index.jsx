@@ -27,7 +27,7 @@ export default function Useful(props) {
     const updatepassword = () => {
        
         const userData = {
-          password: senha,
+          password: senha, 
           token: code,
         };
 
@@ -69,7 +69,6 @@ export default function Useful(props) {
         const validacao = Object.values(userVal).every(value => value === true);
 
         if(validacao) {
-
             fetch("http://localhost:3000/api/v1/profile/updatepassword", {
           
             method: "POST",

@@ -96,13 +96,13 @@ export default function Signin() {
           if (data.message == 'Credenciais inválidas.') { setDisplayNR(true) }
           else if (data.message == 'Email não verificado.') { setDisplayNV(true) }
 
-          document.getElementById("Email").value = "";
-          document.getElementById("Senha").value = "";
-          setSenha("");
-          setEmail("");
+          //document.getElementById("Email").value = "";
+          //document.getElementById("Senha").value = "";
+          //setSenha("");
+          //setEmail("");
         }
       })
-      .catch((error) => {console.error("Erro:", error);});
+      .catch((error) => {console.error("Erro:", error);})
     }
   };
 
@@ -164,6 +164,7 @@ export default function Signin() {
 
             <div className="emailBoxSI">
               <input
+                id="Emails"
                 title="E-mail"
                 name="E-mail"
                 type="email"
@@ -181,6 +182,7 @@ export default function Signin() {
 
             <div className="passwordBoxSI">
               <input
+                id="Senha"
                 title="Senha"
                 name="Senha"
                 type="password"

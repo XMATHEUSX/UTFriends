@@ -7,8 +7,9 @@ import Communitybar from "../../components/Communitybar";
 import Feedbox from "../../components/Feedbox";
 import Perfilbar from "../../components/Perfilbar";
 import "./feed.css";
-
+var Executada = false;
 export default function Feed() {
+  
   const navigate = useNavigate();
 
   function exit() {
@@ -36,12 +37,14 @@ export default function Feed() {
 
   const userData = {
     token: token,
-  };
-
+  }; 
+//Esta fazendo duas requisiçoes ainda
+if (!Executada){
   fetch("http://localhost:3000/api/v1/profile/user", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(userData),
+    
   })
     .then((response) => response.json())
     .then((data) => {
@@ -54,11 +57,12 @@ export default function Feed() {
         setFollowing(data.dados.seguindo);
         setPensamentos(data.dados.pensamentos);
         setCurso(data.dados.user_id);
+        Executada = true
       } else if (!data.success) {
         exit();
       }
     });
-
+  }
   function clickClose() {
     setFeedConfig("home");
   }
