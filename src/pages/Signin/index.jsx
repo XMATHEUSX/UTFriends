@@ -186,6 +186,7 @@ export default function Signin() {
                 title="Senha"
                 name="Senha"
                 type="password"
+                maxLength={15}
                 onChange={(e) => setSenha(e.target.value)}
                 onKeyDown={enterCapture}
               />

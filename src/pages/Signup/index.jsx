@@ -398,6 +398,7 @@ export default function SignUp() {
                 title="Senha"
                 name="Senha"
                 type="password"
+                maxLength={15}
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
               />
@@ -416,6 +417,7 @@ export default function SignUp() {
                 title="RepetirSenha"
                 name="RepetirSenha"
                 type="password"
+                maxLength={15}
                 value={repsenha}
                 onChange={(e) => setRepsenha(e.target.value)}
               />
