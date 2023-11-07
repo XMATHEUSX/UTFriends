@@ -21,7 +21,7 @@ export default function Feed() {
   const [followers, setFollowers] = useState("");
   const [following, setFollowing] = useState("");
   const [pensamentos, setPensamentos] = useState("");
-  const [curso, setCurso] = useState(1);
+  const [curso, setCurso] = useState("");
 
   const [feedConfig, setFeedConfig] = useState("home");
   const [menu, setMenu] = useState(false);
@@ -56,7 +56,7 @@ if (!Executada){
         setFollowers(data.dados.seguidores);
         setFollowing(data.dados.seguindo);
         setPensamentos(data.dados.pensamentos);
-        setCurso(data.dados.user_id);
+        setCurso(data.dados.nm_curso);
         Executada = true
       } else if (!data.success) {
         exit();
@@ -81,6 +81,10 @@ if (!Executada){
 
   function ClickPerfilConfig() {
     setFeedConfig("perfilConfig");
+  }
+
+  function ClickSearch() {
+    setFeedConfig("search")
   }
 
   function ClickMenu() {
@@ -123,7 +127,7 @@ if (!Executada){
           </div>
 
           <div className="searchIconF">
-            <IoSearch size={26} cursor={"pointer"} color={"white"} />
+            <IoSearch size={26} cursor={"pointer"} color={"white"} onClick={ClickSearch}/>
           </div>
         </div>
 
@@ -152,9 +156,9 @@ if (!Executada){
         following={following}
         pensamentos={pensamentos}
         bio={bio}
+        curso={curso}
         onClickClose={clickPerfil}
         onClickPerfilConfig={ClickPerfilConfig}
-        curso={curso}
       />
 
       <Communitybar />

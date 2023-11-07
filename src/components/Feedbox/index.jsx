@@ -18,23 +18,6 @@ export default function Feedbox(props) {
 
   // Declaração das constantes básicas:
   var token = localStorage.getItem("token");
-  const [curso, setCurso] = useState(props.curso);
-
-  const cursoOptions = [
-
-    {value: '1', label: 'Administração' },
-    {value: '2', label: 'Agronomia' },
-    {value: '3', label: 'Ciências Contábeis' },
-    {value: '4', label: 'Engenharia Cartográfica e de Agrimensura' },
-    {value: '5', label: 'Engenharia Civil' },
-    {value: '6', label: 'Engenharia de Computação' },
-    {value: '7', label: 'Engenharia Mecânica' },
-    {value: '8', label: 'Licenciatura em Letras Português e Ingles' },
-    {value: '9', label: 'Licenciatura em Matemática' },
-    {value: '10', label: 'Química' },
-    {value: '11', label: 'Tecnologia em Análise e Desenvolvimento de Sistemas' },
-    {value: '12', label: 'Tecnologia em Manutenção Industrial' },
-  ];
 
   /* Declarações para a configuração 'PerfilConfig' do Feed  */
 
@@ -683,7 +666,7 @@ export default function Feedbox(props) {
             <div className="infoExtraFB">
               <p style={{ fontWeight: "bold" }}>Curso:</p>
 
-              <p>{cursoOptions[curso - 1].label}</p>
+              <p>{props.curso}</p>
             </div>
 
             <div className="descricaoFB">
