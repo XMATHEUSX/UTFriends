@@ -12,6 +12,7 @@ import Publication from "../Publication";
 import "./feedbox.css";
 import SelectClass from "../SelectClass";
 import UsefulBox from "../UsefulBox";
+import Search from "../Search";
 
 export default function Feedbox(props) {
   /* Declarações para a configuração 'Perfil' do Feed */
@@ -353,6 +354,20 @@ export default function Feedbox(props) {
 
   ]
 
+  /* Declarações para a configuração 'Search' do Feed */
+
+  // Declaração das constantes com funções:
+
+  const Perfils = [
+
+    {bio:"Teste0", nickname: "kaszuba", follow: false},
+    {bio:"Teste1", nickname: "kaszuba", follow: true},
+    {bio:"Teste2", nickname: "kaszuba", follow: false},
+    {bio:"Teste3", nickname: "kaszuba", follow: true},
+    {bio:"Teste4", nickname: "kaszuba", follow: false},
+    {bio:"Teste5", nickname: "kaszuba", follow: true},
+  ]
+
   /* Configurações de exibição do Feed */
 
   if (props.config == "home") {
@@ -686,5 +701,21 @@ export default function Feedbox(props) {
         </div>
       </div>
     );
+  } else if (props.config == "search") {
+    return (
+      <div className="conteinerFB" style={{ justifyContent: "space-between" }}>
+        <div className="feedConteinerFB">
+        {Object.keys(Perfils).map((index) => (
+
+          <Search 
+            key={index}
+            bio={Perfils[index].bio}
+            nickname={Perfils[index].nickname}
+            follow={Perfils[index].follow}
+          />
+        ))}
+        </div>
+      </div>
+    )
   }
 }
