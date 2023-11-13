@@ -366,6 +366,10 @@ export default function Feedbox(props) {
     {bio:"Teste3", nickname: "kaszuba", follow: true},
     {bio:"Teste4", nickname: "kaszuba", follow: false},
     {bio:"Teste5", nickname: "kaszuba", follow: true},
+    {bio:"Teste6", nickname: "kaszuba", follow: false},
+    {bio:"Teste7", nickname: "kaszuba", follow: true},
+    {bio:"Teste8", nickname: "kaszuba", follow: false},
+    {bio:"Teste9", nickname: "kaszuba", follow: true},
   ]
 
   /* Configurações de exibição do Feed */

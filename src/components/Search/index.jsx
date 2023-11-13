@@ -21,7 +21,7 @@ export default function Search(props) {
 
                     <p> {"@" + props.nickname} </p>
 
-                    <button onClick={ClickFollow}> {follow ? "Seguindo" : "Seguir"} </button>
+                    <button className={`${follow ? 'followingSP' : 'notFollowingSP'}`} onClick={ClickFollow}> {follow ? "Seguindo" : "Seguir"} </button>
 
                 </div>
 
