@@ -11,11 +11,8 @@ import React, { useRef, useState } from "react";
 import Publication from "../Publication";
 import SelectClass from "../SelectClass";
 import UsefulBox from "../UsefulBox";
-<<<<<<< HEAD
-import "./feedbox.css";
-=======
 import Search from "../Search";
->>>>>>> 56ddb5653c563a4f0eaa139d1bdf7b60336dfdb6
+import "./feedbox.css";
 
 export default function Feedbox(props) {
   /* Declarações para a configuração 'Perfil' do Feed */
@@ -409,21 +406,6 @@ export default function Feedbox(props) {
                 style={{ display: "none" }}
               />
             </div>
-
-            {forFriends ? (
-              <button
-                onClick={ChangeForFriends}
-                style={{
-                  backgroundColor: "#000",
-                  color: "#FFF",
-                  borderColor: "#000",
-                }}
-              >
-                For Friends
-              </button>
-            ) : (
-              <button onClick={ChangeForFriends}>For Friends</button>
-            )}
 
             <LuSendHorizonal
               className="sendIconFB"
