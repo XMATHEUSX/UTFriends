@@ -11,7 +11,11 @@ import React, { useRef, useState } from "react";
 import Publication from "../Publication";
 import SelectClass from "../SelectClass";
 import UsefulBox from "../UsefulBox";
+<<<<<<< HEAD
 import "./feedbox.css";
+=======
+import Search from "../Search";
+>>>>>>> 56ddb5653c563a4f0eaa139d1bdf7b60336dfdb6
 
 export default function Feedbox(props) {
   /* Declarações para a configuração 'Perfil' do Feed */
@@ -322,6 +326,24 @@ export default function Feedbox(props) {
   for (let i = 0; i < feedSize; i++) {
     Publications.push(props.feed[i]);
   }
+
+  /* Declarações para a configuração 'Search' do Feed */
+
+  // Declaração das constantes com funções:
+
+  const Perfils = [
+
+    {bio:"Teste0", nickname: "kaszuba", follow: false},
+    {bio:"Teste1", nickname: "kaszuba", follow: true},
+    {bio:"Teste2", nickname: "kaszuba", follow: false},
+    {bio:"Teste3", nickname: "kaszuba", follow: true},
+    {bio:"Teste4", nickname: "kaszuba", follow: false},
+    {bio:"Teste5", nickname: "kaszuba", follow: true},
+    {bio:"Teste6", nickname: "kaszuba", follow: false},
+    {bio:"Teste7", nickname: "kaszuba", follow: true},
+    {bio:"Teste8", nickname: "kaszuba", follow: false},
+    {bio:"Teste9", nickname: "kaszuba", follow: true},
+  ]
 
   /* Configurações de exibição do Feed */
   if (props.config == "home") {
@@ -644,5 +666,21 @@ export default function Feedbox(props) {
         </div>
       </div>
     );
+  } else if (props.config == "search") {
+    return (
+      <div className="conteinerFB" style={{ justifyContent: "space-between" }}>
+        <div className="feedConteinerFB">
+        {Object.keys(Perfils).map((index) => (
+
+          <Search 
+            key={index}
+            bio={Perfils[index].bio}
+            nickname={Perfils[index].nickname}
+            follow={Perfils[index].follow}
+          />
+        ))}
+        </div>
+      </div>
+    )
   }
 }
