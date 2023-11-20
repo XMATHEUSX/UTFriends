@@ -40,7 +40,7 @@ export default function Feed() {
   };
   //Esta fazendo duas requisiçoes ainda
   if (!Executada) {
-    fetch("http://localhost:3000/api/v1/profile/user", {
+    fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/profile/user", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
@@ -62,7 +62,7 @@ export default function Feed() {
         }
       });
 
-    fetch("http://localhost:3000/api/v1/feed/exibirfeed", {
+    fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/feed/exibirfeed", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
