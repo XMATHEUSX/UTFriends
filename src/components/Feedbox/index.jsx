@@ -28,38 +28,42 @@ export default function Feedbox(props) {
   const [imagemPerfil, setImagePerfil] = useState(null);
   const [apelido, setApelido] = useState("");
   const [biografia, setBiografia] = useState("");
-  const [cursoOb, setCursoOb] = useState(null);
-  const [cursoId, setCursoId] = useState(null);
+  const [cursoOb, setCursoOb] = useState("");
+  const [cursoId, setCursoId] = useState("");
 
   const [sucesso, setSucesso] = useState(null);
   const [display, setDisplay] = useState(null);
 
   // Declaração das funções básicas:
 
+  function cleanData() {
+
+    setApelido("");
+    setBiografia("");
+    setCursoId(null);
+    setCursoOb(null);
+  }
+
   function displayOff() {
+
     setDisplay(false);
   }
 
   function displayClose() {
-    displayOff();
 
-    setApelido("");
-    setBiografia("");
-    setCursoId(null);
-    setCursoOb(null);
+    displayOff();
+    cleanData();
   }
 
   function clickClose() {
-    displayOff();
-    props.onClickClose();
 
-    setApelido("");
-    setBiografia("");
-    setCursoId(null);
-    setCursoOb(null);
+    displayOff();
+    cleanData();
+    window.location.reload();
   }
 
   const selecionarCurso = (options) => {
+
     setCursoOb(options);
     setCursoId(options.value);
   };
@@ -73,7 +77,7 @@ export default function Feedbox(props) {
         name={"Update_Success"}
         title={"Data Updated"}
         message={"Seus dados foram atualizados com sucesso"}
-        button={"Voltar ao Perfil"}
+        button={"Atualizar Página"}
         onClickClose={displayOff}
         onClickButton={clickClose}
       />
@@ -178,11 +182,13 @@ export default function Feedbox(props) {
   };
 
   const updateProfile = () => {
+
     const updateData = {
       capa: imagemCapa,
       imgP: imagemPerfil,
       nick: apelido,
       bio: biografia,
+      curso: cursoId,
       token: token,
     };
 
@@ -191,22 +197,28 @@ export default function Feedbox(props) {
       bio: false,
     };
 
+    if (apelido == '') { updateData.nick = props.nickname }
+    if (biografia == '') { updateData.bio = props.bio }
+    if (cursoOb == '') { updateData.curso = 1 }
+
     if (updateData.nick != "") {
+
       if (/^[a-z0-9]+$/.test(updateData.nick)) {
+
         document.getElementById("errorApelido").style.display = "none";
         DataVal.nick = true;
-      } else {
-        document.getElementById("errorApelido").style.display = "block";
-      }
+
+      } else { document.getElementById("errorApelido").style.display = "block"; }
     }
 
     if (updateData.bio != "") {
+
       if (/^.{10,}$/.test(updateData.bio)) {
+
         document.getElementById("errorBio").style.display = "none";
         DataVal.bio = true;
-      } else {
-        document.getElementById("errorBio").style.display = "block";
-      }
+
+      } else { document.getElementById("errorBio").style.display = "block"; }
     }
 
     const validacao = Object.values(DataVal).every((value) => value === true);
@@ -248,14 +260,9 @@ export default function Feedbox(props) {
   // Declarações das constantes basícas:
 
   const [newPublicationText, setNewPublicationText] = useState("");
-  const [forFriends, setForFriends] = useState(false);
   const [postImage, setPostImage] = useState(null);
 
   // Declarações das funções básicas:
-
-  function ChangeForFriends() {
-    setForFriends(!forFriends);
-  }
 
   // Declaração das constantes com funções:
 
