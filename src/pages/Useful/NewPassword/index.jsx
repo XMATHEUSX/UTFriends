@@ -69,7 +69,7 @@ export default function Useful(props) {
         const validacao = Object.values(userVal).every(value => value === true);
 
         if(validacao) {
-            fetch("http://localhost:3000/api/v1/profile/updatepassword", {
+            fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/profile/updatepassword", {
           
             method: "POST",
             headers: {"Content-Type": "application/json",},

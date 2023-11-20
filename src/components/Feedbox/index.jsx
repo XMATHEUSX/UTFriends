@@ -9,32 +9,16 @@ import TextareaAutosize from "react-textarea-autosize";
 import React, { useRef, useState } from "react";
 
 import Publication from "../Publication";
-import "./feedbox.css";
 import SelectClass from "../SelectClass";
 import UsefulBox from "../UsefulBox";
+import Search from "../Search";
+import "./feedbox.css";
 
 export default function Feedbox(props) {
   /* Declarações para a configuração 'Perfil' do Feed */
 
   // Declaração das constantes básicas:
   var token = localStorage.getItem("token");
-  const [curso, setCurso] = useState(props.curso);
-
-  const cursoOptions = [
-
-    {value: '1', label: 'Administração' },
-    {value: '2', label: 'Agronomia' },
-    {value: '3', label: 'Ciências Contábeis' },
-    {value: '4', label: 'Engenharia Cartográfica e de Agrimensura' },
-    {value: '5', label: 'Engenharia Civil' },
-    {value: '6', label: 'Engenharia de Computação' },
-    {value: '7', label: 'Engenharia Mecânica' },
-    {value: '8', label: 'Licenciatura em Letras Português e Ingles' },
-    {value: '9', label: 'Licenciatura em Matemática' },
-    {value: '10', label: 'Química' },
-    {value: '11', label: 'Tecnologia em Análise e Desenvolvimento de Sistemas' },
-    {value: '12', label: 'Tecnologia em Manutenção Industrial' },
-  ];
 
   /* Declarações para a configuração 'PerfilConfig' do Feed  */
 
@@ -53,71 +37,63 @@ export default function Feedbox(props) {
   // Declaração das funções básicas:
 
   function displayOff() {
-
     setDisplay(false);
   }
 
   function displayClose() {
-
     displayOff();
 
-    setApelido('');
-    setBiografia('');
+    setApelido("");
+    setBiografia("");
     setCursoId(null);
     setCursoOb(null);
   }
 
   function clickClose() {
-
     displayOff();
     props.onClickClose();
 
-    setApelido('');
-    setBiografia('');
+    setApelido("");
+    setBiografia("");
     setCursoId(null);
     setCursoOb(null);
   }
 
   const selecionarCurso = (options) => {
-
-    setCursoOb(options)
-    setCursoId(options.value)
-  }
+    setCursoOb(options);
+    setCursoId(options.value);
+  };
 
   function updateSuccess() {
-
     return (
-
       <UsefulBox
         display={display}
-        width={'45%'}
-        height={'20%'}
-        name={'Update_Success'}
-        title={'Data Updated'}
-        message={'Seus dados foram atualizados com sucesso'}
-        button={'Voltar ao Perfil'}
+        width={"45%"}
+        height={"20%"}
+        name={"Update_Success"}
+        title={"Data Updated"}
+        message={"Seus dados foram atualizados com sucesso"}
+        button={"Voltar ao Perfil"}
         onClickClose={displayOff}
         onClickButton={clickClose}
       />
-    )
+    );
   }
 
   function updateFailed() {
-
     return (
-
       <UsefulBox
         display={display}
-        width={'45%'}
-        height={'20%'}
-        name={'Update_Failed'}
-        title={'ERROR'}
-        message={'Houve um erro ao atualizar seus dados'}
-        button={'Tentar Novamente'}
+        width={"45%"}
+        height={"20%"}
+        name={"Update_Failed"}
+        title={"ERROR"}
+        message={"Houve um erro ao atualizar seus dados"}
+        button={"Tentar Novamente"}
         onClickClose={displayOff}
         onClickButton={displayClose}
       />
-    )
+    );
   }
 
   // Declaração das constantes com funções:
@@ -138,7 +114,7 @@ export default function Feedbox(props) {
           const maxWidth = 1080;
           const maxHeight = 720;
 
-          const  originalWidth = img.width;
+          const originalWidth = img.width;
           const originalHeight = img.height;
 
           let newWidth, newHeight;
@@ -151,17 +127,17 @@ export default function Feedbox(props) {
             newWidth = (originalWidth / originalHeight) * maxHeight;
           }
 
-          const canvas = document.createElement('canvas');
+          const canvas = document.createElement("canvas");
           canvas.width = newWidth;
           canvas.height = newHeight;
 
-          const ctx = canvas.getContext('2d');
+          const ctx = canvas.getContext("2d");
           ctx.drawImage(img, 0, 0, maxWidth, maxHeight);
 
-          const resizedImage = canvas.toDataURL('image/png');
+          const resizedImage = canvas.toDataURL("image/png");
 
           setImageCapa(resizedImage);
-        }
+        };
       };
 
       reader.readAsDataURL(file);
@@ -184,18 +160,18 @@ export default function Feedbox(props) {
           const maxWidth = 720;
           const maxHeight = 720;
 
-          const canvas = document.createElement('canvas');
+          const canvas = document.createElement("canvas");
           canvas.width = maxWidth;
           canvas.height = maxHeight;
 
-          const ctx = canvas.getContext('2d');
+          const ctx = canvas.getContext("2d");
           ctx.drawImage(img, 0, 0, maxWidth, maxHeight);
 
-          const resizedImage = canvas.toDataURL('image/png');
+          const resizedImage = canvas.toDataURL("image/png");
 
           setImagePerfil(resizedImage);
-        }
-      }
+        };
+      };
 
       reader.readAsDataURL(file);
     }
@@ -215,28 +191,20 @@ export default function Feedbox(props) {
       bio: false,
     };
 
-    if (updateData.nick != '') {
-
+    if (updateData.nick != "") {
       if (/^[a-z0-9]+$/.test(updateData.nick)) {
-
         document.getElementById("errorApelido").style.display = "none";
         DataVal.nick = true;
-
       } else {
-
         document.getElementById("errorApelido").style.display = "block";
       }
     }
 
-    if (updateData.bio != '') {
-
+    if (updateData.bio != "") {
       if (/^.{10,}$/.test(updateData.bio)) {
-
         document.getElementById("errorBio").style.display = "none";
         DataVal.bio = true;
-
       } else {
-        
         document.getElementById("errorBio").style.display = "block";
       }
     }
@@ -244,29 +212,24 @@ export default function Feedbox(props) {
     const validacao = Object.values(DataVal).every((value) => value === true);
 
     if (validacao) {
-
-      fetch("http://localhost:3000/api/v1/profile/update", {
-
+      fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/profile/update", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updateData),
       })
-
         .then((response) => response.json())
         .then((data) => {
-
           if (data.success) {
-
             setSucesso(true);
             setDisplay(true);
-
           } else if (!data.success) {
-
             setSucesso(false);
             setDisplay(true);
           }
         })
-        .catch((error) => {console.error("Erro:", error);});
+        .catch((error) => {
+          console.error("Erro:", error);
+        });
     }
   };
 
@@ -355,37 +318,43 @@ export default function Feedbox(props) {
     imageRef.current.click();
   };
 
-  const Publications = [
+  const Publications = [];
+  var feedSize = props.feed.length;
+  for (let i = 0; i < feedSize; i++) {
+    Publications.push(props.feed[i]);
+  }
 
-    {type: 1, user: 'Kaszuba', friend: true, liked: false, like: 0, text: 'teste0'},
-    {type: 1, user: 'Kaszuba', friend: false, liked: false, like: 111, text: 'teste1'},
-    {type: 1, user: 'Kaszuba', friend: true, liked: false, like: 222, text: 'teste2'},
-    {type: 1, user: 'Kaszuba', friend: false, liked: false, like: 333, text: 'teste3'},
-    {type: 1, user: 'Kaszuba', friend: true, liked: false, like: 444, text: 'teste4'},
-    {type: 1, user: 'Kaszuba', friend: false, liked: false, like: 555, text: 'teste5'},
-    {type: 1, user: 'Kaszuba', friend: true, liked: false, like: 666, text: 'teste6'},
-    {type: 1, user: 'Kaszuba', friend: false, liked: false, like: 777, text: 'teste7'},
-    {type: 1, user: 'Kaszuba', friend: true, liked: false, like: 888, text: 'teste8'},
-    {type: 1, user: 'Kaszuba', friend: false, liked: false, like: 999, text: 'teste9'},
+  /* Declarações para a configuração 'Search' do Feed */
 
+  // Declaração das constantes com funções:
+
+  const Perfils = [
+
+    {bio:"Teste0", nickname: "kaszuba", follow: false},
+    {bio:"Teste1", nickname: "kaszuba", follow: true},
+    {bio:"Teste2", nickname: "kaszuba", follow: false},
+    {bio:"Teste3", nickname: "kaszuba", follow: true},
+    {bio:"Teste4", nickname: "kaszuba", follow: false},
+    {bio:"Teste5", nickname: "kaszuba", follow: true},
+    {bio:"Teste6", nickname: "kaszuba", follow: false},
+    {bio:"Teste7", nickname: "kaszuba", follow: true},
+    {bio:"Teste8", nickname: "kaszuba", follow: false},
+    {bio:"Teste9", nickname: "kaszuba", follow: true},
   ]
 
   /* Configurações de exibição do Feed */
-
   if (props.config == "home") {
     return (
       <div className="conteinerFB" style={{ justifyContent: "space-between" }}>
         <div className="feedConteinerFB">
           {Object.keys(Publications).map((index) => (
-
-            <Publication 
+            <Publication
               key={index}
-              type={Publications[index].type}
-              user={Publications[index].user}
-              friend={Publications[index].friend}
-              liked={Publications[index].liked}
-              like={Publications[index].like}
-              text={Publications[index].text}
+              type={Publications[index].tipo_pensamento}
+              user={Publications[index].seguindo_nickname}
+              liked={Publications[index].curtiu}
+              like={Publications[index].curtidas}
+              text={Publications[index].ds_pensamento}
             />
           ))}
         </div>
@@ -416,7 +385,7 @@ export default function Feedbox(props) {
                 src={postImage}
                 alt="Img"
                 onClick={imageUpload}
-                style={{ maxHeight: 400, maxWidth: '100%'}}
+                style={{ maxHeight: 400, maxWidth: "100%" }}
               />
             </div>
           ) : null}
@@ -437,21 +406,6 @@ export default function Feedbox(props) {
                 style={{ display: "none" }}
               />
             </div>
-
-            {forFriends ? (
-              <button
-                onClick={ChangeForFriends}
-                style={{
-                  backgroundColor: "#000",
-                  color: "#FFF",
-                  borderColor: "#000",
-                }}
-              >
-                For Friends
-              </button>
-            ) : (
-              <button onClick={ChangeForFriends}>For Friends</button>
-            )}
 
             <LuSendHorizonal
               className="sendIconFB"
@@ -479,16 +433,12 @@ export default function Feedbox(props) {
       </div>
     );
   } else if (props.config == "perfilConfig") {
-
     return (
-
       <div className="conteinerFB">
-
-        {sucesso ? updateSuccess() : updateFailed() }
+        {sucesso ? updateSuccess() : updateFailed()}
 
         <div className="perfilConfigContentFB">
           <div className="headerFB">
-
             <FiArrowLeft
               onClick={clickClose}
               className="closeIconFB"
@@ -496,12 +446,10 @@ export default function Feedbox(props) {
             />
 
             <p> Configurações do Perfil </p>
-
           </div>
 
           <div className="imagemCapaFB">
             <div className="imagemPerfilFB">
-
               {imagemPerfil ? (
                 ""
               ) : (
@@ -515,7 +463,7 @@ export default function Feedbox(props) {
                   className="imgFB"
                   src={imagemPerfil}
                   alt="Selected"
-                  style={{ maxWidth: "100%", maxHeight: '100%' }}
+                  style={{ maxWidth: "100%", maxHeight: "100%" }}
                   onClick={PerfilUpload}
                 />
               )}
@@ -526,7 +474,6 @@ export default function Feedbox(props) {
                 onChange={TrocaImagemPerfil}
                 style={{ display: "none" }}
               />
-
             </div>
 
             {imagemCapa ? (
@@ -553,18 +500,14 @@ export default function Feedbox(props) {
               onChange={TrocaImagemCapa}
               style={{ display: "none" }}
             />
-
           </div>
 
           <div className="changeNicknameFB">
             <div className="titleNicknameFB">
-
               <p>Alterar Nickname</p>
-
             </div>
 
             <div className="contentNicknameFB">
-
               <input
                 type="code"
                 value={apelido}
@@ -572,25 +515,22 @@ export default function Feedbox(props) {
                 maxLength={12}
                 onChange={(e) => setApelido(e.target.value)}
               />
-
             </div>
           </div>
 
           <div className="erroFB">
-
-            <p className="errorMsgFeedFB" id="errorApelido"> Apenas minúsculas e números </p>
-
+            <p className="errorMsgFeedFB" id="errorApelido">
+              {" "}
+              Apenas minúsculas e números{" "}
+            </p>
           </div>
 
           <div className="changeBiographyFB">
             <div className="titleBiographyFB">
-
               <p>Alterar Biografia</p>
-
             </div>
 
             <div className="contentBiographyFB">
-
               <TextareaAutosize
                 className="newPublicationTextFB"
                 minRows={1}
@@ -600,22 +540,27 @@ export default function Feedbox(props) {
                 maxLength={256}
                 onChange={(e) => setBiografia(e.target.value)}
               />
-
             </div>
           </div>
 
           <div className="erroFB">
-
-            <p className="errorMsgFeedFB" id="errorBio"> Mínimo de dez caracteres </p>
-
+            <p className="errorMsgFeedFB" id="errorBio">
+              {" "}
+              Mínimo de dez caracteres{" "}
+            </p>
           </div>
 
-          <SelectClass onChange={selecionarCurso} selectedValue={cursoOb} class={'selectSC-FB'}/>
+          <SelectClass
+            onChange={selecionarCurso}
+            selectedValue={cursoOb}
+            class={"selectSC-FB"}
+          />
 
           <div className="bottomContentFB">
-            
-            <button className="saveButtonFB" onClick={updateProfile}> Salvar Alterações </button>
-
+            <button className="saveButtonFB" onClick={updateProfile}>
+              {" "}
+              Salvar Alterações{" "}
+            </button>
           </div>
         </div>
       </div>
@@ -683,7 +628,7 @@ export default function Feedbox(props) {
             <div className="infoExtraFB">
               <p style={{ fontWeight: "bold" }}>Curso:</p>
 
-              <p>{cursoOptions[curso - 1].label}</p>
+              <p>{props.curso}</p>
             </div>
 
             <div className="descricaoFB">
@@ -703,5 +648,21 @@ export default function Feedbox(props) {
         </div>
       </div>
     );
+  } else if (props.config == "search") {
+    return (
+      <div className="conteinerFB" style={{ justifyContent: "space-between" }}>
+        <div className="feedConteinerFB">
+        {Object.keys(Perfils).map((index) => (
+
+          <Search 
+            key={index}
+            bio={Perfils[index].bio}
+            nickname={Perfils[index].nickname}
+            follow={Perfils[index].follow}
+          />
+        ))}
+        </div>
+      </div>
+    )
   }
 }

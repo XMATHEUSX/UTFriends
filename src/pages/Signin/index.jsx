@@ -71,7 +71,7 @@ export default function Signin() {
       document.getElementById("noEmailSI").style.display = 'none'
       document.getElementById("noSenhaSI").style.display = 'none'
 
-      fetch("http://localhost:3000/api/v1/profile/login", {
+      fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/profile/login", {
 
       method: "POST",
       headers: {"Content-Type": "application/json",},

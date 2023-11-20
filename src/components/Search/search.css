@@ -1,0 +1,139 @@
+html {
+
+    font-size: 62.5%;
+}
+
+.conteinerSP {
+
+    height: fit-content;
+    width: 90%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: solid;
+    border-width: 2px;
+
+    padding: 2%;
+}
+
+.perfilImageSP {
+
+    height: 100px;
+    width: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    border: solid;
+    border-width: 2px;
+    border-radius: 10px 0px;
+}
+
+.infoSP {
+
+    height: 90%;
+    width: 82.5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.supInfoSP {
+
+    height: 50%;
+    width: 100%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: row;
+
+    margin-bottom: 2%;
+}
+
+.supInfoSP p {
+
+    font-size: 2.0em;
+    font-weight: bold;
+}
+
+.notFollowingSP {
+
+    width: 20%;
+    height: 100%;
+
+    max-height: 35px;
+
+    border: solid;
+    border-width: 2px;
+    border-radius: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.4em;
+    font-family: 'Roboto Mono';
+    font-weight: bold;
+
+    transition: transform 1s;
+}
+
+.notFollowingSP:hover {
+
+    transform: scale(1.05);
+}
+
+.followingSP {
+
+    
+    width: 20%;
+    height: 100%;
+
+    max-height: 35px;
+
+    border: solid;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.4em;
+    font-family: 'Roboto Mono';
+    font-weight: bold;
+    color: white;
+
+    transition: transform 1s;
+    background-color: black;
+}
+
+.followingSP:hover {
+
+    transform: scale(1.05);
+}
+
+.botInfoSP {
+
+    height: fit-content;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.botInfoSP p {
+
+    font-size: 1.4em;
+    text-align: justify;
+}
+
