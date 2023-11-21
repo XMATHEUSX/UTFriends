@@ -169,7 +169,8 @@ export default function Feed() {
         bio={bio}
         feed={feed}
         curso={curso}
-        onClickClose={clickPerfil}
+        onClickClose={clickClose}
+        onClickPerfil={clickPerfil}
         onClickPerfilConfig={ClickPerfilConfig}
       />
 

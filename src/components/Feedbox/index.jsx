@@ -428,15 +428,35 @@ export default function Feedbox(props) {
   } else if (props.config == "config") {
     return (
       <div className="conteinerFB">
-        <h1> Config </h1>
+        <div className="perfilConfigContentFB">
+          <div className="headerFB">
+            
+            <FiArrowLeft
+              onClick={props.onClickClose}
+              className="closeIconFB"
+              cursor={"pointer"}
+            />
 
-        <button onClick={props.onClickClose}> Fechar </button>
+            <p> Configurações </p>
+          </div>
+        </div>
       </div>
     );
   } else if (props.config == "community") {
     return (
       <div className="conteinerFB">
-        <h1> Community </h1>
+        <div className="perfilConfigContentFB">
+          <div className="headerFB">
+            
+            <FiArrowLeft
+              onClick={props.onClickClose}
+              className="closeIconFB"
+              cursor={"pointer"}
+            />
+
+            <p> Comunidades </p>
+          </div>
+        </div>
       </div>
     );
   } else if (props.config == "perfilConfig") {
@@ -446,8 +466,9 @@ export default function Feedbox(props) {
 
         <div className="perfilConfigContentFB">
           <div className="headerFB">
+            
             <FiArrowLeft
-              onClick={clickClose}
+              onClick={props.onClickPerfil}
               className="closeIconFB"
               cursor={"pointer"}
             />
