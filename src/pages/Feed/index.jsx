@@ -3,15 +3,21 @@ import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
 import { IoSearch } from "react-icons/io5";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+
 import Communitybar from "../../components/Communitybar";
 import Feedbox from "../../components/Feedbox";
-import Perfilbar from "../../components/Perfilbar";
+import Menubar from "../../components/Menubar";
+import Perfilbox from "../../components/Perfilbox";
 import "./feed.css";
+
 var Executada = false;
+
 export default function Feed() {
+
   const navigate = useNavigate();
 
   function exit() {
+
     navigate("/signin");
   }
 
@@ -28,6 +34,11 @@ export default function Feed() {
   var token = localStorage.getItem("token");
 
   const [busca, setBusca] = useState("");
+
+  const [perfil, setPerfil] = useState(false);
+  const [config, setConfig] = useState(false);
+  const [community, setCommunity] = useState(false);
+  const [home, setHome] = useState(true);
 
   if (token) {
   } else {
@@ -76,27 +87,64 @@ export default function Feed() {
         }
       });
   }
+
   function clickClose() {
+
+    setConfig(false);
+    setPerfil(false);
+    setCommunity(false);
+    setHome(true);
+
     setFeedConfig("home");
   }
 
   function clickConfig() {
+
+    setConfig(true);
+    setPerfil(false);
+    setCommunity(false);
+    setHome(false);
+
     setFeedConfig("config");
   }
 
   function clickPerfil() {
+
+    setConfig(false);
+    setPerfil(true);
+    setCommunity(false);
+    setHome(false);
+
     setFeedConfig("perfil");
   }
 
   function clickCommunity() {
+
+    setConfig(false);
+    setPerfil(false);
+    setCommunity(true);
+    setHome(false);
+
     setFeedConfig("community");
   }
 
   function ClickPerfilConfig() {
-    setFeedConfig("perfilConfig");
+
+    setConfig(false);
+    setPerfil(true);
+    setCommunity(false);
+    setHome(false);
+
+    setFeedConfig("perfilconfig");
   }
 
   function ClickSearch() {
+
+    setConfig(false);
+    setPerfil(false);
+    setCommunity(false);
+    setHome(true);
+
     setFeedConfig("search");
   }
 
@@ -152,7 +200,7 @@ export default function Feed() {
         </div>
       </div>
 
-      <Perfilbar
+      <Menubar
         onClickHome={clickClose}
         onClickPerfil={clickPerfil}
         onClickConfig={clickConfig}
@@ -160,19 +208,28 @@ export default function Feed() {
         menu={menu}
       />
 
-      <Feedbox
+      { perfil ? 
+      (<Perfilbox
         config={feedConfig}
         nickname={nickname}
         followers={followers}
         following={following}
         pensamentos={pensamentos}
         bio={bio}
-        feed={feed}
         curso={curso}
         onClickClose={clickClose}
         onClickPerfil={clickPerfil}
         onClickPerfilConfig={ClickPerfilConfig}
-      />
+      />) : null }
+
+      {home ? 
+      (<Feedbox
+        config={feedConfig}
+        feed={feed}
+        onClickClose={clickClose}
+        onClickPerfil={clickPerfil}
+        onClickPerfilConfig={ClickPerfilConfig}
+      />) : null }
 
       <Communitybar />
     </div>
