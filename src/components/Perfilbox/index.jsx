@@ -4,6 +4,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import { FaEdit } from "react-icons/fa";
 
 import TextareaAutosize from "react-textarea-autosize";
+import Publication from "../Publication";
 import SelectClass from "../SelectClass";
 import UsefulBox from "../UsefulBox";
 import "./perfilbox.css"
@@ -11,6 +12,18 @@ import "./perfilbox.css"
 export default function Perfilbox(props) {
 
 	/* Declaração das funções de perfil */
+
+  // Declaração das constantes com função 
+
+  const MyPublications = [
+
+    {tipo_pensamento: 1, seguindo_nickname: props.nickname, curtiu: true, curtidas: '10', ds_pensamento: 'teste0'},
+    {tipo_pensamento: 1, seguindo_nickname: props.nickname, curtiu: true, curtidas: '10', ds_pensamento: 'teste1'},
+    {tipo_pensamento: 1, seguindo_nickname: props.nickname, curtiu: true, curtidas: '10', ds_pensamento: 'teste0'},
+    {tipo_pensamento: 1, seguindo_nickname: props.nickname, curtiu: true, curtidas: '10', ds_pensamento: 'teste1'},
+    {tipo_pensamento: 1, seguindo_nickname: props.nickname, curtiu: true, curtidas: '10', ds_pensamento: 'teste0'},
+    {tipo_pensamento: 1, seguindo_nickname: props.nickname, curtiu: true, curtidas: '10', ds_pensamento: 'teste1'},
+  ]
 
 	/* Declaração das funções de perfilconfig */
 
@@ -99,6 +112,24 @@ export default function Perfilbox(props) {
   }
 
   // Declaração das constantes com funções:
+
+  const Cursos = [
+
+    {value: '1', label: 'Administração' },
+    {value: '2', label: 'Agronomia' },
+    {value: '3', label: 'Ciências Contábeis' },
+    {value: '4', label: 'Engenharia Cartográfica e de Agrimensura' },
+    {value: '5', label: 'Engenharia Civil' },
+    {value: '6', label: 'Engenharia de Computação' },
+    {value: '7', label: 'Engenharia Mecânica' },
+    {value: '8', label: 'Licenciatura em Letras Português e Ingles' },
+    {value: '9', label: 'Licenciatura em Matemática' },
+    {value: '10', label: 'Química' },
+    {value: '11', label: 'Tecnologia em Análise e Desenvolvimento de Sistemas' },
+    {value: '12', label: 'Tecnologia em Manutenção Industrial' },
+  ]
+
+  const cursoUser = Cursos.find((curse) => curse.label === props.curso)
 
   const TrocaImagemCapa = (e) => {
 
@@ -206,9 +237,13 @@ export default function Perfilbox(props) {
       bio: false,
     };
 
-    if (apelido == '') { updateData.nick = props.nickname }
-    if (biografia == '') { updateData.bio = props.bio }
-    if (cursoOb == '') { updateData.curso = 1 }
+    if (updateData.nick != '' || updateData.bio != '' || updateData.curso != '') {
+
+      if (apelido == '') { updateData.nick = props.nickname }
+      if (biografia == '') { updateData.bio = props.bio }
+      if (cursoOb == '') { updateData.curso = cursoUser.value }
+    
+    }
 
     if (updateData.nick != "") {
 
@@ -370,10 +405,22 @@ export default function Perfilbox(props) {
 					</div>
 				</div>
 
-				<div className="feedPessoalPerfilBox">
+				<div className="feedConteinerPerfilBox">
 
-					<p>MINHAS PUBLICAÇÕES</p>
-						
+          <div className="feedPerfilBox">
+
+            {Object.keys(MyPublications).map((index) => (
+              <Publication
+                key={index}
+                type={MyPublications[index].tipo_pensamento}
+                user={MyPublications[index].seguindo_nickname}
+                liked={MyPublications[index].curtiu}
+                like={MyPublications[index].curtidas}
+                text={MyPublications[index].ds_pensamento}
+              />
+            ))}
+
+					</div>	
 				</div>
 			</div>
 		)

@@ -5,10 +5,14 @@ import "./publication.css";
 import UTFriends from "/src/assets/images/UTFriends.png";
 
 export default function Publication(props) {
+
   const [liked, setLiked] = useState(props.liked);
+  const [likes, setLikes] = useState(props.like);
 
   function ClickLike() {
+
     setLiked(!liked);
+
   }
 
   if (props.type == 1) {
@@ -26,7 +30,7 @@ export default function Publication(props) {
           </div>
 
           <div className="publicationInfoP">
-            {props.liked ? (
+            {liked ? (
               <AiFillHeart
                 className="heartIconP"
                 onClick={ClickLike}
@@ -42,7 +46,7 @@ export default function Publication(props) {
               />
             )}
 
-            <p>{props.like}</p>
+            <p>{likes}</p>
           </div>
         </div>
 
@@ -78,7 +82,7 @@ export default function Publication(props) {
               />
             )}
 
-            <p>{props.like}</p>
+            <p>{likes}</p>
           </div>
         </div>
 
@@ -114,7 +118,7 @@ export default function Publication(props) {
               />
             )}
 
-            <p>{props.like}</p>
+            <p>{likes}</p>
           </div>
         </div>
 

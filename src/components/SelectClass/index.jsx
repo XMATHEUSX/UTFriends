@@ -32,18 +32,15 @@ export default function SelectClass(props) {
 
     const custonStyles2 = {
 
-        control: (provided, state) => ({
+        control: (provided, base, state) => ({
             ...provided,
             border: '2px solid ' + "#000",
-            outline: '#000',
-            maxHeight: '100px',
-            overflowY: 'auto',
             borderRadius: '0px 10px',
             backgroundColor: '#FFF',
             cursor: 'pointer',
             fontSize: '12px',
             fontFamily: 'Roboto Mono',
-            boxShadow: 'rgba(0,0,0,0.4) -5px 5px 10px'
+            boxShadow: 'rgba(0,0,0,0.4) -5px 5px 10px',
         }),
     }
 
@@ -72,6 +69,7 @@ export default function SelectClass(props) {
                 value={props.selectedValue}
                 onChange={props.onChange}
                 options={options}
+                maxMenuHeight={200}
                 placeholder={"Selecione uma opção"}
             />
         </div>
