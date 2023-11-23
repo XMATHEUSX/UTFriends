@@ -1,4 +1,6 @@
+import { BiSolidQuoteAltLeft, BiSolidQuoteAltRight } from "react-icons/bi";
 import { FaImage } from "react-icons/fa6";
+import { FaEdit } from "react-icons/fa";
 import { FiArrowLeft } from "react-icons/fi";
 import { LuSendHorizonal } from "react-icons/lu";
 
@@ -90,7 +92,7 @@ export default function Feedbox(props) {
 
   /* Declarações para a configuração 'Search' do Feed */
 
-  // Declaração das constantes com funções:
+  // Declaração das constantes com funções
 
   const Perfils = [
 
@@ -104,6 +106,20 @@ export default function Feedbox(props) {
     {bio:"Teste7", nickname: "kaszuba", follow: true},
     {bio:"Teste8", nickname: "kaszuba", follow: false},
     {bio:"Teste9", nickname: "kaszuba", follow: true},
+  ]
+
+  /* Declarações para a configuração 'SearchPerfil' do Feed */
+
+  // Declaração das constantes com funções
+
+  const SearchPublications = [
+
+    {tipo_pensamento: 1, seguindo_nickname: 'kaszuba', curtiu: true, curtidas: '10', ds_pensamento: 'teste0'},
+    {tipo_pensamento: 1, seguindo_nickname: 'kaszuba', curtiu: true, curtidas: '10', ds_pensamento: 'teste1'},
+    {tipo_pensamento: 1, seguindo_nickname: 'kaszuba', curtiu: true, curtidas: '10', ds_pensamento: 'teste0'},
+    {tipo_pensamento: 1, seguindo_nickname: 'kaszuba', curtiu: true, curtidas: '10', ds_pensamento: 'teste1'},
+    {tipo_pensamento: 1, seguindo_nickname: 'kaszuba', curtiu: true, curtidas: '10', ds_pensamento: 'teste0'},
+    {tipo_pensamento: 1, seguindo_nickname: 'kaszuba', curtiu: true, curtidas: '10', ds_pensamento: 'teste1'},
   ]
 
   /* Configurações de exibição do Feed */
@@ -197,6 +213,7 @@ export default function Feedbox(props) {
               bio={Perfils[index].bio}
               nickname={Perfils[index].nickname}
               follow={Perfils[index].follow}
+              onClickPerfil={props.onClickPerfilSearch}
             />
 
           ))}
@@ -211,6 +228,96 @@ export default function Feedbox(props) {
 
       <div className="conteinerFB">
 
+        <div className="perfilConteinerFB">
+
+          <div className="headerFB">
+
+            <FiArrowLeft
+              onClick={props.onClickSearch}
+              className="returnIconFB"
+              cursor={"pointer"}
+            />
+
+            <p>{"@" + props.nickname}</p>
+
+          </div>
+
+          <div className="imagemCapaFB">
+
+            <div className="imagemFotoFB">
+
+
+            </div>
+          </div>
+
+          <div className="topContentFB">
+
+            <div className="infoFollowFB">
+
+              <div className="followFB">
+
+                <p>{props.followers ? props.followers : "0"}</p>
+                <p>{"Seguidores"}</p>
+
+              </div>
+
+              <div className="followFB">
+
+                <p>{props.following ? props.following : "0"}</p>
+                <p>{"Seguindo"}</p>
+
+              </div>
+
+              <div className="followFB">
+
+                <p>{props.pensamentos ? props.pensamentos : "0"}</p>
+                <p>{"Pensamentos"}</p>
+                  
+              </div>
+            </div>
+
+            <div className="buttonsFB">
+
+            </div>
+          </div>
+
+          <div className="midContentFB">
+
+            <div className="infoExtraFB">
+
+              <p style={{ fontWeight: "bold" }}>Curso:</p>
+              <p>{props.curso}</p>
+
+            </div>
+
+            <div className="biografiaFB">
+              
+              <p> 
+                <BiSolidQuoteAltLeft size={15} />
+
+                  {" " + props.bio + " "}
+
+                <BiSolidQuoteAltRight size={15} />
+              </p>
+
+            </div>
+          </div>
+
+          <div className="feedFB">
+
+            {Object.keys(SearchPublications).map((index) => (
+              <Publication
+                key={index}
+                type={SearchPublications[index].tipo_pensamento}
+                user={SearchPublications[index].seguindo_nickname}
+                liked={SearchPublications[index].curtiu}
+                like={SearchPublications[index].curtidas}
+                text={SearchPublications[index].ds_pensamento}
+              />
+            ))}
+
+          </div>
+        </div>
       </div>
     )
   }

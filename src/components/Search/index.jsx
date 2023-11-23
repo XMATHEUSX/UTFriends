@@ -19,7 +19,7 @@ export default function Search(props) {
             <div className="infoSP">
                 <div className="supInfoSP">
 
-                    <p> {"@" + props.nickname} </p>
+                    <p onClick={props.onClickPerfil}> {"@" + props.nickname} </p>
 
                     <button className={`${follow ? 'followingSP' : 'notFollowingSP'}`} onClick={ClickFollow}> {follow ? "Seguindo" : "Seguir"} </button>
 

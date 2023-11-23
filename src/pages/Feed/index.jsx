@@ -139,7 +139,7 @@ export default function Feed() {
     setFeedConfig("perfilconfig");
   }
 
-  function ClickSearch() {
+  function clickSearch() {
 
     setConfig(false);
     setPerfil(false);
@@ -147,6 +147,16 @@ export default function Feed() {
     setHome(true);
 
     setFeedConfig("search");
+  }
+
+  function clickPerfilSearch() {
+
+    setConfig(false);
+    setPerfil(false);
+    setCommunity(false);
+    setHome(true);
+
+    setFeedConfig("searchPerfil");
   }
 
   function ClickMenu() {
@@ -191,7 +201,7 @@ export default function Feed() {
               size={26}
               cursor={"pointer"}
               color={"white"}
-              onClick={ClickSearch}
+              onClick={clickSearch}
             />
           </div>
         </div>
@@ -227,9 +237,8 @@ export default function Feed() {
       (<Feedbox
         config={feedConfig}
         feed={feed}
-        onClickClose={clickClose}
-        onClickPerfil={clickPerfil}
-        onClickPerfilConfig={ClickPerfilConfig}
+        onClickSearch={clickSearch}
+        onClickPerfilSearch={clickPerfilSearch}
       />) : null }
 
       {config ? 

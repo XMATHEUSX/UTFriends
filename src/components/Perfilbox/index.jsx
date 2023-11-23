@@ -344,7 +344,7 @@ export default function Perfilbox(props) {
 
 					<div className="infoBasicaPerfilBox">
 
-						<p className="nicknameFB">{"@" + props.nickname}</p>
+						<p>{"@" + props.nickname}</p>
 
 					</div>
 
