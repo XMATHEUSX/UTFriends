@@ -182,54 +182,35 @@ export default function Feedbox(props) {
         </div>
       </div>
     );
-  } else if (props.config == "config") {
-    return (
-      <div className="conteinerFB">
-        <div className="perfilConfigContentFB">
-          <div className="headerFB">
-            
-            <FiArrowLeft
-              onClick={props.onClickClose}
-              className="closeIconFB"
-              cursor={"pointer"}
-            />
-
-            <p> Configurações </p>
-          </div>
-        </div>
-      </div>
-    );
-  } else if (props.config == "community") {
-    return (
-      <div className="conteinerFB">
-        <div className="perfilConfigContentFB">
-          <div className="headerFB">
-            
-            <FiArrowLeft
-              onClick={props.onClickClose}
-              className="closeIconFB"
-              cursor={"pointer"}
-            />
-
-            <p> Comunidades </p>
-          </div>
-        </div>
-      </div>
-    );
   } else if (props.config == "search") {
-    return (
-      <div className="conteinerFB" style={{ justifyContent: "space-between" }}>
-        <div className="feedConteinerFB">
-        {Object.keys(Perfils).map((index) => (
 
-          <Search 
-            key={index}
-            bio={Perfils[index].bio}
-            nickname={Perfils[index].nickname}
-            follow={Perfils[index].follow}
-          />
-        ))}
+    return (
+
+      <div className="conteinerFB" style={{ justifyContent: "space-between" }}>
+
+        <div className="feedConteinerFB">
+
+          {Object.keys(Perfils).map((index) => (
+
+            <Search 
+              key={index}
+              bio={Perfils[index].bio}
+              nickname={Perfils[index].nickname}
+              follow={Perfils[index].follow}
+            />
+
+          ))}
+
         </div>
+      </div>
+    )
+
+  } else if (props.config == "searchPerfil") {
+
+    return (
+
+      <div className="conteinerFB">
+
       </div>
     )
   }

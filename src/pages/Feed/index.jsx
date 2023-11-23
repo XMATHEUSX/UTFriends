@@ -4,7 +4,8 @@ import { IoSearch } from "react-icons/io5";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 
-import Communitybar from "../../components/Communitybar";
+import Communitybox from "../../components/Communitybox";
+import Configbox from "../../components/Configbox";
 import Feedbox from "../../components/Feedbox";
 import Menubar from "../../components/Menubar";
 import Perfilbox from "../../components/Perfilbox";
@@ -231,7 +232,18 @@ export default function Feed() {
         onClickPerfilConfig={ClickPerfilConfig}
       />) : null }
 
-      <Communitybar />
+      {config ? 
+      (<Configbox
+        config={feedConfig}
+        onClickClose={clickClose}
+      />) : null}
+
+      {community ?
+      (<Communitybox
+        config={feedConfig}
+        onClickClose={clickClose}
+      />) : null}
+
     </div>
   );
 }

@@ -32,11 +32,12 @@ export default function SelectClass(props) {
 
     const custonStyles2 = {
 
-        control: (provided, base, state) => ({
+        control: (provided, state) => ({
             ...provided,
             border: '2px solid ' + "#000",
             borderRadius: '0px 10px',
             backgroundColor: '#FFF',
+            outlineColor: '#000',
             cursor: 'pointer',
             fontSize: '12px',
             fontFamily: 'Roboto Mono',
