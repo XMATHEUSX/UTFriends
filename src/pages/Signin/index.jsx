@@ -91,8 +91,6 @@ export default function Signin() {
 
         } else if (!data.success) {
 
-          alert(data.message);
-
           if (data.message == 'Credenciais inválidas.') { setDisplayNR(true) }
           else if (data.message == 'Email não verificado.') { setDisplayNV(true) }
 

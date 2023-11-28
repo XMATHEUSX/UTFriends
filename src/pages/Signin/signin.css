@@ -310,16 +310,18 @@ html {
 
 .buttonLinkSI {
 
-    width: 30%;
-    height: 110%;
+    width: fit-content;
+    height: fit-content;
 
     text-decoration: none;
+
+    padding: 1%;
 }
 
 .buttonSI {
 
-    width: 100%;
-    height: 100%;
+    width: 125px;
+    height: 25px;
 
     display: flex;
     align-items: center;

@@ -134,10 +134,12 @@ export default function SignUp() {
     if (senha != '') { // Verifica se a senha foi digitada
 
       document.getElementById("noSenha").style.display = "none";
+      document.getElementById("errorRepSenha").style.display = "none";
 
       if(VerifySenha(senha)){ // Verifica se a senha está de acordo com a expressão regular
 
         document.getElementById("errorSenha").style.display = "none";
+        document.getElementById("errorRepSenha").style.display = "none";
 
         if (repsenha == senha) { // Verifica se as entradas de senha são iguais
 
@@ -152,6 +154,7 @@ export default function SignUp() {
       
       document.getElementById("noSenha").style.display = "block"
       document.getElementById("errorSenha").style.display = "none"
+      document.getElementById("errorRepSenha").style.display = "none";
     
     }
 
