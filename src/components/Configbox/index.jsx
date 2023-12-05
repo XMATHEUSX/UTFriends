@@ -17,6 +17,10 @@ export default function Configbox(props) {
   const [AccountBox, setAccountBox] = useState(false)
   const [DeleteBox, setDeleteBox] = useState(false)
 
+  const [senhaAtual, setSenhaAtual] = useState('')
+  const [novaSenha, setNovaSenha] = useState('')
+  const [repNovaSenha, setRepNovaSenha] = useState('')
+
   // Declaração das funções
 
   function clickAccountBox() {
@@ -60,13 +64,18 @@ export default function Configbox(props) {
     alert('Conta Deletada');
   }
 
+  function changePassword() {
+
+    alert('Senha Alterada');
+  }
+
   // Declaração das funções com exibição
 
   function showAccountBox() {
 
     return (
 
-      <div id="AccountBox" className="infoBoxConfigBox">
+      <div className="infoBoxConfigBox">
 
         <p> AQUI </p>
 
@@ -78,10 +87,61 @@ export default function Configbox(props) {
 
     return (
 
-      <div id="AccountBox" className="infoBoxConfigBox">
+      <div className="infoBoxConfigBox" style={{height: '30%', alignItems: 'flex-start', justifyContent: 'space-evenly'}}>
 
-        <p> AQUI </p>
+        <div className="inputConteinerConfigBox">
 
+          <p> Informe sua senha atual </p>
+
+          <input
+            title="SenhaAtual"
+            name="SenhaAtual"
+            type="password"
+            maxLength={16}
+            value={senhaAtual}
+            onChange={(e) => setSenhaAtual(e.target.value)}
+          />
+
+        </div>
+
+        <div className="duoInputConfigBox">
+
+          <div className="inputConteinerConfigBox" style={{height: '100%'}}>
+
+            <p> Informe sua nova senha </p>
+
+            <input
+              title="SenhaNova"
+              name="SenhaNova"
+              type="password"
+              maxLength={16}
+              value={novaSenha}
+              onChange={(e) => setNovaSenha(e.target.value)}
+            />
+
+          </div>
+
+          <div className="inputConteinerConfigBox" style={{height: '100%'}}>
+
+            <p> Repita a sua nova senha </p>
+
+            <input
+              title="RepSenhaNova"
+              name="RepSenhaNova"
+              type="password"
+              maxLength={16}
+              value={repNovaSenha}
+              onChange={(e) => setRepNovaSenha(e.target.value)}
+            />
+
+          </div>
+        </div>
+
+        <div className="passwordButtonConfigBox">
+
+          <button onClick={changePassword}> Trocar Senha </button>
+
+        </div>
       </div>
     )
   }
@@ -90,9 +150,9 @@ export default function Configbox(props) {
 
     return (
 
-      <div id="AccountBox" className="infoBoxConfigBox">
+      <div className="infoBoxConfigBox">
 
-        <p> Tem certeza que quer excluir a sua conta? </p>
+        <p> Tem certeza que deseja excluir a sua conta? </p>
 
         <div className="buttonConteinerConfigBox">
 
