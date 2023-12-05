@@ -70,3 +70,94 @@ html {
 
     transform: scale(1.25)
 }
+
+.optionsConteinerConfigBox {
+
+    width: 90%;
+    height: 95%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.optionConfigBox {
+
+    width: 100%;
+    height: 10%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+
+    margin-top: 2.5%;
+}
+
+.optionConfigBox button {
+
+    height: 100%;
+    width: 100%;
+
+    border: none;
+    border-bottom: solid;
+    border-width: 2px;
+
+    padding-left: 2%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color: transparent;
+
+    transition: transform 1s;
+}
+
+.optionConfigBox button h1 {
+
+    width: 35%;
+
+    padding: 0 2% 0 2%;
+
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Roboto Mono';
+    text-align: left;
+}
+
+.optionConfigBox button p {
+
+    width: 65%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-left: solid;
+    border-width: 2px;
+
+    padding-left: 2%;
+    padding-right: 2%;
+
+    font-size: 14px;
+    font-weight: lighter;
+    text-align: justify;
+    font-family: 'Roboto Mono';
+}
+
+.optionConfigBox button:hover {
+
+    transform: scale(1.02);
+}
+
+.visibility {
+
+    opacity: 0;
+}
+
+.visibility.show {
+
+    opacity: 1;
+}

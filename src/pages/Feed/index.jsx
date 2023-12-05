@@ -17,6 +17,7 @@ export default function Feed() {
   const navigate = useNavigate();
 
   function exit() {
+    localStorage.removeItem("token");
     navigate("/signin");
   }
 
