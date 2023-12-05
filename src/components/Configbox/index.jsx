@@ -13,21 +13,96 @@ export default function Configbox(props) {
   const [showAccount, setShowAccount] = useState(false)
   const [showDelete, setShowDelete] = useState(false)
 
+  const [PasswordBox, setPasswordBox] = useState(false)
+  const [AccountBox, setAccountBox] = useState(false)
+  const [DeleteBox, setDeleteBox] = useState(false)
+
   // Declaração das funções
 
-  function changePassword() {
+  function clickAccountBox() {
 
-    setShowPassword(!showPassword)
+    setAccountBox(!AccountBox);
+
+    if (PasswordBox || DeleteBox) {
+
+      setDeleteBox(false);
+      setPasswordBox(false);
+      
+    }
   }
 
-  function changeAccount() {
+  function clickPasswordBox() {
 
-    setShowAccount(!showAccount)
-  } 
+    setPasswordBox(!PasswordBox);
 
-  function changeDelete() {
+    if (DeleteBox || AccountBox) {
 
-    setShowDelete(!showDelete)
+      setAccountBox(false);
+      setDeleteBox(false);
+      
+    }
+  }
+
+  function clickDeleteBox() {
+
+    setDeleteBox(!DeleteBox);
+
+    if (PasswordBox || AccountBox) {
+
+      setAccountBox(false);
+      setPasswordBox(false);
+
+    }
+  }
+
+  function deleteAccount() {
+
+    alert('Conta Deletada');
+  }
+
+  // Declaração das funções com exibição
+
+  function showAccountBox() {
+
+    return (
+
+      <div id="AccountBox" className="infoBoxConfigBox">
+
+        <p> AQUI </p>
+
+      </div>
+    )
+  }
+
+  function showPasswordBox() {
+
+    return (
+
+      <div id="AccountBox" className="infoBoxConfigBox">
+
+        <p> AQUI </p>
+
+      </div>
+    )
+  }
+
+  function showDeleteBox() {
+
+    return (
+
+      <div id="AccountBox" className="infoBoxConfigBox">
+
+        <p> Tem certeza que quer excluir a sua conta? </p>
+
+        <div className="buttonConteinerConfigBox">
+
+          <button onClick={deleteAccount}> Tenho Certeza </button>
+
+          <button onClick={clickDeleteBox}> Cancelar </button>
+
+        </div>
+      </div>
+    )
   }
 
   // Configurações de return
@@ -54,7 +129,7 @@ export default function Configbox(props) {
 
           <div className="optionConfigBox">
 
-            <button onMouseEnter={changeAccount} onMouseLeave={changeAccount}>
+            <button onMouseEnter={() => setShowAccount(!showAccount)} onMouseLeave={() => setShowAccount(!showAccount)} onClick={clickAccountBox}>
 
               <BsFillRecordFill size={16}/>
               
@@ -62,13 +137,14 @@ export default function Configbox(props) {
 
               <p className={`visibility ${showAccount ? 'show' : ''}`}> Acesse os dados cadastrados em sua conta, como: nome, email e telefone </p>              
               
-              </button>
-
+            </button>
          </div>
+
+         {AccountBox ? showAccountBox() : null }
 
           <div className="optionConfigBox">
 
-            <button onMouseEnter={changePassword} onMouseLeave={changePassword}>
+            <button onMouseEnter={() => setShowPassword(!showPassword)} onMouseLeave={() => setShowPassword(!showPassword)} onClick={clickPasswordBox}>
 
               <BsFillRecordFill size={16}/>
               
@@ -77,22 +153,24 @@ export default function Configbox(props) {
               <p className={`visibility ${showPassword ? 'show' : ''}`}> Altere sua senha a qualquer momento, mas se lembre que ela deve ter no mínimo oito caracteres </p>             
               
               </button>
+          </div>
 
-         </div>
+          {PasswordBox ? showPasswordBox() : null }
 
-         <div className="optionConfigBox">
+          <div className="optionConfigBox">
 
-          <button onMouseEnter={changeDelete} onMouseLeave={changeDelete}> 
+            <button onMouseEnter={() => setShowDelete(!showDelete)} onMouseLeave={() => setShowDelete(!showDelete)} onClick={clickDeleteBox}> 
 
-            <BsFillRecordFill size={16}/>
+              <BsFillRecordFill size={16}/>
             
-            <h1> Excluir Conta </h1>
+              <h1> Excluir Conta </h1>
 
-            <p className={`visibility ${showDelete ? 'show' : ''}`}> Ao exluir sua conta, todos seus dados, postagens e interações com outros usuários serão perdidos </p>
+              <p className={`visibility ${showDelete ? 'show' : ''}`}> Ao exluir sua conta, todos seus dados, postagens e interações com outros usuários serão perdidos </p>
 
-          </button>
+            </button>
+          </div>
 
-         </div>
+          {DeleteBox ? showDeleteBox() : null }
 
         </div>
 			</div>

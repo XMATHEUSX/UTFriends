@@ -90,7 +90,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    flex-direction: row;
+    flex-direction: column;
 
     margin-top: 2.5%;
 }
@@ -109,6 +109,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    flex-direction: row;
 
     background-color: transparent;
 
@@ -160,4 +161,59 @@ html {
 .visibility.show {
 
     opacity: 1;
+}
+
+.infoBoxConfigBox {
+
+    width: 100%;
+    height: 15%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    font-size: 1.6em;
+    font-family: 'Roboto Mono';
+
+    border-bottom: solid;
+    border-width: 2px;
+}
+
+.buttonConteinerConfigBox {
+
+    width: 50%;
+    height: 40%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+
+    margin-top: 2%;
+}
+
+.buttonConteinerConfigBox button {
+
+    width: fit-content;
+    height: fit-content;
+
+    border: solid;
+    border-width: 2px;
+    border-radius: 10px 0px 10px 0px;
+
+    outline: none;
+    padding: 2%;
+
+    font-size: 12px;
+    font-family: 'Roboto Mono';
+    font-weight: bold;
+
+    background-color: #FFF;
+    transition: transform 1s;
+}
+
+.buttonConteinerConfigBox button:hover {
+
+    transform: scale(1.1);
 }
