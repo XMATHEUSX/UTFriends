@@ -1,6 +1,5 @@
 import { BiSolidQuoteAltLeft, BiSolidQuoteAltRight } from "react-icons/bi";
 import { FaImage } from "react-icons/fa6";
-import { FaEdit } from "react-icons/fa";
 import { FiArrowLeft } from "react-icons/fi";
 import { LuSendHorizonal } from "react-icons/lu";
 
@@ -13,7 +12,6 @@ import Search from "../Search";
 import "./feedbox.css";
 
 export default function Feedbox(props) {
-
   /* Declarações para a configuração 'Home' do Feed */
 
   // Declarações das constantes basícas:
@@ -95,32 +93,52 @@ export default function Feedbox(props) {
   // Declaração das constantes com funções
 
   const Perfils = [
-
-    {bio:"Teste0", nickname: "kaszuba", follow: false},
-    {bio:"Teste1", nickname: "kaszuba", follow: true},
-    {bio:"Teste2", nickname: "kaszuba", follow: false},
-    {bio:"Teste3", nickname: "kaszuba", follow: true},
-    {bio:"Teste4", nickname: "kaszuba", follow: false},
-    {bio:"Teste5", nickname: "kaszuba", follow: true},
-    {bio:"Teste6", nickname: "kaszuba", follow: false},
-    {bio:"Teste7", nickname: "kaszuba", follow: true},
-    {bio:"Teste8", nickname: "kaszuba", follow: false},
-    {bio:"Teste9", nickname: "kaszuba", follow: true},
-  ]
+    { bio: "Teste0", nickname: "kaszuba", follow: false },
+    { bio: "Teste1", nickname: "kaszuba", follow: true },
+    { bio: "Teste2", nickname: "kaszuba", follow: false },
+    { bio: "Teste3", nickname: "kaszuba", follow: true },
+    { bio: "Teste4", nickname: "kaszuba", follow: false },
+    { bio: "Teste5", nickname: "kaszuba", follow: true },
+    { bio: "Teste6", nickname: "kaszuba", follow: false },
+    { bio: "Teste7", nickname: "kaszuba", follow: true },
+    { bio: "Teste8", nickname: "kaszuba", follow: false },
+    { bio: "Teste9", nickname: "kaszuba", follow: true },
+  ];
 
   /* Declarações para a configuração 'SearchPerfil' do Feed */
 
   // Declaração das constantes com funções
 
   const SearchPublications = [
-
-    {tipo_pensamento: 1, seguindo_nickname: 'kaszuba', curtiu: true, curtidas: '10', ds_pensamento: 'teste0'},
-    {tipo_pensamento: 1, seguindo_nickname: 'kaszuba', curtiu: true, curtidas: '10', ds_pensamento: 'teste1'},
-    {tipo_pensamento: 1, seguindo_nickname: 'kaszuba', curtiu: true, curtidas: '10', ds_pensamento: 'teste0'},
-    {tipo_pensamento: 1, seguindo_nickname: 'kaszuba', curtiu: true, curtidas: '10', ds_pensamento: 'teste1'},
-    {tipo_pensamento: 1, seguindo_nickname: 'kaszuba', curtiu: true, curtidas: '10', ds_pensamento: 'teste0'},
-    {tipo_pensamento: 1, seguindo_nickname: 'kaszuba', curtiu: true, curtidas: '10', ds_pensamento: 'teste1'},
-  ]
+    {
+      tipo_pensamento: 1,
+      seguindo_nickname: "kaszuba",
+      curtiu: true,
+      curtidas: "10",
+      ds_pensamento: "teste0",
+    },
+    {
+      tipo_pensamento: 1,
+      seguindo_nickname: "kaszuba",
+      curtiu: true,
+      curtidas: "10",
+      ds_pensamento: "teste1",
+    },
+    {
+      tipo_pensamento: 1,
+      seguindo_nickname: "kaszuba",
+      curtiu: true,
+      curtidas: "10",
+      ds_pensamento: "teste0",
+    },
+    {
+      tipo_pensamento: 1,
+      seguindo_nickname: "kaszuba",
+      curtiu: true,
+      curtidas: "10",
+      ds_pensamento: "teste1",
+    },
+  ];
 
   /* Configurações de exibição do Feed */
   if (props.config == "home") {
@@ -135,6 +153,9 @@ export default function Feedbox(props) {
               liked={Publications[index].curtiu}
               like={Publications[index].curtidas}
               text={Publications[index].ds_pensamento}
+              meu_id={Publications[index].meu_id}
+              pensamento_id={Publications[index].pensamento_id}
+              nickname={Publications[index].nickname}
             />
           ))}
         </div>
@@ -199,39 +220,26 @@ export default function Feedbox(props) {
       </div>
     );
   } else if (props.config == "search") {
-
     return (
-
       <div className="conteinerFB" style={{ justifyContent: "space-between" }}>
-
         <div className="feedConteinerFB">
-
           {Object.keys(Perfils).map((index) => (
-
-            <Search 
+            <Search
               key={index}
               bio={Perfils[index].bio}
               nickname={Perfils[index].nickname}
               follow={Perfils[index].follow}
               onClickPerfil={props.onClickPerfilSearch}
             />
-
           ))}
-
         </div>
       </div>
-    )
-
+    );
   } else if (props.config == "searchPerfil") {
-
     return (
-
       <div className="conteinerFB">
-
         <div className="perfilConteinerFB">
-
           <div className="headerFB">
-
             <FiArrowLeft
               onClick={props.onClickSearch}
               className="returnIconFB"
@@ -239,72 +247,51 @@ export default function Feedbox(props) {
             />
 
             <p>{"@" + props.nickname}</p>
-
           </div>
 
           <div className="imagemCapaFB">
-
-            <div className="imagemFotoFB">
-
-
-            </div>
+            <div className="imagemFotoFB"></div>
           </div>
 
           <div className="topContentFB">
-
             <div className="infoFollowFB">
-
               <div className="followFB">
-
                 <p>{props.followers ? props.followers : "0"}</p>
                 <p>{"Seguidores"}</p>
-
               </div>
 
               <div className="followFB">
-
                 <p>{props.following ? props.following : "0"}</p>
                 <p>{"Seguindo"}</p>
-
               </div>
 
               <div className="followFB">
-
                 <p>{props.pensamentos ? props.pensamentos : "0"}</p>
                 <p>{"Pensamentos"}</p>
-                  
               </div>
             </div>
 
-            <div className="buttonsFB">
-
-            </div>
+            <div className="buttonsFB"></div>
           </div>
 
           <div className="midContentFB">
-
             <div className="infoExtraFB">
-
               <p style={{ fontWeight: "bold" }}>Curso:</p>
               <p>{props.curso}</p>
-
             </div>
 
             <div className="biografiaFB">
-              
-              <p> 
+              <p>
                 <BiSolidQuoteAltLeft size={15} />
 
-                  {" " + props.bio + " "}
+                {" " + props.bio + " "}
 
                 <BiSolidQuoteAltRight size={15} />
               </p>
-
             </div>
           </div>
 
           <div className="feedFB">
-
             {Object.keys(SearchPublications).map((index) => (
               <Publication
                 key={index}
@@ -315,10 +302,9 @@ export default function Feedbox(props) {
                 text={SearchPublications[index].ds_pensamento}
               />
             ))}
-
           </div>
         </div>
       </div>
-    )
+    );
   }
 }

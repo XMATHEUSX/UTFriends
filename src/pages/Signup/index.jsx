@@ -1,12 +1,12 @@
+import { useState } from "react";
 import { AiFillCloseSquare } from "react-icons/ai";
 import { FiArrowRight } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
 
+import SelectClass from '../../components/SelectClass/index';
 import UsefulBox from "../../components/UsefulBox";
-import SelectClass from '../../components/SelectClass/index'
-import { VerifyNome, VerifyEmail, VerifyNumero , VerifySenha, VerifyNickname} from "./verify.js";
 import "./signup.css";
+import { VerifyEmail, VerifyNickname, VerifyNome, VerifyNumero, VerifySenha } from "./verify.js";
 
 export default function SignUp() {
 
@@ -231,7 +231,7 @@ export default function SignUp() {
 
       setClick(false)
 
-      fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/profile/register", {
+      fetch("http://localhost:3000/api/v1/profile/register", {
 
         method: "POST",
         headers: { "Content-Type": "application/json",},

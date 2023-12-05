@@ -1,13 +1,13 @@
-import { BiSolidQuoteAltLeft, BiSolidQuoteAltRight } from "react-icons/bi";
 import React, { useRef, useState } from "react";
-import { FiArrowLeft } from "react-icons/fi";
+import { BiSolidQuoteAltLeft, BiSolidQuoteAltRight } from "react-icons/bi";
 import { FaEdit } from "react-icons/fa";
+import { FiArrowLeft } from "react-icons/fi";
 
 import TextareaAutosize from "react-textarea-autosize";
 import Publication from "../Publication";
 import SelectClass from "../SelectClass";
 import UsefulBox from "../UsefulBox";
-import "./perfilbox.css"
+import "./perfilbox.css";
 
 export default function Perfilbox(props) {
 
@@ -269,7 +269,7 @@ export default function Perfilbox(props) {
 
     if (validacao) {
 
-      fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/profile/update", {
+      fetch("http://localhost:3000/api/v1/profile/update", {
 
         method: "POST",
         headers: { "Content-Type": "application/json" },

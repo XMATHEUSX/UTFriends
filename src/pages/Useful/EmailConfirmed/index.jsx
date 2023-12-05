@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import './emailconfirmed.css'
+import './emailconfirmed.css';
 
 
 export default function EmailConfirmed() {
@@ -16,7 +16,7 @@ export default function EmailConfirmed() {
       };
 
 
-    fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/profile/verify", { 
+    fetch("http://localhost:3000/api/v1/profile/verify", { 
     method: "POST",
     headers: {"Content-Type": "application/json",},
     body: JSON.stringify(userData),

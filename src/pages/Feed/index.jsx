@@ -14,11 +14,9 @@ import "./feed.css";
 var Executada = false;
 
 export default function Feed() {
-
   const navigate = useNavigate();
 
   function exit() {
-
     navigate("/signin");
   }
 
@@ -52,7 +50,7 @@ export default function Feed() {
   };
   //Esta fazendo duas requisiçoes ainda
   if (!Executada) {
-    fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/profile/user", {
+    fetch("http://localhost:3000/api/v1/profile/user", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
@@ -74,7 +72,7 @@ export default function Feed() {
         }
       });
 
-    fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/feed/exibirfeed", {
+    fetch("http://localhost:3000/api/v1/feed/exibirfeed", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
@@ -90,7 +88,6 @@ export default function Feed() {
   }
 
   function clickClose() {
-
     setConfig(false);
     setPerfil(false);
     setCommunity(false);
@@ -100,7 +97,6 @@ export default function Feed() {
   }
 
   function clickConfig() {
-
     setConfig(true);
     setPerfil(false);
     setCommunity(false);
@@ -110,7 +106,6 @@ export default function Feed() {
   }
 
   function clickPerfil() {
-
     setConfig(false);
     setPerfil(true);
     setCommunity(false);
@@ -120,7 +115,6 @@ export default function Feed() {
   }
 
   function clickCommunity() {
-
     setConfig(false);
     setPerfil(false);
     setCommunity(true);
@@ -130,7 +124,6 @@ export default function Feed() {
   }
 
   function ClickPerfilConfig() {
-
     setConfig(false);
     setPerfil(true);
     setCommunity(false);
@@ -140,7 +133,6 @@ export default function Feed() {
   }
 
   function clickSearch() {
-
     setConfig(false);
     setPerfil(false);
     setCommunity(false);
@@ -150,7 +142,6 @@ export default function Feed() {
   }
 
   function clickPerfilSearch() {
-
     setConfig(false);
     setPerfil(false);
     setCommunity(false);
@@ -219,40 +210,37 @@ export default function Feed() {
         menu={menu}
       />
 
-      { perfil ? 
-      (<Perfilbox
-        config={feedConfig}
-        nickname={nickname}
-        followers={followers}
-        following={following}
-        pensamentos={pensamentos}
-        bio={bio}
-        curso={curso}
-        onClickClose={clickClose}
-        onClickPerfil={clickPerfil}
-        onClickPerfilConfig={ClickPerfilConfig}
-      />) : null }
+      {perfil ? (
+        <Perfilbox
+          config={feedConfig}
+          nickname={nickname}
+          followers={followers}
+          following={following}
+          pensamentos={pensamentos}
+          bio={bio}
+          curso={curso}
+          onClickClose={clickClose}
+          onClickPerfil={clickPerfil}
+          onClickPerfilConfig={ClickPerfilConfig}
+        />
+      ) : null}
 
-      {home ? 
-      (<Feedbox
-        config={feedConfig}
-        feed={feed}
-        onClickSearch={clickSearch}
-        onClickPerfilSearch={clickPerfilSearch}
-      />) : null }
+      {home ? (
+        <Feedbox
+          config={feedConfig}
+          feed={feed}
+          onClickSearch={clickSearch}
+          onClickPerfilSearch={clickPerfilSearch}
+        />
+      ) : null}
 
-      {config ? 
-      (<Configbox
-        config={feedConfig}
-        onClickClose={clickClose}
-      />) : null}
+      {config ? (
+        <Configbox config={feedConfig} onClickClose={clickClose} />
+      ) : null}
 
-      {community ?
-      (<Communitybox
-        config={feedConfig}
-        onClickClose={clickClose}
-      />) : null}
-
+      {community ? (
+        <Communitybox config={feedConfig} onClickClose={clickClose} />
+      ) : null}
     </div>
   );
 }

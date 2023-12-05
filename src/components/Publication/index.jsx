@@ -2,17 +2,40 @@ import React, { useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { GiDuckPalm } from "react-icons/gi";
 import "./publication.css";
-import UTFriends from "/src/assets/images/UTFriends.png";
 
 export default function Publication(props) {
-
   const [liked, setLiked] = useState(props.liked);
-  const [likes, setLikes] = useState(props.like);
+  const [likes, setLikes] = useState(isNaN(props.like) ? 0 : props.like);
 
   function ClickLike() {
+    const pensamento_id = props.pensamento_id;
+    const nickname = props.nickname;
 
-    setLiked(!liked);
+    const user_info = {
+      user_id: props.meu_id,
+      nickname: nickname,
+    };
 
+    console.log(user_info);
+
+    fetch("http://localhost:3000/api/v1/feed/curtirpensamento", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        pensamento_id: pensamento_id,
+        user_info: user_info,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const newLikes = liked ? likes - 1 : likes + 1;
+        console.log(data);
+        setLikes(newLikes);
+        setLiked(!liked);
+      })
+      .catch((error) => {
+        console.error("Erro ao curtir:", error);
+      });
   }
 
   if (props.type == 1) {
@@ -46,88 +69,12 @@ export default function Publication(props) {
               />
             )}
 
-            <p>{likes}</p>
+            <p>{parseInt(likes, 10)}</p>
           </div>
         </div>
 
         <div className="textContentP">
           <p>{props.text}</p>
-        </div>
-      </div>
-    );
-  } else if (props.type == 2) {
-    // Publicação que só tem imagem/vídeo
-
-    return (
-      <div className="conteinerP">
-        <div className="topContentP">
-          <div className="userInfoP">
-            <p>{"@" + props.user}</p>
-          </div>
-
-          <div className="publicationInfoP">
-            {liked ? (
-              <AiFillHeart
-                className="heartIconP"
-                onClick={ClickLike}
-                cursor={"pointer"}
-                size={24}
-              />
-            ) : (
-              <AiOutlineHeart
-                className="heartIconP"
-                onClick={ClickLike}
-                cursor={"pointer"}
-                size={24}
-              />
-            )}
-
-            <p>{likes}</p>
-          </div>
-        </div>
-
-        <div className="imageContentP">
-          <img src={UTFriends} alt="Imagem"></img>
-        </div>
-      </div>
-    );
-  } else if (props.type == 3) {
-    // Publicação que tem texto e vídeo
-
-    return (
-      <div className="conteinerP">
-        <div className="topContentP">
-          <div className="userInfoP">
-            <p>{"@" + props.user}</p>
-          </div>
-
-          <div className="publicationInfoP">
-            {liked ? (
-              <AiFillHeart
-                className="heartIconP"
-                onClick={ClickLike}
-                cursor={"pointer"}
-                size={24}
-              />
-            ) : (
-              <AiOutlineHeart
-                className="heartIconP"
-                onClick={ClickLike}
-                cursor={"pointer"}
-                size={24}
-              />
-            )}
-
-            <p>{likes}</p>
-          </div>
-        </div>
-
-        <div className="textContentP" style={{ marginBottom: 10 }}>
-          <p>{props.text}</p>
-        </div>
-
-        <div className="imageContentP">
-          <img src={UTFriends} alt="Imagem"></img>
         </div>
       </div>
     );

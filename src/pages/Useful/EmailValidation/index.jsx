@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { AiFillCloseSquare } from "react-icons/ai";
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 
 import UsefulBox from "../../../components/UsefulBox";
-import './emailvalidation.css'
+import './emailvalidation.css';
 
 export default function Useful(props) {
 
@@ -47,7 +47,7 @@ export default function Useful(props) {
 
         if (userVal.email) {
     
-            fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/profile/forgetpassword", {
+            fetch("http://localhost:3000/api/v1/profile/forgetpassword", {
         
             method: "POST",
             headers: {"Content-Type": "application/json",},

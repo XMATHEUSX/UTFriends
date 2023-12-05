@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { AiFillCloseSquare } from "react-icons/ai";
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 
 import UsefulBox from "../../../components/UsefulBox";
-import './newpassword.css'
+import './newpassword.css';
 
 export default function Useful(props) {
 
@@ -69,7 +69,7 @@ export default function Useful(props) {
         const validacao = Object.values(userVal).every(value => value === true);
 
         if(validacao) {
-            fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/profile/updatepassword", {
+            fetch("http://localhost:3000/api/v1/profile/updatepassword", {
           
             method: "POST",
             headers: {"Content-Type": "application/json",},
