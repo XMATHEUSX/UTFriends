@@ -2,6 +2,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import React, { useState } from "react";
 
 import { BsFillRecordFill } from "react-icons/bs";
+import { FaChevronRight } from "react-icons/fa";
 
 import './configbox.css'
 
@@ -77,8 +78,64 @@ export default function Configbox(props) {
 
       <div className="infoBoxConfigBox">
 
-        <p> AQUI </p>
+        <div className="duoInfoConfigBox">
 
+          <div className="infoContentConfigBox">
+
+            <FaChevronRight size={15} style={{marginRight: '1%'}}/>
+
+            <p> Nome: </p>
+
+            <p style={{fontWeight: 'normal', padding: '2%'}}> {props.nome} </p>
+
+          </div>
+
+          <div className="infoContentConfigBox">
+
+            <FaChevronRight size={15} style={{marginRight: '1%'}}/>
+
+            <p> Sobrenome: </p>
+
+            <p style={{fontWeight: 'normal', padding: '2%'}}> {props.sobrenome} </p>
+
+          </div>
+        </div>
+
+        <div className="uniqueInfoConfigBox">
+
+          <div className="infoContentConfigBox" style={{width: '100%'}}>
+
+            <FaChevronRight size={15} style={{marginRight: '1%'}}/>
+
+            <p> Email: </p>
+
+            <p style={{fontWeight: 'normal', padding: '2%'}}> {'joaokaszuba@alunos.utfpr.edu.br'} </p>
+
+          </div>
+        </div>
+
+        <div className="duoInfoConfigBox">
+
+          <div className="infoContentConfigBox">
+
+            <FaChevronRight size={15} style={{marginRight: '1%'}}/>
+
+            <p> Telefone: </p>
+
+            <p style={{fontWeight: 'normal', padding: '2%'}}> {props.email} </p>
+
+          </div>
+
+          <div className="infoContentConfigBox">
+
+            <FaChevronRight size={15} style={{marginRight: '1%'}}/>
+
+            <p> Data de Nascimento: </p>
+
+            <p style={{fontWeight: 'normal', padding: '2%'}}> {props.nascimento} </p>
+
+          </div>      
+        </div>
       </div>
     )
   }

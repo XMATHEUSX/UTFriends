@@ -300,3 +300,47 @@ html {
 
     transform: scale(1.05);
 }
+
+.duoInfoConfigBox {
+
+    width: 100%;
+    height: 30%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.uniqueInfoConfigBox {
+
+    width: 100%;
+    height: 30%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.infoContentConfigBox {
+
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+
+    padding-left: 2.5%;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    transition: transform 1s;
+}
+
+.infoContentConfigBox:hover {
+
+    transform: scale(1.05);
+}
