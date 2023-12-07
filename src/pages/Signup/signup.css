@@ -302,6 +302,7 @@ html {
         width: 55%;
         height: 60%;
     }
+
 }
 
 @media (max-width: 768px) {
@@ -326,7 +327,7 @@ html {
     .boxSU {
 
         width: 85%;
-        height: 45%;
+        height: 55%;
     }
 
     .closeIconSU {
