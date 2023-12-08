@@ -92,18 +92,11 @@ export default function Feedbox(props) {
 
   // Declaração das constantes com funções
 
-  const Perfils = [
-    { bio: "Teste0", nickname: "kaszuba", follow: false },
-    { bio: "Teste1", nickname: "kaszuba", follow: true },
-    { bio: "Teste2", nickname: "kaszuba", follow: false },
-    { bio: "Teste3", nickname: "kaszuba", follow: true },
-    { bio: "Teste4", nickname: "kaszuba", follow: false },
-    { bio: "Teste5", nickname: "kaszuba", follow: true },
-    { bio: "Teste6", nickname: "kaszuba", follow: false },
-    { bio: "Teste7", nickname: "kaszuba", follow: true },
-    { bio: "Teste8", nickname: "kaszuba", follow: false },
-    { bio: "Teste9", nickname: "kaszuba", follow: true },
-  ];
+  const Perfils = [];
+  var profilesSize = props.profiles.length;
+  for (let i = 0; i < profilesSize; i++) {
+    Perfils.push(props.profiles[i]);
+  }
 
   /* Declarações para a configuração 'SearchPerfil' do Feed */
 
@@ -226,9 +219,9 @@ export default function Feedbox(props) {
           {Object.keys(Perfils).map((index) => (
             <Search
               key={index}
-              bio={Perfils[index].bio}
+              bio={Perfils[index].biografia}
               nickname={Perfils[index].nickname}
-              follow={Perfils[index].follow}
+              follow={false}
               onClickPerfil={props.onClickPerfilSearch}
             />
           ))}

@@ -4,7 +4,9 @@ import React, { useState } from "react";
 import { BsFillRecordFill } from "react-icons/bs";
 import { FaChevronRight } from "react-icons/fa";
 
+
 import './configbox.css'
+import Feed from "../../pages/Feed";
 
 export default function Configbox(props) {
 
@@ -22,9 +24,36 @@ export default function Configbox(props) {
   const [novaSenha, setNovaSenha] = useState('')
   const [repNovaSenha, setRepNovaSenha] = useState('')
 
+  const [nome, setNome] = useState('')
+  const [email, setEmail] = useState('')
+  const [telefone, setTelefone] = useState('')
+  const [dataNascimento, setDataNascimento] = useState('')
+  
+  var token = localStorage.getItem("token");
+
+
   // Declaração das funções
 
   function clickAccountBox() {
+    const userData = {
+      token: token,
+    };
+    fetch("http://localhost:3000/api/v1/profile/infoConta", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        JSON.stringify(data);
+        if(data.success){
+          setNome(data.info.nm_usuario)
+          setEmail(data.info.email)
+          setTelefone(data.info.telefone)
+          const novadata = data.info.dt_nascimento.split("T")
+          setDataNascimento(novadata[0])
+        }
+      });
 
     setAccountBox(!AccountBox);
 
@@ -60,11 +89,6 @@ export default function Configbox(props) {
     }
   }
 
-  function deleteAccount() {
-
-    alert('Conta Deletada');
-  }
-
   function changePassword() {
 
     alert('Senha Alterada');
@@ -86,7 +110,7 @@ export default function Configbox(props) {
 
             <p> Nome: </p>
 
-            <p style={{fontWeight: 'normal', padding: '2%'}}> {props.nome} </p>
+            <p style={{fontWeight: 'normal', padding: '2%'}}> {nome} </p>
 
           </div>
 
@@ -96,7 +120,7 @@ export default function Configbox(props) {
 
             <p> Sobrenome: </p>
 
-            <p style={{fontWeight: 'normal', padding: '2%'}}> {props.sobrenome} </p>
+            <p style={{fontWeight: 'normal', padding: '2%'}}> {""} </p>
 
           </div>
         </div>
@@ -108,8 +132,7 @@ export default function Configbox(props) {
             <FaChevronRight size={15} style={{marginRight: '1%'}}/>
 
             <p> Email: </p>
-
-            <p style={{fontWeight: 'normal', padding: '2%'}}> {'joaokaszuba@alunos.utfpr.edu.br'} </p>
+            <p style={{fontWeight: 'normal', padding: '2%'}}> {email} </p>
 
           </div>
         </div>
@@ -122,7 +145,7 @@ export default function Configbox(props) {
 
             <p> Telefone: </p>
 
-            <p style={{fontWeight: 'normal', padding: '2%'}}> {props.email} </p>
+            <p style={{fontWeight: 'normal', padding: '2%'}}> {telefone} </p>
 
           </div>
 
@@ -132,7 +155,7 @@ export default function Configbox(props) {
 
             <p> Data de Nascimento: </p>
 
-            <p style={{fontWeight: 'normal', padding: '2%'}}> {props.nascimento} </p>
+            <p style={{fontWeight: 'normal', padding: '2%'}}> {dataNascimento.split("T")} </p>
 
           </div>      
         </div>
@@ -213,7 +236,7 @@ export default function Configbox(props) {
 
         <div className="buttonConteinerConfigBox">
 
-          <button onClick={deleteAccount}> Tenho Certeza </button>
+          <button onClick={props.onClickDelete}> Tenho Certeza </button>
 
           <button onClick={clickDeleteBox}> Cancelar </button>
 

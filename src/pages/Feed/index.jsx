@@ -28,6 +28,7 @@ export default function Feed() {
   const [pensamentos, setPensamentos] = useState("");
   const [curso, setCurso] = useState("");
   const [feed, setFeed] = useState([{}]);
+  const [profiles, setProfiles] = useState([{}]);
 
   const [feedConfig, setFeedConfig] = useState("home");
   const [menu, setMenu] = useState(false);
@@ -88,6 +89,26 @@ export default function Feed() {
       });
   }
 
+  function deleteAccount() {
+    const userData = {
+      token: token,
+    };
+    
+    fetch("http://localhost:3000/api/v1/profile/delete", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        JSON.stringify(data);
+        if(data.success){
+          alert('Conta Deletada');
+          Exit()
+        }
+      });
+  }
+
   function clickClose() {
     setConfig(false);
     setPerfil(false);
@@ -134,11 +155,24 @@ export default function Feed() {
   }
 
   function clickSearch() {
+
+    const userData = {
+      busca: busca,
+    };
+    fetch("http://localhost:3000/api/v1/feed/searchProfile", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        JSON.stringify(data);
+        setProfiles(data.profiles);
+      });
     setConfig(false);
     setPerfil(false);
     setCommunity(false);
     setHome(true);
-
     setFeedConfig("search");
   }
 
@@ -147,8 +181,9 @@ export default function Feed() {
     setPerfil(false);
     setCommunity(false);
     setHome(true);
-
+    alert(nickname)
     setFeedConfig("searchPerfil");
+
   }
 
   function ClickMenu() {
@@ -185,6 +220,7 @@ export default function Feed() {
               id="SearchBox"
               type="text"
               onChange={(e) => setBusca(e.target.value)}
+            
             />
           </div>
 
@@ -230,13 +266,18 @@ export default function Feed() {
         <Feedbox
           config={feedConfig}
           feed={feed}
+          profiles={profiles}
           onClickSearch={clickSearch}
           onClickPerfilSearch={clickPerfilSearch}
         />
       ) : null}
 
       {config ? (
-        <Configbox config={feedConfig} onClickClose={clickClose} />
+        <Configbox 
+          config={feedConfig} 
+          onClickClose={clickClose}
+          onClickDelete={deleteAccount}
+        />
       ) : null}
 
       {community ? (
