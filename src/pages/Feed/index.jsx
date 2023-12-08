@@ -159,21 +159,35 @@ export default function Feed() {
     const userData = {
       busca: busca,
     };
-    fetch("http://localhost:3000/api/v1/feed/searchProfile", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        JSON.stringify(data);
-        setProfiles(data.profiles);
-      });
-    setConfig(false);
-    setPerfil(false);
-    setCommunity(false);
-    setHome(true);
-    setFeedConfig("search");
+
+    const verifyData = {
+
+      busca: false
+    }
+
+    if (userData.busca != '') { verifyData.busca = true }
+
+    const validacao = Object.values(verifyData).every(value => value === true);
+
+    if (validacao) {
+
+        fetch("http://localhost:3000/api/v1/feed/searchProfile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          JSON.stringify(data);
+          setProfiles(data.profiles);
+        });
+        
+      setConfig(false);
+      setPerfil(false);
+      setCommunity(false);
+      setHome(true);
+      setFeedConfig("search");
+    }
   }
 
   function clickPerfilSearch() {

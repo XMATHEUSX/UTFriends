@@ -4,9 +4,7 @@ import React, { useState } from "react";
 import { BsFillRecordFill } from "react-icons/bs";
 import { FaChevronRight } from "react-icons/fa";
 
-
 import './configbox.css'
-import Feed from "../../pages/Feed";
 
 export default function Configbox(props) {
 
@@ -50,8 +48,9 @@ export default function Configbox(props) {
           setNome(data.info.nm_usuario)
           setEmail(data.info.email)
           setTelefone(data.info.telefone)
+
           const novadata = data.info.dt_nascimento.split("T")
-          setDataNascimento(novadata[0])
+          setDataNascimento(modifyDate(novadata[0]))
         }
       });
 
@@ -63,6 +62,15 @@ export default function Configbox(props) {
       setPasswordBox(false);
       
     }
+  }
+
+  const modifyDate = (data) => {
+
+    var ano = data.split('-')[0];
+    var mes = data.split('-')[1];
+    var dia = data.split('-')[2];
+
+    return dia + '/' + mes + '/' + ano
   }
 
   function clickPasswordBox() {
@@ -102,25 +110,15 @@ export default function Configbox(props) {
 
       <div className="infoBoxConfigBox">
 
-        <div className="duoInfoConfigBox">
+        <div className="uniqueInfoConfigBox">
 
           <div className="infoContentConfigBox">
 
             <FaChevronRight size={15} style={{marginRight: '1%'}}/>
 
-            <p> Nome: </p>
+            <p> Nome Completo: </p>
 
             <p style={{fontWeight: 'normal', padding: '2%'}}> {nome} </p>
-
-          </div>
-
-          <div className="infoContentConfigBox">
-
-            <FaChevronRight size={15} style={{marginRight: '1%'}}/>
-
-            <p> Sobrenome: </p>
-
-            <p style={{fontWeight: 'normal', padding: '2%'}}> {""} </p>
 
           </div>
         </div>

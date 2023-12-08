@@ -90,6 +90,28 @@ export default function Feedbox(props) {
 
   /* Declarações para a configuração 'Search' do Feed */
 
+  const [exibeSearch, setExibeSearch] = useState(false);
+
+  // Declaração das funções
+
+  function checkPerfils() {
+
+    if (Perfils.length != 0) {
+
+      if (Perfils[0].user_id) { 
+
+        return true 
+
+      } else { 
+        
+        return false 
+      }
+    } else {
+
+      return false
+    }
+  }
+
   // Declaração das constantes com funções
 
   const Perfils = [];
@@ -135,9 +157,13 @@ export default function Feedbox(props) {
 
   /* Configurações de exibição do Feed */
   if (props.config == "home") {
+
     return (
+
       <div className="conteinerFB" style={{ justifyContent: "space-between" }}>
+
         <div className="feedConteinerFB">
+
           {Object.keys(Publications).map((index) => (
             <Publication
               key={index}
@@ -151,10 +177,13 @@ export default function Feedbox(props) {
               nickname={Publications[index].nickname}
             />
           ))}
+
         </div>
 
         <div className="feedBottomFB">
+
           <div className="newPublicationFB">
+
             <TextareaAutosize
               id="postText"
               maxLength={256}
@@ -166,8 +195,11 @@ export default function Feedbox(props) {
             />
 
             <div className="textLimitFB">
+
               <p>{newPublicationText.length + " / 256"}</p>
+
             </div>
+
           </div>
 
           {postImage ? (
@@ -213,26 +245,49 @@ export default function Feedbox(props) {
       </div>
     );
   } else if (props.config == "search") {
+
     return (
+
       <div className="conteinerFB" style={{ justifyContent: "space-between" }}>
-        <div className="feedConteinerFB">
-          {Object.keys(Perfils).map((index) => (
-            <Search
-              key={index}
-              bio={Perfils[index].biografia}
-              nickname={Perfils[index].nickname}
-              follow={false}
-              onClickPerfil={props.onClickPerfilSearch}
-            />
-          ))}
+
+        {checkPerfils() ? 
+
+          <div className="feedConteinerFB">
+
+            {Object.keys(Perfils).map((index) => (
+              <Search
+                key={index}
+                bio={Perfils[index].biografia}
+                nickname={Perfils[index].nickname}
+                follow={false}
+                onClickPerfil={props.onClickPerfilSearch}
+              />
+            ))}
+
+          </div>
+
+        : 
+        
+        <div className="noSearchFB">
+
+          <p> Não foi possivel encontrar nenhum resultado </p>
+
         </div>
+
+        }
+
       </div>
     );
   } else if (props.config == "searchPerfil") {
+
     return (
+
       <div className="conteinerFB">
+
         <div className="perfilConteinerFB">
+
           <div className="headerFB">
+
             <FiArrowLeft
               onClick={props.onClickSearch}
               className="returnIconFB"
@@ -240,27 +295,38 @@ export default function Feedbox(props) {
             />
 
             <p>{"@" + props.nickname}</p>
+
           </div>
 
           <div className="imagemCapaFB">
+
             <div className="imagemFotoFB"></div>
+
           </div>
 
           <div className="topContentFB">
+
             <div className="infoFollowFB">
+
               <div className="followFB">
+
                 <p>{props.followers ? props.followers : "0"}</p>
                 <p>{"Seguidores"}</p>
+
               </div>
 
               <div className="followFB">
+
                 <p>{props.following ? props.following : "0"}</p>
                 <p>{"Seguindo"}</p>
+
               </div>
 
               <div className="followFB">
+
                 <p>{props.pensamentos ? props.pensamentos : "0"}</p>
                 <p>{"Pensamentos"}</p>
+
               </div>
             </div>
 
@@ -268,12 +334,16 @@ export default function Feedbox(props) {
           </div>
 
           <div className="midContentFB">
+
             <div className="infoExtraFB">
+
               <p style={{ fontWeight: "bold" }}>Curso:</p>
               <p>{props.curso}</p>
+
             </div>
 
             <div className="biografiaFB">
+
               <p>
                 <BiSolidQuoteAltLeft size={15} />
 
@@ -281,10 +351,12 @@ export default function Feedbox(props) {
 
                 <BiSolidQuoteAltRight size={15} />
               </p>
+
             </div>
           </div>
 
           <div className="feedFB">
+
             {Object.keys(SearchPublications).map((index) => (
               <Publication
                 key={index}
@@ -295,6 +367,7 @@ export default function Feedbox(props) {
                 text={SearchPublications[index].ds_pensamento}
               />
             ))}
+
           </div>
         </div>
       </div>
