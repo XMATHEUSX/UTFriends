@@ -25,7 +25,6 @@ export default function Feedbox(props) {
 
   const sendNewPublication = () => {
     const publication_text = document.getElementById("postText").value;
-    const [showModal, setShowModal] = useState(false);
 
     if (publication_text.trim() === "") {
       alert("Você não pode enviar uma publicação vazia.");
@@ -39,17 +38,18 @@ export default function Feedbox(props) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newPublication),
-      }).then((data) => {
-        if (data.status === "success") {
-          showSuccessModal();
-          // window.location.reload();
-        }
-      });
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data.success);
+          if (data.success) {
+            alert("Publicação enviada com sucesso!");
+            document.getElementById("postText").value = "";
+            setNewPublicationText("");
+            setPostImage(null);
+          }
+        });
     }
-
-    document.getElementById("postText").value = "";
-    setNewPublicationText("");
-    setPostImage(null);
   };
 
   const newImagePost = (e) => {
