@@ -47,6 +47,7 @@ export default function Feedbox(props) {
             document.getElementById("postText").value = "";
             setNewPublicationText("");
             setPostImage(null);
+            window.location.reload();
           }
         });
     }

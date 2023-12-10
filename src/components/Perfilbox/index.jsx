@@ -318,12 +318,13 @@ export default function Perfilbox(props) {
   };
 
   /* Configurações de exibição */
+  useEffect(() => {
+    if (props.config === "perfil") {
+      requestMeusPensamentos();
+    }
+  }, [props.config]);
 
   if (props.config == "perfil") {
-    useEffect(() => {
-      requestMeusPensamentos();
-    }, []);
-
     return (
       <div className="conteinerPerfilBox">
         <div className="capaPerfilBox">
