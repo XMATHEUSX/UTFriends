@@ -23,8 +23,8 @@ export default function Feedbox(props) {
 
   function seekFeed() {
 
-    if ( Object.keys(Publications) > 0 || Publications[0].user_id == undefined) {return false}
-    else { return true }
+    if (Publications[0].meu_id != undefined) { return true }
+    else { return false }
   }
 
   // Declaração das constantes com funções:
@@ -155,7 +155,7 @@ export default function Feedbox(props) {
 
       <div className="conteinerFB" style={{ justifyContent: "space-between" }}>
 
-        <div className={`${seekFeed() > 0 ? feedConteinerFB : "emptyConteinerFB"}`}>
+        <div className={`${seekFeed() > 0 ? 'feedConteinerFB' : "emptyConteinerFB"}`}>
 
           {seekFeed() > 0 ? (
             Object.keys(Publications).map((index) => (
