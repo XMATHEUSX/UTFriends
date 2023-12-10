@@ -10,6 +10,7 @@ import UsefulBox from "../UsefulBox";
 import "./perfilbox.css";
 
 export default function Perfilbox(props) {
+
   /* Declaração das funções de perfil */
 
   // Declaração das constantes com função
@@ -28,11 +29,12 @@ export default function Perfilbox(props) {
   const [MyPublications, setMyPublications] = useState([]);
 
   var token = localStorage.getItem("token");
-  const userData = { token: token };
+  const userData = {token: token,};
 
   // Declaração das funções básicas:
 
   function cleanData() {
+
     setApelido("");
     setBiografia("");
     setCursoId(null);
@@ -40,31 +42,39 @@ export default function Perfilbox(props) {
   }
 
   function displayOff() {
+
     setDisplay(false);
   }
 
   function displayClose() {
+
     displayOff();
     cleanData();
   }
 
   function clickClose() {
+
     displayOff();
     cleanData();
     window.location.reload();
   }
 
   const selecionarCurso = (options) => {
+
     setCursoOb(options);
     setCursoId(options.value);
   };
 
   function updateSuccess() {
+
     return (
+
       <UsefulBox
         display={display}
         width={"45%"}
         height={"20%"}
+        top={'40%'}
+        left={'27.5%'}
         name={"Update_Success"}
         title={"Data Updated"}
         message={"Seus dados foram atualizados com sucesso"}
@@ -72,15 +82,20 @@ export default function Perfilbox(props) {
         onClickClose={displayOff}
         onClickButton={clickClose}
       />
+
     );
   }
 
   function updateFailed() {
+
     return (
+
       <UsefulBox
         display={display}
         width={"45%"}
         height={"20%"}
+        top={'40%'}
+        left={'27.5%'}
         name={"Update_Failed"}
         title={"ERROR"}
         message={"Houve um erro ao atualizar seus dados"}
@@ -88,6 +103,7 @@ export default function Perfilbox(props) {
         onClickClose={displayOff}
         onClickButton={displayClose}
       />
+
     );
   }
 
@@ -129,10 +145,7 @@ export default function Perfilbox(props) {
     { value: "9", label: "Licenciatura em Letras Português e Ingles" },
     { value: "10", label: "Licenciatura em Matemática" },
     { value: "11", label: "Química" },
-    {
-      value: "12",
-      label: "Tecnologia em Análise e Desenvolvimento de Sistemas",
-    },
+    { value: "12", label: "Tecnologia em Análise e Desenvolvimento de Sistemas" },
     { value: "13", label: "Tecnologia em Manutenção Industrial" },
   ];
 
@@ -147,8 +160,7 @@ export default function Perfilbox(props) {
     "Porque não comenta no feed o quão dificil é assistir séries durante o semestre?",
   ];
 
-  const randomSuggestion =
-    sugestoes[Math.floor(Math.random() * sugestoes.length)];
+  const randomSuggestion = sugestoes[Math.floor(Math.random() * sugestoes.length)];
 
   const cursoUser = Cursos.find((curse) => curse.label === props.curso);
 
@@ -232,6 +244,7 @@ export default function Perfilbox(props) {
   };
 
   const updateProfile = () => {
+
     const updateData = {
       capa: imagemCapa,
       imgP: imagemPerfil,
@@ -246,20 +259,12 @@ export default function Perfilbox(props) {
       bio: false,
     };
 
-    if (
-      updateData.nick != "" ||
-      updateData.bio != "" ||
-      updateData.curso != ""
-    ) {
-      if (apelido == "") {
-        updateData.nick = props.nickname;
-      }
-      if (biografia == "") {
-        updateData.bio = props.bio;
-      }
-      if (cursoOb == "") {
-        updateData.curso = cursoUser.value;
-      }
+    if ( updateData.nick != "" || updateData.bio != "" || updateData.curso != "") {
+
+      if (apelido == "") { updateData.nick = props.nickname;}
+      if (biografia == "") {updateData.bio = props.bio;}
+      if (cursoOb == "") {updateData.curso = cursoUser.value;}
+
     }
 
     if (updateData.nick != "") {
@@ -314,22 +319,20 @@ export default function Perfilbox(props) {
     perfilRef.current.click();
   };
 
-  useEffect(() => {
-    requestMeusPensamentos;
-  }, []);
+  useEffect(() => {requestMeusPensamentos;}, []);
 
   /* Configurações de exibição */
-  useEffect(() => {
-    if (props.config === "perfil") {
-      requestMeusPensamentos();
-    }
-  }, [props.config]);
 
   if (props.config == "perfil") {
+
     return (
+
       <div className="conteinerPerfilBox">
+
         <div className="capaPerfilBox">
+
           <div className="fotoPerfilBox">
+
             {imagemPerfil && (
               <img
                 className="imagemPerfilBox"
@@ -337,7 +340,9 @@ export default function Perfilbox(props) {
                 alt="Imagem de perfil"
                 style={{ maxWidth: "100%" }}
               />
+
             )}
+
           </div>
 
           {imagemCapa && (
@@ -348,46 +353,63 @@ export default function Perfilbox(props) {
               style={{ maxWidth: "100%" }}
             />
           )}
+
         </div>
 
         <div className="topContentPerfilBox">
+
           <div className="infoBasicaPerfilBox">
+
             <p>{"@" + props.nickname}</p>
+
           </div>
 
           <div className="infoFollowPerfilBox">
+
             <div className="followPerfilBox">
+
               <p>{props.followers ? props.followers : "0"}</p>
               <p>{"Seguidores"}</p>
+
             </div>
 
             <div className="followPerfilBox">
+
               <p>{props.following ? props.following : "0"}</p>
               <p>{"Seguindo"}</p>
+
             </div>
 
             <div className="followPerfilBox">
+
               <p>{props.pensamentos ? props.pensamentos : "0"}</p>
               <p>{"Pensamentos"}</p>
+
             </div>
           </div>
 
           <div className="editIconPerfilBox">
+
             <FaEdit
               onClick={props.onClickPerfilConfig}
               size={30}
               cursor={"pointer"}
             />
+
           </div>
         </div>
 
         <div className="midContentPerfilBox">
+      
           <div className="infoExtraPerfilbox">
+
             <p style={{ fontWeight: "bold" }}>Curso:</p>
             <p>{props.curso}</p>
+
           </div>
 
           <div className="biograficaPerfilBox">
+
             <p>
               <BiSolidQuoteAltLeft size={15} />
 
@@ -395,17 +417,14 @@ export default function Perfilbox(props) {
 
               <BiSolidQuoteAltRight size={15} />
             </p>
+
           </div>
         </div>
 
         <div className="feedConteinerPerfilBox">
-          <div
-            className={`${
-              Object.keys(MyPublications).length > 0
-                ? "feedPerfilBox"
-                : "nofeedPerfilBox"
-            }`}
-          >
+
+          <div className={`${Object.keys(MyPublications).length > 0 ? "feedPerfilBox" : "nofeedPerfilBox"}`}>
+
             {Object.keys(MyPublications).length > 0 ? (
               Object.keys(MyPublications).map((index) => (
                 <Publication
@@ -420,26 +439,32 @@ export default function Perfilbox(props) {
                   curtidores={MyPublications[index].curtidas.curtidas}
                 />
               ))
-            ) : (
+            ) 
+            : 
+            (
               <div className="noPublicationPerfilBox">
-                <p>
-                  Você não pensou em nada até agora, como isso é possível? 🤔
-                </p>
+
+                <p>Você não pensou em nada até agora, como isso é possível? 🤔</p>
                 <p>{randomSuggestion} </p>
+
               </div>
             )}
+
           </div>
         </div>
       </div>
     );
-  } else if (props.config == "perfilconfig") {
-    // Exibição das configurações do peril
+
+  } else if (props.config == "perfilconfig") { // Exibição das configurações do peril
 
     return (
+
       <div className="conteinerPerfilBox">
+
         {sucesso ? updateSuccess() : updateFailed()}
 
         <div className="headerPerfilBox">
+
           <FiArrowLeft
             onClick={props.onClickPerfil}
             className="returnIconPerfilBox"
@@ -447,17 +472,16 @@ export default function Perfilbox(props) {
           />
 
           <p> Configurações do Perfil </p>
+
         </div>
 
         <div className="capaPerfilBox">
           <div className="fotoPerfilBox">
+
             {imagemPerfil ? (
               ""
             ) : (
-              <div className="uploadFotoPerfilConfig" onClick={PerfilUpload}>
-                {" "}
-                Editar Foto{" "}
-              </div>
+              <div className="uploadFotoPerfilConfig" onClick={PerfilUpload}> {" "}Editar Foto{" "} </div>
             )}
 
             {imagemPerfil && (
@@ -503,14 +527,19 @@ export default function Perfilbox(props) {
             onChange={TrocaImagemCapa}
             style={{ display: "none" }}
           />
+
         </div>
 
         <div className="inputApelidoPerfilBox">
+
           <div className="titleNicknamePerfilBox">
+
             <p>Alterar Nickname</p>
+
           </div>
 
           <div className="contentNicknamePerfilBox">
+
             <input
               type="code"
               value={apelido}
@@ -518,22 +547,26 @@ export default function Perfilbox(props) {
               maxLength={12}
               onChange={(e) => setApelido(e.target.value)}
             />
+
           </div>
         </div>
 
         <div className="erroPerfilBox">
-          <p className="erroMessageperfilBox" id="errorApelido">
-            {" "}
-            Apenas minúsculas e números{" "}
-          </p>
+
+          <p className="erroMessageperfilBox" id="errorApelido"> {" "}Apenas minúsculas e números{" "} </p>
+
         </div>
 
         <div className="inputBiografiaPerfilBox">
+
           <div className="titleBiografiaPerfilBox">
+
             <p>Alterar Biografia</p>
+
           </div>
 
           <div className="contentBiografiaPerfilBox">
+
             <TextareaAutosize
               className="newBioPerfilBox"
               minRows={1}
@@ -543,14 +576,14 @@ export default function Perfilbox(props) {
               maxLength={256}
               onChange={(e) => setBiografia(e.target.value)}
             />
+
           </div>
         </div>
 
         <div className="erroPerfilBox">
-          <p className="erroMessageperfilBox" id="errorBio">
-            {" "}
-            Mínimo de dez caracteres{" "}
-          </p>
+
+          <p className="erroMessageperfilBox" id="errorBio"> {" "}Mínimo de dez caracteres{" "} </p>
+
         </div>
 
         <SelectClass
@@ -560,10 +593,9 @@ export default function Perfilbox(props) {
         />
 
         <div className="botContentPerfilBox">
-          <button className="saveButtonPerfilBox" onClick={updateProfile}>
-            {" "}
-            Salvar Alterações{" "}
-          </button>
+
+          <button className="saveButtonPerfilBox" onClick={updateProfile}> {" "}Salvar Alterações{" "} </button>
+
         </div>
       </div>
     );

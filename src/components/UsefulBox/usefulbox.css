@@ -1,3 +1,8 @@
+html {
+
+    font-size: 62.5%;
+}
+
 .conteinerUB {
 
     width: 20%;
@@ -66,15 +71,14 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
+    text-align: center;
 }
 
 .contentUB h1 {
 
-    height: 20%;
-
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    height: fit-content;
+    width: fit-content;
 
     font-size: 2.6em;
     font-weight: bolder;
@@ -85,11 +89,7 @@
 .contentUB p {
 
     height: fit-content;
-    width: 80%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: fit-content;
 
     font-size: 1.2em;
     font-weight: 100;
@@ -121,4 +121,203 @@
 .contentUB button:hover {
 
     transform: scale(1.1);
+}
+
+/* Responsividade para o eixo x */
+
+@media (max-width: 1800px) {
+
+    .conteinerUB {
+
+        width: 22.5%;
+    }
+}
+
+@media (max-width: 1650px) {
+
+    .conteinerUB {
+
+        width: 25%;
+    }
+
+    .contentUB p {
+
+        font-size: 1.4em;
+    }
+}
+
+@media (max-width: 1550px) {
+
+    .conteinerUB {
+
+        width: 27.5%;
+    }
+}
+
+@media (max-width: 1440px) {
+
+    .conteinerUB {
+
+        width: 30%;
+    }
+}
+
+@media (max-width: 1330px) {
+
+    .conteinerUB {
+
+        width: 32.5%;
+    }
+}
+
+@media (max-width: 1220px) {
+
+    .conteinerUB {
+
+        width: 35%;
+    }
+}
+
+@media (max-width: 1110px) {
+
+    .conteinerUB {
+
+        width: 37.5%;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .conteinerUB {
+
+        width: 40%;
+    }
+
+    .contentUB h1 {
+
+        font-size: 2.4em;
+    }
+}
+
+@media (max-width: 950px) {
+
+    .conteinerUB {
+
+        width: 42.5%;
+    }
+}
+
+@media (max-width: 850px) {
+
+    .conteinerUB {
+
+        width: 45%;
+        height: 17.5%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .conteinerUB {
+
+        width: 47.5%;
+    }
+
+    .contentUB h1 {
+
+        font-size: 2.2em;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .conteinerUB {
+
+        width: 55%;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .conteinerUB {
+
+        width: 60%;
+    }
+}
+
+@media (max-width: 499px) {
+
+    .conteinerUB {
+
+        width: 65%;
+    }
+}
+
+@media (max-width: 425px) {
+
+    .conteinerUB {
+
+        width: 70%;
+        height: 15%;
+    }
+}
+
+/* Responsividade para o eixo y */
+
+@media (max-height: 925px) {
+
+    .conteinerUB {
+
+        height: 22.5%;
+    }
+}
+
+@media (max-height: 800px) {
+
+    .conteinerUB {
+
+        height: 25%;
+    }
+}
+
+@media (max-height: 720px) {
+
+    .conteinerUB {
+
+        height: 27.5%;
+    }
+}
+
+@media (max-height: 600px) {
+
+    .conteinerUB {
+
+        height: 30%;
+    }
+}
+
+/* Responsividade para o eixo x e y */
+
+@media (max-width: 1024px) and (max-height: 768px) {
+
+    .conteinerUB {
+
+        width: 35%;
+    }
+}
+
+@media (max-width: 800px) and (max-height: 768px) {
+
+    .conteinerUB {
+
+        width: 45%;
+    }
+}
+
+@media (max-width: 600px) and (max-height: 768px) {
+
+    .conteinerUB {
+
+        width: 55%;
+    }
 }

@@ -6,7 +6,7 @@ export default function UsefulBox(props) {
 
     return props.display ? (
 
-        <div className="conteinerUB" style={{width: props.width, height: props.height}}>
+        <div className="conteinerUB" style={{width: props.width, height: props.height, top: props.top, left: props.left}}>
 
             <div className="topContentUB">
 
