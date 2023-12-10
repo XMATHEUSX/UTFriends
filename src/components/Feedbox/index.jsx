@@ -21,6 +21,12 @@ export default function Feedbox(props) {
 
   // Declarações das funções básicas:
 
+  function seekFeed() {
+
+    if ( Object.keys(Publications) > 0 || Publications[0].user_id == undefined) {return false}
+    else { return true }
+  }
+
   // Declaração das constantes com funções:
 
   const sendNewPublication = () => {
@@ -127,6 +133,11 @@ export default function Feedbox(props) {
     }
   }
 
+  function sendAccount() {
+
+    props.recieveAccount(nickname)
+  }
+
   // Declaração das constantes com funções
 
   const Perfils = [];
@@ -139,11 +150,16 @@ export default function Feedbox(props) {
 
   /* Configurações de exibição do Feed */
   if (props.config == "home") {
+
     return (
+
       <div className="conteinerFB" style={{ justifyContent: "space-between" }}>
-        <div className="feedConteinerFB">
-          {Object.keys(Publications).length > 0 ? (
+
+        <div className={`${seekFeed() > 0 ? feedConteinerFB : "emptyConteinerFB"}`}>
+
+          {seekFeed() > 0 ? (
             Object.keys(Publications).map((index) => (
+
               <Publication
                 key={index}
                 type={Publications[index].tipo_pensamento}
@@ -155,17 +171,24 @@ export default function Feedbox(props) {
                 pensamento_id={Publications[index].pensamento_id}
                 nickname={Publications[index].nickname}
               />
+
             ))
           ) : (
+
             <div className="empty-feed">
+
               <p>Ei {props.nickname}, parece que seu feed está vazio!</p>
-              <p>Comece a seguir algumas pessoas e vamos nos divertir 😁😈</p>
+              <p>Comece a seguir algumas pessoas e vamos nos divertir 😁</p>
+
             </div>
-          )}
+          )}            
+
         </div>
 
         <div className="feedBottomFB">
+
           <div className="newPublicationFB">
+
             <TextareaAutosize
               id="postText"
               maxLength={256}
@@ -177,7 +200,9 @@ export default function Feedbox(props) {
             />
 
             <div className="textLimitFB">
+
               <p>{newPublicationText.length + " / 256"}</p>
+
             </div>
           </div>
 
@@ -196,7 +221,9 @@ export default function Feedbox(props) {
           ) : null}
 
           <div className="feedPublicationFB">
+
             <div className="feedIconFB">
+
               <FaImage
                 size={28}
                 color="white"
@@ -210,6 +237,7 @@ export default function Feedbox(props) {
                 onChange={newImagePost}
                 style={{ display: "none" }}
               />
+
             </div>
 
             <LuSendHorizonal
@@ -219,37 +247,56 @@ export default function Feedbox(props) {
               onClick={sendNewPublication}
               cursor={"pointer"}
             />
+
           </div>
         </div>
       </div>
     );
+
   } else if (props.config == "search") {
+
     return (
+
       <div className="conteinerFB" style={{ justifyContent: "space-between" }}>
+
         {checkPerfils() ? (
+
           <div className="feedConteinerFB">
+
             {Object.keys(Perfils).map((index) => (
               <Search
                 key={index}
                 bio={Perfils[index].biografia}
                 nickname={Perfils[index].nickname}
                 follow={false}
-                onClickPerfil={props.onClickPerfilSearch}
+                onClickPerfil={sendAccount}
               />
+
             ))}
           </div>
+
         ) : (
+
           <div className="noSearchFB">
-            <p> Não foi possivel encontrar nenhum resultado </p>
+
+            <p> Não foi encontrado nenhum resultado para sua busca 😥 </p>
+            <p> Tente novamente! </p>
+
           </div>
         )}
       </div>
+
     );
   } else if (props.config == "searchPerfil") {
+
     return (
+
       <div className="conteinerFB">
+
         <div className="perfilConteinerFB">
+
           <div className="headerFB">
+
             <FiArrowLeft
               onClick={props.onClickSearch}
               className="returnIconFB"
@@ -257,27 +304,38 @@ export default function Feedbox(props) {
             />
 
             <p>{"@" + props.nickname}</p>
+
           </div>
 
           <div className="imagemCapaFB">
+
             <div className="imagemFotoFB"></div>
+
           </div>
 
           <div className="topContentFB">
+
             <div className="infoFollowFB">
+
               <div className="followFB">
+
                 <p>{props.followers ? props.followers : "0"}</p>
                 <p>{"Seguidores"}</p>
+
               </div>
 
               <div className="followFB">
+
                 <p>{props.following ? props.following : "0"}</p>
                 <p>{"Seguindo"}</p>
+
               </div>
 
               <div className="followFB">
+
                 <p>{props.pensamentos ? props.pensamentos : "0"}</p>
                 <p>{"Pensamentos"}</p>
+
               </div>
             </div>
 
@@ -285,12 +343,16 @@ export default function Feedbox(props) {
           </div>
 
           <div className="midContentFB">
+
             <div className="infoExtraFB">
+
               <p style={{ fontWeight: "bold" }}>Curso:</p>
               <p>{props.curso}</p>
+
             </div>
 
             <div className="biografiaFB">
+
               <p>
                 <BiSolidQuoteAltLeft size={15} />
 
@@ -298,20 +360,13 @@ export default function Feedbox(props) {
 
                 <BiSolidQuoteAltRight size={15} />
               </p>
+
             </div>
           </div>
 
           <div className="feedFB">
-            {Object.keys(SearchPublications).map((index) => (
-              <Publication
-                key={index}
-                type={SearchPublications[index].tipo_pensamento}
-                user={SearchPublications[index].seguindo_nickname}
-                liked={SearchPublications[index].curtiu}
-                like={SearchPublications[index].curtidas}
-                text={SearchPublications[index].ds_pensamento}
-              />
-            ))}
+
+
           </div>
         </div>
       </div>
