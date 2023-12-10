@@ -95,20 +95,14 @@ export default function Feedbox(props) {
   // Declaração das funções
 
   function checkPerfils() {
-
     if (Perfils.length != 0) {
-
-      if (Perfils[0].user_id) { 
-
-        return true 
-
-      } else { 
-        
-        return false 
+      if (Perfils[0].user_id) {
+        return true;
+      } else {
+        return false;
       }
     } else {
-
-      return false
+      return false;
     }
   }
 
@@ -122,68 +116,35 @@ export default function Feedbox(props) {
 
   /* Declarações para a configuração 'SearchPerfil' do Feed */
 
-  // Declaração das constantes com funções
-
-  const SearchPublications = [
-    {
-      tipo_pensamento: 1,
-      seguindo_nickname: "kaszuba",
-      curtiu: true,
-      curtidas: "10",
-      ds_pensamento: "teste0",
-    },
-    {
-      tipo_pensamento: 1,
-      seguindo_nickname: "kaszuba",
-      curtiu: true,
-      curtidas: "10",
-      ds_pensamento: "teste1",
-    },
-    {
-      tipo_pensamento: 1,
-      seguindo_nickname: "kaszuba",
-      curtiu: true,
-      curtidas: "10",
-      ds_pensamento: "teste0",
-    },
-    {
-      tipo_pensamento: 1,
-      seguindo_nickname: "kaszuba",
-      curtiu: true,
-      curtidas: "10",
-      ds_pensamento: "teste1",
-    },
-  ];
-
   /* Configurações de exibição do Feed */
   if (props.config == "home") {
-
     return (
-
       <div className="conteinerFB" style={{ justifyContent: "space-between" }}>
-
         <div className="feedConteinerFB">
-
-          {Object.keys(Publications).map((index) => (
-            <Publication
-              key={index}
-              type={Publications[index].tipo_pensamento}
-              user={Publications[index].seguindo_nickname}
-              liked={Publications[index].curtiu}
-              like={Publications[index].curtidas}
-              text={Publications[index].ds_pensamento}
-              meu_id={Publications[index].meu_id}
-              pensamento_id={Publications[index].pensamento_id}
-              nickname={Publications[index].nickname}
-            />
-          ))}
-
+          {Object.keys(Publications).length > 0 ? (
+            Object.keys(Publications).map((index) => (
+              <Publication
+                key={index}
+                type={Publications[index].tipo_pensamento}
+                user={Publications[index].seguindo_nickname}
+                liked={Publications[index].curtiu}
+                like={Publications[index].curtidas}
+                text={Publications[index].ds_pensamento}
+                meu_id={Publications[index].meu_id}
+                pensamento_id={Publications[index].pensamento_id}
+                nickname={Publications[index].nickname}
+              />
+            ))
+          ) : (
+            <div className="empty-feed">
+              <p>Ei {props.nickname}, parece que seu feed está vazio!</p>
+              <p>Comece a seguir algumas pessoas e vamos nos divertir 😁😈</p>
+            </div>
+          )}
         </div>
 
         <div className="feedBottomFB">
-
           <div className="newPublicationFB">
-
             <TextareaAutosize
               id="postText"
               maxLength={256}
@@ -195,11 +156,8 @@ export default function Feedbox(props) {
             />
 
             <div className="textLimitFB">
-
               <p>{newPublicationText.length + " / 256"}</p>
-
             </div>
-
           </div>
 
           {postImage ? (
@@ -245,15 +203,10 @@ export default function Feedbox(props) {
       </div>
     );
   } else if (props.config == "search") {
-
     return (
-
       <div className="conteinerFB" style={{ justifyContent: "space-between" }}>
-
-        {checkPerfils() ? 
-
+        {checkPerfils() ? (
           <div className="feedConteinerFB">
-
             {Object.keys(Perfils).map((index) => (
               <Search
                 key={index}
@@ -263,31 +216,19 @@ export default function Feedbox(props) {
                 onClickPerfil={props.onClickPerfilSearch}
               />
             ))}
-
           </div>
-
-        : 
-        
-        <div className="noSearchFB">
-
-          <p> Não foi possivel encontrar nenhum resultado </p>
-
-        </div>
-
-        }
-
+        ) : (
+          <div className="noSearchFB">
+            <p> Não foi possivel encontrar nenhum resultado </p>
+          </div>
+        )}
       </div>
     );
   } else if (props.config == "searchPerfil") {
-
     return (
-
       <div className="conteinerFB">
-
         <div className="perfilConteinerFB">
-
           <div className="headerFB">
-
             <FiArrowLeft
               onClick={props.onClickSearch}
               className="returnIconFB"
@@ -295,38 +236,27 @@ export default function Feedbox(props) {
             />
 
             <p>{"@" + props.nickname}</p>
-
           </div>
 
           <div className="imagemCapaFB">
-
             <div className="imagemFotoFB"></div>
-
           </div>
 
           <div className="topContentFB">
-
             <div className="infoFollowFB">
-
               <div className="followFB">
-
                 <p>{props.followers ? props.followers : "0"}</p>
                 <p>{"Seguidores"}</p>
-
               </div>
 
               <div className="followFB">
-
                 <p>{props.following ? props.following : "0"}</p>
                 <p>{"Seguindo"}</p>
-
               </div>
 
               <div className="followFB">
-
                 <p>{props.pensamentos ? props.pensamentos : "0"}</p>
                 <p>{"Pensamentos"}</p>
-
               </div>
             </div>
 
@@ -334,16 +264,12 @@ export default function Feedbox(props) {
           </div>
 
           <div className="midContentFB">
-
             <div className="infoExtraFB">
-
               <p style={{ fontWeight: "bold" }}>Curso:</p>
               <p>{props.curso}</p>
-
             </div>
 
             <div className="biografiaFB">
-
               <p>
                 <BiSolidQuoteAltLeft size={15} />
 
@@ -351,12 +277,10 @@ export default function Feedbox(props) {
 
                 <BiSolidQuoteAltRight size={15} />
               </p>
-
             </div>
           </div>
 
           <div className="feedFB">
-
             {Object.keys(SearchPublications).map((index) => (
               <Publication
                 key={index}
@@ -367,7 +291,6 @@ export default function Feedbox(props) {
                 text={SearchPublications[index].ds_pensamento}
               />
             ))}
-
           </div>
         </div>
       </div>

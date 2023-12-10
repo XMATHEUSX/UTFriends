@@ -11,7 +11,7 @@ import Menubar from "../../components/Menubar";
 import Perfilbox from "../../components/Perfilbox";
 import "./feed.css";
 
-var Executada = false;
+var executada = false;
 
 export default function Feed() {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ export default function Feed() {
     exit();
   }
 
-  if (!Executada) {
+  if (!executada) {
     const userData = {
       token: token,
     };
@@ -67,7 +67,7 @@ export default function Feed() {
           setFollowing(data.dados.seguindo);
           setPensamentos(data.dados.pensamentos);
           setCurso(data.dados.nm_curso);
-          Executada = true;
+          executada = true;
         } else if (!data.success) {
           exit();
         }
@@ -277,6 +277,7 @@ export default function Feed() {
       {home ? (
         <Feedbox
           config={feedConfig}
+          nickname={nickname}
           feed={feed}
           profiles={profiles}
           onClickSearch={clickSearch}

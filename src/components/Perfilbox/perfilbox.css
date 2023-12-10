@@ -1,612 +1,586 @@
 html {
-
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 /* Design básico do componente Perfilbox */
 
 .conteinerPerfilBox {
+  width: 40%;
+  height: 95%;
 
-    width: 40%;
-    height: 95%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
 
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
+  position: absolute;
+  top: 5%;
+  left: 30%;
 
-    position: absolute;
-    top: 5%;
-    left: 30%;
+  border-right: solid;
+  border-right-width: 3px;
+  border-left: solid;
+  border-left-width: 3px;
 
-    border-right: solid;
-    border-right-width: 3px;
-    border-left: solid;
-    border-left-width: 3px;
-
-    background-color: #FFF;
-    box-shadow: rgba(0,0,0,0.2) 0px 0px 10px 10px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px 10px;
 }
 
 /* Design das imagens do componente Pefilbox */
 
 .capaPerfilBox {
+  width: 90%;
+  height: 25%;
 
-    width: 90%;
-    height: 25%;
+  position: relative;
+  z-index: 0;
 
-    position: relative;
-    z-index: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
 
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    
-    border-bottom: solid;
-    border-bottom-width: 3px;
+  border-bottom: solid;
+  border-bottom-width: 3px;
 
-    margin-top: 5%;
+  margin-top: 5%;
 }
 
 .fotoPerfilBox {
+  height: 125px;
+  width: 125px;
 
-    height: 125px;
-    width: 125px;
+  border: solid;
+  border-width: 3px;
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 
-    border: solid;
-    border-width: 3px;
-    border-top-left-radius: 30px;
-    border-bottom-right-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: relative;
+  z-index: 1;
 
-    position: relative;
-    z-index: 1;
+  overflow: hidden;
 
-    overflow: hidden;
+  margin-bottom: 2%;
+  margin-left: 2%;
 
-    margin-bottom: 2%;
-    margin-left: 2%;
-
-    background-color: #FFF;
+  background-color: #fff;
 }
 
 .imagemPerfilBox {
+  width: 100%;
+  height: 100%;
 
-    width: 100%;
-    height: 100%;
+  display: flex;
 
-    display: flex;
-
-    position: absolute;
-    z-index: 0;
+  position: absolute;
+  z-index: 0;
 }
 
 .uploadCapaPerfilConfig {
+  width: 15%;
+  height: 10%;
 
-    width: 15%;
-    height: 10%;
+  position: relative;
+  z-index: 1;
 
-    position: relative;
-    z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  margin-bottom: 2%;
+  margin-right: 2%;
 
-    margin-bottom: 2%;
-    margin-right: 2%;
+  border: solid;
+  border-width: 2px;
 
-    border:solid;
-    border-width: 2px;
+  box-shadow: rgba(0, 0, 0, 0.4) -2px 2px 6px;
 
-    box-shadow: rgba(0,0,0,0.4) -2px 2px 6px;
-
-    transition: transform 1s;
+  transition: transform 1s;
 }
 
 .uploadCapaPerfilConfig:hover {
-
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .uploadFotoPerfilConfig {
+  width: 70%;
+  height: 20%;
 
-    width: 70%;
-    height: 20%;
+  position: relative;
+  z-index: 1;
 
-    position: relative;
-    z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  border: solid;
+  border-width: 2px;
 
-    border:solid;
-    border-width: 2px;
+  box-shadow: rgba(0, 0, 0, 0.4) -2px 2px 6px;
 
-    box-shadow: rgba(0,0,0,0.4) -2px 2px 6px;
-
-    transition: transform 0.5s;
+  transition: transform 0.5s;
 }
 
 .uploadFotoPerfilConfig:hover {
-
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 /* Design das informações superiores do perfil */
 
 .topContentPerfilBox {
+  width: 90%;
+  height: 5%;
 
-    width: 90%;
-    height: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-
-    margin-top: 5%;
-
+  margin-top: 5%;
 }
 
 .infoBasicaPerfilBox {
+  height: 100%;
+  width: 35%;
 
-    height: 100%;
-    width: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
 
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
-
-    padding-left: 2%;
+  padding-left: 2%;
 }
 
 .infoBasicaPerfilBox p {
-
-    font-size: 2.4em;
-    font-weight: bold;
+  font-size: 2.4em;
+  font-weight: bold;
 }
 
 .infoFollowPerfilBox {
+  width: 55%;
+  height: 100%;
 
-    width: 55%;
-    height: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
 }
 
 .followPerfilBox {
+  width: 30%;
+  height: 100%;
 
-    width: 30%;
-    height: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .followPerfilBox p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 1.4em;
-    font-weight: bold;
+  font-size: 1.4em;
+  font-weight: bold;
 }
 
 .editIconPerfilBox {
+  width: 10%;
 
-    width: 10%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-
-    padding-right: 2%;
+  padding-right: 2%;
 }
 
 /* Design das informações do perfil */
 
 .midContentPerfilBox {
+  height: 15%;
+  width: 90%;
 
-    height: 15%;
-    width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-
-    margin-top: 5%;
+  margin-top: 5%;
 }
 
 .infoExtraPerfilbox {
+  width: 100%;
+  height: 30%;
 
-    width: 100%;
-    height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
 
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
-
-    border-left: solid;
-    border-left-width: 3px;
-    border-top: solid;
-    border-top-left-radius: 10px ;
+  border-left: solid;
+  border-left-width: 3px;
+  border-top: solid;
+  border-top-left-radius: 10px;
 }
 
 .infoExtraPerfilbox p {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
 
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-direction: column;
+  padding-left: 2%;
 
-    padding-left: 2%;
-
-    font-size: 1.6em;
+  font-size: 1.6em;
 }
 
 .biograficaPerfilBox {
+  height: 70%;
+  width: 100%;
 
-    height: 70%;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  border-left: solid;
+  border-left-width: 3px;
 
-    border-left: solid;
-    border-left-width: 3px;
-
-    padding-left: 2%;
-    padding-top: 1%;
+  padding-left: 2%;
+  padding-top: 1%;
 }
 
 .biograficaPerfilBox p {
+  width: fit-content;
 
-    width: fit-content;
+  min-width: 5%;
 
-    min-width: 5%;
+  text-align: center;
+  text-justify: inter-word;
+  white-space: pre-wrap;
+  text-indent: 0;
 
-    text-align: center;
-    text-justify: inter-word;
-    white-space: pre-wrap;
-    text-indent: 0;
-
-    font-size: 1.4em;
-    font-weight: bold;
+  font-size: 1.4em;
+  font-weight: bold;
 }
 
 /* Design do feed pessoal do perfil */
 
 .feedConteinerPerfilBox {
+  height: 45%;
+  width: 90%;
 
-    height: 45%;
-    width: 90%;
+  border-top: solid;
+  border-width: 3px;
 
-    border-top: solid;
-    border-width: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
 
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-
-    margin-top: 5%;
+  margin-top: 5%;
 }
 
 .feedPerfilBox {
+  width: 110%;
+  height: fit-content;
 
-    width: 110%;
-    height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
 
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
+  overflow-y: scroll;
 
-    overflow-y: scroll;
-
-    padding-top: 2%;
-    padding-left: 2%;
-    padding-bottom: 2%;
+  padding-top: 2%;
+  padding-left: 2%;
+  padding-bottom: 2%;
 }
 
-/* Design do cabeçalho das configurações de perfil */ 
+.noPublicationPerfilBox {
+  width: 75%;
+  height: 100%;
+  margin: 3% 0 3% 0;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+  text-align: center;
+}
+
+.noPublicationPerfilBox p {
+  margin-bottom: 10px;
+}
+
+/* Design do cabeçalho das configurações de perfil */
 
 .headerPerfilBox {
+  width: 90%;
+  height: 5%;
 
-    width: 90%;
-    height: 5%;
-    
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
 
-    border-bottom: solid;
-    border-width: 3px;
+  border-bottom: solid;
+  border-width: 3px;
 
-    padding-left: 2%;
-    padding-right: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
 
-    margin-top: 5%;
+  margin-top: 5%;
 }
 
 .headerPerfilBox p {
+  width: 80%;
 
-    width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    font-size: 22px;
-    font-weight: bold;
-
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .returnIconPerfilBox {
+  width: 35px;
+  height: 35px;
 
-    width: 35px;
-    height: 35px;
-
-    transition: transform 1.5s;
+  transition: transform 1.5s;
 }
 
 .returnIconPerfilBox:hover {
-
-    transform: scale(1.25)
+  transform: scale(1.25);
 }
 
-/* Design dos inputs das configurações do perfil */ 
+/* Design dos inputs das configurações do perfil */
 
 .inputApelidoPerfilBox {
+  width: 85%;
+  height: 7.5%;
 
-    width: 85%;
-    height: 7.5%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
 
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
+  border: solid;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-width: 2px;
 
-    border:solid;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-width: 2px;
-    
-    overflow: hidden;
+  overflow: hidden;
 
-    margin-top: 5%;
+  margin-top: 5%;
 
-    box-shadow: rgba(0,0,0,0.4) -5px 5px 10px;
+  box-shadow: rgba(0, 0, 0, 0.4) -5px 5px 10px;
 }
 
 .titleNicknamePerfilBox {
+  width: 100%;
+  height: 35%;
 
-    width: 100%;
-    height: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
 
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
+  border-bottom: solid;
+  border-width: 2px;
 
-    border-bottom: solid;
-    border-width: 2px;
+  padding: 1%;
 
-    padding: 1%;
-
-    background-color: #FFF;
+  background-color: #fff;
 }
 
-.titleNicknamePerfilBox p{
-
-    font-size: 1.2em;
-    font-weight: bold;
+.titleNicknamePerfilBox p {
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 .contentNicknamePerfilBox {
+  width: 100%;
+  height: 75%;
 
-    width: 100%;
-    height: 75%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .contentNicknamePerfilBox p {
-
-    font-size: 1.4em;
+  font-size: 1.4em;
 }
 
 .contentNicknamePerfilBox input {
+  width: 90%;
+  height: 70%;
 
-    width: 90%;
-    height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  border: none;
+  outline: none;
 
-    border:none;
-    outline: none;
-
-    font-size: 1.4em;
-    text-align: center;
-    font-family: 'Roboto Mono';
+  font-size: 1.4em;
+  text-align: center;
+  font-family: "Roboto Mono";
 }
 
 .inputBiografiaPerfilBox {
+  width: 85%;
+  height: 15%;
 
-    width: 85%;
-    height: 15%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
 
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
+  border: solid;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-width: 2px;
 
-    border:solid;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-width: 2px;
-    
-    overflow: hidden;
+  overflow: hidden;
 
-    margin-top: 5%;
+  margin-top: 5%;
 
-    box-shadow: rgba(0,0,0,0.4) -5px 5px 10px;
+  box-shadow: rgba(0, 0, 0, 0.4) -5px 5px 10px;
 }
 
 .titleBiografiaPerfilBox {
+  width: 100%;
+  height: 17.5%;
 
-    width: 100%;
-    height: 17.5%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
 
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
+  border-bottom: solid;
+  border-width: 2px;
 
-    border-bottom: solid;
-    border-width: 2px;
+  padding: 1%;
 
-    padding: 1%;
-
-    background-color: #FFF;
+  background-color: #fff;
 }
 
-.titleBiografiaPerfilBox p{
-
-    font-size: 1.2em;
-    font-weight: bold;
+.titleBiografiaPerfilBox p {
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 .contentBiografiaPerfilBox {
+  width: 100%;
+  height: 88%;
 
-    width: 100%;
-    height: 88%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .contentBiografiaPerfilBox p {
-
-    font-size: 1.4em;
+  font-size: 1.4em;
 }
 
 .contentBiografiaPerfilBox textarea {
+  width: 90%;
+  height: 80%;
 
-    width: 90%;
-    height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  resize: none;
 
-    resize: none;
+  border: none;
+  outline: none;
 
-    border:none;
-    outline: none;
-
-    font-size: 14px;
-    text-align: center;
-    
+  font-size: 14px;
+  text-align: center;
 }
 
 .newBioPerfilBox {
+  width: 100%;
 
-    width: 100%;
+  resize: none;
 
-    resize: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
 
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: row;
-
-    outline: none;
-    border:none;
+  outline: none;
+  border: none;
 }
 
 /* Design das mensagens de erro das configurações do perfil */
 
 .erroPerfilBox {
+  width: 85%;
+  height: fit-content;
 
-    width: 85%;
-    height: fit-content;
+  margin-top: 1%;
+  padding-left: 1%;
 
-    margin-top: 1%;
-    padding-left: 1%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .erroMessageperfilBox {
+  height: 0;
+  width: 100%;
 
-    height: 0;
-    width: 100%;
+  color: red;
+  display: none;
 
-    color: red;
-    display: none;
-
-    font-size: 1.2em;
+  font-size: 1.2em;
 }
 
 /* Design do botão de salvar as configurações do perfil */
 
 .botContentPerfilBox {
+  width: 100%;
+  height: 30%;
 
-    width: 100%;
-    height: 30%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-
-    padding-bottom: 5%;
+  padding-bottom: 5%;
 }
 
 .saveButtonPerfilBox {
+  width: 25%;
+  height: 15%;
 
-    width: 25%;
-    height: 15%;
+  font-size: 1.4em;
+  font-family: "Roboto Mono";
+  font-weight: bold;
 
-    font-size: 1.4em;
-    font-family: 'Roboto Mono';
-    font-weight: bold;
+  border: dashed;
+  border-width: 2px;
 
-    border: dashed;
-    border-width: 2px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.4) -5px 5px 10px;
 
-    background-color: #FFF;
-    box-shadow: rgba(0,0,0,0.4) -5px 5px 10px;
-
-    transition: transform 1.5s;
+  transition: transform 1.5s;
 }
 
 .saveButtonPerfilBox:hover {
-
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
