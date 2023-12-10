@@ -23,8 +23,15 @@ export default function Feedbox(props) {
 
   function seekFeed() {
 
-    if (Publications[0].meu_id != undefined) { return true }
-    else { return false }
+    if (Publications.length != 0) {
+      if (Publications[0].meu_id) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
   }
 
   // Declaração das constantes com funções:
@@ -111,6 +118,7 @@ export default function Feedbox(props) {
   };
 
   const Publications = [];
+
   var feedSize = props.feed.length;
   for (let i = 0; i < feedSize; i++) {
     Publications.push(props.feed[i]);
