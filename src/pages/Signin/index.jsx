@@ -8,7 +8,6 @@ import UsefulBox from "../../components/UsefulBox";
 import "./signin.css";
 
 export default function Signin() {
-
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
@@ -17,140 +16,139 @@ export default function Signin() {
 
   const navigate = useNavigate();
 
-  function Login() { navigate('/feed') }
+  function Login() {
+    navigate("/feed");
+  }
 
   /* Clique para fazer o login */
 
   const handleLogin = () => {
-
     const userData = {
       email: email,
       password: senha,
     };
 
     const userVal = {
-
       email: false,
-      password: false
-    }
+      password: false,
+    };
 
     /* Verificação das entradas de dados */
 
-    document.getElementById("noEmailSI").style.display = 'block'
+    document.getElementById("noEmailSI").style.display = "block";
 
-    if (email != '') {
-
-      document.getElementById("noEmailSI").style.display = 'none'
-      userVal.email = true
-
-    } else { 
-      
-      document.getElementById("noEmailSI").style.display = 'block' 
+    if (email != "") {
+      document.getElementById("noEmailSI").style.display = "none";
+      userVal.email = true;
+    } else {
+      document.getElementById("noEmailSI").style.display = "block";
       document.getElementById("incorrectPasswordSI").style.display = "none";
-    
     }
 
-    if (senha != '') {
-
-      document.getElementById("noSenhaSI").style.display = 'none'
-      userVal.password = true
-
-    } else { 
-      
-      document.getElementById("noSenhaSI").style.display = 'block' 
+    if (senha != "") {
+      document.getElementById("noSenhaSI").style.display = "none";
+      userVal.password = true;
+    } else {
+      document.getElementById("noSenhaSI").style.display = "block";
       document.getElementById("incorrectPasswordSI").style.display = "none";
-    
     }
 
     /* Envio dos dados validados para o banco de dados */
 
-    const validacao = Object.values(userVal).every(value => value === true);
+    const validacao = Object.values(userVal).every((value) => value === true);
 
-    if(validacao){
-
-      document.getElementById("noEmailSI").style.display = 'none'
-      document.getElementById("noSenhaSI").style.display = 'none'
+    if (validacao) {
+      document.getElementById("noEmailSI").style.display = "none";
+      document.getElementById("noSenhaSI").style.display = "none";
 
       fetch("http://localhost:3000/api/v1/profile/login", {
-
-      method: "POST",
-      headers: {"Content-Type": "application/json",},
-      body: JSON.stringify(userData),
-
-    })
-      .then((response) => response.json())
-      .then((data) => {
-
-        console.log(data);
-
-        if (data.success) {
-
-          document.getElementById("incorrectPasswordSI").style.display = "none";
-          localStorage.setItem('token', data.token);
-          Login();
-
-        } else if (!data.success) {
-
-          if (data.message == 'Credenciais inválidas.') { setDisplayNR(true) }
-          else if (data.message == 'Email não verificado.') { setDisplayNV(true) }
-
-          //document.getElementById("Email").value = "";
-          //document.getElementById("Senha").value = "";
-          //setSenha("");
-          //setEmail("");
-        }
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
       })
-      .catch((error) => {console.error("Erro:", error);})
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log(data);
+
+          if (data.success) {
+            document.getElementById("incorrectPasswordSI").style.display =
+              "none";
+            localStorage.setItem("token", data.token);
+            Login();
+          } else if (!data.success) {
+            if (data.message == "Credenciais inválidas.") {
+              setDisplayNR(true);
+            } else if (data.message == "Email não verificado.") {
+              setDisplayNV(true);
+            }
+
+            //document.getElementById("Email").value = "";
+            //document.getElementById("Senha").value = "";
+            //setSenha("");
+            //setEmail("");
+          }
+        })
+        .catch((error) => {
+          console.error("Erro:", error);
+        });
     }
   };
 
-  const enterCapture = (e) => { if (e.key === 'Enter') { handleLogin() } }
+  const enterCapture = (e) => {
+    if (e.key === "Enter") {
+      handleLogin();
+    }
+  };
 
-  function CloseIcon() { setDisplayNV(false); setDisplayNR(false) }
+  function CloseIcon() {
+    setDisplayNV(false);
+    setDisplayNR(false);
+  }
 
-  function OpenCreateAccount() { navigate('/signup') }
+  function OpenCreateAccount() {
+    navigate("/signup");
+  }
 
   function NotValidated() {
-    
-    return ( 
-
-      <UsefulBox 
+    return (
+      <UsefulBox
         display={displayNV}
-        name={'Validation_Failed'} 
-        title={'ERROR'}
-        button={'Tentar Novamente'}
-        message={'Seu email não está verificado, um novo link de verificação foi encaminhado para seu e-mail'}
-        width={'25%'}
-        height={'20%'} 
-        onClickClose={CloseIcon} 
+        name={"Validation_Failed"}
+        title={"ERROR"}
+        button={"Tentar Novamente"}
+        message={
+          "Seu email não está verificado, um novo link de verificação foi encaminhado para seu e-mail"
+        }
+        width={"25%"}
+        height={"20%"}
+        onClickClose={CloseIcon}
         onClickButton={CloseIcon}
-      /> 
-    ) 
+      />
+    );
   }
 
   function NotRegistered() {
-
-    return( 
-    
-      <UsefulBox 
-        display={displayNR} 
-        name={'Login_Failed'}
-        title={'ERROR'}
-        button={'Criar Conta'}
-        message={'Conta UTFriends inexiste, crie sua conta para continuar com o login'}
-        width={'25%'}
-        height={'20%'} 
-        onClickClose={CloseIcon} 
+    return (
+      <UsefulBox
+        display={displayNR}
+        name={"Login_Failed"}
+        title={"ERROR"}
+        button={"Criar Conta"}
+        message={
+          "Conta UTFriends inexiste, crie sua conta para continuar com o login"
+        }
+        width={"25%"}
+        height={"20%"}
+        onClickClose={CloseIcon}
         onClickButton={OpenCreateAccount}
-      /> 
-    ) 
+      />
+    );
   }
 
   /* Exibição da tela de SignIn */
 
   return (
     <div className="conteinerSI">
-
       {NotRegistered()}
 
       {NotValidated()}
@@ -171,8 +169,14 @@ export default function Signin() {
               />
             </div>
 
-            <p className="incorrectSI" id="noEmailSI" style={{fontSize: '12px'}}> Campo obrigatório </p>
-
+            <p
+              className="incorrectSI"
+              id="noEmailSI"
+              style={{ fontSize: "12px" }}
+            >
+              {" "}
+              Campo obrigatório{" "}
+            </p>
           </div>
 
           <div className="contentSI">
@@ -190,18 +194,28 @@ export default function Signin() {
               />
             </div>
 
-            <p className="incorrectSI" id="incorrectPasswordSI" style={{fontSize: '12px'}}> Email ou Senha incorreta! </p>
+            <p
+              className="incorrectSI"
+              id="incorrectPasswordSI"
+              style={{ fontSize: "12px" }}
+            >
+              {" "}
+              Email ou Senha incorreta!{" "}
+            </p>
 
-            <p className="incorrectSI" id="noSenhaSI" style={{fontSize: '12px'}}> Campo obrigatório </p>
-
+            <p
+              className="incorrectSI"
+              id="noSenhaSI"
+              style={{ fontSize: "12px" }}
+            >
+              {" "}
+              Campo obrigatório{" "}
+            </p>
           </div>
         </div>
         <div className="bottomContentSI">
-
-          <Link to={'/emailvalidation'} className="buttonLinkSI">
-
+          <Link to={"/emailvalidation"} className="buttonLinkSI">
             <button className="buttonSI">Trocar Senha</button>
-
           </Link>
 
           <FiArrowRight

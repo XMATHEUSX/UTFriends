@@ -4,19 +4,23 @@ import { GiDuckPalm } from "react-icons/gi";
 import "./publication.css";
 
 export default function Publication(props) {
-  const [liked, setLiked] = useState(props.liked);
+  const curtidores = props.curtidores || [];
+  const pensamento_id = parseInt(props.pensamento_id);
+  const nickname = props.nickname || props.user;
+  const user_id = parseInt(props.meu_id) || parseInt(props.user_id);
+
+  const curtiuProprioPensamento = Array.from(curtidores).some(
+    (curtidor) => curtidor.user_id === user_id
+  );
+
+  const [liked, setLiked] = useState(props.liked ?? curtiuProprioPensamento);
   const [likes, setLikes] = useState(isNaN(props.like) ? 0 : props.like);
 
   function ClickLike() {
-    const pensamento_id = props.pensamento_id;
-    const nickname = props.nickname;
-
     const user_info = {
-      user_id: props.meu_id,
+      user_id: user_id,
       nickname: nickname,
     };
-
-    console.log(user_info);
 
     fetch("http://localhost:3000/api/v1/feed/curtirpensamento", {
       method: "POST",
@@ -26,10 +30,9 @@ export default function Publication(props) {
         user_info: user_info,
       }),
     })
-      .then((response) => response.json())
       .then((data) => {
         const newLikes = liked ? likes - 1 : likes + 1;
-        console.log(data);
+        // console.log(data);
         setLikes(newLikes);
         setLiked(!liked);
       })
@@ -39,8 +42,6 @@ export default function Publication(props) {
   }
 
   if (props.type == 1) {
-    // Publicação que só contem texto
-
     return (
       <div className="conteinerP">
         <div className="topContentP">

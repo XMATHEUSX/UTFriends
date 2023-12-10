@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BiSolidQuoteAltLeft, BiSolidQuoteAltRight } from "react-icons/bi";
 import { FaEdit } from "react-icons/fa";
 import { FiArrowLeft } from "react-icons/fi";
@@ -14,53 +14,6 @@ export default function Perfilbox(props) {
 
   // Declaração das constantes com função
 
-  const MyPublications = [
-    {
-      tipo_pensamento: 1,
-      seguindo_nickname: props.nickname,
-      curtiu: true,
-      curtidas: "10",
-      ds_pensamento: "teste0",
-    },
-    {
-      tipo_pensamento: 1,
-      seguindo_nickname: props.nickname,
-      curtiu: true,
-      curtidas: "10",
-      ds_pensamento: "teste1",
-    },
-    {
-      tipo_pensamento: 1,
-      seguindo_nickname: props.nickname,
-      curtiu: true,
-      curtidas: "10",
-      ds_pensamento: "teste0",
-    },
-    {
-      tipo_pensamento: 1,
-      seguindo_nickname: props.nickname,
-      curtiu: true,
-      curtidas: "10",
-      ds_pensamento: "teste1",
-    },
-    {
-      tipo_pensamento: 1,
-      seguindo_nickname: props.nickname,
-      curtiu: true,
-      curtidas: "10",
-      ds_pensamento: "teste0",
-    },
-    {
-      tipo_pensamento: 1,
-      seguindo_nickname: props.nickname,
-      curtiu: true,
-      curtidas: "10",
-      ds_pensamento: "teste1",
-    },
-  ];
-
-  /* Declaração das funções de perfilconfig */
-
   // Declaração das constantes básicas:
 
   const [imagemCapa, setImageCapa] = useState(null);
@@ -72,8 +25,12 @@ export default function Perfilbox(props) {
 
   const [sucesso, setSucesso] = useState(null);
   const [display, setDisplay] = useState(null);
+  const [MyPublications, setMyPublications] = useState([]);
 
   var token = localStorage.getItem("token");
+  const userData = {
+    token: token,
+  };
 
   // Declaração das funções básicas:
 
@@ -135,6 +92,30 @@ export default function Perfilbox(props) {
       />
     );
   }
+
+  const requestMeusPensamentos = async () => {
+    try {
+      const response = await fetch(
+        "http://localhost:3000/api/v1/profile/exibirmeuspensamentos",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(userData),
+        }
+      );
+
+      const data = await response.json();
+      console.log("Data:", data);
+
+      if (data.success) {
+        setMyPublications(data.pensamentos);
+      } else {
+        setMyPublications([]);
+      }
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
 
   // Declaração das constantes com funções:
 
@@ -203,6 +184,7 @@ export default function Perfilbox(props) {
 
       reader.readAsDataURL(file);
     }
+    teste0;
   };
 
   const TrocaImagemPerfil = (e) => {
@@ -324,7 +306,9 @@ export default function Perfilbox(props) {
   /* Configurações de exibição */
 
   if (props.config == "perfil") {
-    // Exibição do perfil
+    useEffect(() => {
+      requestMeusPensamentos();
+    }, []);
 
     return (
       <div className="conteinerPerfilBox">
@@ -404,10 +388,13 @@ export default function Perfilbox(props) {
               <Publication
                 key={index}
                 type={MyPublications[index].tipo_pensamento}
-                user={MyPublications[index].seguindo_nickname}
+                user={props.nickname}
                 liked={MyPublications[index].curtiu}
-                like={MyPublications[index].curtidas}
+                like={MyPublications[index].curtidas.curtidas.length}
                 text={MyPublications[index].ds_pensamento}
+                pensamento_id={MyPublications[index].pensamento_id}
+                user_id={MyPublications[index].user_id}
+                curtidores={MyPublications[index].curtidas.curtidas}
               />
             ))}
           </div>
@@ -484,6 +471,7 @@ export default function Perfilbox(props) {
             ref={capaRef}
             onChange={TrocaImagemCapa}
             style={{ display: "none" }}
+            updateData
           />
         </div>
 

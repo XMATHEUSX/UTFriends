@@ -41,17 +41,16 @@ export default function Feed() {
   const [community, setCommunity] = useState(false);
   const [home, setHome] = useState(true);
 
-  if (token) {
-  } else {
-    //Todo Melhorar o modo que retornar para a pagina principal
+  if (!token) {
     exit();
   }
 
-  const userData = {
-    token: token,
-  };
-  //Esta fazendo duas requisiçoes ainda
   if (!Executada) {
+    const userData = {
+      token: token,
+    };
+
+    console.log("User Data: " + userData.token);
     fetch("http://localhost:3000/api/v1/profile/user", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -61,7 +60,7 @@ export default function Feed() {
       .then((data) => {
         JSON.stringify(data.dados);
         if (data.success) {
-          console.log(data.dados);
+          // console.log(data.dados);
           setNickname(data.dados.nickname);
           setBio(data.dados.biografia);
           setFollowers(data.dados.seguidores);
@@ -83,7 +82,7 @@ export default function Feed() {
       .then((data) => {
         JSON.stringify(data);
         if (data.feed) {
-          console.log(data.feed);
+          // console.log(data.feed);
           setFeed(data.feed);
         }
       });
@@ -93,7 +92,7 @@ export default function Feed() {
     const userData = {
       token: token,
     };
-    
+
     fetch("http://localhost:3000/api/v1/profile/delete", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -102,9 +101,9 @@ export default function Feed() {
       .then((response) => response.json())
       .then((data) => {
         JSON.stringify(data);
-        if(data.success){
-          alert('Conta Deletada');
-          Exit()
+        if (data.success) {
+          alert("Conta Deletada");
+          Exit();
         }
       });
   }
@@ -155,23 +154,24 @@ export default function Feed() {
   }
 
   function clickSearch() {
-
     const userData = {
       busca: busca,
     };
 
     const verifyData = {
+      busca: false,
+    };
 
-      busca: false
+    if (userData.busca != "") {
+      verifyData.busca = true;
     }
 
-    if (userData.busca != '') { verifyData.busca = true }
-
-    const validacao = Object.values(verifyData).every(value => value === true);
+    const validacao = Object.values(verifyData).every(
+      (value) => value === true
+    );
 
     if (validacao) {
-
-        fetch("http://localhost:3000/api/v1/feed/searchProfile", {
+      fetch("http://localhost:3000/api/v1/feed/searchProfile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),
@@ -181,7 +181,7 @@ export default function Feed() {
           JSON.stringify(data);
           setProfiles(data.profiles);
         });
-        
+
       setConfig(false);
       setPerfil(false);
       setCommunity(false);
@@ -195,9 +195,8 @@ export default function Feed() {
     setPerfil(false);
     setCommunity(false);
     setHome(true);
-    alert(nickname)
+    alert(nickname);
     setFeedConfig("searchPerfil");
-
   }
 
   function ClickMenu() {
@@ -234,7 +233,6 @@ export default function Feed() {
               id="SearchBox"
               type="text"
               onChange={(e) => setBusca(e.target.value)}
-            
             />
           </div>
 
@@ -287,8 +285,8 @@ export default function Feed() {
       ) : null}
 
       {config ? (
-        <Configbox 
-          config={feedConfig} 
+        <Configbox
+          config={feedConfig}
           onClickClose={clickClose}
           onClickDelete={deleteAccount}
         />
