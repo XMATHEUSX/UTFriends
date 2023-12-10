@@ -6,7 +6,6 @@ import { LuSendHorizonal } from "react-icons/lu";
 import TextareaAutosize from "react-textarea-autosize";
 
 import React, { useRef, useState } from "react";
-
 import Publication from "../Publication";
 import Search from "../Search";
 import "./feedbox.css";
@@ -18,13 +17,35 @@ export default function Feedbox(props) {
 
   const [newPublicationText, setNewPublicationText] = useState("");
   const [postImage, setPostImage] = useState(null);
+  var token = localStorage.getItem("token");
 
   // Declarações das funções básicas:
 
   // Declaração das constantes com funções:
 
   const sendNewPublication = () => {
-    alert("Nova Publicação");
+    const publication_text = document.getElementById("postText").value;
+    const [showModal, setShowModal] = useState(false);
+
+    if (publication_text.trim() === "") {
+      alert("Você não pode enviar uma publicação vazia.");
+    } else {
+      const newPublication = {
+        token: token,
+        ds_pensamento: publication_text,
+      };
+
+      fetch("http://localhost:3000/api/v1/feed/inserirPensamento", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newPublication),
+      }).then((data) => {
+        if (data.status === "success") {
+          showSuccessModal();
+          // window.location.reload();
+        }
+      });
+    }
 
     document.getElementById("postText").value = "";
     setNewPublicationText("");

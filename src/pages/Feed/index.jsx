@@ -278,6 +278,7 @@ export default function Feed() {
         <Feedbox
           config={feedConfig}
           nickname={nickname}
+          user_id={token}
           feed={feed}
           profiles={profiles}
           onClickSearch={clickSearch}

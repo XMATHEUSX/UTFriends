@@ -145,7 +145,7 @@ export default function Perfilbox(props) {
     "Que tal ir ao feed e postar uns spotted para sua crush 🥰",
     "Avisa no feed qual é a boa para este final de semana",
     "Diga no feed porque o seu centro acadêmico é o melhor",
-    "Porque não comenta no feed o quão é difícil a vida de universitário?",
+    "Porque não comenta no feed o quão difícil é a vida de universitário?",
     "Porque não comenta no feed o quão dificil é assistir séries durante o semestre?",
   ];
 
