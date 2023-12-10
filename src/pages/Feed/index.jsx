@@ -207,6 +207,12 @@ export default function Feed() {
     exit();
   }
 
+  const enterCapture = (e) => {
+    if (e.key === "Enter") {
+      clickSearch();
+    }
+  };
+
   return (
     <div className="conteinerF">
       <div className="topContentF">
@@ -233,6 +239,7 @@ export default function Feed() {
               id="SearchBox"
               type="text"
               onChange={(e) => setBusca(e.target.value)}
+              onKeyDown={enterCapture}
             />
           </div>
 

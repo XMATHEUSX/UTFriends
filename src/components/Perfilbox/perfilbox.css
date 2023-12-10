@@ -224,6 +224,7 @@ html {
   border-left: solid;
   border-left-width: 3px;
   border-top: solid;
+  border-top-width: 3px;
   border-top-left-radius: 10px;
 }
 
@@ -300,26 +301,37 @@ html {
   padding-bottom: 2%;
 }
 
-.noPublicationPerfilBox {
-  width: 75%;
+.nofeedPerfilBox {
+
+  width: 100%;
   height: 100%;
-  margin: 3% 0 3% 0;
-  padding: 20px;
-  border: 2px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
 
-  font-size: 20px;
+.noPublicationPerfilBox {
+
+  width: 95%;
+  height: fit-content;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  font-size: 1.6em;
   text-align: center;
 }
 
-.noPublicationPerfilBox p {
-  margin-bottom: 10px;
+.noPublicationPerfilBox p:first-child {
+
+  font-weight: bold;
+  font-size: 18px;
+
+  padding-bottom: 2%;
 }
 
 /* Design do cabeçalho das configurações de perfil */

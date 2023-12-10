@@ -28,9 +28,7 @@ export default function Perfilbox(props) {
   const [MyPublications, setMyPublications] = useState([]);
 
   var token = localStorage.getItem("token");
-  const userData = {
-    token: token,
-  };
+  const userData = { token: token };
 
   // Declaração das funções básicas:
 
@@ -142,7 +140,7 @@ export default function Perfilbox(props) {
     "Porque você não reclama um pouquinho da UTF no feed?",
     "Porque você não reclama uma pouquinho do seu professor malvado favorito no feed?",
     "Porque você não reclama um pouquinho da sua matéria favorita no feed?",
-    "Que tal ir ao feed e postar uns spotted para sua crush 🥰",
+    "Que tal ir ao feed e postar uns spotted para seu crush 🥰",
     "Avisa no feed qual é a boa para este final de semana",
     "Diga no feed porque o seu centro acadêmico é o melhor",
     "Porque não comenta no feed o quão difícil é a vida de universitário?",
@@ -198,7 +196,6 @@ export default function Perfilbox(props) {
 
       reader.readAsDataURL(file);
     }
-    teste0;
   };
 
   const TrocaImagemPerfil = (e) => {
@@ -317,6 +314,10 @@ export default function Perfilbox(props) {
     perfilRef.current.click();
   };
 
+  useEffect(() => {
+    requestMeusPensamentos;
+  }, []);
+
   /* Configurações de exibição */
   useEffect(() => {
     if (props.config === "perfil") {
@@ -398,7 +399,13 @@ export default function Perfilbox(props) {
         </div>
 
         <div className="feedConteinerPerfilBox">
-          <div className="feedPerfilBox">
+          <div
+            className={`${
+              Object.keys(MyPublications).length > 0
+                ? "feedPerfilBox"
+                : "nofeedPerfilBox"
+            }`}
+          >
             {Object.keys(MyPublications).length > 0 ? (
               Object.keys(MyPublications).map((index) => (
                 <Publication
@@ -495,7 +502,6 @@ export default function Perfilbox(props) {
             ref={capaRef}
             onChange={TrocaImagemCapa}
             style={{ display: "none" }}
-            updateData
           />
         </div>
 
