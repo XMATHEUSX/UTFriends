@@ -98,36 +98,31 @@ export default function Configbox(props) {
   }
 
   function changePassword() {
-    alert()
     const userData = {
-      password: senhaAtual,
+      passwordAtual: senhaAtual,
       token: token,
+      passwordNovo: novaSenha,
     };
-    fetch("http://localhost:3000/api/v1/profile/login", {
+    fetch("http://localhost:3000/api/v1/profile/verifypassword", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),
       })
         .then((response) => response.json())
         .then((data) => {
-
           if (data.success) {
-            Login();
+            alert('Senha Alterada');
           } else if (!data.success) {
+            alert('Senha errada');
             if (data.message == "Credenciais inválidas.") {
               setDisplayNR(true);
             }
-
-            //document.getElementById("Email").value = "";
-            //document.getElementById("Senha").value = "";
-            //setSenha("");
-            //setEmail("");
           }
         })
         .catch((error) => {
           console.error("Erro:", error);
         });
-        alert('Senha Alterada');
+        
     }
 
   // Declaração das funções com exibição
