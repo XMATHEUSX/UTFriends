@@ -4,15 +4,14 @@ import './search.css'
 export default function Search(props) {
 
     const [follow, setFollow] = useState(props.follow)
-    const [id, setId] = useState(props.id)
 
     function ClickFollow() {
         setFollow(!follow)
         
     }
     
-    function sendId() {
-        props.receiveId(id)
+    function sendNickname() {
+        props.receiveNickname(props.nickname)
     }
 
     return (
@@ -25,7 +24,7 @@ export default function Search(props) {
             <div className="infoSP">
                 <div className="supInfoSP">
 
-                    <p onClick={sendId}> {"@" + props.nickname} </p>
+                    <p onClick={sendNickname}> {"@" + props.nickname} </p>
 
                     <button className={`${follow ? 'followingSP' : 'notFollowingSP'}`} onClick={ClickFollow}> {follow ? "Seguindo" : "Seguir"} </button>
 

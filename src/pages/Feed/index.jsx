@@ -233,15 +233,36 @@ export default function Feed() {
     }
   }
 
-  const clickPerfilSearch = (id) => {
+  const clickPerfilSearch = (nickname) => {
 
     setConfig(false);
     setPerfil(false);
     setCommunity(false);
     setHome(true);
 
-    console.log(id);
-
+    const userData = {
+      nickname: nickname,
+    };
+    fetch("http://localhost:3000/api/v1/profile/usersearch", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        JSON.stringify(data.dados);
+        if (data.success) {
+          console.log(data.dados)
+          setNicknameSearch(nickname)
+          setBioSearch(data.dados.biografia);
+          setFollowersSearch(data.dados.seguidores);
+          setFollowingSearch(data.dados.seguindo);
+          setPensamentosSearch(data.dados.pensamentos);
+          setCursoSearch(data.dados.nm_curso);
+        } else if (!data.success) {
+        }
+      });
+    
     setFeedConfig("searchPerfil");
   }
 
@@ -334,6 +355,7 @@ export default function Feed() {
         <Feedbox
           config={feedConfig}
           nickname={nickname}
+          nicknamesearch={nicknameSearch}
           user_id={token}
           followers={followersSearch}
           following={followingSearch}
@@ -344,7 +366,7 @@ export default function Feed() {
           id={id}
           profiles={profiles}
           onClickSearch={clickSearch}
-          onClickPerfilSearch={clickPerfilSearch}
+          onClickNickname = {clickPerfilSearch}
         />
       ) : null}
 

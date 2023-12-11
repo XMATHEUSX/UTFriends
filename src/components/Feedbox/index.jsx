@@ -151,7 +151,6 @@ export default function Feedbox(props) {
       Perfils.push(props.profiles[i]);
     }
   }
-
   /* Declarações para a configuração 'SearchPerfil' do Feed */
 
   /* Configurações de exibição do Feed */
@@ -176,6 +175,7 @@ export default function Feedbox(props) {
                 meu_id={Publications[index].meu_id}
                 pensamento_id={Publications[index].pensamento_id}
                 nickname={Publications[index].nickname}
+                receiveNickname = {props.onClickNickname}
               />
 
             ))
@@ -276,7 +276,7 @@ export default function Feedbox(props) {
                 nickname={Perfils[index].nickname}
                 follow={Perfils[index].follow}
                 id = {Perfils[index].user_id}
-                receiveId={props.onClickPerfilSearch}
+                receiveNickname={props.onClickNickname}
 
               />
 
@@ -311,7 +311,7 @@ export default function Feedbox(props) {
               cursor={"pointer"}
             />
 
-            <p>{"@" + props.nickname}</p>
+            <p>{"@" + props.nicknamesearch}</p>
 
           </div>
 

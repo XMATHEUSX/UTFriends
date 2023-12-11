@@ -32,7 +32,6 @@ export default function Publication(props) {
     })
       .then((data) => {
         const newLikes = liked ? likes - 1 : likes + 1;
-        // console.log(data);
         setLikes(newLikes);
         setLiked(!liked);
       })
@@ -40,6 +39,10 @@ export default function Publication(props) {
         console.error("Erro ao curtir:", error);
       });
   }
+
+  function sendNickname() {
+    props.receiveNickname(props.user)
+}
 
   if (props.type == 1) {
 
@@ -51,7 +54,7 @@ export default function Publication(props) {
           
           <div className="userInfoP">
 
-            <p>{"@" + props.user}</p>
+            <p onClick={sendNickname}> {"@" + props.user}</p>
 
             {props.friend ? (
               <GiDuckPalm size={20} className="starIconP" />
