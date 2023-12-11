@@ -226,6 +226,7 @@ export default function Feedbox(props) {
   } else if (props.config == "search") {
     return (
       <div className="conteinerFB" style={{ justifyContent: "space-between" }}>
+
         {checkPerfils() ? (
           <div className="feedConteinerFB">
             {Object.keys(Perfils).map((index) => (
@@ -233,7 +234,8 @@ export default function Feedbox(props) {
                 key={index}
                 bio={Perfils[index].biografia}
                 nickname={Perfils[index].nickname}
-                follow={false}
+                follow={Perfils[index].follow}
+                id = {Perfils[index].user_id}
                 onClickPerfil={props.onClickPerfilSearch}
               />
             ))}

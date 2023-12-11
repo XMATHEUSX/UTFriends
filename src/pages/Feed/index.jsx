@@ -27,6 +27,14 @@ export default function Feed() {
   const [following, setFollowing] = useState("");
   const [pensamentos, setPensamentos] = useState("");
   const [curso, setCurso] = useState("");
+
+  const [bioSearch, setBioSearch] = useState("");
+  const [nicknameSearch, setNicknameSearch] = useState("");
+  const [followersSearch, setFollowersSearch] = useState("");
+  const [followingSearch, setFollowingSearch] = useState("");
+  const [pensamentosSearch, setPensamentosSearch] = useState("");
+  const [cursoSearch, setCursoSearch] = useState("");
+
   const [feed, setFeed] = useState([{}]);
   const [profiles, setProfiles] = useState([{}]);
 
@@ -156,6 +164,7 @@ export default function Feed() {
   function clickSearch() {
     const userData = {
       busca: busca,
+      token: token,
     };
 
     const verifyData = {
@@ -190,12 +199,12 @@ export default function Feed() {
     }
   }
 
-  function clickPerfilSearch() {
+  const clickPerfilSearch = (nick) => {
     setConfig(false);
     setPerfil(false);
     setCommunity(false);
     setHome(true);
-    alert(nickname);
+    alert(nick);
     setFeedConfig("searchPerfil");
   }
 
@@ -279,6 +288,11 @@ export default function Feed() {
           config={feedConfig}
           nickname={nickname}
           user_id={token}
+          followers={followersSearch}
+          following={followingSearch}
+          pensamentos={pensamentosSearch}
+          bio={bioSearch}
+          curso={cursoSearch}
           feed={feed}
           profiles={profiles}
           onClickSearch={clickSearch}
