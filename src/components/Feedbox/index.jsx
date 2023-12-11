@@ -153,6 +153,13 @@ export default function Feedbox(props) {
   }
   /* Declarações para a configuração 'SearchPerfil' do Feed */
 
+  const [seguindo, setSeguindo] = useState(props.seguindo)
+
+  function seguir() {
+
+    setSeguindo(!seguindo)
+  }
+
   /* Configurações de exibição do Feed */
   if (props.config == "home") {
 
@@ -306,7 +313,7 @@ export default function Feedbox(props) {
           <div className="headerFB">
 
             <FiArrowLeft
-              onClick={props.onClickSearch}
+              onClick={props.busca ? props.onClickSearch : props.onClickClose}
               className="returnIconFB"
               cursor={"pointer"}
             />
@@ -347,7 +354,14 @@ export default function Feedbox(props) {
               </div>
             </div>
 
-            <div className="buttonsFB"></div>
+            <div className="buttonsFB">
+
+              <button className={`${seguindo ? 'seguindoButtonFB' : 'seguirButtonFB'}`} onClick={seguir}>
+                
+                {seguindo ? 'Seguindo' : 'Seguir'}
+                
+              </button>
+            </div>
           </div>
 
           <div className="midContentFB">
@@ -374,7 +388,9 @@ export default function Feedbox(props) {
 
           <div className="feedFB">
 
+            <div className="feedContentFB">
 
+            </div>
           </div>
         </div>
       </div>

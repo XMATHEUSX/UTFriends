@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { BsFillRecordFill } from "react-icons/bs";
 import { FaChevronRight } from "react-icons/fa";
 
+import UsefulBox from "../UsefulBox";
 import './configbox.css'
 
 export default function Configbox(props) {
@@ -27,6 +28,10 @@ export default function Configbox(props) {
   const [telefone, setTelefone] = useState('')
   const [dataNascimento, setDataNascimento] = useState('')
   
+  const [sucesso, setSucesso] = useState(null)
+  const [display, setDisplay] = useState(null)
+  const [message, setMessage] = useState('')
+
   var token = localStorage.getItem("token");
 
 
@@ -98,32 +103,158 @@ export default function Configbox(props) {
   }
 
   function changePassword() {
+
     const userData = {
       passwordAtual: senhaAtual,
       token: token,
       passwordNovo: novaSenha,
     };
-    fetch("http://localhost:3000/api/v1/profile/verifypassword", {
+
+    const userVal = {
+
+      passwordAtual: false,
+      passwordNovo: false,
+    }
+
+    if (senhaAtual != '') {
+
+      document.getElementById('noSenhaAtual').style.display = 'none'
+      userVal.passwordAtual = true;
+
+    } else {
+
+      document.getElementById('noSenhaAtual').style.display = 'block'
+    }
+
+    if (novaSenha != '') {
+
+      document.getElementById('noSenhaNova').style.display = 'none'
+
+      if (/^.{8,}$/.test(novaSenha)) {
+
+        document.getElementById('weakSenhaNova').style.display = 'none'
+
+        if (novaSenha == repNovaSenha) {
+
+          document.getElementById('erroRepSenhaNova').style.display = 'none'
+          userVal.passwordNovo = true
+  
+        } else {
+  
+          document.getElementById('erroRepSenhaNova').style.display = 'block'
+  
+        }
+
+      } else {
+
+        document.getElementById('weakSenhaNova').style.display = 'block'
+        document.getElementById('erroRepSenhaNova').style.display = 'none'
+
+      }
+
+    } else {
+
+      document.getElementById('noSenhaNova').style.display = 'block'
+      document.getElementById('erroRepSenhaNova').style.display = 'none'
+      document.getElementById('weakSenhaNova').style.display = 'none'
+
+    }
+
+    const validacao = Object.values(userVal).every(value => value === true);
+
+    if (validacao) {
+
+      fetch("http://localhost:3000/api/v1/profile/verifypassword", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),
       })
+        
         .then((response) => response.json())
         .then((data) => {
           if (data.success) {
-            alert('Senha Alterada');
+            setSucesso(true)
+            setDisplay(true)
           } else if (!data.success) {
-            alert('Senha errada');
-            if (data.message == "Credenciais inválidas.") {
-              setDisplayNR(true);
+            setSucesso(false)
+            setDisplay(true)
+            setMessage("Ocorreu algum erro ao atualizar sua senha")
+            if (data.message == "senha errada.") {
+              setMessage("A senha informada está incorreta")
             }
           }
         })
         .catch((error) => {
           console.error("Erro:", error);
         });
-        
+      } 
     }
+  
+  function cleanData() {
+
+    setSenhaAtual("");
+    setNovaSenha("");
+    setRepNovaSenha("");
+  }
+
+  function displayOff() {
+
+    setDisplay(false);
+  }
+
+  function displayClose() {
+
+    displayOff();
+    cleanData();
+  }
+
+  function clickClose() {
+
+    displayOff();
+    cleanData();
+  }
+
+  function updateSuccess() {
+
+    return (
+
+      <UsefulBox
+        display={display}
+        width={"45%"}
+        height={"20%"}
+        top={'40%'}
+        left={'27.5%'}
+        name={"Update_Success"}
+        title={"Password Changed"}
+        message={"Sua senha foi alterada com sucesso"}
+        button={"Fechar"}
+        onClickClose={displayOff}
+        onClickButton={clickClose}
+      />
+
+    );
+  }
+
+  function updateFailed() {
+
+    return (
+
+      <UsefulBox
+        display={display}
+        width={"45%"}
+        height={"20%"}
+        top={'40%'}
+        left={'27.5%'}
+        name={"Update_Failed"}
+        title={"ERROR"}
+        message={message}
+        button={"Tentar Novamente"}
+        onClickClose={displayOff}
+        onClickButton={displayClose}
+      />
+
+    );
+  }
 
   // Declaração das funções com exibição
 
@@ -203,6 +334,8 @@ export default function Configbox(props) {
             onChange={(e) => setSenhaAtual(e.target.value)}
           />
 
+          <p className="errorMsgConfigBox" id="noSenhaAtual"> Campo obrigatório </p>
+
         </div>
 
         <div className="duoInputConfigBox">
@@ -220,6 +353,10 @@ export default function Configbox(props) {
               onChange={(e) => setNovaSenha(e.target.value)}
             />
 
+            <p className="errorMsgConfigBox" id="noSenhaNova"> Campo obrigatório </p>
+
+            <p className="errorMsgConfigBox" id="weakSenhaNova"> Senha fraca </p>
+
           </div>
 
           <div className="inputConteinerConfigBox" style={{height: '100%'}}>
@@ -234,6 +371,8 @@ export default function Configbox(props) {
               value={repNovaSenha}
               onChange={(e) => setRepNovaSenha(e.target.value)}
             />
+
+            <p className="errorMsgConfigBox" id="erroRepSenhaNova"> Senhas divergentes </p>
 
           </div>
         </div>
@@ -273,6 +412,8 @@ export default function Configbox(props) {
 		return (
 
 			<div className="conteinerConfigBox">
+
+        {sucesso ? updateSuccess() : updateFailed()}
 
 				<div className="headerConfigBox">
             

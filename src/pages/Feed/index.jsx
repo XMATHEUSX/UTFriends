@@ -46,6 +46,7 @@ export default function Feed() {
   var token = localStorage.getItem("token");
 
   const [busca, setBusca] = useState("");
+  const [buscaDone, setBuscaDone] = useState(false)
 
   const [perfil, setPerfil] = useState(false);
   const [config, setConfig] = useState(false);
@@ -154,6 +155,10 @@ export default function Feed() {
     setCommunity(false);
     setHome(true);
 
+    setBuscaDone(false);
+    document.getElementById('SearchBox').value = ''
+    setBusca('')
+
     setFeedConfig("home");
   }
 
@@ -196,6 +201,9 @@ export default function Feed() {
   }
 
   function clickSearch() {
+
+    setBuscaDone(true);
+
     const userData = {
       busca: busca,
       token: token,
@@ -365,8 +373,10 @@ export default function Feed() {
           feed={feed}
           id={id}
           profiles={profiles}
+          busca={buscaDone}
+          onClickClose={clickClose}
           onClickSearch={clickSearch}
-          onClickNickname = {clickPerfilSearch}
+          onClickNickname={clickPerfilSearch}
         />
       ) : null}
 

@@ -74,11 +74,7 @@ html {
 .optionsConteinerConfigBox {
 
     width: 90%;
-    height: fit-content;
-
-    min-height: 95%;
-
-    overflow-y: scroll;
+    height: 95%;
 
     display: flex;
     align-items: flex-start;
@@ -349,6 +345,14 @@ html {
 .infoContentConfigBox:hover {
 
     transform: scale(1.05);
+}
+
+.errorMsgConfigBox{
+
+  font-size: 12px;
+
+  color: red;
+  display: none;
 }
 
 /* Responsividade para o eixo x */
