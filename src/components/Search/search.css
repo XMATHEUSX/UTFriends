@@ -42,6 +42,8 @@ html {
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
+
+    padding-left: 2%;
 }
 
 .supInfoSP {
@@ -65,14 +67,16 @@ html {
 
 .notFollowingSP {
 
-    width: 20%;
-    height: 100%;
+    width: fit-content;
+    height: fit-content;
 
     max-height: 35px;
 
     border: solid;
     border-width: 2px;
     border-radius: 50px;
+
+    padding: 2%;
 
     display: flex;
     align-items: center;
@@ -93,8 +97,8 @@ html {
 .followingSP {
 
     
-    width: 20%;
-    height: 100%;
+    width: fit-content;
+    height: fit-content;
 
     max-height: 35px;
 
@@ -102,6 +106,8 @@ html {
     border-color: black;
     border-width: 2px;
     border-radius: 50px;
+
+    padding: 2%;
 
     display: flex;
     align-items: center;
@@ -137,3 +143,101 @@ html {
     text-align: justify;
 }
 
+/* Responsividade para o eixo x */
+
+  
+@media (max-width: 1024px) {
+
+    .supInfoSP p {
+
+        font-size: 1.8em;
+    }
+
+    .botInfoSP p {
+
+        font-size: 1.2em;
+    }
+}
+  
+  @media (max-width: 900px) {
+  
+
+  }
+  
+  @media (max-width: 825px) {
+  
+
+  }
+  
+  @media (max-width: 768px) {
+
+    .perfilImageSP {
+
+        height: 80px;
+        width: 80px;
+    }
+  
+    .supInfoSP p {
+
+        font-size: 1.6em;
+    }
+
+    .botInfoSP p {
+
+        font-size: 1em;
+    }
+  }
+  
+  @media (max-width: 680px) {
+  
+
+  }
+  
+  @media (max-width: 600px) {
+  
+
+  }
+  
+  @media (max-width: 500px) {
+  
+
+  }
+  
+  /* Responsividade para o eixo y */
+  
+  @media (max-height: 925px) {
+  
+
+  }
+  
+  @media (max-height: 800px) {
+  
+
+  }
+  
+  @media (max-height: 600px) {
+  
+
+  }
+  
+  /* Responsividade para o eixo x e y */
+  
+  @media (max-width: 1024px) and (max-height: 768px) {
+  
+  
+  }
+  
+  @media (max-width: 600px) and (max-height: 768px) {
+  
+  
+  }
+  
+  @media (max-width: 600px) and (max-height: 850px) {
+  
+  
+  }
+  
+  @media (max-width: 600px) and (max-height: 950px) {
+  
+  
+  }

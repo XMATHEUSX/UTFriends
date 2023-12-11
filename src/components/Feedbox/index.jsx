@@ -142,17 +142,14 @@ export default function Feedbox(props) {
     }
   }
 
-  function sendAccount() {
-
-    props.recieveAccount(nickname)
-  }
-
   // Declaração das constantes com funções
 
   const Perfils = [];
   var profilesSize = props.profiles.length;
   for (let i = 0; i < profilesSize; i++) {
-    Perfils.push(props.profiles[i]);
+    if(props.profiles[i].user_id != props.id) {
+      Perfils.push(props.profiles[i]);
+    }
   }
 
   /* Declarações para a configuração 'SearchPerfil' do Feed */
@@ -279,7 +276,7 @@ export default function Feedbox(props) {
                 nickname={Perfils[index].nickname}
                 follow={Perfils[index].follow}
                 id = {Perfils[index].user_id}
-                onClickPerfil={props.onClickPerfilSearch}
+                receiveId={props.onClickPerfilSearch}
 
               />
 

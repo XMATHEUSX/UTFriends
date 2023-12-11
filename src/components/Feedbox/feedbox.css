@@ -478,3 +478,149 @@ html {
 
   margin-bottom: 2%;
 }
+
+/* Responsividade para o eixo x */
+
+@media (max-width: 1800px) {
+
+  .conteinerFB {
+
+    width: 45%;
+
+    left: 27.5%;
+  }
+}
+
+@media (max-width: 1650px) {
+
+  .conteinerFB {
+
+    width: 50%;
+
+    left: 25%;
+  }
+}
+
+@media (max-width: 1440px) {
+
+  .conteinerFB {
+
+    width: 55%;
+
+    left: 22.5%;
+  }
+}
+
+@media (max-width: 1220px) {
+
+  .conteinerFB {
+
+    width: 60%;
+
+    left: 20%;
+  }
+}
+
+@media (max-width: 1024px) {
+
+  .conteinerFB {
+
+    width: 65%;
+
+    left: 17.5%;
+  }
+}
+
+@media (max-width: 900px) {
+
+  .conteinerFB {
+
+    width: 70%;
+
+    left: 15%;
+  }
+}
+
+@media (max-width: 825px) {
+
+  .conteinerFB {
+
+    width: 75%;
+
+    left: 12.5%;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .conteinerFB {
+
+    width: 80%;
+
+    left: 10%;
+  }
+}
+
+@media (max-width: 680px) {
+
+  .conteinerFB {
+
+    width: 90%;
+
+    left: 5%;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .conteinerFB {
+
+    width: 100%;
+
+    left: 0%;
+  }
+}
+
+@media (max-width: 425px) {
+
+
+}
+
+/* Responsividade para o eixo y */
+
+@media (max-height: 925px) {
+
+
+}
+
+@media (max-height: 800px) {
+
+
+}
+
+@media (max-height: 600px) {
+
+
+}
+
+/* Responsividade para o eixo x e y */
+
+@media (max-width: 1024px) and (max-height: 768px) {
+
+
+}
+
+@media (max-width: 600px) and (max-height: 768px) {
+
+
+}
+
+@media (max-width: 600px) and (max-height: 850px) {
+
+
+}
+
+@media (max-width: 600px) and (max-height: 950px) {
+
+
+}

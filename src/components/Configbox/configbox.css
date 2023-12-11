@@ -74,7 +74,11 @@ html {
 .optionsConteinerConfigBox {
 
     width: 90%;
-    height: 95%;
+    height: fit-content;
+
+    min-height: 95%;
+
+    overflow-y: scroll;
 
     display: flex;
     align-items: flex-start;
@@ -126,7 +130,7 @@ html {
     font-size: 16px;
     font-weight: 600;
     font-family: 'Roboto Mono';
-    text-align: left;
+    text-align: center;
 }
 
 .optionConfigBox button p {
@@ -281,8 +285,8 @@ html {
 
 .passwordButtonConfigBox button {
 
-    width: 20%;
-    height: 100%;
+    width: fit-content;
+    height: fit-content;
 
     border: dashed;
     border-width: 2px;
@@ -290,6 +294,8 @@ html {
     font-size: 12px;
     font-weight: bold;
     font-family: 'Roboto Mono';
+
+    padding: 1%;
 
     background-color: #FFF;
 
@@ -344,3 +350,213 @@ html {
 
     transform: scale(1.05);
 }
+
+/* Responsividade para o eixo x */
+
+@media (max-width: 1800px) {
+
+    .conteinerConfigBox {
+  
+      width: 45%;
+  
+      left: 27.5%;
+    }
+  }
+  
+  @media (max-width: 1650px) {
+  
+    .conteinerConfigBox {
+  
+      width: 50%;
+  
+      left: 25%;
+    }
+  }
+  
+  @media (max-width: 1440px) {
+  
+    .conteinerConfigBox {
+  
+      width: 55%;
+  
+      left: 22.5%;
+    }
+
+    .inputConteinerConfigBox input {
+
+        height: 55%;
+    }
+  }
+  
+  @media (max-width: 1220px) {
+  
+    .conteinerConfigBox {
+  
+      width: 60%;
+  
+      left: 20%;
+    }
+
+    .infoContentConfigBox p {
+
+        font-size: 12px;
+    }
+
+    .inputConteinerConfigBox {
+
+        font-size: 12px;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+  
+    .conteinerConfigBox {
+  
+      width: 65%;
+  
+      left: 17.5%;
+    }
+  }
+  
+  @media (max-width: 900px) {
+  
+    .conteinerConfigBox {
+  
+      width: 70%;
+  
+      left: 15%;
+    }
+  }
+  
+  @media (max-width: 825px) {
+  
+    .conteinerConfigBox {
+  
+      width: 75%;
+  
+      left: 12.5%;
+    }
+
+    .infoBoxConfigBox {
+
+        height: 15%;
+    }
+
+    .inputConteinerConfigBox input {
+
+        height: 50%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+  
+    .conteinerConfigBox {
+  
+      width: 80%;
+  
+      left: 10%;
+    }
+
+    .optionConfigBox button p {
+
+        font-size: 12px;
+    }
+  }
+  
+  @media (max-width: 680px) {
+  
+    .conteinerConfigBox {
+  
+      width: 90%;
+  
+      left: 5%;
+    }
+
+    .inputConteinerConfigBox {
+
+        padding-left: 5%;
+
+        width: 55%;
+    }
+
+    .infoBoxConfigBox {
+
+        font-size: 1.4em;
+    }
+
+    .buttonConteinerConfigBox {
+
+        width: 65%;
+    }
+
+    .infoContentConfigBox p {
+
+        font-size: 10px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+  
+    .conteinerConfigBox {
+  
+      width: 100%;
+  
+      left: 0%;
+    }
+  }
+  
+  @media (max-width: 500px) {
+  
+    .infoContentConfigBox p {
+
+        font-size: 8px;
+    }
+  }
+  
+  /* Responsividade para o eixo y */
+  
+  @media (max-height: 925px) {
+  
+    .optionConfigBox {
+
+        height: 15%;
+    }
+  }
+  
+  @media (max-height: 800px) {
+  
+    .optionConfigBox {
+
+        height: 20%;
+    }
+  }
+  
+  @media (max-height: 600px) {
+  
+    .optionConfigBox {
+
+        height: 25%;
+    }
+  }
+  
+  /* Responsividade para o eixo x e y */
+  
+  @media (max-width: 1024px) and (max-height: 768px) {
+  
+  
+  }
+  
+  @media (max-width: 600px) and (max-height: 768px) {
+  
+  
+  }
+  
+  @media (max-width: 600px) and (max-height: 850px) {
+  
+  
+  }
+  
+  @media (max-width: 600px) and (max-height: 950px) {
+  
+  
+  }

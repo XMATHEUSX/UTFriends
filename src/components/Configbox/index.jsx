@@ -188,7 +188,7 @@ export default function Configbox(props) {
 
     return (
 
-      <div className="infoBoxConfigBox" style={{height: '30%', alignItems: 'flex-start', justifyContent: 'space-evenly'}}>
+      <div className="infoBoxConfigBox" style={{height: '25%', alignItems: 'flex-start', justifyContent: 'space-evenly'}}>
 
         <div className="inputConteinerConfigBox">
 

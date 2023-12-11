@@ -13,7 +13,15 @@ export default function Perfilbox(props) {
 
   /* Declaração das funções de perfil */
 
+  var token = localStorage.getItem("token");
+
   // Declaração das constantes com função
+
+  const MyPublications = [];
+  var size = props.myPublications.length;
+  for (let i = 0; i < size; i++) {
+    MyPublications.push(props.myPublications[i]);
+  }
 
   // Declaração das constantes básicas:
 
@@ -26,10 +34,6 @@ export default function Perfilbox(props) {
 
   const [sucesso, setSucesso] = useState(null);
   const [display, setDisplay] = useState(null);
-  const [MyPublications, setMyPublications] = useState([]);
-
-  var token = localStorage.getItem("token");
-  const userData = {token: token,};
 
   // Declaração das funções básicas:
 
@@ -106,30 +110,6 @@ export default function Perfilbox(props) {
 
     );
   }
-
-  const requestMeusPensamentos = async () => {
-    try {
-      const response = await fetch(
-        "http://localhost:3000/api/v1/profile/exibirmeuspensamentos",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(userData),
-        }
-      );
-
-      const data = await response.json();
-      console.log("Data:", data);
-
-      if (data.success) {
-        setMyPublications(data.pensamentos);
-      } else {
-        setMyPublications([]);
-      }
-    } catch (error) {
-      console.log("Error:", error);
-    }
-  };
 
   // Declaração das constantes com funções:
 
@@ -318,8 +298,6 @@ export default function Perfilbox(props) {
   const PerfilUpload = () => {
     perfilRef.current.click();
   };
-
-  useEffect(() => {requestMeusPensamentos;}, []);
 
   /* Configurações de exibição */
 

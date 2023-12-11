@@ -4,7 +4,7 @@ import { BsPersonCircle } from "react-icons/bs";
 import { FaGear } from "react-icons/fa6";
 import { HiUserGroup } from "react-icons/hi2";
 
-import "./perfilbar.css";
+import "./menubar.css";
 
 export default function Perfilbar(props) {
   return (
@@ -12,9 +12,9 @@ export default function Perfilbar(props) {
       <div className="iconContentPB">
         <div className={`${props.menu ? "iconExpandedPB" : "contentPB"}`}>
           <AiFillHome
+            className="iconPB"
             onClick={props.onClickHome}
             cursor={"pointer"}
-            size={35}
           />
 
           {props.menu ? <p onClick={props.onClickHome}>Feed</p> : ""}
@@ -22,9 +22,9 @@ export default function Perfilbar(props) {
 
         <div className={`${props.menu ? "iconExpandedPB" : "contentPB"}`}>
           <BsPersonCircle
+            className="iconPB"
             onClick={props.onClickPerfil}
             cursor={"pointer"}
-            size={35}
           />
 
           {props.menu ? <p onClick={props.onClickPerfil}>Perfil</p> : ""}
@@ -32,9 +32,9 @@ export default function Perfilbar(props) {
 
         <div className={`${props.menu ? "iconExpandedPB" : "contentPB"}`}>
           <HiUserGroup
+            className="iconPB"
             onClick={props.onClickCommunity}
             cursor={"pointer"}
-            size={35}
           />
 
           {props.menu ? (
@@ -45,7 +45,11 @@ export default function Perfilbar(props) {
         </div>
 
         <div className={`${props.menu ? "iconExpandedPB" : "contentPB"}`}>
-          <FaGear onClick={props.onClickConfig} cursor={"pointer"} size={35} />
+          <FaGear 
+            onClick={props.onClickConfig} 
+            cursor={"pointer"} 
+            className="iconPB"
+          />
 
           {props.menu ? <p onClick={props.onClickConfig}>Configurações</p> : ""}
         </div>

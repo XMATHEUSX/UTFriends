@@ -27,6 +27,7 @@ export default function Feed() {
   const [following, setFollowing] = useState("");
   const [pensamentos, setPensamentos] = useState("");
   const [curso, setCurso] = useState("");
+  const [id, setId] = useState('');
 
   const [bioSearch, setBioSearch] = useState("");
   const [nicknameSearch, setNicknameSearch] = useState("");
@@ -34,6 +35,8 @@ export default function Feed() {
   const [followingSearch, setFollowingSearch] = useState("");
   const [pensamentosSearch, setPensamentosSearch] = useState("");
   const [cursoSearch, setCursoSearch] = useState("");
+
+  const [MyPublications, setMyPublications] = useState([]);
 
   const [feed, setFeed] = useState([{}]);
   const [profiles, setProfiles] = useState([{}]);
@@ -58,7 +61,7 @@ export default function Feed() {
       token: token,
     };
 
-    console.log("User Data: " + userData.token);
+    //console.log("User Data: " + userData.token);
     fetch("http://localhost:3000/api/v1/profile/user", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -68,7 +71,8 @@ export default function Feed() {
       .then((data) => {
         JSON.stringify(data.dados);
         if (data.success) {
-          // console.log(data.dados);
+          //console.log(data.dados);
+          setId(data.dados.user_id)
           setNickname(data.dados.nickname);
           setBio(data.dados.biografia);
           setFollowers(data.dados.seguidores);
@@ -116,6 +120,34 @@ export default function Feed() {
       });
   }
 
+  const requestMeusPensamentos = async () => {
+
+    var token = localStorage.getItem("token");
+    const userData = {token: token,};
+
+    try {
+      const response = await fetch(
+        "http://localhost:3000/api/v1/profile/exibirmeuspensamentos",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(userData),
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.success) {
+        setMyPublications(data.pensamentos);
+      } else {
+        setMyPublications([]);
+      }
+      
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
+
   function clickClose() {
     setConfig(false);
     setPerfil(false);
@@ -139,6 +171,8 @@ export default function Feed() {
     setPerfil(true);
     setCommunity(false);
     setHome(false);
+
+    requestMeusPensamentos();
 
     setFeedConfig("perfil");
   }
@@ -199,12 +233,15 @@ export default function Feed() {
     }
   }
 
-  const clickPerfilSearch = (nick) => {
+  const clickPerfilSearch = (id) => {
+
     setConfig(false);
     setPerfil(false);
     setCommunity(false);
     setHome(true);
-    alert(nick);
+
+    console.log(id);
+
     setFeedConfig("searchPerfil");
   }
 
@@ -244,9 +281,11 @@ export default function Feed() {
         <div className="centerBarF">
           <div className="searchBoxF">
             <input
+              style={{fontFamily: 'Roboto Mono'}}
               title="SearchBox"
               id="SearchBox"
               type="text"
+              placeholder="Realize sua busca..."
               onChange={(e) => setBusca(e.target.value)}
               onKeyDown={enterCapture}
             />
@@ -284,6 +323,7 @@ export default function Feed() {
           pensamentos={pensamentos}
           bio={bio}
           curso={curso}
+          myPublications={MyPublications}
           onClickClose={clickClose}
           onClickPerfil={clickPerfil}
           onClickPerfilConfig={ClickPerfilConfig}
@@ -301,6 +341,7 @@ export default function Feed() {
           bio={bioSearch}
           curso={cursoSearch}
           feed={feed}
+          id={id}
           profiles={profiles}
           onClickSearch={clickSearch}
           onClickPerfilSearch={clickPerfilSearch}

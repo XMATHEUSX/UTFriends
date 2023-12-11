@@ -20,14 +20,14 @@
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between  ;
   flex-direction: row;
 
   position: absolute;
   top: 0px;
   right: 0px;
 
-  z-index: 1;
+  z-index: 2;
 
   border-bottom: solid;
   border-bottom-width: 3px;
@@ -118,4 +118,198 @@
   padding: 10px;
 
   background-color: #fff;
+}
+
+/* Responsividade para o eixo x */
+
+@media (max-width: 1800px) {
+
+  .centerBarF {
+
+    width: 70%;
+  }
+
+  .lastBarF {
+
+    width: 15%;
+  }
+
+  .firstBarF {
+
+    width: 15%;
+  }
+
+  .firstBarF-Expanded {
+
+    width: 15%;
+    padding-left: 5.5%;
+  }
+
+  .searchBoxF {
+
+    width: 35%;
+  }
+
+  .searchIconF {
+
+    width: 3%;
+  }
+}
+
+@media (max-width: 1650px) {
+
+  .searchBoxF {
+
+    width: 40%;
+  }
+
+  .searchIconF {
+
+    width: 4%;
+  }
+}
+
+@media (max-width: 1440px) {
+
+  .searchBoxF {
+
+    width: 45%;
+  }
+}
+
+@media (max-width: 1220px) {
+
+  .firstBarF-Expanded {
+
+    padding-left: 6.5%;
+  }
+
+  .searchBoxF {
+
+    width: 50%;
+  }
+
+  .searchIconF {
+
+    width: 5%;
+  }
+}
+
+@media (max-width: 1024px) {
+
+  .centerBarF {
+
+    width: 60%;
+  }
+
+  .lastBarF {
+
+    width: 20%;
+  }
+
+  .firstBarF {
+
+    width: 20%;
+  }
+
+  .firstBarF-Expanded {
+
+    width: 20%;
+    padding-left: 7%;
+  }
+
+  .searchBoxF {
+
+    width: 60%;
+    height: 55%;
+  }
+
+  .searchIconF {
+
+    width: 6%;
+    height: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .firstBarF-Expanded {
+
+    padding-left: 9%;
+  }
+
+  .searchBoxF {
+
+    width: 65%;
+  }
+
+  .searchIconF {
+
+    width: 7%;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .firstBarF-Expanded {
+
+    padding-left: 11%;
+  }
+
+  .searchBoxF {
+
+    width: 75%;
+  }
+
+  .searchIconF {
+
+    width: 10%;
+  }
+}
+
+@media (max-width: 425px) {
+
+  .searchBoxF {
+
+    width: 80%;
+  }
+
+  .searchIconF {
+
+    width: 12%;
+  }
+}
+
+/* Responsividade para o eixo y */
+
+@media (max-height: 925px) {
+
+  .topContentF {
+
+    height: 6%;
+  }
+}
+
+@media (max-height: 800px) {
+
+  .topContentF {
+
+    height: 7%;
+  }
+}
+
+@media (max-height: 700px) {
+
+  .topContentF {
+
+    height: 8%;
+  }
+}
+
+@media (max-height: 600px) {
+
+  .topContentF {
+
+    height: 9%;
+  }
 }
