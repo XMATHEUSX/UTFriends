@@ -40,6 +40,7 @@ export default function Feed() {
 
   const [feed, setFeed] = useState([{}]);
   const [profiles, setProfiles] = useState([{}]);
+  const [feedSearch, setFeedSearch] = useState([{}]);
 
   const [feedConfig, setFeedConfig] = useState("home");
   const [menu, setMenu] = useState(false);
@@ -260,13 +261,14 @@ export default function Feed() {
       .then((data) => {
         JSON.stringify(data.dados);
         if (data.success) {
-          console.log(data.dados)
+          //console.log(data.dados.pensamentos)
           setNicknameSearch(nickname)
-          setBioSearch(data.dados.biografia);
-          setFollowersSearch(data.dados.seguidores);
-          setFollowingSearch(data.dados.seguindo);
-          setPensamentosSearch(data.dados.pensamentos);
-          setCursoSearch(data.dados.nm_curso);
+          setBioSearch(data.dados.perfil.biografia);
+          setFollowersSearch(data.dados.perfil.seguidores);
+          setFollowingSearch(data.dados.perfil.seguindo);
+          setPensamentosSearch(data.dados.perfil.pensamentos);
+          setCursoSearch(data.dados.perfil.nm_curso);
+          setFeedSearch(data.dados.pensamentos);
         } else if (!data.success) {
         }
       });
@@ -374,6 +376,7 @@ export default function Feed() {
           id={id}
           profiles={profiles}
           busca={buscaDone}
+          feedSearch={feedSearch}
           onClickClose={clickClose}
           onClickSearch={clickSearch}
           onClickNickname={clickPerfilSearch}

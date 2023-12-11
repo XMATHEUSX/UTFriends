@@ -40,7 +40,7 @@ export default function Feedbox(props) {
     const publication_text = document.getElementById("postText").value;
 
     if (publication_text.trim() === "") {
-      alert("Você não pode enviar uma publicação vazia.");
+      //alert("Você não pode enviar uma publicação vazia.");
     } else {
       const newPublication = {
         token: token,
@@ -56,7 +56,7 @@ export default function Feedbox(props) {
         .then((data) => {
           console.log(data.success);
           if (data.success) {
-            alert("Publicação enviada com sucesso!");
+            //alert("Publicação enviada com sucesso!");
             document.getElementById("postText").value = "";
             setNewPublicationText("");
             setPostImage(null);
@@ -158,6 +158,12 @@ export default function Feedbox(props) {
   function seguir() {
 
     setSeguindo(!seguindo)
+  }
+
+  const SearchPublications = [];
+  var size = props.feedSearch.length;
+  for (let i = 0; i < size; i++) {
+    SearchPublications.push(props.feedSearch[i]);
   }
 
   /* Configurações de exibição do Feed */
@@ -388,7 +394,31 @@ export default function Feedbox(props) {
 
           <div className="feedFB">
 
-            <div className="feedContentFB">
+            <div className={`${Object.keys(SearchPublications).length > 0 ? "feedPerfilBox" : "nofeedPerfilBox"}`}>
+
+              {Object.keys(SearchPublications).length > 0 ? (
+                Object.keys(SearchPublications).map((index) => (
+                  <Publication
+                    key={index}
+                    type={SearchPublications[index].tipo_pensamento}
+                    user={props.nicknamesearch}
+                    liked={SearchPublications[index].curtiu}
+                    like={SearchPublications[index].curtidas}
+                    text={SearchPublications[index].ds_pensamento}
+                    pensamento_id={SearchPublications[index].pensamento_id}
+                    user_id={SearchPublications[index].user_id}
+                  />
+                ))
+              ) 
+              : 
+              (
+                <div className="noPublicationPerfilBox">
+
+                  <p>Essa pessoa ainda não compartilhou nenhum pensamento</p>
+                  <p>Que sabe mais tarde...</p>
+
+                </div>
+              )}
 
             </div>
           </div>
