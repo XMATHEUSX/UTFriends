@@ -268,7 +268,7 @@ export default function Perfilbox(props) {
     const validacao = Object.values(DataVal).every((value) => value === true);
 
     if (validacao) {
-      fetch("http://localhost:3000/api/v1/profile/update", {
+      fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/profile/update", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updateData),

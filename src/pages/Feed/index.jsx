@@ -66,7 +66,7 @@ export default function Feed() {
     };
 
     //console.log("User Data: " + userData.token);
-    fetch("http://localhost:3000/api/v1/profile/user", {
+    fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/profile/user", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
@@ -89,7 +89,7 @@ export default function Feed() {
         }
       });
 
-    fetch("http://localhost:3000/api/v1/feed/exibirfeed", {
+    fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/feed/exibirfeed", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
@@ -109,7 +109,7 @@ export default function Feed() {
       token: token,
     };
 
-    fetch("http://localhost:3000/api/v1/profile/delete", {
+    fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/profile/delete", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
@@ -131,7 +131,7 @@ export default function Feed() {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/api/v1/profile/exibirmeuspensamentos",
+        "https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/profile/exibirmeuspensamentos",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -225,7 +225,7 @@ export default function Feed() {
     );
 
     if (validacao) {
-      fetch("http://localhost:3000/api/v1/feed/searchProfile", {
+      fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/feed/searchProfile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),
@@ -250,7 +250,7 @@ export default function Feed() {
       nicknameFollowed: nicknamefollowed,
       follow: !follow,
     };
-  fetch("http://localhost:3000/api/v1/profile/followUser", {
+  fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/profile/followUser", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
@@ -272,7 +272,7 @@ export default function Feed() {
     const userData = {
       nickname: nickname,
     };
-    fetch("http://localhost:3000/api/v1/profile/usersearch", {
+    fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/profile/usersearch", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),

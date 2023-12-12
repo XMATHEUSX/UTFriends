@@ -41,7 +41,7 @@ export default function Configbox(props) {
     const userData = {
       token: token,
     };
-    fetch("http://localhost:3000/api/v1/profile/infoConta", {
+    fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/profile/infoConta", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
@@ -164,7 +164,7 @@ export default function Configbox(props) {
 
     if (validacao) {
 
-      fetch("http://localhost:3000/api/v1/profile/verifypassword", {
+      fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/profile/verifypassword", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),

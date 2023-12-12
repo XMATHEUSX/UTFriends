@@ -22,7 +22,7 @@ export default function Publication(props) {
       nickname: nickname,
     };
 
-    fetch("http://localhost:3000/api/v1/feed/curtirpensamento", {
+    fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/feed/curtirpensamento", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

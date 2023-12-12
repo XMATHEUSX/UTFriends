@@ -47,7 +47,7 @@ export default function Feedbox(props) {
         ds_pensamento: publication_text,
       };
 
-      fetch("http://localhost:3000/api/v1/feed/inserirPensamento", {
+      fetch("https://server-utf-615d5a0cc2dd.herokuapp.com/api/v1/feed/inserirPensamento", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newPublication),
