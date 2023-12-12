@@ -116,7 +116,7 @@ export default function Feed() {
       .then((data) => {
         JSON.stringify(data);
         if (data.success) {
-          alert("Conta Deletada");
+          //alert("Conta Deletada");
           Exit();
         }
       });
@@ -261,7 +261,6 @@ export default function Feed() {
       .then((data) => {
         JSON.stringify(data.dados);
         if (data.success) {
-          //console.log(data.dados.pensamentos)
           setNicknameSearch(nickname)
           setBioSearch(data.dados.perfil.biografia);
           setFollowersSearch(data.dados.perfil.seguidores);

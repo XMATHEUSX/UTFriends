@@ -40,10 +40,6 @@ export default function Publication(props) {
       });
   }
 
-  function sendNickname() {
-    props.receiveNickname(props.user)
-}
-
   if (props.type == 1) {
 
     return (
@@ -54,7 +50,7 @@ export default function Publication(props) {
           
           <div className="userInfoP">
 
-            <p onClick={sendNickname}> {"@" + props.user}</p>
+            <p> {"@" + props.user}</p>
 
             {props.friend ? (
               <GiDuckPalm size={20} className="starIconP" />

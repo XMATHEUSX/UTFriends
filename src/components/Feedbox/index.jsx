@@ -173,7 +173,7 @@ export default function Feedbox(props) {
 
       <div className="conteinerFB" style={{ justifyContent: "space-between" }}>
 
-        <div className={`${seekFeed() > 0 ? 'feedConteinerFB' : "emptyConteinerFB"}`}>
+        <div className={`${seekFeed() ? 'feedConteinerFB' : "emptyConteinerFB"}`}>
 
           {seekFeed() > 0 ? (
             Object.keys(Publications).map((index) => (
@@ -188,7 +188,6 @@ export default function Feedbox(props) {
                 meu_id={Publications[index].meu_id}
                 pensamento_id={Publications[index].pensamento_id}
                 nickname={Publications[index].nickname}
-                receiveNickname = {props.onClickNickname}
               />
 
             ))
