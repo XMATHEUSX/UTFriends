@@ -35,6 +35,8 @@ export default function Feed() {
   const [followingSearch, setFollowingSearch] = useState("");
   const [pensamentosSearch, setPensamentosSearch] = useState("");
   const [cursoSearch, setCursoSearch] = useState("");
+  //const [FollowSearch, setFollowSearch] = useState("");
+
 
   const [MyPublications, setMyPublications] = useState([]);
   const [feedSearch, setFeedSearch] = useState([]);
@@ -242,6 +244,24 @@ export default function Feed() {
     }
   }
 
+  const clickFollow = (nicknamefollowed,follow) => {
+    const userData = {
+      nicknameFollower: nickname,
+      nicknameFollowed: nicknamefollowed,
+      follow: !follow,
+    };
+  fetch("http://localhost:3000/api/v1/profile/followUser", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        JSON.stringify(data);
+        console.log(data)
+      });
+  }
+
   const clickPerfilSearch = (nickname) => {
 
     setConfig(false);
@@ -269,6 +289,7 @@ export default function Feed() {
           setPensamentosSearch(data.dados.perfil.pensamentos);
           setCursoSearch(data.dados.perfil.nm_curso);
           setFeedSearch(data.dados.pensamentos);
+          //setFollowSearch(data.dados.follow);
         } else if (!data.success) {
         }
       });
@@ -374,12 +395,14 @@ export default function Feed() {
           curso={cursoSearch}
           feed={feed}
           id={id}
+          //seguindo = {FollowSearch}
           profiles={profiles}
           busca={buscaDone}
           feedSearch={feedSearch}
           onClickClose={clickClose}
           onClickSearch={clickSearch}
           onClickNickname={clickPerfilSearch}
+          onClickFollow={clickFollow}
         />
       ) : null}
 

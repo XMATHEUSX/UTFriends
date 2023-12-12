@@ -6,10 +6,11 @@ export default function Search(props) {
     const [follow, setFollow] = useState(props.follow)
 
     function ClickFollow() {
+        props.followUser(props.nickname,!follow)
         setFollow(!follow)
-        
     }
-    
+
+
     function sendNickname() {
         props.receiveNickname(props.nickname)
     }

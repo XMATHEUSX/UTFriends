@@ -156,8 +156,9 @@ export default function Feedbox(props) {
   const [seguindo, setSeguindo] = useState(props.seguindo)
 
   function seguir() {
-
     setSeguindo(!seguindo)
+    props.onClickFollow(props.nicknamesearch,!seguindo)
+    
   }
 
   const SearchPublications = [];
@@ -289,6 +290,7 @@ export default function Feedbox(props) {
                 follow={Perfils[index].follow}
                 id = {Perfils[index].user_id}
                 receiveNickname={props.onClickNickname}
+                followUser={props.onClickFollow}
 
               />
 
