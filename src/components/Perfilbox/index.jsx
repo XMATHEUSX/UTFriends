@@ -409,6 +409,7 @@ export default function Perfilbox(props) {
                   key={index}
                   type={MyPublications[index].tipo_pensamento}
                   user={props.nickname}
+                  nickname={props.nickname}
                   liked={MyPublications[index].curtiu}
                   like={MyPublications[index].curtidas.curtidas.length}
                   text={MyPublications[index].ds_pensamento}

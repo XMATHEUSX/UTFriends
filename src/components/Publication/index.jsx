@@ -7,7 +7,7 @@ export default function Publication(props) {
 
   const curtidores = props.curtidores || [];
   const pensamento_id = parseInt(props.pensamento_id);
-  const nickname = props.nickname || props.user;
+  const nickname = props.nickname;
   const user_id = parseInt(props.meu_id) || parseInt(props.user_id);
 
   const curtiuProprioPensamento = Array.from(curtidores).some((curtidor) => curtidor.user_id === user_id);

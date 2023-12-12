@@ -401,11 +401,13 @@ export default function Feedbox(props) {
                     key={index}
                     type={SearchPublications[index].tipo_pensamento}
                     user={props.nicknamesearch}
+                    nickname={props.nickname}
                     liked={SearchPublications[index].curtiu}
-                    like={SearchPublications[index].curtidas}
+                    like={SearchPublications[index].curtidas.curtidas.length}
                     text={SearchPublications[index].ds_pensamento}
                     pensamento_id={SearchPublications[index].pensamento_id}
-                    user_id={SearchPublications[index].user_id}
+                    curtidores={SearchPublications[index].curtidas.curtidas}
+                    user_id={props.id}
                   />
                 ))
               ) 

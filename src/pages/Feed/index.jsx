@@ -37,10 +37,10 @@ export default function Feed() {
   const [cursoSearch, setCursoSearch] = useState("");
 
   const [MyPublications, setMyPublications] = useState([]);
+  const [feedSearch, setFeedSearch] = useState([]);
 
   const [feed, setFeed] = useState([{}]);
   const [profiles, setProfiles] = useState([{}]);
-  const [feedSearch, setFeedSearch] = useState([{}]);
 
   const [feedConfig, setFeedConfig] = useState("home");
   const [menu, setMenu] = useState(false);
@@ -261,6 +261,7 @@ export default function Feed() {
       .then((data) => {
         JSON.stringify(data.dados);
         if (data.success) {
+          console.log(data.dados.pensamentos)
           setNicknameSearch(nickname)
           setBioSearch(data.dados.perfil.biografia);
           setFollowersSearch(data.dados.perfil.seguidores);
